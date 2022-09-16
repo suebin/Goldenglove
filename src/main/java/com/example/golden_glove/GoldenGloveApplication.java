@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 @MapperScan(basePackages = "user")
 @MapperScan(basePackages = "team")
+
 @SpringBootApplication
 public class GoldenGloveApplication {
 
