@@ -1,0 +1,137 @@
+@font-face {
+  font-family: "비트로 코어 OTF";
+  src: url("../font/비트로 코어 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "비트로 프라이드 OTF";
+  src: url("../font/비트로 프라이드 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+button {
+  cursor: pointer;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 3%;
+  align-items: center;
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+body {
+  font-family: "비트로 프라이드 OTF";
+}
+
+.logo {
+  font-family: "비트로 코어 OTF";
+  color: #00912e;
+  font-size: 30px;
+}
+
+.logo:hover {
+  color: #feca00;
+  transition: all 0.2s;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  max-width: 500px;
+}
+
+.nav li a {
+  position: relative;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.4s;
+}
+
+.nav li a::after {
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  content: "";
+  height: 4px;
+  width: 0;
+  transition: all 0.4s;
+  background-color: #00912e;
+}
+
+.nav li:hover a::after {
+  width: 100%;
+}
+
+.loginBtnCon button {
+  background-color: #fff;
+  border: 2px solid #feca00;
+  color: #feca00;
+  padding: 7px 10px;
+  border-radius: 10px;
+}
+
+.loginBtnCon button:hover {
+  background-color: #feca00;
+  color: #000;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  .logo {
+    padding-bottom: 20px;
+  }
+
+  .nav {
+    width: 100%;
+  }
+
+  .loginBtnCon {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+  }
+
+  .loginBtnCon button {
+    padding: 5px;
+  }
+}
+
+@media (max-width: 425px) {
+  .loginBtnCon {
+    position: relative;
+    padding-bottom: 20px;
+  }
+
+  .loginBtnCon button {
+    width: 55px;
+    padding: 5px 0;
+  }
+}
