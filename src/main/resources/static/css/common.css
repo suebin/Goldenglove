@@ -1,3 +1,17 @@
+@font-face {
+  font-family: "비트로 코어 OTF";
+  src: url("../font/비트로 코어 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "비트로 프라이드 OTF";
+  src: url("../font/비트로 프라이드 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -16,3 +30,16 @@ a {
 button {
   cursor: pointer;
 }
+
+body {
+  font-family: "비트로 프라이드 OTF";
+}
+
+.confix {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
