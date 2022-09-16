@@ -12,33 +12,14 @@
   font-weight: 400;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-ul,
-ol,
-li {
-  list-style: none;
-}
-
-a {
-  text-decoration: none;
-  color: #000;
-}
-
-button {
-  cursor: pointer;
-}
-
 header {
+  border-bottom: 1px solid rgb(221, 221, 221);
+}
+
+header > .confix {
   display: flex;
   justify-content: space-between;
-  padding: 15px 3%;
   align-items: center;
-  border-bottom: 1px solid rgb(221, 221, 221);
 }
 
 body {
@@ -101,10 +82,6 @@ body {
 }
 
 @media (max-width: 768px) {
-  header {
-    flex-direction: column;
-  }
-
   .logo {
     padding-bottom: 20px;
   }
@@ -122,6 +99,11 @@ body {
   .loginBtnCon button {
     padding: 5px;
   }
+  
+  header > .confix {
+    flex-direction: column;
+  }
+  
 }
 
 @media (max-width: 425px) {
