@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class Test {
-	@RequestMapping("/test")
-	public void test() {
-
+	@RequestMapping("/header")
+	public String header() {
+		return "components/header";
 	}
 }
