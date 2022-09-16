@@ -17,7 +17,11 @@ $(document).ready(function() {
 <body>
 	<footer class="footer">
 		<p>
+<<<<<<< HEAD
 			<span>© 2022 Golden Glove. All rights reserved.</span>
+=======
+			<span>© 2022 Company, Inc. All rights reserved.</span>
+>>>>>>> 98c281c (header/footer)
 		</p>
 	</footer>
 </body>

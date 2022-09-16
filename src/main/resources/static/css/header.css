@@ -1,3 +1,20 @@
+<<<<<<< HEAD
+=======
+@font-face {
+  font-family: "비트로 코어 OTF";
+  src: url("../font/비트로 코어 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "비트로 프라이드 OTF";
+  src: url("../font/비트로 프라이드 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+>>>>>>> 98c281c (header/footer)
 header {
   border-bottom: 1px solid rgb(221, 221, 221);
 }
@@ -8,6 +25,13 @@ header > .confix {
   align-items: center;
 }
 
+<<<<<<< HEAD
+=======
+body {
+  font-family: "비트로 프라이드 OTF";
+}
+
+>>>>>>> 98c281c (header/footer)
 .logo {
   font-family: "비트로 코어 OTF";
   color: #00912e;
@@ -22,7 +46,11 @@ header > .confix {
 .nav {
   display: flex;
   justify-content: space-between;
+<<<<<<< HEAD
   width: 35%;
+=======
+  width: 50%;
+>>>>>>> 98c281c (header/footer)
   max-width: 500px;
 }
 

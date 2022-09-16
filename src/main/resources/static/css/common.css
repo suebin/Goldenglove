@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
   font-family: "비트로 코어 OTF";
   src: url("../font/비트로 코어 OTF.otf") format("woff");
@@ -12,6 +13,8 @@
   font-weight: 400;
 }
 
+=======
+>>>>>>> 98c281c (header/footer)
 * {
 	margin: 0;
 	padding: 0;
@@ -30,6 +33,7 @@ a {
 button {
   cursor: pointer;
 }
+<<<<<<< HEAD
 
 body {
   font-family: "비트로 프라이드 OTF";
@@ -43,3 +47,5 @@ body {
   padding: 20px 0;
 }
 
+=======
+>>>>>>> 98c281c (header/footer)

@@ -5,7 +5,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>골든글러브</title>
+=======
+<title>골근글러브</title>
+>>>>>>> 98c281c (header/footer)
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
@@ -18,7 +22,11 @@
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
+<<<<<<< HEAD
 		test
+=======
+		
+>>>>>>> 98c281c (header/footer)
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
