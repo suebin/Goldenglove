@@ -9,12 +9,4 @@ public class Test {
 	public String header() {
 		return "main/main";
 	}
-
-	@RequestMapping("/hyun")
-	public void hyun() {
-	}
-
-	@RequestMapping("/hyun")
-	public void hyun() {
-	}
 }
