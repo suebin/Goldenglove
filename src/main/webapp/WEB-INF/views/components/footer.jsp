@@ -17,7 +17,7 @@ $(document).ready(function() {
 <body>
 	<footer class="footer">
 		<p>
-			<span>© 2022 Company, Inc. All rights reserved.</span>
+			<span>© 2022 Golden Glove. All rights reserved.</span>
 		</p>
 	</footer>
 </body>
