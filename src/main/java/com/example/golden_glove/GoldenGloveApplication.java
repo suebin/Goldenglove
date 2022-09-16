@@ -2,8 +2,11 @@ package com.example.golden_glove;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-// 테스트
+@ComponentScan
+@ComponentScan(basePackages = "main")
+
 @SpringBootApplication
 public class GoldenGloveApplication {
 
