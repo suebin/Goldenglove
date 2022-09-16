@@ -1,0 +1,81 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b6e38ca (main, header 생성)
+=======
+>>>>>>> b6e38ca (main, header 생성)
+@font-face {
+  font-family: "비트로 코어 OTF";
+  src: url("../font/비트로 코어 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "비트로 프라이드 OTF";
+  src: url("../font/비트로 프라이드 OTF.otf") format("woff");
+  /* 이런식으로 weight를 지정해서 사용할 수도 있다!*/
+  font-weight: 400;
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98c281c (header/footer)
+=======
+>>>>>>> b6e38ca (main, header 생성)
+=======
+>>>>>>> 98c281c (header/footer)
+=======
+>>>>>>> b6e38ca (main, header 생성)
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul, ol, li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	display: inline-block;
+	color: black;
+}
+button {
+  cursor: pointer;
+}
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b6e38ca (main, header 생성)
+=======
+>>>>>>> b6e38ca (main, header 생성)
+
+body {
+  font-family: "비트로 프라이드 OTF";
+}
+
+.confix {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 98c281c (header/footer)
+=======
+>>>>>>> b6e38ca (main, header 생성)
+=======
+>>>>>>> 98c281c (header/footer)
+=======
+>>>>>>> b6e38ca (main, header 생성)
