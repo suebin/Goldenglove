@@ -28,6 +28,9 @@ public class UserService {
 //	수정
 	public void updateUser(UserDTO dto) {
 		userDao.updateUser(dto);
+//	로그인 검사
+	public UserDTO idCheck(String id) {
+		return userDao.idCheck(id);
 	}
 
 }

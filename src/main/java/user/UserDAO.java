@@ -19,5 +19,4 @@ public interface UserDAO {
 
 //	수정
 	void updateUser(UserDTO dto);
-
 }

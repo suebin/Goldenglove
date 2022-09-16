@@ -21,5 +21,4 @@
 	<update id="updateUser" parameterType="userDTO">
 		update user set name = #{name}, phone = #{phone}, email = #{email}, region = #{region} where id = #{id};
 	</update>
-
 </mapper>
