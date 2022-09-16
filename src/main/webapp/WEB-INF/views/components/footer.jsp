@@ -16,10 +16,14 @@
 	<footer class="footer">
 		<p>
 <<<<<<< HEAD
+<<<<<<< HEAD
 			<span>© 2022 Golden Glove. All rights reserved.</span>
 =======
 			<span>© 2022 Company, Inc. All rights reserved.</span>
 >>>>>>> 98c281c (header/footer)
+=======
+			<span>© 2022 Golden Glove. All rights reserved.</span>
+>>>>>>> b6e38ca (main, header 생성)
 		</p>
 	</footer>
 </body>
