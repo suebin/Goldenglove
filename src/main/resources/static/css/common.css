@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b6e38ca (main, header 생성)
 @font-face {
   font-family: "비트로 코어 OTF";
   src: url("../font/비트로 코어 OTF.otf") format("woff");
@@ -13,8 +16,11 @@
   font-weight: 400;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 98c281c (header/footer)
+=======
+>>>>>>> b6e38ca (main, header 생성)
 * {
 	margin: 0;
 	padding: 0;
@@ -34,6 +40,9 @@ button {
   cursor: pointer;
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> b6e38ca (main, header 생성)
 
 body {
   font-family: "비트로 프라이드 OTF";
@@ -47,5 +56,8 @@ body {
   padding: 20px 0;
 }
 
+<<<<<<< HEAD
 =======
 >>>>>>> 98c281c (header/footer)
+=======
+>>>>>>> b6e38ca (main, header 생성)
