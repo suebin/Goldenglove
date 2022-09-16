@@ -13,4 +13,8 @@ public class Test {
 	@RequestMapping("/hyun")
 	public void hyun() {
 	}
+
+	@RequestMapping("/hyun")
+	public void hyun() {
+	}
 }
