@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/css/footer.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -15,10 +14,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-	<footer class="footer">
-		<p>
-			<span>© 2022 Golden Glove. All rights reserved.</span>
-		</p>
-	</footer>
+aaa
 </body>
 </html>

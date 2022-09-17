@@ -27,12 +27,10 @@
 					<li><a href="#">팀 매칭</a></li>
 					<li><a href="#">랭킹</a></li>
 					<li><a href="#">공지사항</a></li>
-					<li><a href="#">마이페이지</a></li>
-					<li><a href="#">FAQ</a></li>
 				</ul>
 				<div class="loginBtnCon">
 					<button type="button" class="loginBtn">Login</button>
-					<button type="button" class="logoutBtn">Logout</button>
+					<button type="button" class="signupBtn">Sign Up</button>
 				</div>
 			</div>
 		</header>
