@@ -22,6 +22,19 @@
 		})
 
 		/* 중복검사 */
+		$("#signupForm").on("submit", function(e) {
+			if($("#idcheckResult").val() == "" || $("#namecheckResult").val() == "" || $("#phonecheckResult").val() == "" || $("#emailcheckResult").val() == "") {
+				e.preventDefault();
+				alert("중복검사를 해주세요.");
+				alert($("#idCheckResult").val());
+				alert($("#nameCheckResult").val());
+				alert($("#phoneCheckResult").val());
+				alert($("#emailCheckResult").val());
+			}else {
+				alert("회원가입이 완료되었습니다. 팀원 등록 페이지로 이동합니다.")			
+			}
+		})
+
 		$("input:button").on("click", function(e) {
 			const checkInput = $(this); 
 			$.ajax({
