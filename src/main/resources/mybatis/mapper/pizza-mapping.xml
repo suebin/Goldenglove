@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="chatbot.PizzaDAO">
-
-<!-- 	<insert id="insertOrder" parameterType="pizzadto"> 변수명 dto변수명 일치
-		insert into pizza(kind, size, price, telnum) values(#{kind}, #{size}, #{price}, #{telnum})
-	</insert> -->
-	
-</mapper>

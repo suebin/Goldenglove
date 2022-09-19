@@ -30,7 +30,7 @@
 				</ul>
 				<div class="loginBtnCon">
 					<button type="button" class="loginBtn">Login</button>
-					<button type="button" class="signupBtn">Sign Up</button>
+					<button type="button" class="signupBtn" onclick="location.href='/signup'">Sign Up</button>
 				</div>
 			</div>
 		</header>
