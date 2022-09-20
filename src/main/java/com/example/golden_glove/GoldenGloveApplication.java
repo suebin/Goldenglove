@@ -5,17 +5,19 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+
 @ComponentScan
 @ComponentScan(basePackages = "main")
 @ComponentScan(basePackages = "user")
 @ComponentScan(basePackages = "team")
+@ComponentScan(basePackages = "teammatch")
+@ComponentScan(basePackages = "notice")
 
 @MapperScan(basePackages = "user")
 @MapperScan(basePackages = "team")
-@ComponentScan(basePackages = "notice")
-
+@MapperScan(basePackages = "teammatch")
 @MapperScan(basePackages = "notice")
+@SpringBootApplication
 public class GoldenGloveApplication {
 
 	public static void main(String[] args) {

@@ -24,7 +24,7 @@
 			<div class="confix">
 				<a href="/" class="logo">골든글러브</a>
 				<ul class="nav">
-					<li><a href="#">팀 매칭</a></li>
+					<li><a href="match">팀 매칭</a></li>
 					<li><a href="#">랭킹</a></li>
 					<li><a href="/notice">공지사항</a></li>
 				</ul>

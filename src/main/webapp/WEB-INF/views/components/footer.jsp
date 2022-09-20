@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8" />
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<title>footer</title>
 <link href="/css/footer.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
