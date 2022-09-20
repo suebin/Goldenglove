@@ -13,9 +13,54 @@
 <link href="/css/teammatch.css" rel="stylesheet" />
 
 <script src="js/jquery-3.6.0.min.js"></script>
-
-<!-- js -->
 <script type="text/javascript" src="js/teammatch.js"></script>
+<script>
+	$(document).ready(function() {
+		
+		// 지역 선택
+		$("#entire").on("click", function() {
+			$('input[name=region]').attr('value', '전체');
+		})
+		$("#seoul").on("click", function() {
+			$('input[name=region]').attr('value', '서울');
+		}) 
+		$("#gyeonggi").on("click", function() {
+			$('input[name=region]').attr('value', '경기');
+		}) 
+		$("#gangwon").on("click", function() {
+			$('input[name=region]').attr('value', '강원');
+		}) 
+		$("#chungcheong").on("click", function() {
+			$('input[name=region]').attr('value', '충청');
+		}) 
+		$("#jeolla").on("click", function() {
+			$('input[name=region]').attr('value', '전라');
+		}) 
+		$("#jeju").on("click", function() {
+			$('input[name=region]').attr('value', '제주');
+		})
+		$("#gyeongsang").on("click", function() {
+			$('input[name=region]').attr('value', '경상');
+		}) 
+		
+		
+		
+		$("#searchbtn").on("click", function(){
+			
+			$.ajax({
+				url: 'teammatch',
+				data: {'region':$("#region").val()},
+				type: 'post',
+				dataType: 'json',
+				success: function(response) {
+					alert(response.process);
+				}
+			});
+			
+		}) // searchbtn end
+		
+	}); // ready end
+</script>
 
 </head>
 <body>
