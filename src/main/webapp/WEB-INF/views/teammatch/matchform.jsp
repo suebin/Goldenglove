@@ -27,7 +27,7 @@
 		<h1>매치 등록</h1>
 		<br>
 
-		<form action="registermatch" method="post">
+		<form action="registerteammatch" method="post">
 			<div>
 				팀 이름 &nbsp;<input type="text" name="teamName">
 			</div>
