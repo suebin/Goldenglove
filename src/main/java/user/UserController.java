@@ -91,5 +91,8 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "main/main";
+	@RequestMapping("/test")
+	public String test() {
+		return "team/teamRegistration";
 	}
 }
