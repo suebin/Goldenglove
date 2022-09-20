@@ -20,17 +20,12 @@ public class UserController {
 	}
 
 	@PostMapping("/signupResult")
-	public ModelAndView signUpResult(UserDTO dto) {
+	public ModelAndView signupResult(UserDTO dto) {
 		userService.insertUser(dto);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("name", dto.getName());
-		mv.setViewName("member/memberRegistration");
+		mv.setViewName("team/teamRegistration");
 		return mv;
-	}
-
-	@RequestMapping("/test")
-	public String test() {
-		return "member/memberRegistration";
 	}
 
 	@ResponseBody
@@ -52,4 +47,8 @@ public class UserController {
 		return "{\"result\":\"" + result + "\"}";
 	}
 
+	@RequestMapping("/test")
+	public String test() {
+		return "team/teamRegistration";
+	}
 }

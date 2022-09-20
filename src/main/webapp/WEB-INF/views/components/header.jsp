@@ -22,7 +22,7 @@
 	<div class="container">
 		<header>
 			<div class="confix">
-				<a href="#" class="logo">골든글러브</a>
+				<a href="/" class="logo">골든글러브</a>
 				<ul class="nav">
 					<li><a href="#">팀 매칭</a></li>
 					<li><a href="#">랭킹</a></li>
