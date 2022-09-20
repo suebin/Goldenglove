@@ -36,7 +36,7 @@
 				alert($("#phoneCheckResult").val());
 				alert($("#emailCheckResult").val());
 			}else {
-				alert("회원가입이 완료되었습니다. 팀원 등록 페이지로 이동합니다.")			
+				alert("회원가입이 완료되었습니다. 팀원 등록 페이지로 이동합니다.");			
 			}
 		})
 
