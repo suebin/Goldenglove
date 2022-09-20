@@ -8,8 +8,6 @@
 		<typeAlias type="team.TeamDTO" alias="teamDTO"/>
 		<typeAlias type="notice.NoticeDTO" alias="noticedto"/> 
 		<typeAlias type="teammatch.TeamMatchDTO" alias="teammatchdto"/>
-		<typeAlias type="user.UserDTO" alias="userDTO"/>
-		<typeAlias type="team.TeamDTO" alias="teamDTO"/>
 		<typeAlias type="ranking.RankingDTO" alias="rankingDTO"/>
 	</typeAliases>
 </configuration>
