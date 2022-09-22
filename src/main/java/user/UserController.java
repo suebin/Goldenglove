@@ -81,8 +81,8 @@ public class UserController {
 			result = "성공";
 			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", loginInfo);
-		}
-		return "{\"result\":\"" + result + "\"}";
+			return "{\"result\":\"" + result + "\"}";
+		} 
 	}
 
 //	로그아웃
@@ -91,8 +91,5 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "main/main";
-	@RequestMapping("/test")
-	public String test() {
-		return "team/teamRegistration";
 	}
 }
