@@ -11,11 +11,13 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
+		/* 추가버튼 클릭시 버튼hidden 두번째 input */
 		$("input:button").on("click", function() {
 			$(this).attr("hidden","hidden");
 			$(this).prev().removeAttr("hidden");
 			$(this).prev().focus();
 		})
+		/* submit시 input 값 합치기 */
 		$("#teamForm").on("submit", function() {
 			for(let i = 1;i <= 9;i++){
 				$("#name" + i).val($("#name" + i).val() + "," + $("#name" + i).next().val());				

@@ -8,6 +8,7 @@ public class TeamService {
 	@Autowired
 	TeamDAO teamDao;
 
+//	팀원등록
 	public void insertTeam(TeamDTO dto) {
 		teamDao.insertTeam(dto);
 	}

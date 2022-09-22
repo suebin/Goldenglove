@@ -2,12 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="user.UserDAO">
 
+	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="userDTO">
 		insert into user(id, password, name, phone, email, region) values(#{id}, #{password}, #{name}, #{phone}, #{email}, #{region})
 	</insert>
 	
+	<!-- 중복검사 -->
 	<select id="duplicateCheck" parameterType="HashMap" resultType="int">
 		select count(*) from user where ${id} = #{value};
 	</select>
 	
+	<!-- 로그인 검사-->
+	<select id="idCheck" parameterType="String" resultType="userDTO">
+		select * from user where #{id} = #{id};
+	</select>
 </mapper>

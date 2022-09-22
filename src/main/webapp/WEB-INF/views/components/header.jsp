@@ -14,7 +14,7 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
-
+		
 	});
 </script>
 </head>
@@ -29,8 +29,13 @@
 					<li><a href="#">공지사항</a></li>
 				</ul>
 				<div class="loginBtnCon">
-					<button type="button" class="loginBtn">Login</button>
+					<% if(session.getAttribute("loginInfo") == null) { %>
+					<button type="button" class="loginBtn" onclick="location.href='/login'">Login</button>
 					<button type="button" class="signupBtn" onclick="location.href='/signup'">Sign Up</button>
+					<%} else { %>
+					<span>${loginInfo.getName() }</span>
+					<button type="button" onclick="location.href='/logout'">Log Out</button>					
+					<%} %>
 				</div>
 			</div>
 		</header>

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="team.TeamDAO">
-
+	
+	<!-- 팀원 등록 -->
 	<insert id="insertTeam" parameterType="teamDTO">
 		insert into team values(#{teamName}, #{firstBase}, #{secondBase}, #{thirdBase}, #{catcher}, #{pitcher}, #{leftFielder}, #{rightFielder}, #{centerFielder}, #{shortStop})
 	</insert>

@@ -11,19 +11,17 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
+		/* submit시 중복검사 여부 확인 */
 		$("#signupForm").on("submit", function(e) {
-			if($("#idcheckResult").val() == "" || $("#namecheckResult").val() == "" || $("#phonecheckResult").val() == "" || $("#emailcheckResult").val() == "") {
+			if($("#idCheckResult").text() == "" || $("#nameCheckResult").text() == "" || $("#phoneCheckResult").text() == "" || $("#emailCheckResult").text() == "") {
 				e.preventDefault();
 				alert("중복검사를 해주세요.");
-				alert($("#idCheckResult").val());
-				alert($("#nameCheckResult").val());
-				alert($("#phoneCheckResult").val());
-				alert($("#emailCheckResult").val());
 			}else {
 				alert("회원가입이 완료되었습니다. 팀원 등록 페이지로 이동합니다.");			
 			}
 		})
 
+		/* 중복검사 */
 		$("input:button").on("click", function(e) {
 			const checkInput = $(this); 
 			$.ajax({
