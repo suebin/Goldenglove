@@ -19,8 +19,12 @@ public class UserController {
 
 //	회원가입
 	@RequestMapping("/signup")
-	public String signUp() {
-		return "user/signUp";
+	public String signUp(HttpServletRequest request) {
+		if (request.getHeader("REFERER") != null) {
+			return "user/signUp";
+		} else {
+			return "main/main";
+		}
 	}
 
 //	회원가입 후 팀원 등록
@@ -55,8 +59,12 @@ public class UserController {
 
 //	로그인
 	@RequestMapping("/login")
-	public String login() {
-		return "user/logIn";
+	public String login(HttpServletRequest request) {
+		if (request.getHeader("REFERER") != null) {
+			return "user/logIn";
+		} else {
+			return "main/main";
+		}
 	}
 
 //	로그인 검사
@@ -69,7 +77,7 @@ public class UserController {
 			result = "존재하지 않는 아이디입니다.";
 		} else if (!loginInfo.getPassword().equals(password)) {
 			result = "아이디와 비밀번호가 일치하지 않습니다.";
-		} else {
+		} else if (loginInfo.getPassword().equals(password)) {
 			result = "성공";
 			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", loginInfo);

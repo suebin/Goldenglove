@@ -23,12 +23,17 @@ $(document).ready(function() {
 			dataType : 'json',
 			success : function(server) {
 				if(server.result == "존재하지 않는 아이디입니다.") {
-					$('input[name="name"]').val();
-					$('input[name="name"]').focus();			
-					$('input[name="password"]').val();
+					alert(server.result);
+					$('input[name="id"]').val("");
+					$('input[name="id"]').focus();			
+					$('input[name="password"]').val("");
 					$("#idCheckResult").html(server.result);
 				} else if(server.result == "아이디와 비밀번호가 일치하지 않습니다.") {
 					alert(server.result);
+					$('input[name="id"]').val("");
+					$('input[name="id"]').focus();			
+					$('input[name="password"]').val("");
+					$("#idCheckResult").html(server.result);
 				} else {
 					location.href = '/';
 				}

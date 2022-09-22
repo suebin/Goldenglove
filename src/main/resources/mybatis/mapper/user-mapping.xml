@@ -14,6 +14,6 @@
 	
 	<!-- 로그인 검사-->
 	<select id="idCheck" parameterType="String" resultType="userDTO">
-		select * from user where #{id} = #{id};
+		select * from user where id = #{id};
 	</select>
 </mapper>
