@@ -34,6 +34,8 @@ $(document).ready(function() {
 					$('input[name="id"]').focus();			
 					$('input[name="password"]').val("");
 					$("#idCheckResult").html(server.result);
+				} else if(server.result == "아이디와 비밀번호가 일치하지 않습니다.") {
+					alert(server.result);
 				} else {
 					location.href = '/';
 				}
