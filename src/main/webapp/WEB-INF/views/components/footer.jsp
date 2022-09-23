@@ -13,10 +13,10 @@
 </script>
 </head>
 <body>
-  <footer class="footer">
-    <p>
-      <span>© 2022 Golden Glove. All rights reserved.</span>
-    </p>
-  </footer>
+	<footer class="footer">
+		<p>
+			<span>© 2022 Golden Glove. All rights reserved.</span>
+		</p>
+	</footer>
 </body>
 </html>
