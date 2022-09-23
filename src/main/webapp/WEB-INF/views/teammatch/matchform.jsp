@@ -29,11 +29,11 @@
 
 		<form action="registerteammatch" method="post">
 			<div>
-				팀 이름 &nbsp;<input type="text" name="teamName">
+				팀 이름 &nbsp;<input type="text" name="teamName" value="">
 			</div>
 			
 			<div>
-				지역 &nbsp;<input type="text" name="region">
+				지역 &nbsp;<input type="text" name="region" value="">
 			</div>
 
 			<div>
