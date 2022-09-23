@@ -68,9 +68,10 @@ $(document).ready(function() {
 		calendarInit();
 		
 		$(".dates").on("click", function() {
-			const pickday = document.getElementById('day_current');
-			$('input[name=possibleDate]').attr('value', pickday);
-		})
+			var day_current = document.getElementById('3');
+  			alert(day_current.textContent);		
+		}) // 
+		
 		
 	}); // ready end
 	
@@ -139,7 +140,7 @@ function calendarInit() {
         }
         // 이번달
         for (var i = 1; i <= nextDate; i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day current" id="day_current">' + i + '</div>'
+            calendar.innerHTML = calendar.innerHTML + '<div class="day current" id='+ i +'>' + i + '</div>'
         }
         
         

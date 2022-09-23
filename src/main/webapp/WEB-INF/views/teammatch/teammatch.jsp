@@ -23,7 +23,7 @@
 
 	<div class="confix">
 
-		<!-- 선택한 지역과 날짜 데이터를 form으로 post 전송 -->
+		<!-- 선택한 지역과 날짜 데이터 전송 -->
 		<form action="teammatch" method="post">
 			<input type="hidden" name="region" id="region" value="">
 			<input type="hidden" name="possibleDate" id="possibleDate" value="">
