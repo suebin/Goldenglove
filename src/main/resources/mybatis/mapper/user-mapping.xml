@@ -25,4 +25,9 @@
 	<select id="idCheck" parameterType="String" resultType="userDTO">
 		select * from user where id = #{id};
 	</select>
+	
+	<!-- 수정 -->
+	<update id="updateUser" parameterType="userDTO">
+		update user set name = #{name}, phone = #{phone}, email = #{email}, region = #{region} where id = #{id};
+	</update>
 </mapper>
