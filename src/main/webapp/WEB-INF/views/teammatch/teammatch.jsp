@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>팀 매치</title>
+
+<!-- css -->
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/teammatch.css" rel="stylesheet" />
@@ -19,6 +21,7 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
+
 	<div class="confix">
 		<form method="get" name="match_search" id="match_search"
 			action="/newsite/web/page.php#match_list" autocomplete="off">
