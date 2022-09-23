@@ -22,7 +22,11 @@
 			for(let i = 1;i <= 9;i++){
 				$("#name" + i).val($("#name" + i).val() + "," + $("#name" + i).next().val());				
 			}
-			alert("팀원 등록이 완료되었습니다. 로그인 후 이용해주세요.");
+			<% if(session.getAttribute("loginInfo") == null) { %>
+				alert("팀원 등록이 완료되었습니다. 로그인 후 이용해주세요.");
+			<%} else {%>
+				alert("팀원 수정이 완료되었습니다.");
+			<%}%>
 		})
 	});
 </script>
@@ -31,9 +35,9 @@
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<h1>팀원 등록</h1>
-		<h3>팀 이름 : ${name }</h3>
+		<h3>팀 이름 : ${loginInfo.name }</h3>
 		<form action="teamResult" method="post" id="teamForm">
-			<input type="text" name="teamName" value="${name }" hidden>
+			<input type="text" name="teamName" value="${loginInfo.name }" hidden>
 			<table>
 				<tr>
 					<td>1루수 :</td>
