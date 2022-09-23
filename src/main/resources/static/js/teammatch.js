@@ -34,7 +34,7 @@ $(document).ready(function() {
 				url : 'teammatch',
 				data : {
 					'region' : $("#region").val(),
-					'password' : $("password").val()
+					'possbleDate' : $("#possibleDate").val()
 				},
 				type : 'post',
 				dataType : 'json',
@@ -53,12 +53,11 @@ $(document).ready(function() {
 				url : 'registerteammatch',
 				data : {
 					'region' : $("#region").val(),
-					'password' : $("password").val()
+					'possibleDate' : $("#possibleDate").val()
 				},
 				type : 'post',
 				dataType : 'json',
 				success : function(response) {
-					alert(response.process);
 				}
 			});
 

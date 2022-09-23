@@ -35,7 +35,7 @@ public class TeamMatchController {
 	// 팀 매치 등록 
 	@GetMapping("/registerteammatch")
 	public String matchform(String region, String possibleDate) {
-
+		
 		return "teammatch/matchform";
 	}
 	
