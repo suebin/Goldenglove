@@ -4,37 +4,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Insert title here</title>
 <link href="/css/footer.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
-$(document).ready(function() {
-	
-});
+  $(document).ready(function () {});
 </script>
 </head>
 <body>
-	<footer class="footer">
-		<p>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-			<span>© 2022 Golden Glove. All rights reserved.</span>
-=======
-			<span>© 2022 Company, Inc. All rights reserved.</span>
->>>>>>> 98c281c (header/footer)
-=======
-			<span>© 2022 Golden Glove. All rights reserved.</span>
->>>>>>> b6e38ca (main, header 생성)
-=======
-			<span>© 2022 Company, Inc. All rights reserved.</span>
->>>>>>> 98c281c (header/footer)
-=======
-			<span>© 2022 Golden Glove. All rights reserved.</span>
->>>>>>> b6e38ca (main, header 생성)
-		</p>
-	</footer>
+  <footer class="footer">
+    <p>
+      <span>© 2022 Golden Glove. All rights reserved.</span>
+    </p>
+  </footer>
 </body>
 </html>

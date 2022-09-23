@@ -6,5 +6,6 @@
 	<typeAliases>
 		<typeAlias type="user.UserDTO" alias="userDTO"/>
 		<typeAlias type="team.TeamDTO" alias="teamDTO"/>
+		<typeAlias type="notice.NoticeDTO" alias="noticedto"/> 
 	</typeAliases>
 </configuration>
