@@ -4,6 +4,6 @@
 <configuration>
 	<!-- mybatis.MemberDTO = memberDTO(별칭정의) -->
 	<typeAliases>
-		<!-- <typeAlias type="" alias=""/> -->
+		<typeAlias type="notice.NoticeDTO" alias="noticedto"/> 
 	</typeAliases>
 </configuration>
