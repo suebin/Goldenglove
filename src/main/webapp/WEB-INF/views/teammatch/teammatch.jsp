@@ -11,6 +11,8 @@
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/teammatch.css" rel="stylesheet" />
+
+<!-- js -->
 <script src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/teammatch.js"></script>
 <script>
