@@ -43,7 +43,7 @@
 	</select> -->
 	
 	<insert id="insertNotice" parameterType="noticedto">
-		insert into notice(title, contents, writer) values(#{title}, #{contents}, 'writer')
+		insert into notice(title, contents, writer) values(#{title}, #{contents}, #{writer})
 	</insert>
 
 	<update id="updateNotice" parameterType="noticedto">

@@ -33,7 +33,6 @@
 						<button type="button" class="loginBtn" onclick="location.href='/login'">Login</button>
 						<button type="button" class="signupBtn" onclick="location.href='/signup'">Sign Up</button>
 					<%} else { %>
-						<span>${loginInfo.getName() }</span>
 						<div class="dropdown">
 							<p class="dropdownBtn">${loginInfo.getName() } ▼</p>
 							<div class="dropdown-contents">

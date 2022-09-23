@@ -12,19 +12,7 @@
   font-weight: 400;
 }
 
-<<<<<<<
-  HEAD
-  <<<<<<<
-  HEAD>>>>>>>98c281c
-  (header/footer)
-  =======>>>>>>>b6e38ca
-  (main, header 생성)
-  =======
-  =======>>>>>>>1583654323ac6638765ac0dfc868dd70ea361a52>>>>>>>98c281c
-  (header/footer)
-  =======>>>>>>>b6e38ca
-  (main, header 생성)
-  header {
+ header {
   border-bottom: 1px solid rgb(221, 221, 221);
 }
 
@@ -38,14 +26,7 @@ body {
   font-family: "비트로 프라이드 OTF";
 }
 
-<<<<<<<
-  HEAD
-  <<<<<<<
-  HEAD>>>>>>>98c281c
-  (header/footer)
-  =======>>>>>>>b6e38ca
-  (main, header 생성)
-  .logo {
+.logo {
   font-family: "비트로 코어 OTF";
   color: #00912e;
   font-size: 30px;

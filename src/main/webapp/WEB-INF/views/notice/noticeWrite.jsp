@@ -26,7 +26,7 @@ $(document).ready(function() {
 				<span>제목</span><input type="text" name="title" class="title"><br/>
 			</div>
 			<textarea class="contents" rows="15" cols="100" name="contents" placeholder="여기에 입력하세요"></textarea><br/>
-			<input type="hidden" name="writer" value="${session.id}"><br/>
+			<input type="hidden" name="writer" value="${loginInfo.getName()}"><br/>
 			<div class="btnContainer">
 				<button class="writeBtn" type="submit" >글쓰기</button>
 			</div>
