@@ -77,11 +77,11 @@ $(document).ready(function() {
 			</form>		
 		</div>
 		
-		<%-- <c:if test="${session.id == 'admin'}"> --%>
+		<c:if test="${loginInfo.getName() == 'admin'}">
 			<div class="btnContainer">
 				<button class="insertBtn" type="button" >글쓰기</button>
 			</div>
-		<%-- </c:if> --%>
+		</c:if>
 	</div>
 	
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />

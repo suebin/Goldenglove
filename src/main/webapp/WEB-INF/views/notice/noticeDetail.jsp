@@ -80,10 +80,10 @@ $(document).ready(function() {
 		<div class="btnContainer">
 			<button class="backBtn" type="button"><a href="notice?page=1">목록</a></button>
 			
-			<%-- <c:if test="${session.id == 'admin'}"> --%>
+			<c:if test="${loginInfo.getName() == 'admin'}">
 				<button class="updateBtn" type="button" >수정</button>
 				<button class="deleteBtn" type="button">삭제</button>
-			<%-- </c:if> --%>
+			</c:if>
 		</div>
 	</div>
 	
