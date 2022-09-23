@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 @font-face {
   font-family: "비트로 코어 OTF";
   src: url("../font/비트로 코어 OTF.otf") format("woff");
@@ -15,9 +12,6 @@
   font-weight: 400;
 }
 
->>>>>>> 98c281c (header/footer)
-=======
->>>>>>> b6e38ca (main, header 생성)
 header {
   border-bottom: 1px solid rgb(221, 221, 221);
 }
@@ -28,16 +22,10 @@ header > .confix {
   align-items: center;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 body {
   font-family: "비트로 프라이드 OTF";
 }
 
->>>>>>> 98c281c (header/footer)
-=======
->>>>>>> b6e38ca (main, header 생성)
 .logo {
   font-family: "비트로 코어 OTF";
   color: #00912e;
@@ -52,15 +40,7 @@ body {
 .nav {
   display: flex;
   justify-content: space-between;
-<<<<<<< HEAD
-<<<<<<< HEAD
   width: 35%;
-=======
-  width: 50%;
->>>>>>> 98c281c (header/footer)
-=======
-  width: 35%;
->>>>>>> b6e38ca (main, header 생성)
   max-width: 500px;
 }
 
