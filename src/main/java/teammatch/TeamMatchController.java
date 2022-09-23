@@ -24,29 +24,18 @@ public class TeamMatchController {
 	// 팀 매치 검색
 	@ResponseBody
 	@PostMapping("/teammatch")
-	public String searchmatch(String region) {
+	public String searchmatch(String region, String possibleDate) {
 		
-		String model = "";
+		String model1 = region;
+		String model2 = possibleDate;
 		
-		if(region.equals("서울")) {
-			model = "서울";
-		}
-		else if(region.equals("경기")) {
-			model = "경기";
-		}
-		else if(region.equals("제주")) {
-			model = "제주";
-		}
-		else {
-			model = "실패 ,,";
-		}
-		
-		return "{\"process\" : \"" + model + "\"}";
+		return "{\"model1\":\"" + model1 + "\", \"model2\":\"" + model2 + "\"}";
 	}
 	
 	// 팀 매치 등록 
 	@GetMapping("/registerteammatch")
-	public String matchform() {
+	public String matchform(String region, String possibleDate) {
+
 		return "teammatch/matchform";
 	}
 	

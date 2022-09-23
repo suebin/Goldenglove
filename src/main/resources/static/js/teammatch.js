@@ -1,303 +1,163 @@
-function match_confirm(url) {
-	if(confirm("매치결과를 승인하시겠습니까?")) {
-		location.href=url;
-	} else {
-		return false;
-	}
-}
+// 지역 및 날짜 선택
+$(document).ready(function() {
 
-$(document).ready(function(){
-	// 지역
-	$("#local_all").on("click", function(){
-		$(".select_local").removeClass("option_on");
-		$("#local_all").removeClass("on").addClass("on");
-		$("#local_value").val("");
-	});
-	$(".select_local").on("click", function(){
-		$("#local_all").removeClass("on");
-		$(".select_local").removeClass("option_on");
-		$(this).addClass("option_on");
-		$("#local_value").val($(this).attr("data-id"));
-	});
-	// 팀
-	$("#team_all").on("click", function(){
-		$(".select_team").removeClass("option_on");
-		$("#team_all").removeClass("on").addClass("on");
-		$("#team_value").val("");
-	});
-	$(".select_team").on("click", function(){
-		$("#team_all").removeClass("on");
-		$(".select_team").removeClass("option_on");
-		$(this).addClass("option_on");
-		$("#team_value").val($(this).attr("data-id"));
-	});
-	// 연령
-	$("#age_all").on("click", function(){
-		$(".select_age").removeClass("option_on");
-		$("#age_all").removeClass("on").addClass("on");
-		$("#age_value").val("");
-	});
-	$(".select_age").on("click", function(){
-		$("#age_all").removeClass("on");
-		$(".select_age").removeClass("option_on");
-		$(this).addClass("option_on");
-		$("#age_value").val($(this).attr("data-id"));
-	});
-	// 경기
-	$("#type_all").on("click", function(){
-		$(".select_type").removeClass("option_on");
-		$("#type_all").removeClass("on").addClass("on");
-		$("#type_value").val("");
-	});
-	$(".select_type").on("click", function(){
-		$("#type_all").removeClass("on");
-		$(".select_type").removeClass("option_on");
-		$(this).addClass("option_on");
-		$("#type_value").val($(this).attr("data-id"));
-	});
+		// 지역 선택
+		$("#entire").on("click", function() {
+			$('input[name=region]').attr('value', '전체');
+		})
+		$("#seoul").on("click", function() {
+			$('input[name=region]').attr('value', '서울');
+		})
+		$("#gyeonggi").on("click", function() {
+			$('input[name=region]').attr('value', '경기');
+		})
+		$("#gangwon").on("click", function() {
+			$('input[name=region]').attr('value', '강원');
+		})
+		$("#chungcheong").on("click", function() {
+			$('input[name=region]').attr('value', '충청');
+		})
+		$("#jeolla").on("click", function() {
+			$('input[name=region]').attr('value', '전라');
+		})
+		$("#jeju").on("click", function() {
+			$('input[name=region]').attr('value', '제주');
+		})
+		$("#gyeongsang").on("click", function() {
+			$('input[name=region]').attr('value', '경상');
+		})
+		
+		// 매치 검색 버튼
+		$("#searchbtn").on("click", function() {
 
-	$(".month_back").on("click", function(){
-		var nyear = $("#calendar_nyear").val();
-		var nmonth = $("#calendar_nmonth").val();
-		var para = $(this).attr("data-para");
-		$.post("/newsite/system/match/match.ajax.php", {"gubun":"month_back", "nyear":nyear, "nmonth":nmonth, "para":para}, function(text) {
-			//console.log(text);
-			var text_arr = text.split("[:]");
-			//alert(lang_value);
-			if(lang_value == "english") {
-				$("#match_table_year").html(text_arr[0]+" year");
-			} else if(lang_value == "chinese") {
-				$("#match_table_year").html(text_arr[0]+" 年");
-			} else {
-				$("#match_table_year").html(text_arr[0]+" 년");
-			}
-			if(lang_value == "english") {
-				$("#match_table_month").html(text_arr[1]+" month");
-			} else if(lang_value == "chinese") {
-				$("#match_table_month").html(text_arr[1]+" 月");
-			} else {
-				$("#match_table_month").html(text_arr[1]+" 월");
-			}
-			$("#calendar_nyear").val(text_arr[0]);
-			$("#calendar_nmonth").val(text_arr[1]);
-			$("#calendar_nday").val("");
-			$("#match_calendar").html("");
-			$("#match_calendar").html(text_arr[2]);
-
-			$(".select_day").on("click", function(){
-				var day = $(this).attr("data-day");
-				$(".select_day").removeClass("selectday");
-				$(this).addClass("selectday");
-				$("#calendar_nday").val(day);
-				//alert($("#calendar_nday").val());
-			});
-			$(".match_search_submit").on("click", function(){
-				$("#match_search").submit();
-			});
-
-		});
-	});
-
-	$(".month_forward").on("click", function(){
-		var nyear = $("#calendar_nyear").val();
-		var nmonth = $("#calendar_nmonth").val();
-		var para = $(this).attr("data-para");
-		$.post("/newsite/system/match/match.ajax.php", {"gubun":"month_forward", "nyear":nyear, "nmonth":nmonth, "para":para}, function(text) {
-			//console.log(text);
-			var text_arr = text.split("[:]");
-			if(lang_value == "english") {
-				$("#match_table_year").html(text_arr[0]+" year");
-			} else if(lang_value == "chinese") {
-				$("#match_table_year").html(text_arr[0]+" 年");
-			} else {
-				$("#match_table_year").html(text_arr[0]+" 년");
-			}
-			if(lang_value == "english") {
-				$("#match_table_month").html(text_arr[1]+" month");
-			} else if(lang_value == "chinese") {
-				$("#match_table_month").html(text_arr[1]+" 月");
-			} else {
-				$("#match_table_month").html(text_arr[1]+" 월");
-			}
-			$("#calendar_nyear").val(text_arr[0]);
-			$("#calendar_nmonth").val(text_arr[1]);
-			$("#calendar_nday").val("");
-			$("#match_calendar").html("");
-			$("#match_calendar").html(text_arr[2]);
-
-			$(".select_day").on("click", function(){
-				var day = $(this).attr("data-day");
-				$(".select_day").removeClass("selectday");
-				$(this).addClass("selectday");
-				$("#calendar_nday").val(day);
-				//alert($("#calendar_nday").val());
-			});
-			$(".match_search_submit").on("click", function(){
-				$("#match_search").submit();
-			});
-		});
-	});
-
-	$(".select_day").on("click", function(){
-		var day = $(this).attr("data-day");
-		$(".select_day").removeClass("selectday");
-		$(this).addClass("selectday");
-		$("#calendar_nday").val(day);
-		//alert($("#calendar_nday").val());
-	});
-
-	$(".match_search_submit").on("click", function(){
-		$("#match_search").submit();
-	});
-
-	$("#comment_view").on("click", function(){
-		if($(".list05 > .comment").css("display") == "none") {
-			$(".list05 > .comment").css("display", "block");
-		} else {
-			$(".list05 > .comment").css("display", "none");
-		}
-	});
-
-	$("#send_comment").on("click", function(){
-		var txt = $("#comm_txt").val();
-		var sender = $(this).attr("data-sender");
-		if(txt == "") {
-			alert("내용을 입력해주세요.");
-			return false;
-		} else {
-			$.post("/newsite/system/match/match.ajax.php", {"gubun":"send_comment", "txt":txt, "sender":sender}, function(text){
-				//console.log(text);
-				if(text == 1) {
-					alert("개설자에게 메세지가 전송되었습니다.");
-					$("#comm_txt").val("");
-					$(".list05 > .comment").css("display", "none");
+			$.ajax({
+				url : 'teammatch',
+				data : {
+					'region' : $("#region").val(),
+					'password' : $("password").val()
+				},
+				type : 'post',
+				dataType : 'json',
+				success : function(response) {
+					alert(response.model1);
+					alert(response.model2);
 				}
 			});
-		}
-	});
 
-	$(".match_request").on("click", function(){
-		var pcode = $(this).attr("data-pcode");
-		var mt_id = $(this).attr("data-id");
-		var param = $(this).attr("data-para");
-		location.href="/newsite/system/match/match_update.php?pcode="+pcode+"&w=match_message&mt_id="+mt_id+"&"+param;
-		//$(".match_join_div").css("display", "block");
-	});
-
-	$("#match_join_form").on("submit", function(){
-		if($("#detail").val() == "") {
-			alert("매치신청 메세지를 작성해주세요.");
-			$("#detail").focus();
-			return false;
-		} 
-		else if($("#mb_teamjoin").val() == "") {
-			alert("팀이 있어야 신청 가능합니다.");
-			return false;
-		} 
+		}) // searchbtn end
 		
-		
-		else {
-			return true;
-		}
-	});
+		// 매치 등록 버튼
+		$("#registerbtn").on("click", function() {
 
-	$(".match_cancel").on("click", function(){
-		var mt_id = $(this).attr("data-id");
-		var pcode = $(this).attr("data-pcode");
-		var para_value = $(this).attr("data-para");
-		if(confirm("정말 매치신청을 취소하시겠습니까?")){
-			location.href="/newsite/system/match/match_update.php?pcode="+pcode+"&w=match_cancel&mt_id="+mt_id+"&"+para_value;
-		} else {
-			return false;
-		}
-	});
+			$.ajax({
+				url : 'registerteammatch',
+				data : {
+					'region' : $("#region").val(),
+					'password' : $("password").val()
+				},
+				type : 'post',
+				dataType : 'json',
+				success : function(response) {
+					alert(response.process);
+				}
+			});
 
-	$("#match_form").on("submit", function(){
-		if($("#mt_datetime").val() == "") {
-			alert("경기일을 입력해주세요.");
-			return false;
-		}
-		/*
-		if($("#mt_stadium").val() == "") {
-			alert("구장을 입력해주세요.");
-			$("#mt_stadium").focus();
-			return false;
-		}*/
-		/*
-		if($("#mt_money_text").val() == "") {
-			alert("금액을 입력해주세요.");
-			$("#mt_money_text").focus();
-			return false;
-		}
-		*/
-		if($("#region").val() == "") {
-			alert("경기가능지역을 입력해주세요.");
-			return false;
-		}
-		if($("#mt_content").val() == "") {
-			alert("내용을 입력해주세요.");
-			$("#mt_content").focus();
-			return false;
-		}
-		if(confirm("매치글을 등록하시겠습니까?")) {
-			return true;
-		} else {
-			return false;
-		}
-	});
+		}) // registerbtn end
 
-	$("#stadium_select").on("click", function(){
-		var form_id = $(this).attr("data-formid");
-		window.open('/newsite/system/match/match_stadium_select1.php?form_id='+form_id, 'popup', 'width=370, height=450, scrollbars=1');
-	});
-
-	$("#region_select").on("click", function(){
-		window.open('/newsite/system/match/match_area1.php', 'popup', 'width=370, height=450, scrollbars=1');
-	});
-
-	$("#match_delete").on("click", function(){
-		var pcode = $(this).attr("data-pcode");
-		var mt_id = $(this).attr("data-id");
-		if(confirm("등록하신 매치글을 삭제하시겠습니까?")) {
-			location.href="/newsite/system/match/match_update.php?pcode="+pcode+"&w=d&mt_id="+mt_id;
-		} else {
-			return false;
-		}
-	});
-
-	$("#match_reply_form").on("submit", function(){
-
-		var mrt_content = $("#mrt_content").val();
-		var mb_id = $("#mb_id").val();
-		var mb_teamjoin2 = $("#mb_teamjoin2").val();
-		if(mb_id == "") {
-			alert("로그인 후 작성 가능합니다.");
-			return false;
-		} else if(mrt_content == "") {
-			alert("내용을 입력해주세요.");
-			return false;
-		}else if(mb_teamjoin2 == "") {
-			alert("팀이 있어야 댓글을 작성하실 수 있습니다.");
-			return false;
-		} else {
-			return true;
-		}
-	});
+	}); // ready end
 	
-	$(".select_stadium").on("click", function(){
-		var ro_id = $(this).attr("data-id");
-		location.href="/newsite/system/match/match_stadium_select2.php?ro_id="+ro_id;
-	});
-
-	$(".delete_match_reply").on("click", function(){
-		var dataid = $(this).attr("data-id");
-		var pcode = $(this).attr("data-pcode");
-		var mt_id = $(this).attr("data-mtid");
-		if(confirm("댓글을 삭제하시겠습니까?")) {
-			location.href="/newsite/system/match/match_update.php?pcode="+pcode+"&w=del_reply&mt_id="+mt_id+"&mrt_id="+dataid;
-		} else {
-			return false;
-		}
-	});
-
+	
+	
+// 캘린더
+$(document).ready(function() {
+    calendarInit();
 });
+/*
+    달력 렌더링 할 때 필요한 정보 목록 
+
+    현재 월(초기값 : 현재 시간)
+    금월 마지막일 날짜와 요일
+    전월 마지막일 날짜와 요일
+*/
+
+function calendarInit() {
+
+    // 날짜 정보 가져오기
+    var date = new Date(); // 현재 날짜(로컬 기준) 가져오기
+    var utc = date.getTime() + (date.getTimezoneOffset() * 60 * 1000); // uct 표준시 도출
+    var kstGap = 9 * 60 * 60 * 1000; // 한국 kst 기준시간 더하기
+    var today = new Date(utc + kstGap); // 한국 시간으로 date 객체 만들기(오늘)
+  
+    var thisMonth = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    // 달력에서 표기하는 날짜 객체
+  
+    
+    var currentYear = thisMonth.getFullYear(); // 달력에서 표기하는 연
+    var currentMonth = thisMonth.getMonth(); // 달력에서 표기하는 월
+    var currentDate = thisMonth.getDate(); // 달력에서 표기하는 일
+
+    // kst 기준 현재시간
+    // console.log(thisMonth);
+
+    // 캘린더 렌더링
+    renderCalender(thisMonth);
+
+    function renderCalender(thisMonth) {
+
+        // 렌더링을 위한 데이터 정리
+        currentYear = thisMonth.getFullYear();
+        currentMonth = thisMonth.getMonth();
+        currentDate = thisMonth.getDate();
+
+        // 이전 달의 마지막 날 날짜와 요일 구하기
+        var startDay = new Date(currentYear, currentMonth, 0);
+        var prevDate = startDay.getDate();
+        var prevDay = startDay.getDay();
+
+        // 이번 달의 마지막날 날짜와 요일 구하기
+        var endDay = new Date(currentYear, currentMonth + 1, 0);
+        var nextDate = endDay.getDate();
+        var nextDay = endDay.getDay();
+
+        // console.log(prevDate, prevDay, nextDate, nextDay);
+
+        // 현재 월 표기
+        $('.year-month').text(currentYear + '.' + (currentMonth + 1));
+
+        // 렌더링 html 요소 생성
+        calendar = document.querySelector('.dates')
+        calendar.innerHTML = '';
+        
+        // 지난달
+        for (var i = prevDate - prevDay + 1; i <= prevDate; i++) {
+            calendar.innerHTML = calendar.innerHTML + '<div class="day prev disable">' + i + '</div>'
+        }
+        // 이번달
+        for (var i = 1; i <= nextDate; i++) {
+            calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
+        }
+        // 다음달
+        for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
+            calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
+        }
+
+        // 오늘 날짜 표기
+        if (today.getMonth() == currentMonth) {
+            todayDate = today.getDate();
+            var currentMonthDate = document.querySelectorAll('.dates .current');
+            currentMonthDate[todayDate -1].classList.add('today');
+        }
+    }
+
+    // 이전달로 이동
+    $('.go-prev').on('click', function() {
+        thisMonth = new Date(currentYear, currentMonth - 1, 1);
+        renderCalender(thisMonth);
+    });
+
+    // 다음달로 이동
+    $('.go-next').on('click', function() {
+        thisMonth = new Date(currentYear, currentMonth + 1, 1);
+        renderCalender(thisMonth); 
+    });
+}
