@@ -20,8 +20,13 @@ public class UserService {
 		return userDao.duplicateCheck(map);
 	}
 
-//	로그인 검사
-	public UserDTO idCheck(String id) {
-		return userDao.idCheck(id);
+//	유저조회
+	public UserDTO selectUser(String id) {
+		return userDao.selectUser(id);
+	}
+
+//	수정
+	public void updateUser(UserDTO dto) {
+		userDao.updateUser(dto);
 	}
 }

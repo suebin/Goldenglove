@@ -14,6 +14,9 @@ public interface UserDAO {
 //	중복검사
 	int duplicateCheck(HashMap<String, String> map);
 
-//	로그인 검사
-	UserDTO idCheck(String id);
+//	유저조회
+	UserDTO selectUser(String id);
+
+//	수정
+	void updateUser(UserDTO dto);
 }

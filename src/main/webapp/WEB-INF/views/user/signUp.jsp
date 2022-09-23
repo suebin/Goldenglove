@@ -14,6 +14,7 @@
 		/* submit시 중복검사 여부 확인 */
 		$("#signupForm").on("submit", function(e) {
 			if($("#idCheckResult").text() == "" || $("#nameCheckResult").text() == "" || $("#phoneCheckResult").text() == "" || $("#emailCheckResult").text() == "") {
+				e.preventDefault();
 				alert("중복검사를 해주세요.");
 			}else {
 				alert("회원가입이 완료되었습니다. 팀원 등록 페이지로 이동합니다.");
@@ -98,7 +99,7 @@
 						<td>지역 :</td>
 						<td>
 							<select name="region" required>
-								<option disabled selected=>==선택==</option>
+								<option value="" disabled selected=>==선택==</option>
 								<option value="강원도">강원도</option>
 								<option value="광주광역시">광주광역시</option>
 								<option value="경기도">경기도</option>

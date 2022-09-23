@@ -71,7 +71,7 @@ public class UserController {
 	@ResponseBody
 	@PostMapping("/loginCheck")
 	public String idCheck(String id, String password, HttpServletRequest request) {
-		UserDTO loginInfo = userService.idCheck(id);
+		UserDTO loginInfo = userService.selectUser(id);
 		String result = "";
 		if (loginInfo == null) {
 			result = "존재하지 않는 아이디입니다.";
@@ -91,5 +91,37 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "main/main";
+	}
+
+//	내정보
+	@RequestMapping("/mypage")
+	public String mypage(HttpServletRequest request) {
+		if (request.getHeader("REFERER") != null) {
+			return "mypage/myPage";
+		} else {
+			return "main/main";
+		}
+	}
+
+//	내정보 수정 폼
+	@RequestMapping("/updateinfo")
+	public String updateInfo(HttpServletRequest request) {
+		if (request.getHeader("REFERER") != null) {
+			return "mypage/updateInfo";
+		} else {
+			return "main/main";
+		}
+	}
+
+//	내정보 수정
+	@PostMapping("/updateResult")
+	public String updateResult(UserDTO dto, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserDTO loginInfo = (UserDTO) session.getAttribute("loginInfo");
+		dto.setId(loginInfo.getId());
+		userService.updateUser(dto);
+		UserDTO updateInfo = userService.selectUser(dto.getId());
+		session.setAttribute("loginInfo", updateInfo);
+		return "mypage/myPage";
 	}
 }
