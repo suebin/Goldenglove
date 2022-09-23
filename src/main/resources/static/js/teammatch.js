@@ -63,21 +63,26 @@ $(document).ready(function() {
 			});
 
 		}) // registerbtn end
-
+		
+		// 캘린더
+		calendarInit();
+		
+		$(".dates").on("click", function() {
+			const pickday = document.getElementById('day_current');
+			$('input[name=possibleDate]').attr('value', pickday);
+		})
+		
 	}); // ready end
 	
 	
-	
-// 캘린더
-$(document).ready(function() {
-    calendarInit();
-});
 /*
     달력 렌더링 할 때 필요한 정보 목록 
 
     현재 월(초기값 : 현재 시간)
     금월 마지막일 날짜와 요일
     전월 마지막일 날짜와 요일
+    
+    출처: https://songsong.dev/11 [송송은 오늘도 열심히 코딩 하네:티스토리]
 */
 
 function calendarInit() {
@@ -134,8 +139,10 @@ function calendarInit() {
         }
         // 이번달
         for (var i = 1; i <= nextDate; i++) {
-            calendar.innerHTML = calendar.innerHTML + '<div class="day current">' + i + '</div>'
+            calendar.innerHTML = calendar.innerHTML + '<div class="day current" id="day_current">' + i + '</div>'
         }
+        
+        
         // 다음달
         for (var i = 1; i <= (7 - nextDay == 7 ? 0 : 7 - nextDay); i++) {
             calendar.innerHTML = calendar.innerHTML + '<div class="day next disable">' + i + '</div>'
