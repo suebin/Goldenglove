@@ -4,7 +4,11 @@
 <configuration>
 	<!-- mybatis.MemberDTO = memberDTO(별칭정의) -->
 	<typeAliases>
+<<<<<<< HEAD
 		<typeAlias type="user.UserDTO" alias="userDTO"/>
 		<typeAlias type="team.TeamDTO" alias="teamDTO"/>
+=======
+		<typeAlias type="notice.NoticeDTO" alias="noticedto"/> 
+>>>>>>> 1b2f43abeea015344ee317596796c8c1c25e4718
 	</typeAliases>
 </configuration>
