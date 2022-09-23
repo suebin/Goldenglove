@@ -45,6 +45,13 @@
 					<button type="button" class="signupBtn" onclick="location.href='/signup'">Sign Up</button>
 					<%} else { %>
 						<span>${loginInfo.getName() }</span>
+						<div class="dropdown">
+							<p class="dropdownBtn">${loginInfo.getName() } ▼</p>
+							<div class="dropdown-contents">
+								<a href="mypage">내 정보</a>
+								<a href="#">경기 정보</a>
+							</div>
+						</div>
 						<button type="button" onclick="location.href='/logout'">Log Out</button>					
 					<%} %>
 				</div>
