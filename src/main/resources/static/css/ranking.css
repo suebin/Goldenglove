@@ -1,0 +1,163 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
+body span {
+	display: inline-block;
+}
+
+h2 {
+	padding-bottom: 20px;
+}
+
+/*=========== topRanking ===========*/
+.topRanking {
+	position: relative;
+}
+
+.topRanking img {
+	width: 100%;
+}
+
+.topRanking .intro {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	max-width: 1200px;
+	color: #fff;
+}
+
+.intro h1 {
+	font-size: 5vw;
+	padding: 20px 0;
+}
+
+.intro span {
+	font-size: 18px;
+}
+
+/*=========== rankingList ===========*/
+.rankingList {
+	position: relative;
+}
+
+.rankingList li {
+	display: flex;
+	align-items: center;
+	padding: 25px;
+	margin-bottom: 15px;
+	background: #fff;
+	border: 1px solid var(--gray);
+	box-shadow: 5px 6px 18px -15px rgba(0,0,0,1);
+	border-radius: 8px;
+}
+
+.rankingList li:first-child, li:nth-child(2), li:nth-child(3) {
+	padding-left: 15px;
+}
+
+
+/*=========== rankingNum ===========*/
+.rankingList li .rankingNum span {
+	font-size: 25px;
+	color: var(--main-color);
+	font-weight: bold;
+	margin: 0 20px 0 8px;
+}
+
+.rankingList li .rankingNum img {
+	margin-right: 15px;
+	width: 50px;
+}
+
+
+/*=========== rankingInfo ===========*/
+.rankingList li .rankingInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+
+
+/*=========== teamInfo ===========*/
+.rankingInfo .teamInfo  {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 45%;
+}
+
+.teamInfo .id {
+	width: 150px;
+	overflow-wrap: break-word;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.teamInfo .region {
+	padding: 3px 0;
+	min-width: 50px;
+	font-weight: bold;
+	font-size: 14px;
+	text-align: center;
+	color: #fff;
+	border-radius: 50px;
+	background: var(--main-color);
+}
+
+
+/*=========== winningRate ===========*/
+.rankingInfo .winningRate {
+	display: flex;
+	justify-content: space-between;
+	flex-basis: 40%;
+}
+
+.rankingInfo .winningRate span {
+	padding: 5px 10px;
+	width: max-content;
+	margin-left: 5px;
+	background: var(--point-color);
+	border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+	.rankingList li .rankingInfo {
+		flex-direction: column;
+	}
+	
+	.rankingInfo .teamInfo  {
+		width: 100%;
+	}
+
+	.rankingInfo .winningRate {
+		justify-content: flex-start;
+		margin-top: 20px;
+		width: 100%;
+	}
+	
+	.rankingInfo .winningRate span {
+		margin-left: 0;
+		margin-right: 5px;
+	}
+	
+}
+
+@media (max-width: 500px) {
+	.intro h1 {
+		font-size: 8vw;
+		padding: 5px 0;
+	}
+	
+	.teamInfo .id {
+		width: 100px;
+	}	
+}

@@ -11,11 +11,13 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "team")
 @ComponentScan(basePackages = "teammatch")
 @ComponentScan(basePackages = "notice")
+@ComponentScan(basePackages = "ranking")
 
 @MapperScan(basePackages = "user")
 @MapperScan(basePackages = "team")
 @MapperScan(basePackages = "teammatch")
 @MapperScan(basePackages = "notice")
+@MapperScan(basePackages = "ranking")
 @SpringBootApplication
 public class GoldenGloveApplication {
 

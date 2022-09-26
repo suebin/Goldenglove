@@ -35,13 +35,6 @@
 	 	order by rowNum desc 
 	</select>
 	
-<!-- 	<select id="searchPagingList" parameterType="hashMap" resultType="noticedto">
-		select * from notice 
-		where #{opt} like concat('%',#{searchWord},'%')
-		order by rowNum desc limit
-		
-	</select> -->
-	
 	<insert id="insertNotice" parameterType="noticedto">
 		insert into notice(title, contents, writer) values(#{title}, #{contents}, #{writer})
 	</insert>
