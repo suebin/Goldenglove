@@ -29,15 +29,15 @@
 
 		<form action="registermatch" method="post">
 			<div>
-				팀 이름 &nbsp;<input type="text" name="teamName" value="">
+				팀 이름 &nbsp;<input type="text" name="teamName" value=${loginInfo.getName()} readonly>
 			</div>
 			
 			<div>
-				지역 &nbsp;<input type="text" name="region" value="">
+				지역 &nbsp;<input type="text" name="region" value=${param.region} readonly>
 			</div>
 
 			<div>
-				날짜 &nbsp;<input type="text" name="possibleDate"> <select name="possibleTime">
+				날짜 &nbsp;<input type="text" name="possibleDate" value=${param.year_month}${param.date} readonly> <select name="possibleTime">
 					<option>00:00</option>
 					<option>01:00</option>
 					<option>02:00</option>
@@ -75,7 +75,7 @@
 			</div>
 
 			<div>
-				남기는 한마디<br>
+				팀 소개<br>
 				<textarea cols="30" rows="4" name="comment"></textarea>
 			</div>
 
