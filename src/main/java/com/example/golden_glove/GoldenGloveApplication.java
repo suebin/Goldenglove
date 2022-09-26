@@ -18,6 +18,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan(basePackages = "teammatch")
 @MapperScan(basePackages = "notice")
 @MapperScan(basePackages = "ranking")
+@SpringBootApplication
 public class GoldenGloveApplication {
 
 	public static void main(String[] args) {
