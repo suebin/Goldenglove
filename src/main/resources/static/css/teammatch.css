@@ -1,32 +1,84 @@
+
+/* 캘린더 및 지역 선택 */
+
 .select_box {
-	display: flex;
-	justify-content: space-between;
-}
-
-.select_region {
-	width: 40%;
-}
-
-.select_date {
-	width:60%;
-}
-
-.match_btn {
 	display: flex;
 	justify-content: center;
 }
 
-
-
-/* calendar */
-
-.sec_cal {
-    width: 360px;
-    margin: 0 auto;
-    font-family: "NotoSansR";
+.select_two {
+	margin-top: 10px;
+	text-align: right;
 }
 
-.sec_cal .cal_nav {
+.select_region {
+	margin: 0 auto;
+	width: 300px;
+}
+
+
+.region_btn {
+	border: 2px solid #72CC82;
+	border-radius: 10px;
+	background-color: white ;
+	font: 15px "비트로 프라이드 OTF";
+	font-weight: bold;
+	color: #72CC82;
+	width: 110px; 
+	height: 40px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	
+}
+
+input.region_btn:hover, input.region_btn:focus {
+	background-color: #72CC82;
+	color: white;
+	transition: all 0.2s;
+}
+
+/* 매치 검색, 매치 등록 버튼 */
+
+.match_btn {
+	display: flex;
+	justify-content: center;
+	height: 150px;
+	padding: 50px 0px;
+}
+
+.search_btn {
+	margin-right: 10px;
+}
+
+.register_btn {
+	margin-left: 10px;
+}
+
+.search_btn, .register_btn {
+	border: 2px solid #72CC82;
+	border-radius: 10px;
+	background-color: #72CC82;
+	font: 18px "비트로 코어 OTF";
+	color: white;
+	font-weight: bold;
+	width: 200px; 
+	height: 60px;
+}
+
+input.search_btn:hover, input.register_btn:hover {
+	border: 2px solid #3CB371;
+	background-color: #3CB371;
+}
+
+/* 캘린더 */
+
+.select_date {
+    width: 360px;
+    margin: 0 auto;
+    font-family: "비트로 프라이드 OTF";
+}
+
+.select_date .cal_nav {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -35,20 +87,24 @@
     line-height: 78px;
 }
 
-.sec_cal .cal_nav .year-month {
+.cal_nav {
+	color: black;
+}
+
+.select_date .cal_nav .year-month {
     width: 300px;
     text-align: center;
     line-height: 1;
 }
 
-.sec_cal .cal_nav .nav {
+.select_date .cal_nav .nav {
     display: flex;
     border: 1px solid #333333;
     border-radius: 5px;
 }
 
-.sec_cal .cal_nav .go-prev,
-.sec_cal .cal_nav .go-next {
+.select_date .cal_nav .go-prev,
+.select_date .cal_nav .go-next {
     display: block;
     width: 50px;
     height: 78px;
@@ -58,8 +114,8 @@
     align-items: center;
 }
 
-.sec_cal .cal_nav .go-prev::before,
-.sec_cal .cal_nav .go-next::before {
+.select_date .cal_nav .go-prev::before,
+.select_date .cal_nav .go-next::before {
     content: "";
     display: block;
     width: 20px;
@@ -69,37 +125,37 @@
     transition: border 0.1s;
 }
 
-.sec_cal .cal_nav .go-prev:hover::before,
-.sec_cal .cal_nav .go-next:hover::before {
-    border-color: #ed2a61;
+.select_date .cal_nav .go-prev:hover::before,
+.select_date .cal_nav .go-next:hover::before {
+    border-color: #72CC82;
 }
 
-.sec_cal .cal_nav .go-prev::before {
+.select_date .cal_nav .go-prev::before {
     transform: rotate(-135deg);
 }
 
-.sec_cal .cal_nav .go-next::before {
+.select_date .cal_nav .go-next::before {
     transform: rotate(45deg);
 }
 
-.sec_cal .cal_wrap {
+.select_date .cal_wrap {
     padding-top: 40px;
     position: relative;
     margin: 0 auto;
 }
 
-.sec_cal .cal_wrap .days {
+.select_date .cal_wrap .days {
     display: flex;
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
 }
 
-.sec_cal .cal_wrap::after {
+.select_date .cal_wrap::after {
     top: 368px;
 }
 
-.sec_cal .cal_wrap .day {
+.select_date .cal_wrap .day {
     display:flex;
     align-items: center;
     justify-content: center;
@@ -113,20 +169,20 @@
 
 .current.today {background: rgb(242 242 242);}
 
-.sec_cal .cal_wrap .dates {
+.select_date .cal_wrap .dates {
     display: flex;
     flex-flow: wrap;
     height: 290px;
 }
 
-.sec_cal .cal_wrap .day:nth-child(7n -1) {
+.select_date .cal_wrap .day:nth-child(7n -1) {
     color: #3c6ffa;
 }
 
-.sec_cal .cal_wrap .day:nth-child(7n) {
+.select_date .cal_wrap .day:nth-child(7n) {
     color: #ed2a61;
 }
 
-.sec_cal .cal_wrap .day.disable {
+.select_date .cal_wrap .day.disable {
     color: #ddd;
 }
