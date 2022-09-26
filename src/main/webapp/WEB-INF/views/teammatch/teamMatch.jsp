@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>팀 매치</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-<!-- css -->
+<title>골든글러브 > 팀 매칭</title>
+
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/teammatch.css" rel="stylesheet" />
