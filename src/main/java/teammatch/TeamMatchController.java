@@ -21,20 +21,28 @@ public class TeamMatchController {
 		return "teammatch/teammatch";
 	}
 	
-	// 팀 매치 검색
-	@ResponseBody
-	@PostMapping("/teammatch")
-	public String searchmatch(String region, String possibleDate) {
-		
-		String model1 = region;
-		String model2 = possibleDate;
-		
-		return "{\"model1\":\"" + model1 + "\", \"model2\":\"" + model2 + "\"}";
-	}
+	
+	/*
+	 * // 팀 매치 검색
+	 * 
+	 * @ResponseBody
+	 * 
+	 * @PostMapping("/teammatch") public String searchmatch(String region, String
+	 * year_month, String date) {
+	 * 
+	 * String possibleDate = year_month + date;
+	 * 
+	 * service.searchTeamMatch(region, possibleDate);
+	 * 
+	 * 
+	 * 
+	 * return "{\"model1\":\"" + model1 + "\", \"model2\":\"" + model2 + "\"}";
+	 */
+	 
 	
 	// 팀 매치 등록 
 	@GetMapping("/registerteammatch")
-	public String matchform(String region, String possibleDate) {
+	public String matchform() {
 		
 		return "teammatch/matchform";
 	}
