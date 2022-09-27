@@ -25,10 +25,7 @@ public class TeamMatchController {
 	}	
 	
 	// 팀 매치 검색
-	/*
-	 * @RequestMapping("/teammatchList") public ModelAndView boardlist() {
-	 * List<teamMatchDTO> teammatchList = service.getTeamMatchList(null, null) }
-	 */
+	
 	
 	// 팀 매치 등록 
 	
