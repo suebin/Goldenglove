@@ -1,5 +1,7 @@
 package teammatch;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -7,5 +9,8 @@ import org.springframework.stereotype.Repository;
 @Repository("teammatchdao")
 public interface TeamMatchDAO {
 	
-	public int insertTeamMatch(TeamMatchDTO dto);
+	// 매치 등록
+	int insertTeamMatch(TeamMatchDTO dto);
+	
+	List<TeamMatchDTO> getTeamMatchList(String region, String possibleDate);
 }

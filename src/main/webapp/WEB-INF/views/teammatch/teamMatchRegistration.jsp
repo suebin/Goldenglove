@@ -16,7 +16,7 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
-
+		
 	}); // ready end
 </script>
 </head>
@@ -27,7 +27,7 @@
 		<h1>매치 등록</h1>
 		<br>
 
-		<form action="registerteammatch" method="post">
+		<form action="registerTeammatch" method="post" id="registerTeammatchForm">
 			<div>
 				팀 이름 &nbsp;<input type="text" name="teamName" value=${loginInfo.getName()} readonly>
 			</div>
