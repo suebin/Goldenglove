@@ -23,82 +23,67 @@ $(document).ready(function() {
 		
 		// 선택한 지역 form에 저장
 		
-		$("#0").on("click", function() {
+		$("input#0.region_btn").on("click", function() {
+			$('input[name=region]').attr('value', '전체');
+		})
+		$("input#1.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '강원도');
 		})
-		$("#1").on("click", function() {
-			$('input[name=region]').attr('value', '강원도');
-		})
-		$("#2").on("click", function() {
+		$("input#2.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '광주광역시');
 		})
-		$("#3").on("click", function() {
+		$("input#3.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '경기도');
 		})
-		$("#4").on("click", function() {
+		$("input#4.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '경상남도');
 		})
-		$("#5").on("click", function() {
+		$("input#5.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '경상북도');
 		})
-		$("#6").on("click", function() {
+		$("input#6.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '대구광역시');
 		})
-		$("#7").on("click", function() {
+		$("input#7.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '대전광역시');
 		})
-		$("#8").on("click", function() {
+		$("input#8.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '부산광역시');
 		})
-		$("#9").on("click", function() {
+		$("input#9.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '서울특별시');
 		})
-		$("#10").on("click", function() {
+		$("input#10.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '세종특별자치시');
 		})
-		$("#11").on("click", function() {
+		$("input#11.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '인천광역시');
 		})
-		$("#12").on("click", function() {
+		$("input#12.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '울산광역시');
 		})
-		$("#13").on("click", function() {
+		$("input#13.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '전라남도');
 		})
-		$("#14").on("click", function() {
+		$("input#14.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '전라북도');
 		})
-		$("#15").on("click", function() {
+		$("input#15.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '제주특별자치도');
 		})
-		$("#16").on("click", function() {
+		$("input#16.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '충청남도');
 		})
-		$("#17").on("click", function() {
+		$("input#17.region_btn").on("click", function() {
 			$('input[name=region]').attr('value', '충청북도');
 		})
 
 		
 		// 매치 검색 버튼
-		
-		$("#searchbtn").on("click", function() {
-
-			$.ajax({
-				url : 'teammatch',
-				data : {
-					'region' : $("#region").val(),
-					'year_month' : $("#year_month").val(),
-					'date' : $("#date").val()
-				},
-				type : 'post',
-				dataType : 'json',
-				success : function(response) {
-					alert(response.model1);
-					alert(response.model2);
-				}
-			});
-
-		}) // searchbtn end
+		$("#registerbtn").on("click", function() {
+			
+		})
+	
 		
 		// 매치 등록 버튼
 		
@@ -110,7 +95,7 @@ $(document).ready(function() {
 				alert("로그인이 필요한 서비스입니다.");
 			}
 			else {
-				location.href= "registerteammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
+				location.href= "registerTeammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
 			}
 		}) // registerbtn end
 

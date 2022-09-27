@@ -3,11 +3,20 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="teammatch.TeamMatchDAO">
-
+	
+	<!-- 매치 검색 -->
+	
+	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
+		select * from teammatching where region=#{region} and possibleDate=#{possibleDate}
+	</select>
+	
+	<!-- 매치 등록 -->
+	
 	<insert id="insertTeamMatch" parameterType="teammatchdto">
 		insert into teammatching (teamName, region, possibleDate, possibleTime, homePlace, headCount, comment)
 		values(#{teamName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment})
 	</insert>
 
+	
 </mapper>
 

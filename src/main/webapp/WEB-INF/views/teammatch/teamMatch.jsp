@@ -22,6 +22,12 @@
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 
 	<div class="confix">
+		<!-- 선택한 지역과 날짜 데이터 저장 -->
+		<input type="hidden" name="region" id="region" value=""> 
+		<input type="hidden" name="year_month" id="year_month" value=""> 
+		<input type="hidden" name="date" id="date" value=""> 
+	
+	
 
 		<!-- 지역 및 날짜 선택 -->
 		
@@ -79,15 +85,6 @@
 	
 		</div>
 
-
-		<!-- 선택한 지역과 날짜 데이터 전송 -->
-		
-		<form action="teammatch" method="post"> 
-			<input type="hidden" name="region" id="region" value=""> <!-- teammatch.js의 5번째 줄 -->
-			<input type="hidden" name="year_month" id="year_month" value=""> <!-- teammatch.js의 136번째 줄 --> 
-			<input type="hidden" name="date" id="date" value=""> <!-- teammatch.js의 70번째 줄 -->
-		</form>
-
 		
 		<!-- 매치 검색, 매치 등록 버튼 -->
 		
@@ -97,8 +94,9 @@
 		</div>
 
 		
-		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 정보 -->	
-		<div class="match_info"></div>
+		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->	
+		
+		<div class="teammatch_list"></div>
 		
 	</div>
 
