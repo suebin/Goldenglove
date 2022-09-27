@@ -12,4 +12,14 @@ public class TeamService {
 	public void insertTeam(TeamDTO dto) {
 		teamDao.insertTeam(dto);
 	}
+
+//	팀원조회
+	public TeamDTO selectTeam(String teamName) {
+		return teamDao.selectTeam(teamName);
+	}
+
+//	팀원수정
+	public void updateTeam(TeamDTO dto) {
+		teamDao.updateTeam(dto);
+	}
 }

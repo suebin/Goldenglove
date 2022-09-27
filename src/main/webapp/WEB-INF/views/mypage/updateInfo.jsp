@@ -67,7 +67,7 @@ $(document).ready(function() {
 					<tr>
 						<td>팀 이름 :</td>
 						<td>
-							<input type="text" name="name" pattern="[a-zA-Z0-9가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,숫자,한글)" required value="${loginInfo.name }">
+							<input type="text" name="name" pattern="[a-zA-Z0-9가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,숫자,한글)" required value="${loginInfo.getName() }">
 							<input type="button" value="중복검사" id="nameDuplicate">
 						</td>
 						<td>
@@ -77,7 +77,7 @@ $(document).ready(function() {
 					<tr>
 						<td>연락처 :</td>
 						<td>
-							<input type="text" name="phone" placeholder="ex)01012345678" pattern="[0-9]{11}" title="숫자만 입력해주세요." required value="${loginInfo.phone }">
+							<input type="text" name="phone" placeholder="ex)01012345678" pattern="[0-9]{11}" title="숫자만 입력해주세요." required value="${loginInfo.getPhone() }">
 							<input type="button" value="중복검사" id="phoneDuplicate">
 						</td>
 						<td>
@@ -87,7 +87,7 @@ $(document).ready(function() {
 					<tr>
 						<td>이메일 :</td>
 						<td>
-							<input type="email" name="email" required value="${loginInfo.email }">
+							<input type="email" name="email" required value="${loginInfo.getEmail() }">
 							<input type="button" value="중복검사" id="emailDuplicate">
 						</td>
 						<td>

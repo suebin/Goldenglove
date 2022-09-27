@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TeamDTO {
-	String teamName, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder, centerFielder,
-			shortStop;
+	private String teamName, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder,
+			centerFielder, shortStop;
 
 	public String getTeamName() {
 		return teamName;
