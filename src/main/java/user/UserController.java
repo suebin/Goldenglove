@@ -12,10 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import team.TeamService;
+
 @Controller
 public class UserController {
 	@Autowired
 	UserService userService;
+
+	@Autowired
+	TeamService teamService;
 
 //	회원가입
 	@RequestMapping("/signup")
@@ -95,11 +100,18 @@ public class UserController {
 
 //	내정보
 	@RequestMapping("/mypage")
-	public String mypage(HttpServletRequest request) {
+	public ModelAndView mypage(HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
 		if (request.getHeader("REFERER") != null) {
-			return "mypage/myPage";
+			HttpSession session = request.getSession();
+			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+			String teamName = user.getName();
+			mv.addObject("teamDTO", teamService.selectTeam(teamName));
+			mv.setViewName("mypage/myPage");
+			return mv;
 		} else {
-			return "main/main";
+			mv.setViewName("main/main");
+			return mv;
 		}
 	}
 

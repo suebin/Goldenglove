@@ -7,4 +7,13 @@
 		insert into team values(#{teamName}, #{firstBase}, #{secondBase}, #{thirdBase}, #{catcher}, #{pitcher}, #{leftFielder}, #{rightFielder}, #{centerFielder}, #{shortStop})
 	</insert>
 	
+	<!-- 팀원 조회 -->
+	<select id="selectTeam" resultType="teamDTO" parameterType="String">
+		select * from team where teamName = #{teamName};
+	</select>
+	
+	<!-- 수정 -->
+	<update id="updateTeam" parameterType="teamDTO">
+		update team set firstBase = #{firstBase}, secondBase = #{secondBase}, thirdBase = #{thirdBase}, catcher = #{catcher}, pitcher = #{pitcher}, leftFielder = #{leftFielder}, rightFielder = #{rightFielder}, centerFielder = #{centerFielder}, shortStop = #{shortStop} where teamName = #{teamName};
+	</update>
 </mapper>
