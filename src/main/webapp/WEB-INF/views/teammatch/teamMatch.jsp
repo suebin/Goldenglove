@@ -26,6 +26,10 @@
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 
 	<div class="confix">
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/teammatch/teammatch.jsp
+>>>>>>> 9c7e45f (team match)
 		<form method="get" name="match_search" id="match_search"
 			action="/newsite/web/page.php#match_list" autocomplete="off">
 			<input type="hidden" name="lang" value="korean"> <input
@@ -33,6 +37,17 @@
 				name="calendar_nyear" id="calendar_nyear" value="2022"> <input
 				type="hidden" name="calendar_nmonth" id="calendar_nmonth" value="09">
 			<input type="hidden" name="calendar_nday" id="calendar_nday" value="">
+<<<<<<< HEAD
+=======
+========
+		<!-- 선택한 지역과 날짜 데이터 저장 -->
+		<input type="hidden" name="region" id="region" value=""> 
+		<input type="hidden" name="year_month" id="year_month" value=""> 
+		<input type="hidden" name="date" id="date" value=""> 
+	
+	
+>>>>>>>> 9c7e45f (team match):src/main/webapp/WEB-INF/views/teammatch/teamMatch.jsp
+>>>>>>> 9c7e45f (team match)
 
 			<input type="hidden" name="local_value" id="local_value" value="">
 			<input type="hidden" name="team_value" id="team_value" value="">
@@ -218,12 +233,34 @@
 				</div>
 			</div>
 
+<<<<<<< HEAD
+=======
+<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/teammatch/teammatch.jsp
+>>>>>>> 9c7e45f (team match)
 
 			<div>
 				<button type="button">매치 검색</button>
 				<a href="registermatch"><button type="button">매치 등록</button></a>
 			</div>
 		</form>
+<<<<<<< HEAD
+=======
+========
+		
+		<!-- 매치 검색, 매치 등록 버튼 -->
+		
+		<div class="match_btn">
+			<input type="button" id="searchbtn" class="search_btn" value="매치 검색"> 
+			<input type="button" id="registerbtn" class="register_btn" value="매치 등록">
+		</div>
+
+		
+		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->	
+		
+		<div class="teammatch_list"></div>
+		
+>>>>>>>> 9c7e45f (team match):src/main/webapp/WEB-INF/views/teammatch/teamMatch.jsp
+>>>>>>> 9c7e45f (team match)
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

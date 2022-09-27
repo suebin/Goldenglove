@@ -70,6 +70,9 @@ public class TeamMatchController {
 		mv.addObject("result", result);
 		mv.setViewName("teammatch/registrationResult");
 		
+		mv.addObject("insertcount", insertcount);
+		mv.setViewName("teammatch/registrationResult");
+
 		return mv;
 	}
 }
