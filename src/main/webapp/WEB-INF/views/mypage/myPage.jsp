@@ -11,18 +11,34 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-	$("#updateBtn").on("click", function() {
-		$("#passwordInput").removeAttr("hidden");
+	$("#updateUserBtn").on("click", function() {
+		$("#passwordInputUser").removeAttr("hidden");
+		$("#passwordUser").focus();
+	})
+	
+	$("#updateTeamBtn").on("click", function() {
+		$("#passwordInputTeam").removeAttr("hidden");
+		$("#passwordTeam").focus();
 	})
 	
 	const info = "${loginInfo.password}";
-	$("#submitBtn").on("click", function() {
-		if("${loginInfo.password}" == $("#password").val()) {
+	$("#submitBtnUser").on("click", function() {
+		if("${loginInfo.password}" == $("#passwordUser").val()) {
 			window.location.href = "updateinfo";
 		} else {
-			$("#checkResult").html("비밀번호를 확인해주세요.");
-			$("#password").val("");
-			$("#password").focus();
+			$("#checkResultUser").html("비밀번호를 확인해주세요.");
+			$("#passwordUser").val("");
+			$("#passwordUser").focus();
+		}
+	})
+	
+	$("#submitBtnTeam").on("click", function() {
+		if("${loginInfo.password}" == $("#passwordTeam").val()) {
+			window.location.href = "teamUpdate";
+		} else {
+			$("#checkResultTeam").html("비밀번호를 확인해주세요.");
+			$("#passwordTeam").val("");
+			$("#passwordTeam").focus();
 		}
 	})
 });
@@ -33,17 +49,25 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<h1>내정보</h1>
-		<p>팀이름 : ${loginInfo.name }</p>
-		<p>연락처 : ${loginInfo.phone }</p>
-		<p>이메일 : ${loginInfo.email }</p>
-		<p>지역 : ${loginInfo.region }</p>
-		<div id="passwordInput" hidden>
+		<p>팀이름 : ${loginInfo.getName() }</p>
+		<p>연락처 : ${loginInfo.getPhone() }</p>
+		<p>이메일 : ${loginInfo.getEmail() }</p>
+		<p>지역 : ${loginInfo.getRegion() }</p>
+		<div id="passwordInputUser" hidden>
 			<span>비밀번호 :</span>
-			<input type="password" id="password">
-			<button id="submitBtn">확인</button>
-			<span id="checkResult"></span>
+			<input type="password" id="passwordUser">
+			<button id="submitBtnUser">확인</button>
+			<span id="checkResultUser"></span>
 		</div>
-		<button id="updateBtn">수정</button>
+		<div id="passwordInputTeam" hidden>
+			<span>비밀번호 :</span>
+			<input type="password" id="passwordTeam">
+			<button id="submitBtnTeam">확인</button>
+			<span id="checkResultTeam"></span>
+		</div>
+		<jsp:include page="/WEB-INF/views/components/position.jsp" />
+		<button id="updateUserBtn">정보 수정</button>
+		<button id="updateTeamBtn">팀원 수정</button>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

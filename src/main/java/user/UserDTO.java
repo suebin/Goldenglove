@@ -4,8 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserDTO {
-	String id, password, name, phone, email, region, registerDate;
-	int winCount, loseCount;
+	private String id, password, name, phone, email, region, registerDate;
+	private int winCount, loseCount;
 
 	public String getId() {
 		return id;

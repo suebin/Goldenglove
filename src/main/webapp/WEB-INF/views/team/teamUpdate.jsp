@@ -22,93 +22,96 @@
 			for(let i = 1;i <= 9;i++){
 				$("#name" + i).val($("#name" + i).val() + "," + $("#name" + i).next().val());				
 			}
-			alert("팀원 등록이 완료되었습니다. 로그인 후 이용해주세요.");
+			alert("팀원 수정이 완료되었습니다");
 		})
 	});
 </script>
 </head>
 <body>
+<%
+	
+%>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
-		<h1>팀원 등록</h1>
-		<h3>팀 이름 : ${name }</h3>
-		<form action="teamResult" method="post" id="teamForm">
-			<input type="text" name="teamName" value="${name }" hidden>
+		<h1>팀원 수정</h1>
+		<h3>팀 이름 : ${loginInfo.getName() }</h3>
+		<form action="teamUpdateResult" method="post" id="teamForm">
+			<input type="text" name="teamName" value="${loginInfo.getName() }" hidden>
 			<table>
 				<tr>
 					<td>1루수 :</td>
 					<td>
-						<input type="text" id="name1" name="firstBase">
-						<input type="text" hidden>
+						<input type="text" id="name1" name="firstBase" value="${teamDTO.getFirstBase().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getFirstBase().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>2루수 :</td>
 					<td>
-						<input type="text" id="name2" name="secondBase">
-						<input type="text" hidden>
+						<input type="text" id="name2" name="secondBase" value="${teamDTO.getSecondBase().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getSecondBase().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>3루수 :</td>
 					<td>
-						<input type="text" id="name3" name="thirdBase">
-						<input type="text" hidden>
+						<input type="text" id="name3" name="thirdBase" value="${teamDTO.getThirdBase().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getThirdBase().split(',')[1] }">
 						<input type="button" value="추가">	
 					</td>
 				</tr>
 				<tr>
 					<td>포수 :</td>
 					<td>
-						<input type="text" id="name4" name="catcher">
-						<input type="text" hidden>
+						<input type="text" id="name4" name="catcher" value="${teamDTO.getCatcher().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getCatcher().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>투수 :</td>
 					<td>
-						<input type="text" id="name5" name="pitcher">
-						<input type="text" hidden>
+						<input type="text" id="name5" name="pitcher" value="${teamDTO.getPitcher().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getPitcher().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>좌익수 :</td>
 					<td>
-						<input type="text" id="name6" name="leftFielder">
-						<input type="text" hidden>
+						<input type="text" id="name6" name="leftFielder" value="${teamDTO.getLeftFielder().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getLeftFielder().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>우익수 :</td>
 					<td>
-						<input type="text" id="name7" name="rightFielder">
-						<input type="text" hidden>
+						<input type="text" id="name7" name="rightFielder" value="${teamDTO.getRightFielder().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getRightFielder().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>중견수 :</td>
 					<td>
-						<input type="text" id="name8" name="centerFielder">
-						<input type="text" hidden>
+						<input type="text" id="name8" name="centerFielder" value="${teamDTO.getCenterFielder().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getCenterFielder().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
 					<td>유격수 :</td>
 					<td>
-						<input type="text" id="name9" name="shortStop">
-						<input type="text" hidden>
+						<input type="text" id="name9" name="shortStop" value="${teamDTO.getShortStop().split(',')[0] }">
+						<input type="text" hidden value="${teamDTO.getShortStop().split(',')[1] }">
 						<input type="button" value="추가">
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2"><input type="submit" value="팀원등록"></td>
+					<td colspan="2"><input type="submit" value="수정"></td>
 				</tr>
 			</table>
 		</form>
