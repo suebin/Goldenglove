@@ -42,6 +42,10 @@
 
 
 
+
+
+
+
 /* 매치 검색, 매치 등록 버튼 */
 
 .match_btn {
@@ -77,8 +81,6 @@ input.search_btn:hover, input.register_btn:hover {
 }
 
 
-
-/* calendar */
 
 
 /* 캘린더 */

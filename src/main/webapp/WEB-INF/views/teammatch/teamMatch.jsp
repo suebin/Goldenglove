@@ -13,255 +13,107 @@
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/teammatch.css" rel="stylesheet" />
 
-<!-- js -->
 <script src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/teammatch.js"></script>
-<script>
-	$(document).ready(function() {
 
-	}); // ready end
-</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 
 	<div class="confix">
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/teammatch/teammatch.jsp
->>>>>>> 9c7e45f (team match)
-		<form method="get" name="match_search" id="match_search"
-			action="/newsite/web/page.php#match_list" autocomplete="off">
-			<input type="hidden" name="lang" value="korean"> <input
-				type="hidden" name="pcode" value="11"> <input type="hidden"
-				name="calendar_nyear" id="calendar_nyear" value="2022"> <input
-				type="hidden" name="calendar_nmonth" id="calendar_nmonth" value="09">
-			<input type="hidden" name="calendar_nday" id="calendar_nday" value="">
-<<<<<<< HEAD
-=======
-========
-		<!-- 선택한 지역과 날짜 데이터 저장 -->
-		<input type="hidden" name="region" id="region" value=""> 
-		<input type="hidden" name="year_month" id="year_month" value=""> 
-		<input type="hidden" name="date" id="date" value=""> 
 	
-	
->>>>>>>> 9c7e45f (team match):src/main/webapp/WEB-INF/views/teammatch/teamMatch.jsp
->>>>>>> 9c7e45f (team match)
-
-			<input type="hidden" name="local_value" id="local_value" value="">
-			<input type="hidden" name="team_value" id="team_value" value="">
-			<input type="hidden" name="age_value" id="age_value" value="">
-			<input type="hidden" name="type_value" id="type_value" value="">
-			<p class="top_count">
-				(<b>3</b>경기가 등록되어 있습니다.)
-			</p>
-
-
-
-			<div class="match_info_wrap">
-				<div class="lt">
-					<p class="top">매치등록은 신중하게 작성하여 주시기 바랍니다.</p>
-					<div class="match_option_wrap">
-
-						<div class="option01">
-							<p class="on cursor match_search_submit" id="local_all"
-								data-id="">전체 지역</p>
-							<ul>
-								<li class="cursor select_local  match_search_submit"
-									data-id="1/">서울</li>
-								<li class="cursor select_local  match_search_submit"
-									data-id="2/">경기</li>
-								<li class="cursor select_local  match_search_submit"
-									data-id="3/">강원</li>
-								<li class="cursor select_local  match_search_submit"
-									data-id="4/">충청</li>
-								<li class="cursor select_local  match_search_submit"
-									data-id="5/">전라</li>
-								<li class="cursor select_local  match_search_submit"
-									data-id="7/">제주</li>
-								<li class="cursor select_local  match_search_submit"
-									data-id="6/">경상</li>
-							</ul>
-						</div>
-						<!--<div class="option02">
-				<p class="on cursor match_search_submit" id="team_all" data-id="">전체 팀</p>
-				<ul>
-									<li class="cursor select_team  match_search_submit" data-id="청소년">청소년</li>
-									<li class="cursor select_team  match_search_submit" data-id="대학생">대학생</li>
-									<li class="cursor select_team  match_search_submit" data-id="직장인">직장인</li>
-									<li class="cursor select_team  match_search_submit" data-id="일반동호회">일반동호회</li>
-									<li class="cursor select_team  match_search_submit" data-id="여성팀">여성팀</li>
-									<li class="cursor select_team  match_search_submit" data-id="기타단체">기타단체</li>
-								</ul>
-			</div>
-			<div class="option03">
-				<p class="on cursor match_search_submit" id="age_all" data-id="">전체 연령</p>
-				<ul>
-									<li class="cursor select_age  match_search_submit" data-id="10대">10대</li>
-									<li class="cursor select_age  match_search_submit" data-id="20대">20대</li>
-									<li class="cursor select_age  match_search_submit" data-id="30대">30대</li>
-									<li class="cursor select_age  match_search_submit" data-id="40대">40대</li>
-									<li class="cursor select_age  match_search_submit" data-id="50대">50대</li>
-									<li class="cursor select_age  match_search_submit" data-id="60대이상">60대이상</li>
-								</ul>
-			</div>-->
-						<div class="option04">
-							<p class="on cursor match_search_submit" id="type_all" data-id="">전체
-								경기</p>
-							<ul>
-								<li class="cursor select_type  match_search_submit" data-id="1">풋살</li>
-								<li class="cursor select_type  match_search_submit" data-id="2">축구</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="rt">
-					<div class="match_table_title">
-						<span class="prev month_back cursor" data-para=""><img
-							src="http://www.baro-match.co.kr/newsite/web/korean/image/match/prev.png"></span>
-						<span id="match_table_year">2022 년</span> <span
-							id="match_table_month">09월</span> <span
-							class="next month_forward cursor" data-para=""><img
-							src="http://www.baro-match.co.kr/newsite/web/korean/image/match/next.png"></span>
-					</div>
-					<div class="match_table_content">
-						<table class="match_table" summary="매치신청 달력">
-							<caption>매치신청달력</caption>
-							<colgroup>
-								<col style="width: 14.28%;">
-								<col style="width: 14.28%;">
-								<col style="width: 14.28%;">
-								<col style="width: 14.28%;">
-								<col style="width: 14.28%;">
-								<col style="width: 14.28%;">
-								<col style="width: 14.28%;">
-							</colgroup>
-							<thead>
-								<tr class="center">
-									<th>SUN</th>
-									<th>MON</th>
-									<th>TUE</th>
-									<th>WED</th>
-									<th>THU</th>
-									<th>FRI</th>
-									<th>SAT</th>
-								</tr>
-							</thead>
-							<tbody id="match_calendar">
-								<tr>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td class="select_day cursor match_search_submit" data-day="1"><p
-											class="day">1</p>
-										<p class="txt">1경기</p></td>
-									<td class="select_day cursor match_search_submit" data-day="2"><p
-											class="day">2</p></td>
-									<td class="select_day cursor match_search_submit" data-day="3"><p
-											class="day">3</p></td>
-								</tr>
-								<tr>
-									<td class="select_day cursor match_search_submit" data-day="4"><p
-											class="day">4</p></td>
-									<td class="select_day cursor match_search_submit" data-day="5"><p
-											class="day">5</p></td>
-									<td class="select_day cursor match_search_submit" data-day="6"><p
-											class="day">6</p></td>
-									<td class="select_day cursor match_search_submit" data-day="7"><p
-											class="day">7</p></td>
-									<td class="select_day cursor match_search_submit" data-day="8"><p
-											class="day">8</p></td>
-									<td class="select_day cursor match_search_submit" data-day="9"><p
-											class="day">9</p></td>
-									<td class="select_day cursor match_search_submit" data-day="10"><p
-											class="day">10</p></td>
-								</tr>
-								<tr>
-									<td class="select_day cursor match_search_submit" data-day="11"><p
-											class="day">11</p></td>
-									<td class="select_day cursor match_search_submit" data-day="12"><p
-											class="day">12</p></td>
-									<td class="select_day cursor match_search_submit" data-day="13"><p
-											class="day">13</p></td>
-									<td class="select_day cursor match_search_submit" data-day="14"><p
-											class="day">14</p></td>
-									<td class="select_day cursor match_search_submit" data-day="15"><p
-											class="day">15</p></td>
-									<td class="select_day cursor match_search_submit" data-day="16"><p
-											class="day">16</p></td>
-									<td class="select_day cursor match_search_submit" data-day="17"><p
-											class="day">17</p></td>
-								</tr>
-								<tr>
-									<td class="select_day cursor match_search_submit" data-day="18"><p
-											class="day">18</p></td>
-									<td class="select_day cursor match_search_submit" data-day="19"><p
-											class="day">19</p></td>
-									<td class="today select_day cursor match_search_submit"
-										data-day="20"><p class="day">20</p></td>
-									<td class="select_day cursor match_search_submit" data-day="21"><p
-											class="day">21</p></td>
-									<td class="select_day cursor match_search_submit" data-day="22"><p
-											class="day">22</p></td>
-									<td class="select_day cursor match_search_submit" data-day="23"><p
-											class="day">23</p></td>
-									<td class="select_day cursor match_search_submit" data-day="24"><p
-											class="day">24</p>
-										<p class="txt">1경기</p></td>
-								</tr>
-								<tr>
-									<td class="select_day cursor match_search_submit" data-day="25"><p
-											class="day">25</p></td>
-									<td class="select_day cursor match_search_submit" data-day="26"><p
-											class="day">26</p></td>
-									<td class="select_day cursor match_search_submit" data-day="27"><p
-											class="day">27</p></td>
-									<td class="select_day cursor match_search_submit" data-day="28"><p
-											class="day">28</p></td>
-									<td class="select_day cursor match_search_submit" data-day="29"><p
-											class="day">29</p></td>
-									<td class="select_day cursor match_search_submit" data-day="30"><p
-											class="day">30</p></td>
-									<td>&nbsp;</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-			</div>
-
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:src/main/webapp/WEB-INF/views/teammatch/teammatch.jsp
->>>>>>> 9c7e45f (team match)
-
-			<div>
-				<button type="button">매치 검색</button>
-				<a href="registermatch"><button type="button">매치 등록</button></a>
-			</div>
+		<!-- 선택한 지역과 날짜 데이터 전송 -->
+		
+		<form action="teammatch" method="post">
+			<input type="hidden" name="region" id="region" value=""> 
+			<input type="hidden" name="year_month" id="year_month" value=""> 
+			<input type="hidden" name="date" id="date" value=""> 
 		</form>
-<<<<<<< HEAD
-=======
-========
+	
+
+		<!-- 지역 및 날짜 선택 -->
+		
+		<div class="select_box">
+
+			<!-- 1. 날짜 선택 -->
+			
+			<div class="select_one"> 	
+				<div class="select_date">
+				<div class="cal_nav">
+					<a href="javascript:;" class="nav-btn go-prev" style="color:#72CC82;">prev</a>
+					<div class="year-month"></div>
+					<a href="javascript:;" class="nav-btn go-next" style="color:#72CC82;">next</a>
+				</div>
+				<div class="cal_wrap">
+					<div class="days">
+						<div class="day">MON</div>
+						<div class="day">TUE</div>
+						<div class="day">WED</div>
+						<div class="day">THU</div>
+						<div class="day">FRI</div>
+						<div class="day">SAT</div>
+						<div class="day">SUN</div>
+					</div>
+					<div class="dates">
+					</div>
+				</div>
+				</div>
+			</div>		
+
+			<!-- 2. 지역 선택 -->
+			
+			<div class="select_two">
+				<div class="select_region">
+					<input type="button" value="전체" name="0" id="0" class="region_btn"> 
+					<input type="button" value="강원도" name="1" id="1" class="region_btn">
+					<input type="button" value="광주광역시" name="2" id="2" class="region_btn"> 
+					<input type="button" value="경기도" name="3" id="3" class="region_btn">
+					<input type="button" value="경상남도" name="4" id="4" class="region_btn"> 
+					<input type="button" value="경상북도" name="5" id="5" class="region_btn">
+					<input type="button" value="대구광역시" name="6" id="6" class="region_btn"> 
+					<input type="button" value="대전광역시" name="7" id="7" class="region_btn">
+					<input type="button" value="부산광역시" name="8" id="8" class="region_btn">
+					<input type="button" value="서울특별시" name="9" id="9" class="region_btn">
+					<input type="button" value="세종특별자치시" name="10" id="10" class="region_btn">
+					<input type="button" value="인천광역시" name="11" id="11" class="region_btn"> 
+					<input type="button" value="울산광역시" name="12" id="12" class="region_btn">
+					<input type="button" value="전라남도" name="13" id="13" class="region_btn">
+					<input type="button" value="전라북도" name="14" id="14" class="region_btn">
+					<input type="button" value="제주특별자치도" name="15" id="15" class="region_btn"> 
+					<input type="button" value="충청남도" name="16" id="16" class="region_btn">
+					<input type="button" value="충청북도" name="17" id="17" class="region_btn">
+				</div>
+			</div>
+	
+		</div>
+
 		
 		<!-- 매치 검색, 매치 등록 버튼 -->
 		
 		<div class="match_btn">
-			<input type="button" id="searchbtn" class="search_btn" value="매치 검색"> 
+			<input type="button" id="searchbtn" class="search_btn" value="매치 검색">
 			<input type="button" id="registerbtn" class="register_btn" value="매치 등록">
 		</div>
 
 		
-		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->	
+		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->
+		<div class="teammatch_info">
+			<div class="teammatch_info_hashtag"></div>
+			<div class="teammatch_info_boxes"></div>
+		</div>
+	
+	
+	
+		<!-- 매치 등록 버튼을 누르면 나오는 매치 등록 form 모달 창 -->
 		
-		<div class="teammatch_list"></div>
+<!-- 	<div class="teammatch_registration_modal">
+		<div class="teammatch_registration">
+				매치 등록을 합니다.
+			</div>
+		</div>	 -->	
 		
->>>>>>>> 9c7e45f (team match):src/main/webapp/WEB-INF/views/teammatch/teamMatch.jsp
->>>>>>> 9c7e45f (team match)
 	</div>
+
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
 </html>
