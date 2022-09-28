@@ -21,11 +21,14 @@
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 
 	<div class="confix">
-		<!-- 선택한 지역과 날짜 데이터 저장 -->
-		<input type="hidden" name="region" id="region" value=""> 
-		<input type="hidden" name="year_month" id="year_month" value=""> 
-		<input type="hidden" name="date" id="date" value=""> 
 	
+		<!-- 선택한 지역과 날짜 데이터 저장 -->
+		
+		<form action="teammatch" method="post">
+			<input type="hidden" name="region" id="region" value=""> 
+			<input type="hidden" name="year_month" id="year_month" value=""> 
+			<input type="hidden" name="date" id="date" value=""> 
+		</form>
 	
 
 		<!-- 지역 및 날짜 선택 -->
@@ -93,12 +96,16 @@
 		</div>
 
 		
-		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->	
+		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->
+		<div class="teammatch_info">
+			<div class="teammatch_info_hashtag"></div>
+			<div class="teammatch_info_boxes"></div>
+		</div>
 		
-		<div class="teammatch_list"></div>
+		
 		
 	</div>
 
-		<jsp:include page="/WEB-INF/views/components/footer.jsp" />
+	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
 </html>

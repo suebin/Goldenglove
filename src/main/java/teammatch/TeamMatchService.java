@@ -17,4 +17,7 @@ public class TeamMatchService {
 		return dao.insertTeamMatch(dto);
 	}
 	
+	public List<TeamMatchDTO> getTeamMatchList(String region, String possibleDate) {
+		return dao.getTeamMatchList(region, possibleDate);
+	}
 }
