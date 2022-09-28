@@ -4,7 +4,7 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="userDTO">
-		insert into user(id, password, name, phone, email, region) values(#{id}, #{password}, #{name}, #{phone}, #{email}, #{region})
+		insert into user(id, password, name, phone, email, region, kakaoId) values(#{id}, #{password}, #{name}, #{phone}, #{email}, #{region}, #{kakaoId})
 	</insert>
 	
 	<!-- 중복검사 -->

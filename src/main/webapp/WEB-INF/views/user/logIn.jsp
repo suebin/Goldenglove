@@ -67,6 +67,9 @@ $(document).ready(function() {
 				<tr><td colspan="2"><input type="submit" value="로그인"></td></tr>
 			</table>
 		</form>
+		<form action="kakaoLogin">
+			<input type="image" src="/images/kakao_login_medium_narrow.png">
+		</form>
 		</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

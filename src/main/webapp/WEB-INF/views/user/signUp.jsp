@@ -48,6 +48,7 @@
 		<div class="confix">
 			<h1>회원가입</h1>
 			<form action="signupResult" method="post" id="signupForm">
+				<input type="text" name="kakaoId" value="${kakaoId }" hidden>
 				<table>
 					<tr>
 						<td>아이디 :</td>
