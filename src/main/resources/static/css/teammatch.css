@@ -37,6 +37,10 @@ input.region_btn:hover, input.region_btn:focus {
 	transition: all 0.2s;
 }
 
+
+
+
+
 /* 매치 검색, 매치 등록 버튼 */
 
 .match_btn {
@@ -69,6 +73,10 @@ input.search_btn:hover, input.register_btn:hover {
 	border: 2px solid #3CB371;
 	background-color: #3CB371;
 }
+
+
+
+
 
 /* 캘린더 */
 
@@ -185,4 +193,99 @@ input.search_btn:hover, input.register_btn:hover {
 
 .select_date .cal_wrap .day.disable {
     color: #ddd;
+}
+
+
+
+
+
+/* 매치 검색 버튼을 누르면 하단에 나오는 매치 조회 */
+
+.teammatch_info {
+	margin: auto;
+}
+
+.teammatch_info_hashtag {
+	height:60px;
+	margin-top: 50px;
+}
+
+.teammatch_hashtag {
+	display: inline-block;
+	background-color: #FFFBCC;
+	border-radius: 20px;
+	margin-right: 8px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.teammatch_info_box {
+	border: 1px solid #72CC82;
+	border-radius: 10px;
+	padding: 10px 0px 10px 20px;
+	margin-bottom: 15px;
+}
+
+.teammatch_info_box > div {
+	display: inline-block;
+	margin-right: 15px;
+	vertical-align: middle;	
+}
+
+.teammatch_info_one {
+	text-align: center;
+	width:150px;
+}
+
+.teammatch_info_teamname {
+	font-size: 15px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.teammatch_info_ranking {
+	font-size: 12px;
+}
+
+.teammatch_info_two {
+	font-size: 14px;
+	width: 200px;
+}
+
+.teammatch_info_three {
+	width: 150px;
+}
+
+.teammatch_info_comment_title {
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+
+.teammatch_info_comment {
+	font-size: 10px;
+}
+
+
+
+.teammatch_btns {
+	float: right;
+	text-align: center;
+	margin-top: 7px;
+}
+
+.teammatch_btn {
+	background-color: #72CC82;
+	border: 0px;
+	border-radius: 10px;
+	font: 13px "비트로 프라이드 OTF";
+	font-weight: bold;
+	color: white;
+	width: 70px; 
+	height: 40px;
+	margin-right: 8px;
+}
+
+input.teammatch_btn:hover {
+		background-color: #3CB371;
 }

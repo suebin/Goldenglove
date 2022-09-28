@@ -10,7 +10,7 @@
 
 
 
-<title>매치 등록</title>
+<title>골든글러브 > 매치 등록</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>

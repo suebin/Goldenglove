@@ -83,7 +83,39 @@ $(document).ready(function() {
 		$("#registerbtn").on("click", function() {
 			
 		})
-	
+		
+
+		// 매치 검색 버튼
+		
+		$("#searchbtn").on("click", function() {
+			
+			$.ajax({
+				url: 'teammatch',
+				data: {'region':$("#region").val(),'possibleDate':$("#year_month").val() + $("#date").val()},
+				type: 'post',
+				dataType: 'json',
+				success: function(data){ 
+					if(data.length != 0) {
+					
+						
+						// 날짜, 지역 필터링 한 등록된 매치 조회 
+						
+						document.querySelector('.teammatch_info_hashtag').innerHTML = '<div class="teammatch_hashtag">#' + data[0].possibleDate + '</div><div class="teammatch_hashtag">#' + data[0].region + '</div>'; 
+						
+						document.querySelector('.teammatch_info_boxes').innerHTML = '';
+						
+						for(var i=0; i<data.length; i++) {
+							$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
+																+ '<div class="teammatch_info_one"><div class="teammatch_info_teamname">' + data[i].teamName + '</div><div class="teammatch_info_ranking">🏆  0 위</div><div></div></div>'
+																+ '<div class="teammatch_info_two">시작 시간 : ' + data[i].possibleTime + '<br>경기 장소 : ' + data[i].homePlace + '<br>팀원 : ' + data[i].headCount + '명</div>'
+																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">남기는 한마디</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>'
+																+ '<div class="teammatch_btns"><input type="button" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 정보"> </div>'
+															+ '</div>')	
+						}	
+					}
+				}
+			});	
+		}) // searchbtn end
 		
 		// 매치 등록 버튼
 		
