@@ -11,6 +11,7 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
+		history.replaceState({}, null, location.pathname);
 		/* submit시 중복검사 여부 확인 */
 		$("#signupForm").on("submit", function(e) {
 			if($("#idCheckResult").text() == "" || $("#nameCheckResult").text() == "" || $("#phoneCheckResult").text() == "" || $("#emailCheckResult").text() == "") {
@@ -49,6 +50,7 @@
 			<h1>회원가입</h1>
 			<form action="signupResult" method="post" id="signupForm">
 				<input type="text" name="kakaoId" value="${kakaoId }" hidden>
+				<input type="text" name="naverId" value="${naverId }" hidden>
 				<table>
 					<tr>
 						<td>아이디 :</td>

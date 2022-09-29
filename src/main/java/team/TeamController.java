@@ -29,7 +29,7 @@ public class TeamController {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
-		if (request.getHeader("REFERER") != null) {
+		if (request.getSession().getAttribute("loginInfo") != null) {
 			mv.addObject("teamDTO", teamService.selectTeam(user.getName()));
 			mv.setViewName("team/teamUpdate");
 			return mv;
@@ -41,7 +41,7 @@ public class TeamController {
 
 	@PostMapping("teamUpdateResult")
 	public String teamUpdateResult(TeamDTO dto, HttpServletRequest request) {
-		if (request.getHeader("REFERER") != null) {
+		if (request.getSession().getAttribute("loginInfo") != null) {
 			teamService.updateTeam(dto);
 			return "mypage/myPage";
 		} else {

@@ -4,8 +4,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserDTO {
-	private String id, password, name, phone, email, region, registerDate, kakaoId;
+	private String id, password, name, phone, email, region, registerDate, kakaoId, naverId;
 	private int winCount, loseCount;
+
+	public String getNaverId() {
+		return naverId;
+	}
+
+	public void setNaverId(String naverId) {
+		this.naverId = naverId;
+	}
 
 	public String getKakaoId() {
 		return kakaoId;
