@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,14 +15,14 @@ public class TeamMatchController {
 	@Autowired
 	@Qualifier("teammatchservice")
 	TeamMatchService service;
-	
+
 	// 팀 매치 메인
-	
+
 	@RequestMapping("/teammatch")
 	public String match() {
-		return "teammatch/teamMatch";
-	}	
-	
+		return "teammatch/teammatch";
+	}
+
 	// 팀 매치 검색 > 조회
 	
 	@ResponseBody
@@ -42,18 +40,17 @@ public class TeamMatchController {
 		
 		return teammatchlist;
 	}
-	
-	
-	// 팀 매치 등록 
-	
+
+	// 팀 매치 등록
+
 	@RequestMapping("/registerTeammatch")
 	public String matchform() {
 		return "teammatch/teamMatchRegistration";
 	}
-	
+
 	@PostMapping("/registerTeammatch")
 	public ModelAndView registermatch(TeamMatchDTO dto) {
-		
+
 		int insertcount = service.insertTeamMatch(dto);
 		ModelAndView mv = new ModelAndView();
 		

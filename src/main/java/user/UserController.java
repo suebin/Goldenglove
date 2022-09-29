@@ -86,8 +86,8 @@ public class UserController {
 			result = "성공";
 			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", loginInfo);
-			return "{\"result\":\"" + result + "\"}";
-		} 
+		}
+		return "{\"result\":\"" + result + "\"}";
 	}
 
 //	로그아웃

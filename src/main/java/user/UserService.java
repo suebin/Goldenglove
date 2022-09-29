@@ -30,9 +30,4 @@ public class UserService {
 		userDao.updateUser(dto);
 	}
 
-//	로그인 검사
-	public UserDTO idCheck(String id) {
-		return userDao.idCheck(id);
-	}
-
 }
