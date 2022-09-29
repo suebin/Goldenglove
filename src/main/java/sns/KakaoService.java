@@ -1,16 +1,14 @@
-package kakao;
+package sns;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -24,7 +22,7 @@ import user.UserDTO;
 @Service("kakaoService")
 public class KakaoService {
 	@Autowired
-	KakaoDAO kakaoDao;
+	SnsDAO snsDao;
 
 	public String getKakaoAccessToken(String code) {
 		String access_Token = "";
@@ -43,15 +41,15 @@ public class KakaoService {
 			BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
 			StringBuilder sb = new StringBuilder();
 			sb.append("grant_type=authorization_code");
-			sb.append("&client_id=" + KakaoInform.REST_API_KEY); // TODO REST_API_KEY 입력
-			sb.append("&redirect_uri=" + KakaoInform.REDIRECT_URI); // TODO 인가코드 받은 redirect_uri 입력
+			sb.append("&client_id=" + SnsInform.REST_API_KEY); // TODO REST_API_KEY 입력
+			sb.append("&redirect_uri=" + SnsInform.REDIRECT_URI); // TODO 인가코드 받은 redirect_uri 입력
 			sb.append("&code=" + code);
 			bw.write(sb.toString());
 			bw.flush();
 
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+//			System.out.println("responseCode : " + responseCode);
 
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -61,7 +59,7 @@ public class KakaoService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+//			System.out.println("response body : " + result);
 
 			// JSON파싱 객체 생성
 			JSONObject json = new JSONObject(result);
@@ -69,8 +67,8 @@ public class KakaoService {
 			access_Token = json.getString("access_token");
 			refresh_Token = json.getString("refresh_token");
 
-			System.out.println("access_token : " + access_Token);
-			System.out.println("refresh_token : " + refresh_Token);
+//			System.out.println("access_token : " + access_Token);
+//			System.out.println("refresh_token : " + refresh_Token);
 
 			br.close();
 			bw.close();
@@ -96,7 +94,7 @@ public class KakaoService {
 
 			// 결과 코드가 200이라면 성공
 			int responseCode = conn.getResponseCode();
-			System.out.println("responseCode : " + responseCode);
+//			System.out.println("responseCode : " + responseCode);
 
 			// 요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -106,7 +104,7 @@ public class KakaoService {
 			while ((line = br.readLine()) != null) {
 				result += line;
 			}
-			System.out.println("response body : " + result);
+//			System.out.println("response body : " + result);
 			JSONObject json = new JSONObject(result);
 			id = json.getLong("id");
 			br.close();
@@ -120,27 +118,14 @@ public class KakaoService {
 	public String loginKakaoUser(String kakaoId) {
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
 				.getRequest();
+		HttpSession session = request.getSession();
+		UserDTO user = snsDao.selectUserKakao(kakaoId);
 
-		UserDTO user = kakaoDao.selectUser(kakaoId);
 		if (user == null) {
-			HttpServletResponse response = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-					.getResponse();
-			response.setContentType("text/html; charset=UTF-8");
-			PrintWriter out;
 			request.setAttribute("kakaoId", kakaoId);
-			try {
-				out = response.getWriter();
-				out.print("<script>alert('회원가입 페이지로 이동합니다.'); location.href='/signup'</script>");
-				out.flush();
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return "user/signUp";
+			return "user/snsCheck";
 		} else {
-			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", user);
-
 			return "main/main";
 		}
 	}

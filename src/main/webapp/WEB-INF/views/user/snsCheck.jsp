@@ -8,12 +8,13 @@
 <title>Insert title here</title>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
+alert("회원가입 페이지로 이동합니다.");
 $(document).ready(function() {
 	
 });
 </script>
 </head>
 <body>
-카카오
+	<jsp:forward page="/signup"/>
 </body>
 </html>

@@ -25,7 +25,7 @@ public class UserController {
 //	회원가입
 	@RequestMapping("/signup")
 	public String signUp(HttpServletRequest request) {
-		if (request.getHeader("REFERER") != null) {
+		if (request.getSession().getAttribute("loginInfo") == null) {
 			return "user/signUp";
 		} else {
 			return "main/main";
@@ -65,7 +65,7 @@ public class UserController {
 //	로그인
 	@RequestMapping("/login")
 	public String login(HttpServletRequest request) {
-		if (request.getHeader("REFERER") != null) {
+		if (request.getSession().getAttribute("loginInfo") == null) {
 			return "user/logIn";
 		} else {
 			return "main/main";
@@ -102,7 +102,7 @@ public class UserController {
 	@RequestMapping("/mypage")
 	public ModelAndView mypage(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-		if (request.getHeader("REFERER") != null) {
+		if (request.getSession().getAttribute("loginInfo") != null) {
 			HttpSession session = request.getSession();
 			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			String teamName = user.getName();
@@ -118,7 +118,7 @@ public class UserController {
 //	내정보 수정 폼
 	@RequestMapping("/updateinfo")
 	public String updateInfo(HttpServletRequest request) {
-		if (request.getHeader("REFERER") != null) {
+		if (request.getSession().getAttribute("loginInfo") != null) {
 			return "mypage/updateInfo";
 		} else {
 			return "main/main";
