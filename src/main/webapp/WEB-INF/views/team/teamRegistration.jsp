@@ -35,9 +35,9 @@
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<h1>팀원 등록</h1>
-		<h3>팀 이름 : ${loginInfo.name }</h3>
+		<h3>팀 이름 : ${name }</h3>
 		<form action="teamResult" method="post" id="teamForm">
-			<input type="text" name="teamName" value="${loginInfo.name }" hidden>
+			<input type="text" name="teamName" value="${name }" hidden>
 			<table>
 				<tr>
 					<td>1루수 :</td>
