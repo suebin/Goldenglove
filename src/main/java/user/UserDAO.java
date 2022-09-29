@@ -19,6 +19,5 @@ public interface UserDAO {
 
 //	수정
 	void updateUser(UserDTO dto);
-//	로그인 검사
-	UserDTO idCheck(String id);
+
 }

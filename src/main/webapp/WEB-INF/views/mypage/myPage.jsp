@@ -13,11 +13,13 @@
 $(document).ready(function() {
 	$("#updateUserBtn").on("click", function() {
 		$("#passwordInputUser").removeAttr("hidden");
+		$("#passwordInputTeam").attr("hidden","hidden");
 		$("#passwordUser").focus();
 	})
 	
 	$("#updateTeamBtn").on("click", function() {
 		$("#passwordInputTeam").removeAttr("hidden");
+		$("#passwordInputUser").attr("hidden","hidden");
 		$("#passwordTeam").focus();
 	})
 	
