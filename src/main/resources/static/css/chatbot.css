@@ -1,0 +1,256 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
+body {
+	position: relative;
+}
+
+body span {
+	display: inline-block;
+}
+
+h2 {
+	padding-bottom: 20px;
+}
+
+.hidden {
+	right: -1000px !important;
+	transition: all 5s ease-in;
+}
+
+/*=========== chatbotBox ===========*/
+.chatbotBox {
+	position: fixed;
+	bottom: 30px;
+	right: 20px;
+	z-index: 10000;
+}
+
+.chatbotBox button {
+	transition: all 0.3s;
+}
+	
+	
+/*=========== chat ===========*/
+.chatbotBox .chat {
+	position: absolute;
+	right: 0;
+	bottom: 0px;
+	width: 450%;
+	border: 1px solid var(--gray);
+	border-radius: 10px;
+	height: 65vh;
+	max-height: 500px;
+	background: #fff;
+	overflow-y: scroll;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+	transition: all 0.3s;
+}
+
+.chatbotBox .chat::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
+
+/*=========== top ===========*/
+.chat .top {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	width: 312px;
+	border-bottom: 1px solid var(--gray);
+	border-radius: 10px 10px 0 0;
+	background: #fff;
+	font-weight: bold;
+}
+
+.chat .top .botName {
+	display: flex;
+	align-items: center;
+}
+
+.top .closeBtn button {
+	padding: 10px;
+	font-size: 18px;
+	border: none;
+	background: none;
+}
+
+.top .closeBtn button:hover {
+	transform: rotate(180deg);
+}
+
+/*=========== botImg ===========*/
+.botImg {
+	margin-right: 10px;
+	width: 35px;
+	height: 35px;
+	text-align: center;
+	line-height: 42px;
+	border-radius: 50%;
+	border: 2px solid var(--point-color);
+}
+
+.botImg img {
+	width: 70%;
+}
+
+
+/*=========== bottom ===========*/
+.chat .bottom {
+	margin: 80px 0;
+}
+
+/*=========== bot, me ===========*/
+.chat .bottom .bot, .me {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+}
+
+.bottom .bot {
+	justify-content: flex-start;
+}
+
+.bottom .bot .content {
+	padding: 10px;
+	border: 1px solid var(--main-color);
+	border-radius: 15px 15px 15px 0;
+}
+
+.bottom .bot .conBox, .bottom .me .content {
+	width: max-content;
+	max-width: 220px;
+	font-size: 14px;
+}
+
+.bottom .bot .faqBtn button {
+	padding: 5px;
+	margin-top: 8px;
+	margin-right: 5px;
+	font-size: 12px;
+	background: var(--main-color);
+	border: 1px solid var(--main-color);
+	border-radius: 10px;
+	color: #fff;
+}
+
+.bottom .bot .faqBtn button:hover {
+	background: var(--point-color);
+	border: 1px solid var(--point-color);
+	transition: all 0.3s;
+} 
+
+.bottom .bot .faqList {
+	margin-top: 5px;
+	border-radius: 5px;
+}
+
+.bottom .bot .conBox .faqList button {
+	padding: 5px;
+	width: 100%;
+	font-size: 12px;
+}
+
+.bottom .bot .faqList button:hover {
+	background: var(--gray);
+	transition: all 0.3s;
+} 
+
+.bottom .me {
+	justify-content: flex-end;
+}
+
+.bottom .me .content {
+	padding: 10px;
+	background: var(--main-color);
+	color: #fff;
+	border-radius: 15px 15px 0 15px;
+}
+
+
+/*=========== inputBox ===========*/
+.chat .inputBox {
+	position: fixed;
+	bottom: 31px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px;
+	width: 312px;
+	border-top: 1px solid var(--gray);
+	border-radius: 0 0 10px 10px;
+	background: #fff;
+}
+
+.chat .inputBox input {
+	width: 100%;
+	border: 0;
+	outline: none;
+}
+
+.chat .inputBox button {
+	width: 35px;
+	height: 30px;
+	color: #fff;
+	font-weight: bold;
+	background: var(--point-color);
+	border-radius: 50%;
+	border: 1px solid var(--point-color);
+}
+
+.chat .inputBox button:hover {
+	transform: scale(1.1);
+}
+
+
+/*=========== chatbotIcon ===========*/
+.chatbotBox .chatbotIcon {
+	width: 70px;
+	text-align: center;
+	cursor: pointer;
+	animation: upDown 2s infinite;
+}
+
+@keyframes upDown {
+  0% {
+    margin-bottom: 10px;
+  }
+  
+  50% {
+    margin-bottom: 0;
+  }
+
+  100% {
+    margin-bottom: 10px;
+  }
+}
+
+
+.chatbotBox .chatbotIcon img {
+	width: 100%;
+	transition: all 0.3s;
+}
+
+.chatbotBox .chatbotIcon:hover img {
+	width: 105%;
+}
+
+.chatbotBox .chatbotIcon span {
+	font-size: 22px;
+	font-weight: bold;
+	color: var(--main-color);
+	transition: all 0.3s;
+}
+
+.chatbotBox .chatbotIcon:hover span {
+	color: var(--point-color);
+}

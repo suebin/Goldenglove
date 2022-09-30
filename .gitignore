@@ -6,6 +6,7 @@ target/
 
 # for me
 src/main/resources/application.properties
+src/main/java/**/ChatbotInform.java
 src/main/java/sns/SnsInform.java
 
 ### STS ###

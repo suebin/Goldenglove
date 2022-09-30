@@ -12,6 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "teammatch")
 @ComponentScan(basePackages = "notice")
 @ComponentScan(basePackages = "ranking")
+@ComponentScan(basePackages = "chatbot")
 @ComponentScan(basePackages = "sns")
 
 @MapperScan(basePackages = "user")

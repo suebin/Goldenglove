@@ -2,27 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="teammatch.TeamMatchDAO">
-
+	
 	<!-- 매치 등록 -->
-
-
-	<insert parameterType="teammatchdto" id="insertTeamMatch">insert into teammatching
-		(teamName, region, possibleDate, possibleTime, homePlace, headCount,
-		comment)values(#{teamName}, #{region}, #{possibleDate},
-		#{possibleTime}, #{homePlace}, #{headCount}, #{comment}) </insert>
-
-	<!-- 매치 검색 -->
-
-
-	<select parameterType="String" id="getTeamMatchList"
-		resultType="teammatchdto">select * from teammatching where region=#{region} and
-		possibleDate=#{possibleDate} </select>
+	
+	<insert id="insertTeamMatch" parameterType="teammatchdto">
+		insert into teammatching (teamName, region, possibleDate, possibleTime, homePlace, headCount, comment)
+		values(#{teamName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment})
+	</insert>
 
 	<!-- 매치 검색 -->
-
-
-	<select parameterType="String" id="getAllTeamMatchList"
-		resultType="teammatchdto">select * from teammatching where
-		possibleDate=#{possibleDate} </select>
-
+	
+	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
+		select * from teammatching where region=#{region} and possibleDate=#{possibleDate}
+	</select>
+	
+		<!-- 매치 검색 -->
+	
+	<select id="getAllTeamMatchList" parameterType="String" resultType="teammatchdto">
+		select * from teammatching where possibleDate=#{possibleDate}
+	</select>
+	
 </mapper>
