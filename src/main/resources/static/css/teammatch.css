@@ -42,16 +42,6 @@
 
 
 
-
-
-/* calendar */
-
-
-
-
-/* calendar */
-
-
 /* 매치 검색, 매치 등록 버튼 */
 
 .match_btn {
@@ -85,6 +75,7 @@ input.search_btn:hover, input.register_btn:hover {
 	background-color: #217517;
 	cursor:pointer;
 }
+
 
 
 
@@ -325,35 +316,3 @@ input.teammatch_btn:hover {
 	top:0; left: 0;
 	display: none;
 } */
-
-.sec_cal .cal_wrap .day {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(100% / 7);
-    text-align: left;
-    color: #999;
-    font-size: 12px;
-    text-align: center;
-    border-radius:5px
-}
-
-.current.today {background: rgb(242 242 242);}
-
-.select_date .cal_wrap .dates {
-    display: flex;
-    flex-flow: wrap;
-    height: 290px;
-}
-
-.select_date .cal_wrap .day:nth-child(7n -1) {
-    color: #3c6ffa;
-}
-
-.select_date .cal_wrap .day:nth-child(7n) {
-    color: #ed2a61;
-}
-
-.select_date .cal_wrap .day.disable {
-    color: #ddd;
-}

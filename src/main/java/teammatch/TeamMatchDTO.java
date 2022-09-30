@@ -52,6 +52,4 @@ public class TeamMatchDTO {
 	public void setComment(String comment) {
 		this.comment = comment;
 	}
-	
-	
 }
