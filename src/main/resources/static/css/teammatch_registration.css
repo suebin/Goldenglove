@@ -3,6 +3,7 @@
 .teammatch_registration_title {
 	font: 28px "비트로 코어 OTF";
 	text-align: center;
+	color: #00912e;
 	margin-bottom: 40px;
 	
 }
@@ -28,7 +29,6 @@
 	margin-bottom: 10px;
 	font-size: 18px;
 	font-weight: bold;
-	color: #00912e;
 }
 
 input[type=text] {
@@ -64,15 +64,16 @@ input[type=submit] {
 	width: 150px;
 	height: 50px;
 	font: 20px "비트로 코어 OTF";
-	border: 2px solid #72CC82;
+	border: 2px solid #00912e;
 	border-radius: 10px;
-	background-color: #72CC82;
+	background-color: #00912e;
 	color: white;
 }
 
 input[type=submit]:hover {
-	border: 2px solid #00912e;
-	background-color: #00912e;
+	border: 2px solid #217517;
+	background-color: #217517;
+	cursor:pointer;
 }
 
 textarea {

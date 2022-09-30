@@ -87,7 +87,7 @@ $(document).ready(function() {
 		$(".select_region").on('click', "#" +i, function(){
 				$("input.region_btn").css("background-color", "");
 				$("input.region_btn").css("color", "");
-				$(this).css("background-color", "#72CC82");
+				$(this).css("background-color", "#00912e");
 				$(this).css("color", "white");			
 			});
 		}

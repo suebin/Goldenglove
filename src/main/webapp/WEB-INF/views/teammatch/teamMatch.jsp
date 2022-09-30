@@ -101,8 +101,16 @@
 			<div class="teammatch_info_hashtag"></div>
 			<div class="teammatch_info_boxes"></div>
 		</div>
+	
+	
+	
+		<!-- 매치 등록 버튼을 누르면 나오는 매치 등록 form 모달 창 -->
 		
-		
+<!-- 	<div class="teammatch_registration_modal">
+		<div class="teammatch_registration">
+				매치 등록을 합니다.
+			</div>
+		</div>	 -->	
 		
 	</div>
 
