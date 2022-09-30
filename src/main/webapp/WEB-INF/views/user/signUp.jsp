@@ -8,6 +8,7 @@
 <title>골든글러브</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
+<link href="/css/signUp.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
@@ -35,11 +36,20 @@
 				success : function(server) {
 					if(server.result == "이미 사용중입니다.") {
 						checkInput.prev().val("");
-						checkInput.prev().focus();						
+						checkInput.prev().focus();
+						checkInput.next().attr("class", "red");
+					}else if(server.result == "사용 가능합니다."){
+						checkInput.next().attr("class", "green");
+					}else {
+						checkInput.next().removeAttr("class");
 					}
-					checkInput.parent().next().find("p").html(server.result);
+					checkInput.next().html(server.result);
 				}
 			})
+		})
+		
+		$("#cancle").on("click", function() {
+			location.href = "/";
 		})
 	});
 </script>
@@ -47,59 +57,52 @@
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 		<div class="confix">
-			<h1>회원가입</h1>
-			<form action="signupResult" method="post" id="signupForm">
+			<h1 class="h1">회원가입</h1>
+			<form action="signupResult" method="post" id="signupForm" autocomplete="off">
 				<input type="text" name="kakaoId" value="${kakaoId }" hidden>
 				<input type="text" name="naverId" value="${naverId }" hidden>
-				<table>
+				<table class="table">
+					<tr ><th class="th" colspan="2">회원 정보 입력</th></tr>
 					<tr>
-						<td>아이디 :</td>
+						<td width="15%">아이디 </td>
 						<td>
 							<input type="text" name="id" pattern="[a-z0-9]{3,15}" title="최대 15자리까지 입력가능합니다.(영어,숫자)" required>
 							<input type="button" value="중복검사" id="idDuplicate">
-						</td>
-						<td>
-							<p id="idCheckResult"></p>
+							<span id="idCheckResult"></span>
 						</td>
 					</tr>
 					<tr>
-						<td>비밀번호 :</td>
+						<td>비밀번호 </td>
 						<td>
 							<input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,15}$" title="최소 8자리, 최대 15자리까지 입력하능합니다.(영어,특수문자,숫자 필수)" required>
 						</td>
 					</tr>
 					<tr>
-						<td>팀 이름 :</td>
+						<td>팀 이름 </td>
 						<td>
 							<input type="text" name="name" pattern="[a-zA-Z0-9가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,숫자,한글)" required>
 							<input type="button" value="중복검사" id="nameDuplicate">
-						</td>
-						<td>
-							<p id="nameCheckResult"></p>
+							<span id="nameCheckResult"></span>
 						</td>
 					</tr>
 					<tr>
-						<td>연락처 :</td>
+						<td>연락처 </td>
 						<td>
 							<input type="text" name="phone" placeholder="ex)01012345678" pattern="[0-9]{11}" title="숫자만 입력해주세요." required>
 							<input type="button" value="중복검사" id="phoneDuplicate">
-						</td>
-						<td>
-							<p id="phoneCheckResult"></p>
+							<span id="phoneCheckResult"></span>
 						</td>
 					</tr>
 					<tr>
-						<td>이메일 :</td>
+						<td>이메일 </td>
 						<td>
 							<input type="email" name="email" required>
 							<input type="button" value="중복검사" id="emailDuplicate">
-						</td>
-						<td>
-							<p id="emailCheckResult"></p>
+							<span id="emailCheckResult"></span>
 						</td>
 					</tr>
 					<tr>
-						<td>지역 :</td>
+						<td>지역 </td>
 						<td>
 							<select name="region" required>
 								<option value="" disabled selected=>==선택==</option>
@@ -123,10 +126,11 @@
 							</select>
 						</td>
 					</tr>
-					<tr>
-						<td colspan="3"><input type="submit" value="회원가입"></td>
-					</tr>
 				</table>
+				<div class="btnBox">
+					<button class="button" type="submit">회원가입</button>
+					<button class="button" id="cancle">취소</button>
+				</div>
 			</form>
 		</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
