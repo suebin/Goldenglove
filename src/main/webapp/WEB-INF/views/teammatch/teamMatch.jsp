@@ -22,7 +22,7 @@
 
 	<div class="confix">
 	
-		<!-- 선택한 지역과 날짜 데이터 저장 -->
+		<!-- 선택한 지역과 날짜 데이터 전송 -->
 		
 		<form action="teammatch" method="post">
 			<input type="hidden" name="region" id="region" value=""> 
@@ -91,7 +91,7 @@
 		<!-- 매치 검색, 매치 등록 버튼 -->
 		
 		<div class="match_btn">
-			<input type="button" id="searchbtn" class="search_btn" value="매치 검색"> 
+			<input type="button" id="searchbtn" class="search_btn" value="매치 검색">
 			<input type="button" id="registerbtn" class="register_btn" value="매치 등록">
 		</div>
 

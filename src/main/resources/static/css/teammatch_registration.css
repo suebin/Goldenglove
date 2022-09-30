@@ -1,0 +1,84 @@
+@charset "UTF-8";
+
+.teammatch_registration_title {
+	font: 28px "비트로 코어 OTF";
+	text-align: center;
+	margin-bottom: 40px;
+	
+}
+
+.teammatch_registration {
+	margin: auto;
+	width: 530px;
+}
+
+.teammatch_registration_elements {
+	display: inline-block;
+	vertical-align: top;
+	width:215px;
+	height:450px;
+	margin-left: 30px;
+}
+
+.teammatch_registratioin_element {
+	margin-bottom: 30px;
+}
+
+.teammatch_registratioin_element > div {
+	margin-bottom: 10px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #00912e;
+}
+
+input[type=text] {
+	width: 200px;
+	height: 40px;
+	font: 15px "비트로 프라이드 OTF";
+	outline: 0;
+	border-width: 0 0 2px;
+	border-color: #E3E9D5;
+}
+
+
+select, textarea {
+	width: 200px;
+	height: 40px;
+	font-family: "비트로 프라이드 OTF";
+	font-size: 15px;
+	border: 2px solid #E3E9D5;
+	border-radius: 7px;
+}
+
+#comment_cnt {
+	font-size: 12px;
+}
+
+.teammatch_registration_btn {
+	margin: auto;
+	width: 180px;
+	height: 100px;
+}
+
+input[type=submit] {
+	width: 150px;
+	height: 50px;
+	font: 20px "비트로 코어 OTF";
+	border: 2px solid #72CC82;
+	border-radius: 10px;
+	background-color: #72CC82;
+	color: white;
+}
+
+input[type=submit]:hover {
+	border: 2px solid #00912e;
+	background-color: #00912e;
+}
+
+textarea {
+	height: 70px;
+}
+
+textarea:focus, select:focus {
+	outline: none;
+}

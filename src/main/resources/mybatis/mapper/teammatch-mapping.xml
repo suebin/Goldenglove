@@ -4,12 +4,6 @@
   
 <mapper namespace="teammatch.TeamMatchDAO">
 	
-	<!-- 매치 검색 -->
-	
-	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
-		select * from teammatching where region=#{region} and possibleDate=#{possibleDate}
-	</select>
-	
 	<!-- 매치 등록 -->
 	
 	<insert id="insertTeamMatch" parameterType="teammatchdto">
@@ -17,6 +11,17 @@
 		values(#{teamName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment})
 	</insert>
 
+	<!-- 매치 검색 -->
+	
+	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
+		select * from teammatching where region=#{region} and possibleDate=#{possibleDate}
+	</select>
+	
+		<!-- 매치 검색 -->
+	
+	<select id="getAllTeamMatchList" parameterType="String" resultType="teammatchdto">
+		select * from teammatching where possibleDate=#{possibleDate}
+	</select>
 	
 </mapper>
 

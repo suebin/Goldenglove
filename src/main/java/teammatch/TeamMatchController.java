@@ -26,11 +26,19 @@ public class TeamMatchController {
 	}	
 	
 	// 팀 매치 검색 > 조회
+	
 	@ResponseBody
 	@PostMapping("/teammatch")
 	public List<TeamMatchDTO> teammatchList(String region, String possibleDate) {
 		
-		List<TeamMatchDTO> teammatchlist = service.getTeamMatchList(region, possibleDate);
+		List<TeamMatchDTO> teammatchlist;
+		
+		if(region.equals("전체")) {
+			teammatchlist = service.getAllTeamMatchList(possibleDate);
+ 		}
+		else {
+			teammatchlist = service.getTeamMatchList(region, possibleDate);
+		}
 		
 		return teammatchlist;
 	}
@@ -49,9 +57,19 @@ public class TeamMatchController {
 		int insertcount = service.insertTeamMatch(dto);
 		ModelAndView mv = new ModelAndView();
 		
-		mv.addObject("insertcount", insertcount);
+		String result = "";
+		
+		if (insertcount == 1) {
+			result = "매치가 성공적으로 등록되었습니다.";
+			 // 나중에 경기정보로 이동하도록 하기
+		}
+		else {
+			result = "매치 등록에 실패하였습니다. 다시 시도해주시길 바랍니다.";
+		}
+		
+		mv.addObject("result", result);
 		mv.setViewName("teammatch/registrationResult");
-
+		
 		return mv;
 	}
 }
