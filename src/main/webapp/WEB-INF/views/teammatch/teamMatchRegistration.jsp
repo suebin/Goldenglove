@@ -13,31 +13,67 @@
 <title>골든글러브 > 매치 등록</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
+<link href="/css/teammatch_registration.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
 		
+		// 팀 소개 글자수 85자 이하로 제한
+		
+		$("#comment").on('keyup', function() {
+			$('#comment_cnt').html($(this).val().length + " / 85");
+			
+			if($(this).val().length > 85) {
+				$(this).val($(this).val().substring(0, 85));
+				$('#comment_cnt').html("85 / 85");
+			}
+		});
 	}); // ready end
 </script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
-
-		<h1>매치 등록</h1>
-		<br>
+	
+	<div class="teammatch_registration">
+		
+		<div class="teammatch_registration_title">팀 매치 등록</div>
+		
 
 		<form action="registerTeammatch" method="post" id="registerTeammatchForm">
-			<div>
-				팀 이름 &nbsp;<input type="text" name="teamName" value=${loginInfo.getName()} readonly>
-			</div>
 			
-			<div>
-				지역 &nbsp;<input type="text" name="region" value=${param.region} readonly>
+			<div class="teammatch_registration_elements"> 
+				<div class="teammatch_registratioin_element">
+					<div>팀 이름</div>
+					<input type="text" name="teamName" value=${loginInfo.getName()} readonly>
+				</div>
+				
+				<div class="teammatch_registratioin_element">
+					<div>날짜</div>
+					<input type="text" name="possibleDate" value=${param.year_month}${param.date} readonly> 
+				</div>
+				
+				<div class="teammatch_registratioin_element">
+					<div>경기 장소</div>
+					<input type="text" name="homePlace" id="homePlace" value="" required>
+				</div>
+				
+				<div class="teammatch_registratioin_element">
+					<div>팀 소개</div>
+					<textarea cols="27" rows="4" name="comment" id="comment" value="" required></textarea>
+					<div id="comment_cnt">0 / 85</div>
+				</div>
 			</div>
 
-			<div>
-				날짜 &nbsp;<input type="text" name="possibleDate" value=${param.year_month}${param.date} readonly> <select name="possibleTime">
+			<div class="teammatch_registration_elements">
+				<div class="teammatch_registratioin_element">
+					<div>지역</div>
+					<input type="text" name="region" value=${param.region} readonly>
+				</div>
+			
+				<div class="teammatch_registratioin_element">	
+					<div>시간</div> 
+					<select name="possibleTime" id="possibleTime" value="" required>
 					<option>00:00</option>
 					<option>01:00</option>
 					<option>02:00</option>
@@ -63,24 +99,55 @@
 					<option>21:00</option>
 					<option>22:00</option>
 					<option>23:00</option>
-				</select>
-			</div>
+					</select>
+				</div>
 
-			<div>
-				장소 &nbsp;<input type="text" name="homePlace">
+				<div class="teammatch_registratioin_element">
+					<div>팀원 수</div>
+					<select name="headCount" id="headCount" value="" required>
+					<option selected>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+					<option>9</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+					<option>13</option>
+					<option>14</option>
+					<option>15</option>
+					<option>16</option>
+					<option>17</option>
+					<option>18</option>
+					<option>19</option>
+					<option>20</option>
+					<option>21</option>
+					<option>22</option>
+					<option>23</option>
+					<option>24</option>
+					<option>25</option>
+					<option>26</option>
+					<option>27</option>
+					<option>28</option>
+					<option>29</option>
+					<option>30</option>
+					</select>
+				</div>
+				
 			</div>
-
-			<div>
-				팀원 수 &nbsp;<input type="text" name="headCount">
+			
+			<div class="teammatch_registration_btn"> 
+				<input type="submit" value="매치 등록">
 			</div>
-
-			<div>
-				팀 소개<br>
-				<textarea cols="30" rows="4" name="comment"></textarea>
-			</div>
-
-			<input type="submit" value="매치 등록">
+			
 		</form>
+		
+	</div>
+	
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

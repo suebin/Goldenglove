@@ -5,15 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>매치 등록</title>
+<title>골든 글러브 > 매치 등록</title>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
-
+	alert('${result}');
+	location.href = "teammatch"; // 나중에 '경기 정보'로 이동하도록 변경하기
 }); // ready end
 </script>
 </head>
-<body>
-<h1>${insertcount} 개의 매치가 성공적으로 등록되었습니다.</h1>
-</body>
-</html>
+<body></body>
+</html></html>

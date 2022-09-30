@@ -16,11 +16,14 @@ $(document).ready(function() {
 			
 			// 선택한 날짜는 색상으로 표시
 			
-			$(".dates").on('click', "#" +i, function(){ 	
-				$(this).css("background-color", "#FFFBCC");				
+			$(".dates").on('click', "#" +i, function(){ 
+				$("div.day.current").css("background-color", "");
+				$(this).css("background-color", "#FFFBCC");			
 			});
 		}
 		
+		
+
 		// 선택한 지역 form에 저장
 		
 		$("input#0.region_btn").on("click", function() {
@@ -78,14 +81,20 @@ $(document).ready(function() {
 			$('input[name=region]').attr('value', '충청북도');
 		})
 
+		// 선택한 지역은 색상으로 표시
 		
-		// 매치 검색 버튼
-		$("#registerbtn").on("click", function() {
-			
-		})
-		
+		for (var i=0; i<=17; i++) {
+		$(".select_region").on('click', "#" +i, function(){
+				$("input.region_btn").css("background-color", "");
+				$("input.region_btn").css("color", "");
+				$(this).css("background-color", "#00912e");
+				$(this).css("color", "white");			
+			});
+		}
 
-		// 매치 검색 버튼
+		
+		
+		// 매치 검색 버튼을 누를 경우
 		
 		$("#searchbtn").on("click", function() {
 			
@@ -94,38 +103,105 @@ $(document).ready(function() {
 				data: {'region':$("#region").val(),'possibleDate':$("#year_month").val() + $("#date").val()},
 				type: 'post',
 				dataType: 'json',
-				success: function(data){ 
-					if(data.length != 0) {
+				success: function(data){
 					
+					// 날짜와 지역을 모두 선택한 경우에만 매치 검색을 할 수 있다.
+					
+					if ($("#region").val() != '' && $("#date").val() != '') {
 						
-						// 날짜, 지역 필터링 한 등록된 매치 조회 
+						// 해당 날짜, 지역에 등록된 매치가 있을 경우
+				
+						if(data.length != 0) {
 						
-						document.querySelector('.teammatch_info_hashtag').innerHTML = '<div class="teammatch_hashtag">#' + data[0].possibleDate + '</div><div class="teammatch_hashtag">#' + data[0].region + '</div>'; 
+							// 날짜, 지역 필터링 한 등록된 매치 조회 
 						
-						document.querySelector('.teammatch_info_boxes').innerHTML = '';
+							document.querySelector('.teammatch_info_hashtag').innerHTML = '<div class="teammatch_hashtag">#' + $("#region").val() + '</div><div class="teammatch_hashtag">#' + $("#year_month").val() + $("#date").val() + '</div>'; 
 						
-						for(var i=0; i<data.length; i++) {
-							$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
+							document.querySelector('.teammatch_info_boxes').innerHTML = '';
+						
+							for(var i=0; i<data.length; i++) {
+								$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
 																+ '<div class="teammatch_info_one"><div class="teammatch_info_teamname">' + data[i].teamName + '</div><div class="teammatch_info_ranking">🏆  0 위</div><div></div></div>'
-																+ '<div class="teammatch_info_two">시작 시간 : ' + data[i].possibleTime + '<br>경기 장소 : ' + data[i].homePlace + '<br>팀원 : ' + data[i].headCount + '명</div>'
-																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">남기는 한마디</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>'
+																+ '<div class="teammatch_info_two">시작 시간 : ' + data[i].possibleTime + '<br>지역 : ' + data[i].region +  '<br>경기 장소 : ' + data[i].homePlace + '<br>팀원 : ' + data[i].headCount + '명</div>'
+																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>'
 																+ '<div class="teammatch_btns"><input type="button" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 정보"> </div>'
 															+ '</div>')	
-						}	
+							}	
+						
+							// 매치 조회로 이동 
+						
+							$('html,body').animate({
+        						scrollTop: $(".teammatch_info").offset().top},
+        						'slow');
+						}
+					
+						// 해당 날짜, 지역에 등록된 매치가 없을 경우
+					
+						else {
+							$(".teammatch_info_hashtag").empty();
+							$(".teammatch_info_boxes").empty();
+							alert("선택하신 날짜와 지역에 등록된 매치가 없습니다.");	
+						}
 					}
+					
+					// 날짜만 선택한 경우
+					
+					else if ($("#region").val() == '' && $("#date").val() != '') {
+						alert("지역을 선택해주시길 바랍니다.");
+					}
+					
+					// 지역만 선택한 경우
+					
+					else if ($("#region").val() != '' && $("#date").val() == '') {
+						alert("날짜를 선택해주시길 바랍니다.");
+					}
+					
+					// 날짜와 지역 모두 선택하지 않은 경우
+					
+					else {
+						alert("날짜와 지역을 선택해주시길 바랍니다.");
+					}
+					
+					
+					
+				
 				}
+				
+				
 			});	
 		}) // searchbtn end
+		
 		
 		// 매치 등록 버튼
 		
 		$("#registerbtn").on("click", function() {
 			
-			// 로그인을 한 상태여야 매치 등록을 할 수 있다.
+			// 로그인을 하지 않은 경우
 			
 			if ($(".dropdownBtn").text() == "") {
 				alert("로그인이 필요한 서비스입니다.");
 			}
+			
+			// 날짜만 선택한 경우
+					
+			else if ($("#region").val() == '' && $("#date").val() != '') {
+				alert("지역을 선택해주시길 바랍니다.");
+			}
+					
+			// 지역만 선택한 경우
+					
+			else if ($("#region").val() != '' && $("#date").val() == '') {
+				alert("날짜를 선택해주시길 바랍니다.");
+			}
+					
+			// 날짜와 지역 모두 선택하지 않은 경우
+					
+			else if ($("#region").val() == '' && $("#date").val() == '') {
+				alert("날짜와 지역을 선택해주시길 바랍니다.");
+			}
+			
+			// 로그인 상태이고, 날짜와 지역을 모두 선택한 경우에만 매치 등록을 할 수 있다.
+			
 			else {
 				location.href= "registerTeammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
 			}
@@ -142,10 +218,10 @@ $(document).ready(function() {
     금월 마지막일 날짜와 요일
     전월 마지막일 날짜와 요일
     
-    출처: https://songsong.dev/11 [송송은 오늘도 열심히 코딩 하네:티스토리]
 */
 
-// 캘린더 함수	
+// 캘린더 함수 
+// 출처: https://songsong.dev/11 [송송은 오늘도 열심히 코딩 하네:티스토리]	
 
 function calendarInit() {
 
@@ -246,4 +322,5 @@ function calendarInit() {
         thisMonth = new Date(currentYear, currentMonth + 1, 1);
         renderCalender(thisMonth); 
     });
+
 }
