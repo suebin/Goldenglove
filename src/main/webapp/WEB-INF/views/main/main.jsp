@@ -16,10 +16,11 @@
 <body>
   <jsp:include page="/WEB-INF/views/components/header.jsp" />
   
-  <div class="confix">
-  	test
- 	</div>
+  	<div class="confix">
+  		test
+	</div>
  	
+  <jsp:include page="/WEB-INF/views/chatbot/chatbot.jsp" />
   <jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
 </html>
