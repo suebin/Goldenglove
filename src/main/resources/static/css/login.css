@@ -1,0 +1,88 @@
+.h1 {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.table {
+	width: 50%;
+	margin: auto;
+	border-collapse: collapse;
+}
+
+.table td {
+	padding: 16px;
+	text-align: center;
+}
+
+input {
+	border: 1px solid #aaa;	
+}
+
+input, .table button {
+	font-size: 20px;
+	width: 75%;
+	height: 50px;
+	padding: 0 8px;
+}
+
+.login {
+	color: #fff;
+    background: #444;
+    border: 1px solid #444;
+    font-weight: 900;
+}
+
+.kakaoLogin {
+	color: #fff;
+	background: #feca00;
+	border: 1px solid #feca00;
+    font-weight: 900;
+}
+
+.naverLogin {
+	color: #fff;
+	background: #00912e;
+	border: 1px solid #00912e;
+    font-weight: 900;
+}
+
+input:focus {
+	background: #feca00;
+}
+
+.table2 {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+.findBox {
+	width: 35%;
+	margin: auto;
+	padding: 12px 0;
+	border-top: 1px solid #d5d5d5;
+	margin-top: 20px;
+}
+
+.table2 td {
+	width: 65%;
+	padding: 6px 0;
+	text-align: justify;
+}
+
+.table2 td:first-child {
+	font-size: 14px;
+	color: #666;
+}
+
+.table2 td:last-child {
+	text-align: right;
+}
+
+.table2 button {
+	width: 110px;
+	background: #666;
+	border: 1px solid #666;
+    color: #eee;
+	font-size: 16px;
+	padding: 2px 0;
+}
