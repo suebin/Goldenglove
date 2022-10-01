@@ -23,6 +23,12 @@ public class TeamController {
 		return "main/main";
 	}
 
+//	팀 점보
+	@RequestMapping("/teampage")
+	public String teamPage() {
+		return "team/teamPage";
+	}
+
 //	팀원수정 폼
 	@RequestMapping("teamUpdate")
 	public ModelAndView teamUpdate(HttpServletRequest request) {

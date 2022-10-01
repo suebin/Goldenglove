@@ -4,8 +4,41 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TeamDTO {
-	private String teamName, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder,
-			centerFielder, shortStop;
+	private String teamName, registerDate, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder,
+			rightFielder, centerFielder, shortStop;
+	private int teamId, winCount, loseCount;
+
+	public String getRegisterDate() {
+		return registerDate;
+	}
+
+	public void setRegisterDate(String registerDate) {
+		this.registerDate = registerDate;
+	}
+
+	public int getTeamId() {
+		return teamId;
+	}
+
+	public void setTeamId(int teamId) {
+		this.teamId = teamId;
+	}
+
+	public int getWinCount() {
+		return winCount;
+	}
+
+	public void setWinCount(int winCount) {
+		this.winCount = winCount;
+	}
+
+	public int getLoseCount() {
+		return loseCount;
+	}
+
+	public void setLoseCount(int loseCount) {
+		this.loseCount = loseCount;
+	}
 
 	public String getTeamName() {
 		return teamName;

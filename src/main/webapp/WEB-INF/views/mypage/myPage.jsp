@@ -12,15 +12,7 @@
 <script>
 $(document).ready(function() {
 	$("#updateUserBtn").on("click", function() {
-		$("#passwordInputUser").removeAttr("hidden");
-		$("#passwordInputTeam").attr("hidden","hidden");
 		$("#passwordUser").focus();
-	})
-	
-	$("#updateTeamBtn").on("click", function() {
-		$("#passwordInputTeam").removeAttr("hidden");
-		$("#passwordInputUser").attr("hidden","hidden");
-		$("#passwordTeam").focus();
 	})
 	
 	const info = "${loginInfo.password}";
@@ -33,16 +25,6 @@ $(document).ready(function() {
 			$("#passwordUser").focus();
 		}
 	})
-	
-	$("#submitBtnTeam").on("click", function() {
-		if("${loginInfo.password}" == $("#passwordTeam").val()) {
-			window.location.href = "teamUpdate";
-		} else {
-			$("#checkResultTeam").html("비밀번호를 확인해주세요.");
-			$("#passwordTeam").val("");
-			$("#passwordTeam").focus();
-		}
-	})
 });
 </script>
 </head>
@@ -51,7 +33,7 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<h1>내정보</h1>
-		<p>팀이름 : ${loginInfo.getName() }</p>
+		<p>이름 : ${loginInfo.getName() }</p>
 		<p>연락처 : ${loginInfo.getPhone() }</p>
 		<p>이메일 : ${loginInfo.getEmail() }</p>
 		<p>지역 : ${loginInfo.getRegion() }</p>
@@ -67,9 +49,7 @@ $(document).ready(function() {
 			<button id="submitBtnTeam">확인</button>
 			<span id="checkResultTeam"></span>
 		</div>
-		<jsp:include page="/WEB-INF/views/components/position.jsp" />
 		<button id="updateUserBtn">정보 수정</button>
-		<button id="updateTeamBtn">팀원 수정</button>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

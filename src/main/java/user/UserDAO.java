@@ -20,4 +20,13 @@ public interface UserDAO {
 //	수정
 	void updateUser(UserDTO dto);
 
+//	아이디 찾기
+	String findId(UserDTO dto);
+
+//	비밀번호 찾기
+	String findPw(UserDTO dto);
+
+//	비밀번호 수정
+	void updatePassword(UserDTO dto);
+
 }

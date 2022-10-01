@@ -21,5 +21,20 @@
 	<update id="updateUser" parameterType="userDTO">
 		update user set name = #{name}, phone = #{phone}, email = #{email}, region = #{region} where id = #{id};
 	</update>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findId" parameterType="userDTO" resultType="String">
+		select id from user where name = #{name} and email = #{email};
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findPw" parameterType="userDTO" resultType="String">
+		select password from user where name = #{name} and email = #{email} and id = #{id};
+	</select>
+	
+	<!-- 비밀번호 수정 -->
+	<update id="updatePassword" parameterType="userDTO">
+		update user set password = #{password} where id = #{id} and name = #{name} and email = #{email};
+	</update>
 
 </mapper>

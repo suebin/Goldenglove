@@ -5,6 +5,7 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,14 +33,11 @@ public class UserController {
 		}
 	}
 
-//	회원가입 후 팀원 등록
+//	회원가입 완료
 	@PostMapping("/signupResult")
-	public ModelAndView signupResult(UserDTO dto) {
+	public String signupResult(UserDTO dto) {
 		userService.insertUser(dto);
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("name", dto.getName());
-		mv.setViewName("team/teamRegistration");
-		return mv;
+		return "main/main";
 	}
 
 //	중복검사
@@ -135,5 +133,55 @@ public class UserController {
 		UserDTO updateInfo = userService.selectUser(dto.getId());
 		session.setAttribute("loginInfo", updateInfo);
 		return "mypage/myPage";
+	}
+
+//	아이디찾기
+	@RequestMapping("/findid")
+	public String findId() {
+		return "user/findId";
+	}
+
+	@ResponseBody
+	@RequestMapping("findidresult")
+	public String findIdResult(UserDTO dto) {
+		String id = userService.findId(dto);
+		String result = "";
+		if (id != null) {
+			result = "회원님의 아이디는 " + id + " 입니다.";
+		} else {
+			result = "입력하신 정보와 일치하는 아이디가 없습니다.";
+		}
+		return "{\"result\":\"" + result + "\"}";
+	}
+
+//	비밀번호찾기
+	@RequestMapping("/findpw")
+	public String findPw() {
+		return "user/findPw";
+	}
+
+	@ResponseBody
+	@RequestMapping("findpwresult")
+	public String findPwResult(UserDTO dto) {
+		String pw = userService.findPw(dto);
+		String result = "";
+		if (pw != null) {
+			result = "success";
+		} else {
+			result = "입력하신 정보와 일치하는 정보가 없습니다.";
+		}
+		JSONObject json = new JSONObject();
+		json.append("result", result);
+		json.append("name", dto.getName());
+		json.append("id", dto.getId());
+		json.append("email", dto.getEmail());
+		return json.toString();
+	}
+
+//	비밀번호 수정
+	@RequestMapping("updatePassword")
+	public String updatePassword(UserDTO dto) {
+		userService.updatePassword(dto);
+		return "main/main";
 	}
 }

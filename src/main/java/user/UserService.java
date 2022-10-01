@@ -30,4 +30,19 @@ public class UserService {
 		userDao.updateUser(dto);
 	}
 
+//	아이디 찾기
+	public String findId(UserDTO dto) {
+		return userDao.findId(dto);
+	}
+
+//	비밀번호 찾기
+	public String findPw(UserDTO dto) {
+		return userDao.findPw(dto);
+	}
+
+//	비밀번호 수정
+	public void updatePassword(UserDTO dto) {
+		userDao.updatePassword(dto);
+	}
+
 }

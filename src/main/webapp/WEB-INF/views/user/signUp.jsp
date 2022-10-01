@@ -15,11 +15,11 @@
 		history.replaceState({}, null, location.pathname);
 		/* submit시 중복검사 여부 확인 */
 		$("#signupForm").on("submit", function(e) {
-			if($("#idCheckResult").text() == "" || $("#nameCheckResult").text() == "" || $("#phoneCheckResult").text() == "" || $("#emailCheckResult").text() == "") {
+			if($("#idCheckResult").text() == "" || $("#phoneCheckResult").text() == "" || $("#emailCheckResult").text() == "") {
 				e.preventDefault();
 				alert("중복검사를 해주세요.");
 			}else {
-				alert("회원가입이 완료되었습니다. 팀원 등록 페이지로 이동합니다.");
+				alert("회원가입이 완료되었습니다. 로그인 후 이용해주세요.");
 			}
 		})
 
@@ -78,11 +78,9 @@
 						</td>
 					</tr>
 					<tr>
-						<td>팀 이름 </td>
+						<td>이름 </td>
 						<td>
-							<input type="text" name="name" pattern="[a-zA-Z0-9가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,숫자,한글)" required>
-							<input type="button" value="중복검사" id="nameDuplicate">
-							<span id="nameCheckResult"></span>
+							<input type="text" name="name" pattern="[a-zA-Z가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,한글)" required>
 						</td>
 					</tr>
 					<tr>
