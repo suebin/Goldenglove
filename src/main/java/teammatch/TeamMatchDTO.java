@@ -1,20 +1,32 @@
 package teammatch;
 
 public class TeamMatchDTO {
-	String teamName;
+	String homeName;
+	String awayName;
 	String region;
 	String possibleDate;
 	String possibleTime;
 	String homePlace;
 	int headCount;
 	String comment;
+	int registration;
+	int acceptance;
+	String winner;
+	String loser;
 	
 	// getter, setter
-	public String getTeamName() {
-		return teamName;
+	
+	public String getHomeName() {
+		return homeName;
 	}
-	public void setTeamName(String teamName) {
-		this.teamName = teamName;
+	public void setHomeName(String homeName) {
+		this.homeName = homeName;
+	}
+	public String getAwayName() {
+		return awayName;
+	}
+	public void setAwayName(String awayName) {
+		this.awayName = awayName;
 	}
 	public String getRegion() {
 		return region;
@@ -51,5 +63,29 @@ public class TeamMatchDTO {
 	}
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	public int getRegistration() {
+		return registration;
+	}
+	public void setRegistration(int registration) {
+		this.registration = registration;
+	}
+	public int getAcceptance() {
+		return acceptance;
+	}
+	public void setAcceptance(int acceptance) {
+		this.acceptance = acceptance;
+	}
+	public String getWinner() {
+		return winner;
+	}
+	public void setWinner(String winner) {
+		this.winner = winner;
+	}
+	public String getLoser() {
+		return loser;
+	}
+	public void setLoser(String loser) {
+		this.loser = loser;
 	}
 }

@@ -37,7 +37,7 @@
 							<p class="dropdownBtn">${loginInfo.getName() } ▼</p>
 							<div class="dropdown-contents">
 								<a href="mypage">내 정보</a>
-								<a href="#">경기 정보</a>
+								<a href="teammatchpage?myTeamName=${loginInfo.getName()}">경기 정보</a>
 							</div>
 						</div>
 						<button type="button" onclick="location.href='/logout'">Log Out</button>								

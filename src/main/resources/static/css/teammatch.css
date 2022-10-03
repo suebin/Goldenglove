@@ -266,13 +266,13 @@ input.search_btn:hover, input.register_btn:hover {
 }
 
 .teammatch_info_comment {
-	font-size: 10px;
+	font-size: 12px;
 }
 
-.teammatch_btns {
+form {
 	float: right;
 	text-align: center;
-	margin-top: 7px;
+	margin-top: 10px;
 }
 
 .teammatch_btn {
@@ -304,6 +304,8 @@ input.teammatch_btn:hover {
 @media (max-width: 768px) {
 	
 }
+
+
 
 
 /* 매치 등록 버튼을 누르면 나오는 모달 창 */
