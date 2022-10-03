@@ -20,4 +20,10 @@ public interface TeamMatchDAO {
 	// 매치 검색 > 전체 지역 조회
 
 	List<TeamMatchDTO> getAllTeamMatchList(String possibleDate);
+	
+	// 매치 신청
+	
+	int updateAwayName(String homeName, String possibleTime, String region, String homePlace, String comment, String awayName);
+	int updateRegistration(String homeName, String possibleTime, String region, String homePlace, String comment, int registration);
+
 }

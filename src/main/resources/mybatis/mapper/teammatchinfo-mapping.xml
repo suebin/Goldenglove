@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="teammatchinfo.TeamMatchInfoDAO">
+
+	<!-- 수락을 기다리는 경기 -->
+	
+	<select id="getTeamMatchList1" resultType="teammatchdto">
+		select * from teammatching where homeName=#{myTeamName} and awayName is not null and registration is not null and acceptance is null;
+	</select>
+	
+	<!-- 등록한 경기 -->
+	
+	<select id="getTeamMatchList2" resultType="teammatchdto">
+		select * from teammatching where homeName=#{myTeamName} and awayName is null and registration is null;
+	</select>
+	
+	<!-- 신청한 경기 -->
+	
+	<select id="getTeamMatchList3" resultType="teammatchdto">
+		select * from teammatching where awayName=#{myTeamName} and registration is not null;
+	</select>
+	
+	<!-- 예정된 경기 -->
+	
+	<select id="getTeamMatchList4" resultType="teammatchdto">
+		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration is not null and acceptance is not null)
+		or (awayName=#{myTeamName} and registration is not null and acceptance is not null);
+	</select>
+
+	
+	<!-- 지난 경기 -->
+	
+	<select id="getTeamMatchList5" resultType="teammatchdto">
+		select * from teammatching where (homeName=#{myTeamName} and winner is not null and loser is not null)
+		or (awayName=#{myTeamName} and winner is not null and loser is not null);
+	</select>
+</mapper>

@@ -15,7 +15,6 @@
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="js/teammatch.js"></script>
-
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
@@ -101,8 +100,8 @@
 			<div class="teammatch_info_hashtag"></div>
 			<div class="teammatch_info_boxes"></div>
 		</div>
-	
-	
+
+		
 	
 		<!-- 매치 등록 버튼을 누르면 나오는 매치 등록 form 모달 창 -->
 		

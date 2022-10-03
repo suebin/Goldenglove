@@ -29,4 +29,14 @@ public class TeamMatchService {
 	public List<TeamMatchDTO> getAllTeamMatchList(String possibleDate) {
 		return dao.getAllTeamMatchList(possibleDate);
 	}
+	
+	// 매치 신청
+	
+	public int updateAwayName(String homeName, String possibleTime, String region, String homePlace, String comment, String awayName) {
+		return dao.updateAwayName(homeName, possibleTime, region, homePlace, comment, awayName);
+	}
+	public int updateRegistration(String homeName, String possibleTime, String region, String homePlace, String comment, int registration) {
+		return dao.updateRegistration(homeName, possibleTime, region, homePlace, comment, registration);
+	}
+	
 }
