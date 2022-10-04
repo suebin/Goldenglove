@@ -105,6 +105,13 @@ $(document).ready(function() {
 				dataType: 'json',
 				success: function(data){
 					
+					// 로그인을 해야 매치 검색을 할 수 있다.
+					
+					if ($(".dropdownBtn").text() == "") {
+						alert("로그인이 필요한 서비스입니다.")	
+					}
+					
+					else {
 					// 날짜와 지역을 모두 선택한 경우에만 매치 검색을 할 수 있다.
 					
 					if ($("#region").val() != '' && $("#date").val() != '') {
@@ -121,11 +128,23 @@ $(document).ready(function() {
 						
 							for(var i=0; i<data.length; i++) {
 								$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
-																+ '<div class="teammatch_info_one"><div class="teammatch_info_teamname">' + data[i].teamName + '</div><div class="teammatch_info_ranking">🏆  0 위</div><div></div></div>'
+																+ '<div class="teammatch_info_one"><div class="teammatch_info_teamname">' + data[i].homeName + '</div><div class="teammatch_info_ranking">🏆  0 위</div><div></div></div>'
 																+ '<div class="teammatch_info_two">시작 시간 : ' + data[i].possibleTime + '<br>지역 : ' + data[i].region +  '<br>경기 장소 : ' + data[i].homePlace + '<br>팀원 : ' + data[i].headCount + '명</div>'
 																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>'
-																+ '<div class="teammatch_btns"><input type="button" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 정보"> </div>'
+																
+																+ '<form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
+																+ 	'<input type="hidden" name="homeName" id="homeName" value="' + data[i].homeName + '">'
+																+ 	'<input type="hidden" name="possibleTime" id="possibleTime" value="' + data[i].possibleTime + '">'
+																+ 	'<input type="hidden" name="region" id="region" value="' + data[i].region + '">'
+																+ 	'<input type="hidden" name="homePlace" id="homePlace" value="' + data[i].homePlace + '">'
+																+ 	'<input type="hidden" name="comment" id="comment" value="' + data[i].comment + '">'
+																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn").text().slice(0, -2) + '">'
+																+	'<input type="hidden" name="registration" id="registration" value="' + 1 + '">'
+																+ '<div class="teammatch_btns"><input type="submit" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 프로필"> </div>'
+																+ '</form>'
 															+ '</div>')	
+														
+								
 							}	
 						
 							// 매치 조회로 이동 
@@ -161,10 +180,17 @@ $(document).ready(function() {
 					else {
 						alert("날짜와 지역을 선택해주시길 바랍니다.");
 					}
+					}
 					
 					
+					// 팀 프로필 버튼 
 					
-				
+					$("#team_info_btn").on("click", function() {
+						$(".team_info_modal").fadeIn();
+					}) // 팀 프로필 btn end
+					$(".team_info_close").on("click", function() {
+						$(".team_info_modal").fadeOut();
+					})
 				}
 				
 				
@@ -205,7 +231,8 @@ $(document).ready(function() {
 			else {
 				location.href= "registerTeammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
 			}
-		}) // registerbtn end
+		}) // registerbtn end		
+
 
 	}); // ready end
 

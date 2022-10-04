@@ -14,6 +14,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "ranking")
 @ComponentScan(basePackages = "chatbot")
 @ComponentScan(basePackages = "sns")
+@ComponentScan(basePackages = "teammatchinfo")
 
 @MapperScan(basePackages = "user")
 @MapperScan(basePackages = "team")
@@ -21,6 +22,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan(basePackages = "notice")
 @MapperScan(basePackages = "ranking")
 @MapperScan(basePackages = "sns")
+@MapperScan(basePackages = "teammatchinfo")
 @SpringBootApplication
 public class GoldenGloveApplication {
 
