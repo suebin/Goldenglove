@@ -38,10 +38,24 @@ public class TeamMatchInfoService {
 		return dao.getTeamMatchList4(myTeamName);
 	}
 	
-	
 	// 지난 경기
 	
 	public List<TeamMatchDTO> getTeamMatchList5(String myTeamName) {
 		return dao.getTeamMatchList5(myTeamName);
 	}
+	
+	// 수락하기 버튼
+	
+	public int updateAcceptance(int seq, int acceptance) {
+		return dao.updateAcceptance(seq, acceptance);
+	}
+	
+	// 예정된 경기 취소하기 버튼
+	
+	public int deleteTeammatch(int seq) {
+		return dao.deleteTeammatch(seq);
+	}
+	
+	
+	
 }

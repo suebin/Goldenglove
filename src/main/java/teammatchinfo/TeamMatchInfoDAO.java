@@ -31,4 +31,11 @@ public interface TeamMatchInfoDAO {
 	
 	List<TeamMatchDTO> getTeamMatchList5(String myTeamName);
 	
+	// 수락하기 버튼
+	
+	int updateAcceptance(int seq, int acceptance);
+	
+	// 예정된 경기 취소하기 버튼
+	
+	int deleteTeammatch(int seq);
 }
