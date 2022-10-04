@@ -13,7 +13,7 @@
 	<!-- 매치 검색 -->
 	
 	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
-		select * from teammatching where region=#{region} and possibleDate=#{possibleDate} and awayName is null
+		select * from teammatching where region=#{region} and possibleDate=#{possibleDate} and awayName is null or registration=0
 	</select>
 	
 	<!-- 매치 검색 (지역: 전체) -->

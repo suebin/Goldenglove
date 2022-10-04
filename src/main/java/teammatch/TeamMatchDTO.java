@@ -1,6 +1,7 @@
 package teammatch;
 
 public class TeamMatchDTO {
+	int seq;
 	String homeName;
 	String awayName;
 	String region;
@@ -16,6 +17,12 @@ public class TeamMatchDTO {
 	
 	// getter, setter
 	
+	public int getSeq() {
+		return seq;
+	}
+	public void setSeq(int seq) {
+		this.seq = seq;
+	}
 	public String getHomeName() {
 		return homeName;
 	}

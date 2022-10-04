@@ -6,26 +6,26 @@
 	<!-- 수락을 기다리는 경기 -->
 	
 	<select id="getTeamMatchList1" resultType="teammatchdto">
-		select * from teammatching where homeName=#{myTeamName} and awayName is not null and registration is not null and acceptance is null;
+		select * from teammatching where homeName=#{myTeamName} and awayName is not null and registration=1 and acceptance=0;
 	</select>
 	
 	<!-- 등록한 경기 -->
 	
 	<select id="getTeamMatchList2" resultType="teammatchdto">
-		select * from teammatching where homeName=#{myTeamName} and awayName is null and registration is null;
+		select * from teammatching where homeName=#{myTeamName} and awayName is null and registration=0;
 	</select>
 	
 	<!-- 신청한 경기 -->
 	
 	<select id="getTeamMatchList3" resultType="teammatchdto">
-		select * from teammatching where awayName=#{myTeamName} and registration is not null;
+		select * from teammatching where awayName=#{myTeamName} and registration=1;
 	</select>
 	
 	<!-- 예정된 경기 -->
 	
 	<select id="getTeamMatchList4" resultType="teammatchdto">
 		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration is not null and acceptance is not null)
-		or (awayName=#{myTeamName} and registration is not null and acceptance is not null);
+		or (awayName=#{myTeamName} and registration=1 and acceptance=1);
 	</select>
 
 	
@@ -35,4 +35,16 @@
 		select * from teammatching where (homeName=#{myTeamName} and winner is not null and loser is not null)
 		or (awayName=#{myTeamName} and winner is not null and loser is not null);
 	</select>
+	
+	<!-- 수락을 기다리는 경기 > 수락하기 버튼 -->
+	
+	<update id="updateAcceptance">
+		update teammatching set acceptance=#{acceptance} where seq=#{seq}
+	</update>
+	
+	<!-- 예정된 경기 > 취소 버튼 -->
+	
+	<update id="deleteTeammatch">
+		update teammatching set acceptance=0 and awayName=null where seq=#{seq}
+	</update>
 </mapper>
