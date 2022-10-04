@@ -8,11 +8,29 @@
 <title>골든글러브</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
+<link href="/css/myPage.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+	const position = {
+			firstBase : "1루수",
+			secondBase : "2루수",
+			thirdBase : "3루수",
+			catcher : "포수",
+			pitcher : "투수",
+			leftFielder : "좌익수",
+			rightFielder : "우익수",
+			centerFielder : "중견수",
+			shortStop : "유격수"
+	}
+	const positionName = position.${loginInfo.getPosition()};
+	$("#position").html(positionName);
+	
 	$("#updateUserBtn").on("click", function() {
+		$("#passwordInputUser").removeAttr("hidden");
+		$("#submitBtnUser").removeAttr("hidden");
 		$("#passwordUser").focus();
+		$("#updateUserBtn").attr("hidden", "hidden");
 	})
 	
 	const info = "${loginInfo.password}";
@@ -32,24 +50,22 @@ $(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
-		<h1>내정보</h1>
-		<p>이름 : ${loginInfo.getName() }</p>
-		<p>연락처 : ${loginInfo.getPhone() }</p>
-		<p>이메일 : ${loginInfo.getEmail() }</p>
-		<p>지역 : ${loginInfo.getRegion() }</p>
-		<div id="passwordInputUser" hidden>
-			<span>비밀번호 :</span>
-			<input type="password" id="passwordUser">
-			<button id="submitBtnUser">확인</button>
-			<span id="checkResultUser"></span>
+		<div class="contentBox">
+			<h1 class="h1">내정보</h1>
+			<table class="table">
+				<tr><td width="20%">이름 </td><td>${loginInfo.getName() }</td></tr>
+				<tr><td>연락처 </td><td>${loginInfo.getPhone() }</td></tr>
+				<tr><td>이메일 </td><td>${loginInfo.getEmail() }</td></tr>
+				<tr><td>지역 </td><td>${loginInfo.getRegion() }</td></tr>
+				<tr><td>포지션 </td><td id="position"></td></tr>
+			</table>
+			<table class="table" id="passwordInputUser" hidden>
+				<tr><td width="20%">비밀번호 </td><td><input type="password" id="passwordUser"></td></tr>
+				<tr><td></td><td id="checkResultUser" class="red"></td></tr>
+			</table>
+			<button id="updateUserBtn" class="updateBtn">정보 수정</button>
+			<button id="submitBtnUser" hidden>확인</button>
 		</div>
-		<div id="passwordInputTeam" hidden>
-			<span>비밀번호 :</span>
-			<input type="password" id="passwordTeam">
-			<button id="submitBtnTeam">확인</button>
-			<span id="checkResultTeam"></span>
-		</div>
-		<button id="updateUserBtn">정보 수정</button>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

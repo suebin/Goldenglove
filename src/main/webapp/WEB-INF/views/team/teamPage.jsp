@@ -12,6 +12,7 @@
 <script>
 $(document).ready(function() {
 	$("#updateTeamBtn").on("click", function() {
+		$("#passwordInputTeam").removeAttr("hidden");
 		$("#passwordTeam").focus();
 	})
 	
@@ -32,6 +33,12 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<jsp:include page="/WEB-INF/views/components/position.jsp" />
+		<div id="passwordInputTeam" hidden>
+			<span>비밀번호 :</span>
+			<input type="password" id="passwordTeam">
+			<button id="submitBtnTeam">확인</button>
+			<span id="checkResultTeam"></span>
+		</div>
 		<button id="updateTeamBtn">팀원 수정</button>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />

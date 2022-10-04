@@ -124,6 +124,23 @@
 							</select>
 						</td>
 					</tr>
+					<tr>
+						<td>포지션 </td>
+						<td>
+							<select name="position" required>
+								<option value="" disabled selected=>==선택==</option>
+								<option value="firstBase">1루수</option>
+								<option value="secondBase">2루수</option>
+								<option value="thirdBase">3루수</option>
+								<option value="catcher">포수</option>
+								<option value="pitcher">투수</option>
+								<option value="leftFielder">좌익수</option>
+								<option value="rightFielder">우익수</option>
+								<option value="centerFielder">중견수</option>
+								<option value="shortStop">유격수</option>
+							</select>
+						</td>
+					</tr>
 				</table>
 				<div class="btnBox">
 					<button class="button" type="submit">회원가입</button>
