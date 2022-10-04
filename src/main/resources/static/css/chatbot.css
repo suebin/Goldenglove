@@ -18,10 +18,15 @@ h2 {
 	padding-bottom: 20px;
 }
 
+button {
+	font-family: "비트로 프라이드 OTF";
+}
+
 .hidden {
 	right: -1000px !important;
 	transition: all 5s ease-in;
 }
+
 
 /*=========== chatbotBox ===========*/
 .chatbotBox {
@@ -39,13 +44,14 @@ h2 {
 /*=========== chat ===========*/
 .chatbotBox .chat {
 	position: absolute;
-	right: 0;
+	right: -10px;
 	bottom: 0px;
 	width: 450%;
 	border: 1px solid var(--gray);
 	border-radius: 10px;
 	height: 65vh;
 	max-height: 500px;
+	box-shadow: 5px 6px 18px -15px rgba(0,0,0,1);
 	background: #fff;
 	overflow-y: scroll;
     -ms-overflow-style: none; /* IE and Edge */
@@ -106,7 +112,7 @@ h2 {
 
 /*=========== bottom ===========*/
 .chat .bottom {
-	margin: 80px 0;
+	margin: 70px 0 60px;
 }
 
 /*=========== bot, me ===========*/
@@ -152,17 +158,26 @@ h2 {
 .bottom .bot .faqList {
 	margin-top: 5px;
 	border-radius: 5px;
+	border: 1px solid var(--gray);
+	overflow: hidden;
+	background: #f3f3f3;
 }
 
-.bottom .bot .conBox .faqList button {
-	padding: 5px;
+.bottom .bot .faqList button {
+	padding: 8px 10px;
 	width: 100%;
+	text-align: left;
 	font-size: 12px;
+	border: none;
+	border-bottom: 1px solid var(--gray);
 }
 
+.bottom .bot .faqList button:last-child {
+	border: none;
+}
 .bottom .bot .faqList button:hover {
 	background: var(--gray);
-	transition: all 0.3s;
+	transition: background 0.3s;
 } 
 
 .bottom .me {

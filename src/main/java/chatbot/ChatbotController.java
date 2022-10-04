@@ -14,7 +14,7 @@ public class ChatbotController {
 	
 	@ResponseBody
 	@RequestMapping("/chatbot")
-	public String startChatbot(String request, String event, String type) {
+	public String startChatbot(String request, String event) {
 		String response = "";
 		
 		response = service.startChatbot(request, event);

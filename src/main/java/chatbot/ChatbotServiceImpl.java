@@ -18,9 +18,9 @@ import org.springframework.stereotype.Service;
 import com.example.golden_glove.ChatbotInform;
 
 @Service("chatbotService")
-public class ChatbotServiceImpl implements ChatbotService {
+public class ChatbotServiceImpl  {
 
-  @Override	
+  
   public String startChatbot(String requestMessage, String event) {
 
 	  String chatbotMessage = "";

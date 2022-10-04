@@ -20,6 +20,7 @@ uri="http://java.sun.com/jsp/jstl/core"%>
 
 	<div class="confix">test</div>
 
+	<jsp:include page="/WEB-INF/views/chatbot/chatbot.jsp" />
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
 </html>

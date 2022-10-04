@@ -12,16 +12,31 @@
 <script>
 $(document).ready(function() {
 	// 대화 시작
-	$(".chatbotIcon").on("click", function() {
+	$(".chatbotIcon").on("click", function() { start("FAQ", "open") });
+	$(".inputBox button").on("click", inputStart);
+	$("#request").on("keyup", enterKey);
+	
+	function enterKey(e) {
+		if(e.keyCode == 13) inputStart();
+	}
+	
+	function inputStart() {
+		if ($("#request").val() != '') {
+			addMyAnswer($("#request").val() );
+			start($("#request").val(), "send");
+		}
+	}
+	
+	function start(req, event) {
 		$(".chat").removeClass("hidden");
 		
 		$.ajax ({
 			url: "chatbot",
-			data:{ request: "", event: "open"},
-			type:"get",
+			data:{ request: req, event: event},
+			type:"post",
 			dataType:"json",
 			success: function(res) {
-				addBotAnswer("bot welcome", res.bubbles[0].data.description , "faqBtn notWork");
+				addBotAnswer("bot welcome", res.bubbles[0].data.description , "faqBtn work");
 				
 				for(i=0; i< res.quickButtons.length; i++) {
 					$(".welcome:last-child .faqBtn").append(
@@ -29,28 +44,33 @@ $(document).ready(function() {
 					)
 				}
 				
-				// 퀵 FAQ 버튼
-				if($(".faqBtn").hasClass("notWork")) {
-					$(document).one("click", ".faqBtn button", quickBtn);
-
-				} else {
-					alert($(".faqBtn").hasClass("notWork"));
-					$(document).on("click", ".faqBtn button", quickBtn);
-				}
+			 	onceBtnAction();
+				setTimeout(scrollBottom, 70);
 			}
 		});
-	});
-
+	}
 	
+	// 퀵 FAQ 버튼 등장 후 1번만 실행
+	function onceBtnAction() {
+		$(document).on("click", ".faqBtn button", function() {
+			if($(".faqBtn").hasClass("work")) {
+				$(document).one("mousemove", ".faqBtn button", quickBtn);
+			} 
+			$(".faqBtn:last-child").removeClass("work");
+		});
+	}
+
+	// 퀵 FAQ 버튼 실행 후
 	function quickBtn() {
 		addMyAnswer($(this).html());
 		
 		$.ajax ({
 			url: "chatbot",
 			data:{ request: $(this).html(), event: "send"},
-			type:"get",
+			type:"post",
 			dataType:"json",
 			success: function(res) {
+				
 				addBotAnswer("bot", res.bubbles[0].data.cover.data.description, "faqList");
 				
 				for(i=0; i< res.bubbles[0].data.contentTable.length; i++) {
@@ -60,44 +80,50 @@ $(document).ready(function() {
 				}
 			}
 		});
-		
-		scrollBottom();
+		setTimeout(scrollBottom, 70);
 	};
 
 	
-	// 세부 FAQ 버튼
+	// 세부 FAQ 버튼 실행 후
 	$(document).on("click", ".faqList button", function() {
 		addMyAnswer($(this).html());
 		
 		$.ajax ({
 			url: "chatbot",
 			data:{ request: $(this).html(), event: "send"},
-			type:"get",
+			type:"post",
 			dataType:"json",
 			success: function(res) {
-				alert(res.bubbles[0].data.description);
+				addBotTextAnswer("bot", res.bubbles[0].data.description);
 			}
 		})
 		
-		scrollBottom();
+		setTimeout(scrollBottom, 70);
 	});
 		
 		
 	// 대화 종료
 	$(".closeBtn").on("click", function() {
-		$(".chat").addClass("hidden");
-		
-		// 퀵 버튼 동작 종료 제거
-		if($(".faqBtn").hasClass("notWork")) {
-			$(".faqBtn").removeClass("notWork");
-		}
-		$(".bottom").html("");
+		close();
 	});
+	
+	// 챗봇 외부 영역 클릭 시 닫힘
+	$(document).on("click", function(e) {
+		if ($(".chatbotBox").has(e.target).length == 0) {
+			close();
+		}
+	}); 
+	
+	function close() {
+		$(".chat").addClass("hidden");
+		$(".bottom").html("");
+		$("#request").val("");
+	}
 	
 	
 	// 스크롤 맨 아래로
 	function scrollBottom() {
-		$(".chat").scrollTop($(".chat").height());
+		$(".chat").scrollTop($(".chat").height() * 100);
 	};
 	
 	
@@ -116,6 +142,25 @@ $(document).ready(function() {
 			+	'</div>'
 			+'</div>'
 		)
+		
+		setTimeout(scrollBottom, 70);
+	}
+	
+	function addBotTextAnswer(botClassName, content) {
+		$(".bottom").append(
+			'<div class="' + botClassName + '">'
+			+	'<div class="botImg">'
+			+		'<img alt="chatbot.png" src="/images/chatbot.png">'
+			+	'</div>'
+			+ 	'<div class="conBox">'
+			+ 		'<span class="content">' 
+			+ 			content
+			+		'</span>'
+			+	'</div>'
+			+'</div>'
+		)
+		
+		setTimeout(scrollBottom, 70);
 	}
 	
 	
@@ -128,8 +173,9 @@ $(document).ready(function() {
 			+	'</span>'
 			+'</div>'
 		);
+		
+		setTimeout(scrollBottom, 70);
 	}
-	
 });
 </script>
 </head>
@@ -148,17 +194,7 @@ $(document).ready(function() {
 				</div>
 			</div>
 			
-			<div class="bottom">
-			<!-- 	<div class="bot">
-					<div class="botImg">
-						<img alt="chatbot.png" src="/images/chatbot.png">
-					</div>
-					<span class="content">안녕하세요</span>
-				</div>
-				<div class="me">
-					<span class="content">안녕하쇼</span>
-				</div> -->
-			</div>
+			<div class="bottom"></div>
 			
 			<div class="inputBox">
 				<input id="request" type="text" name="request" placeholder="FAQ를 입력해주세요">
