@@ -52,12 +52,12 @@ public class TeamMatchInfoController {
 	}
 	
 	
-	// 수락하기 버튼
+	// 1. 수락을 기다리는 경기 > 수락하기 버튼
 	
 	@ResponseBody
 	@RequestMapping("/teammatchAcceptance")
-	public String teammatchAcceptance(int seq, int acceptance) {
-		int updatecount = service.updateAcceptance(seq, acceptance);
+	public String teammatchAcceptance(int seq) {
+		int updatecount = service.updateAcceptance(seq);
 		
 		String result = "";
 		
@@ -71,12 +71,12 @@ public class TeamMatchInfoController {
 		return "{\"result\" : \"" + result + "\"}";
 	}
 	
-	// 예정된 경기 취소하기 버튼
+	// 2. 등록한 경기 > 취소하기 버튼
 	
 	@ResponseBody
-	@RequestMapping("/deleteTeammatch")
-	public String deleteTeammatch(int seq) {
-		int updatecount = service.deleteTeammatch(seq);
+	@RequestMapping("/deleteTeammatchRegistration")
+	public String deleteTeammatchRegistration(int seq) {
+		int updatecount = service.deleteTeammatchRegistration(seq);
 		
 		String result = "";
 		
@@ -89,6 +89,46 @@ public class TeamMatchInfoController {
 		
 		return "{\"result\" : \"" + result + "\"}";
 	}
+	
+	// 3. 신청한 경기 > 취소하기 버튼
+	
+		@ResponseBody
+		@RequestMapping("/deleteAddTeammatch")
+		public String deleteAddTeammatch(int seq) {
+			int updatecount = service.deleteAddTeammatch(seq);
+			
+			String result = "";
+			
+			if(updatecount == 1) {
+				result = "매치 취소가 완료되었습니다.";
+			}
+			else {
+				result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
+			}
+			
+			return "{\"result\" : \"" + result + "\"}";
+		}
+		
+		// 4. 예정된 경기 > 취소하기 버튼
+		
+		@ResponseBody
+		@RequestMapping("/cancelTeammatch")
+		public String cancelTeammatch(int seq) {
+			int updatecount = service.deleteAddTeammatch(seq);
+			
+			String result = "";
+			
+			if(updatecount == 1) {
+				result = "매치 취소가 완료되었습니다.";
+			}
+			else {
+				result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
+			}
+			
+			return "{\"result\" : \"" + result + "\"}";
+		}
+	
+	
 
 
 }
