@@ -96,6 +96,7 @@
 
 		
 		<!-- 매치 검색 버튼을 누르면 나오는 등록된 매치 리스트 -->
+		
 		<div class="teammatch_info">
 			<div class="teammatch_info_hashtag"></div>
 			<div class="teammatch_info_boxes"></div>

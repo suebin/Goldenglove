@@ -270,9 +270,13 @@ input.search_btn:hover, input.register_btn:hover {
 }
 
 form {
-	float: right;
-	text-align: center;
-	margin-top: 10px;
+	margin-left: 40px;
+	text-align: right;
+	margin-bottom: 20px;
+}
+
+.teammatch_btns {
+	width: 200px;
 }
 
 .teammatch_btn {
@@ -291,6 +295,8 @@ input.teammatch_btn:hover {
 		background-color: #217517;
 		cursor:pointer;;
 }
+
+
 
 @media (max-width: 1002px) {
     .teammatch_info_three,

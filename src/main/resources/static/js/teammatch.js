@@ -112,6 +112,7 @@ $(document).ready(function() {
 					}
 					
 					else {
+						
 					// 날짜와 지역을 모두 선택한 경우에만 매치 검색을 할 수 있다.
 					
 					if ($("#region").val() != '' && $("#date").val() != '') {
@@ -130,9 +131,14 @@ $(document).ready(function() {
 								$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
 																+ '<div class="teammatch_info_one"><div class="teammatch_info_teamname">' + data[i].homeName + '</div><div class="teammatch_info_ranking">🏆  0 위</div><div></div></div>'
 																+ '<div class="teammatch_info_two">시작 시간 : ' + data[i].possibleTime + '<br>지역 : ' + data[i].region +  '<br>경기 장소 : ' + data[i].homePlace + '<br>팀원 : ' + data[i].headCount + '명</div>'
-																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>'
+																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>')
+								
+								
+								// 만약 자기 자신의 팀에 매치 신청하려고 하는 경우
 																
-																+ '<form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
+								if($(".dropdownBtn").text().slice(0, -2) == data[i].homeName) {	
+															
+									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
 																+ 	'<input type="hidden" name="homeName" id="homeName" value="' + data[i].homeName + '">'
 																+ 	'<input type="hidden" name="possibleTime" id="possibleTime" value="' + data[i].possibleTime + '">'
 																+ 	'<input type="hidden" name="region" id="region" value="' + data[i].region + '">'
@@ -140,12 +146,37 @@ $(document).ready(function() {
 																+ 	'<input type="hidden" name="comment" id="comment" value="' + data[i].comment + '">'
 																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn").text().slice(0, -2) + '">'
 																+	'<input type="hidden" name="registration" id="registration" value="' + 1 + '">'
-																+ '<div class="teammatch_btns"><input type="submit" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 프로필"> </div>'
-																+ '</form>'
-															+ '</div>')	
-														
+																+ 	'<input type="button" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 프로필"> </div>'
+																+ 	'</form>'
+																+ 	'</div>')
+																
+									$("#add_teammatch_btn").on("click", function() {
+										alert('본인이 속한 팀에게는 매치 신청을 할 수 없습니다.');
+									})
+									
+								}
 								
-							}	
+								// 다른 팀에게 매치 신청을 하는 경우 
+								
+								else {
+									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
+																+ 	'<input type="hidden" name="homeName" id="homeName" value="' + data[i].homeName + '">'
+																+ 	'<input type="hidden" name="possibleTime" id="possibleTime" value="' + data[i].possibleTime + '">'
+																+ 	'<input type="hidden" name="region" id="region" value="' + data[i].region + '">'
+																+ 	'<input type="hidden" name="homePlace" id="homePlace" value="' + data[i].homePlace + '">'
+																+ 	'<input type="hidden" name="comment" id="comment" value="' + data[i].comment + '">'
+																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn").text().slice(0, -2) + '">'
+																+	'<input type="hidden" name="registration" id="registration" value="' + 1 + '">'
+																+ 	'<input type="submit" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 프로필"> </div>'
+																+ 	'</form>'
+																+ 	'</div>')
+								}
+								
+															
+
+														
+							}
+								
 						
 							// 매치 조회로 이동 
 						

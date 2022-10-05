@@ -44,16 +44,28 @@ public class TeamMatchInfoService {
 		return dao.getTeamMatchList5(myTeamName);
 	}
 	
-	// 수락하기 버튼
+	// 1. 수락을 기다리는 경기 > 수락하기 버튼
 	
-	public int updateAcceptance(int seq, int acceptance) {
-		return dao.updateAcceptance(seq, acceptance);
+	public int updateAcceptance(int seq) {
+		return dao.updateAcceptance(seq);
 	}
 	
-	// 예정된 경기 취소하기 버튼
+	// 2. 등록한 경기 > 취소하기 버튼
 	
-	public int deleteTeammatch(int seq) {
-		return dao.deleteTeammatch(seq);
+	public int deleteTeammatchRegistration(int seq) {
+		return dao.deleteTeammatchRegistration(seq);
+	}
+	
+	// 3. 신청한 경기 > 취소하기 버튼
+	
+	public int deleteAddTeammatch(int seq) {
+		return dao.deleteAddTeammatch(seq);
+	}
+	
+	// 4. 예정된 경기 > 취소하기 버튼
+	
+	public int cancelTeammatch(int seq) {
+		return dao.cancelTeammatch(seq);
 	}
 	
 	

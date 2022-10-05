@@ -2,6 +2,7 @@ package teammatch;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -81,22 +82,19 @@ public class TeamMatchController {
 		
 		String result = "";
 		
-		// ★★★ 추가적으로 해야할 것 : 신청하려는 팀이 본인이 속한 팀인 경우 alert 띄우고, update 하지 않도록 하기 ! ★★★
-		
-			
 		int updatecount1 = service.updateAwayName(homeName, possibleTime, region, homePlace, comment, awayName); 
 		int updatecount2 = service.updateRegistration(homeName, possibleTime, region, homePlace, comment, registration);
-			  
+			
 		if (updatecount1 == 1 && updatecount2 == 1) { 
 			result = "매치가 성공적으로 신청되었습니다.";
+			mv.setViewName("teammatch/addTeamMatch");
 		}
-			  
 		else { 
 			result = "매치 신청에 실패하였습니다. 다시 시도해주시길 바랍니다.";
+			mv.setViewName("teammatch/addTeamMatch");
 		}
 			 
 		mv.addObject("result", result);
-		mv.setViewName("teammatch/addTeamMatch");
 			
 		return mv;
 	}
