@@ -26,6 +26,12 @@ $(document).ready(function() {
 			$("#passwordTeam").focus();
 		}
 	})
+	
+	$("#exitTeamBtn").on("click", function() {
+		if(confirm("팀에서 탈퇴하시겠습니까?")) {
+			location.href="exitTeam";
+		}
+	})
 });
 </script>
 </head>
@@ -40,7 +46,14 @@ $(document).ready(function() {
 			<button id="submitBtnTeam">확인</button>
 			<span id="checkResultTeam"></span>
 		</div>
-		<button id="updateTeamBtn">팀 수정</button>
+		<% String teamId = (String)request.getAttribute("teamId");
+			String loginId = (String)request.getAttribute("loginId");
+			if(teamId.equals(loginId)) { %>
+				<button id="updateTeamBtn">팀 수정</button>				
+			<%} else {%>
+				<button id="exitTeamBtn">팀 탈퇴</button>
+			<%}
+		%>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

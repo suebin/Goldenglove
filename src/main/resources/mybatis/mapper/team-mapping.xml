@@ -31,4 +31,23 @@
 	<select id="selectUser" resultType="userDTO" parameterType="String">
 		select * from user where id = #{id};
 	</select>
+	
+	<!-- 팀아이디 조회 -->
+	<select id="selectTeamId" resultType="String" parameterType="String">
+		select teamId from team where teamName = #{teamId};
+	</select>
+	
+	<!-- 팀탈퇴 -->
+	<update id="exitTeamUser" parameterType="String">
+		update user set teamName = null where id = #{id};
+	</update>
+	
+	<update id="exitTeam" parameterType="HashMap">
+		update team set ${position} = #{modiPosition} where teamName = #{teamName};
+	</update>
+	
+	<!-- 포지션별 선수조회 -->
+	<select id="selectPosition" resultType="String" parameterType="userDTO">
+		select ${position} from team where teamName = #{teamName};
+	</select>
 </mapper>

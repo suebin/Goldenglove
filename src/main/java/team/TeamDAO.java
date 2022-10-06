@@ -1,5 +1,7 @@
 package team;
 
+import java.util.HashMap;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -25,4 +27,15 @@ public interface TeamDAO {
 
 //	팀원추가 가입조회
 	UserDTO selectUser(String id);
+
+//	팀아이디 조회
+	String selectTeamId(String teamName);
+
+//	팀탈퇴
+	void exitTeamUser(String id);
+
+	void exitTeam(HashMap teamInfo);
+
+//	포지션별 팀원조회
+	String selectPosition(UserDTO user);
 }

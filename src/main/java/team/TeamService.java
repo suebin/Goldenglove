@@ -1,5 +1,7 @@
 package team;
 
+import java.util.HashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,5 +42,22 @@ public class TeamService {
 //	팀원추가 가입조회
 	public UserDTO selectUser(String id) {
 		return teamDao.selectUser(id);
+	}
+
+//	팀아이디 조회
+	public String selectTeamId(String teamName) {
+		return teamDao.selectTeamId(teamName);
+	}
+
+//	포지션별 팀원조회
+	public String selectPosition(UserDTO user) {
+		return teamDao.selectPosition(user);
+	}
+
+//	팀탈퇴
+	public UserDTO exitTeam(HashMap<String, String> teamInfo) {
+		teamDao.exitTeamUser(teamInfo.get("id"));
+		teamDao.exitTeam(teamInfo);
+		return userDao.selectUser(teamInfo.get("id"));
 	}
 }

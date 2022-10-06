@@ -1,5 +1,7 @@
 package team;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -44,6 +46,9 @@ public class TeamController {
 			if (user.getTeamName() == null) {
 				return "team/teamJoin";
 			} else {
+				String teamId = teamService.selectTeamId(user.getTeamName());
+				request.setAttribute("teamId", teamId);
+				request.setAttribute("loginId", user.getId());
 				return "team/teamPage";
 			}
 		}
@@ -107,5 +112,35 @@ public class TeamController {
 			result = user.getId();
 		}
 		return "{\"result\":\"" + result + "\"}";
+	}
+
+//	팀탈퇴
+	@RequestMapping("/exitTeam")
+	public String exitTeam(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		if (session.getAttribute("loginInfo") != null && user.getTeamName() != null) {
+			String[] position_arr = teamService.selectPosition(user).split(" ");
+			String modiPosition = "";
+			if (position_arr.length <= 1) {
+				modiPosition = null;
+			} else {
+				for (int i = 0; i < position_arr.length; i++) {
+					if (!position_arr[i].equals(user.getId())) {
+						modiPosition += position_arr[i];
+					}
+				}
+			}
+
+			HashMap<String, String> map = new HashMap();
+			map.put("position", user.getPosition());
+			map.put("teamName", user.getTeamName());
+			map.put("id", user.getId());
+			map.put("modiPosition", modiPosition);
+
+			user = teamService.exitTeam(map);
+			session.setAttribute("loginInfo", user);
+		}
+		return "main/main";
 	}
 }
