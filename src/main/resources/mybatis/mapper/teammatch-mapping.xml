@@ -13,7 +13,7 @@
 	<!-- 매치 검색 -->
 	
 	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
-		select * from teammatching where region=#{region} and possibleDate=#{possibleDate} and awayName is null or registration=0
+		select * from teammatching where region=#{region} and possibleDate=#{possibleDate} and awayName is null and registration=0
 	</select>
 	
 	<!-- 매치 검색 (지역: 전체) -->
@@ -25,11 +25,11 @@
 	<!-- 매치 신청 -->
 	
 	<update id="updateAwayName">
-		update teammatching set awayName=#{awayName} where homeName=#{homeName} and possibleTime=#{possibleTime} and region=#{region} and homePlace=#{homePlace} and comment=#{comment}
+		update teammatching set awayName=#{awayName} where seq=#{seq}
 	</update>
 	
 	<update id="updateRegistration">
-		update teammatching set registration=#{registration} where homeName=#{homeName} and possibleTime=#{possibleTime} and region=#{region} and homePlace=#{homePlace} and comment=#{comment}
+		update teammatching set registration=1 where seq=#{seq}
 	</update>
 	
 	

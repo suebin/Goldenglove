@@ -13,21 +13,21 @@
 	<!-- 등록한 경기 -->
 	
 	<select id="getTeamMatchList2" resultType="teammatchdto">
-		select * from teammatching where homeName=#{myTeamName} and awayName is null and registration=0
+		select * from teammatching where homeName=#{myTeamName} and awayName is null and registration=0 and acceptance=0
 		order by possibleDate asc, possibleTime asc
 	</select>
 	
 	<!-- 신청한 경기 -->
 	
 	<select id="getTeamMatchList3" resultType="teammatchdto">
-		select * from teammatching where awayName=#{myTeamName} and registration=1
+		select * from teammatching where awayName=#{myTeamName} and registration=1 and acceptance=0
 		order by possibleDate asc, possibleTime asc
 	</select>
 	
 	<!-- 예정된 경기 -->
 	
 	<select id="getTeamMatchList4" resultType="teammatchdto">
-		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration is not null and acceptance is not null)
+		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration=1 and acceptance=1)
 		or (awayName=#{myTeamName} and registration=1 and acceptance=1)
 		order by possibleDate asc, possibleTime asc
 	</select>
@@ -62,6 +62,6 @@
 	<!-- 4. 예정된 경기 > 취소하기 버튼 -->
 	
 	<update id="cancelTeammatch">
-		update teammatching set registration=0, acceptance=0, awayName=null where seq=#{seq}
+		update teammatching set acceptance=0, registration=0, awayName=null where seq=#{seq}
 	</update>
 </mapper>

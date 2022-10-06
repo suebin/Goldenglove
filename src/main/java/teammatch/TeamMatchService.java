@@ -32,11 +32,11 @@ public class TeamMatchService {
 	
 	// 매치 신청
 	
-	public int updateAwayName(String homeName, String possibleTime, String region, String homePlace, String comment, String awayName) {
-		return dao.updateAwayName(homeName, possibleTime, region, homePlace, comment, awayName);
+	public int updateAwayName(String awayName, int seq) {
+		return dao.updateAwayName(awayName, seq);
 	}
-	public int updateRegistration(String homeName, String possibleTime, String region, String homePlace, String comment, int registration) {
-		return dao.updateRegistration(homeName, possibleTime, region, homePlace, comment, registration);
+	public int updateRegistration(int seq) {
+		return dao.updateRegistration(seq);
 	}
 	
 }
