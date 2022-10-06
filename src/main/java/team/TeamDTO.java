@@ -4,9 +4,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TeamDTO {
-	private String teamName, registerDate, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder,
+	private String teamId, teamName, registerDate, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder,
 			rightFielder, centerFielder, shortStop;
-	private int teamId, winCount, loseCount;
+	private int winCount, loseCount;
 
 	public String getRegisterDate() {
 		return registerDate;
@@ -16,11 +16,11 @@ public class TeamDTO {
 		this.registerDate = registerDate;
 	}
 
-	public int getTeamId() {
+	public String getTeamId() {
 		return teamId;
 	}
 
-	public void setTeamId(int teamId) {
+	public void setTeamId(String teamId) {
 		this.teamId = teamId;
 	}
 

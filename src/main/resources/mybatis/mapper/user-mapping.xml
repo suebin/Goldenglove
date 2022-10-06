@@ -4,7 +4,7 @@
 
 	<!-- 회원가입 -->
 	<insert id="insertUser" parameterType="userDTO">
-		insert into user(id, password, name, phone, email, region, kakaoId, naverId, position) values(#{id}, #{password}, #{name}, #{phone}, #{email}, #{region}, #{kakaoId}, #{naverId}, ${position});
+		insert into user(id, password, name, phone, email, region, kakaoId, naverId, position) values(#{id}, #{password}, #{name}, #{phone}, #{email}, #{region}, #{kakaoId}, #{naverId}, #{position});
 	</insert>
 	
 	<!-- 중복검사 -->
@@ -36,5 +36,5 @@
 	<update id="updatePassword" parameterType="userDTO">
 		update user set password = #{password} where id = #{id} and name = #{name} and email = #{email};
 	</update>
-
+	
 </mapper>

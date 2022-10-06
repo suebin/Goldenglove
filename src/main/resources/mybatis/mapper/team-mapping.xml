@@ -4,8 +4,13 @@
 	
 	<!-- 팀원 등록 -->
 	<insert id="insertTeam" parameterType="teamDTO">
-		insert into team values(#{teamName}, #{firstBase}, #{secondBase}, #{thirdBase}, #{catcher}, #{pitcher}, #{leftFielder}, #{rightFielder}, #{centerFielder}, #{shortStop})
+		insert into team(teamId, teamName, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder, centerFielder, shortStop) values(#{teamId}, #{teamName}, #{firstBase}, #{secondBase}, #{thirdBase}, #{catcher}, #{pitcher}, #{leftFielder}, #{rightFielder}, #{centerFielder}, #{shortStop});
 	</insert>
+	
+	<!-- 팀 생성 -->
+	<update id="updateUserTeam" parameterType="teamDTO">
+		update user set teamName = #{teamName} where id = #{teamId};
+	</update>
 	
 	<!-- 팀원 조회 -->
 	<select id="selectTeam" resultType="teamDTO" parameterType="String">
@@ -16,4 +21,14 @@
 	<update id="updateTeam" parameterType="teamDTO">
 		update team set firstBase = #{firstBase}, secondBase = #{secondBase}, thirdBase = #{thirdBase}, catcher = #{catcher}, pitcher = #{pitcher}, leftFielder = #{leftFielder}, rightFielder = #{rightFielder}, centerFielder = #{centerFielder}, shortStop = #{shortStop} where teamName = #{teamName};
 	</update>
+	
+	<!-- 팀이름 중복조회 -->
+	<select id="selectTeamName" resultType="Integer" parameterType="String">
+		select count(*) from team where teamName = #{teamName};
+	</select>
+	
+	<!-- 팀원 추가 가입조회 -->
+	<select id="selectUser" resultType="userDTO" parameterType="String">
+		select * from user where id = #{id};
+	</select>
 </mapper>

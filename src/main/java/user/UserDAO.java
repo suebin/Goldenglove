@@ -28,5 +28,4 @@ public interface UserDAO {
 
 //	비밀번호 수정
 	void updatePassword(UserDTO dto);
-
 }

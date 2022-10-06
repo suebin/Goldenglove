@@ -4,8 +4,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserDTO {
-	private String id, password, name, phone, email, region, registerDate, kakaoId, naverId, position;
+	private String id, password, name, phone, email, region, registerDate, kakaoId, naverId, position, teamName;
 	private int winCount, loseCount;
+
+	public String getTeamName() {
+		return teamName;
+	}
+
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
 
 	public String getPosition() {
 		return position;

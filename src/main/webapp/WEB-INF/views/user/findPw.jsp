@@ -45,7 +45,7 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 		<div class="confix">
 			<h1 class="h1">비밀번호 찾기</h1>
-			<form id="findForm">
+			<form id="findForm" autocomplete="off">
 				<table id="inputBox">
 					<tr>
 						<td>

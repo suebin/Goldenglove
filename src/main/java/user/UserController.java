@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import team.TeamService;
 
@@ -98,18 +97,13 @@ public class UserController {
 
 //	내정보
 	@RequestMapping("/mypage")
-	public ModelAndView mypage(HttpServletRequest request) {
-		ModelAndView mv = new ModelAndView();
+	public String mypage(HttpServletRequest request) {
 		if (request.getSession().getAttribute("loginInfo") != null) {
 			HttpSession session = request.getSession();
 			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
-			String teamName = user.getName();
-			mv.addObject("teamDTO", teamService.selectTeam(teamName));
-			mv.setViewName("mypage/myPage");
-			return mv;
+			return "mypage/myPage";
 		} else {
-			mv.setViewName("main/main");
-			return mv;
+			return "main/main";
 		}
 	}
 
