@@ -23,7 +23,7 @@ public interface TeamMatchDAO {
 	
 	// 매치 신청
 	
-	int updateAwayName(String homeName, String possibleTime, String region, String homePlace, String comment, String awayName);
-	int updateRegistration(String homeName, String possibleTime, String region, String homePlace, String comment, int registration);
+	int updateAwayName(String awayName, int seq);
+	int updateRegistration(int seq);
 
 }

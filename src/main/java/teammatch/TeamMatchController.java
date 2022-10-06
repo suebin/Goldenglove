@@ -76,14 +76,14 @@ public class TeamMatchController {
 	// 팀 매치 신청
 
 	@RequestMapping("/addTeammatch")
-	public ModelAndView addTeamMatch(String homeName, String possibleTime, String region, String homePlace, String comment, String awayName, int registration) {
+	public ModelAndView addTeamMatch(String awayName, int seq) {
 		
 		ModelAndView mv = new ModelAndView();
 		
 		String result = "";
 		
-		int updatecount1 = service.updateAwayName(homeName, possibleTime, region, homePlace, comment, awayName); 
-		int updatecount2 = service.updateRegistration(homeName, possibleTime, region, homePlace, comment, registration);
+		int updatecount1 = service.updateAwayName(awayName, seq); 
+		int updatecount2 = service.updateRegistration(seq);
 			
 		if (updatecount1 == 1 && updatecount2 == 1) { 
 			result = "매치가 성공적으로 신청되었습니다.";

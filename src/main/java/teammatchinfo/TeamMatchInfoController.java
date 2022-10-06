@@ -114,7 +114,7 @@ public class TeamMatchInfoController {
 		@ResponseBody
 		@RequestMapping("/cancelTeammatch")
 		public String cancelTeammatch(int seq) {
-			int updatecount = service.deleteAddTeammatch(seq);
+			int updatecount = service.cancelTeammatch(seq);
 			
 			String result = "";
 			
