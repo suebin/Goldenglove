@@ -25,9 +25,11 @@ public class TeamService {
 		return teamDao.selectTeam(teamName);
 	}
 
-//	팀원수정
-	public void updateTeam(TeamDTO dto) {
+//	팀수정
+	public UserDTO updateTeam(TeamDTO dto) {
 		teamDao.updateTeam(dto);
+		teamDao.selectTeam(dto.getTeamName());
+		return userDao.selectUser(dto.getTeamId());
 	}
 
 //	팀이름 중복조회

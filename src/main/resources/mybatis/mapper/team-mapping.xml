@@ -19,7 +19,7 @@
 	
 	<!-- 수정 -->
 	<update id="updateTeam" parameterType="teamDTO">
-		update team set firstBase = #{firstBase}, secondBase = #{secondBase}, thirdBase = #{thirdBase}, catcher = #{catcher}, pitcher = #{pitcher}, leftFielder = #{leftFielder}, rightFielder = #{rightFielder}, centerFielder = #{centerFielder}, shortStop = #{shortStop} where teamName = #{teamName};
+		update team set teamName = #{teamName}, firstBase = #{firstBase}, secondBase = #{secondBase}, thirdBase = #{thirdBase}, catcher = #{catcher}, pitcher = #{pitcher}, leftFielder = #{leftFielder}, rightFielder = #{rightFielder}, centerFielder = #{centerFielder}, shortStop = #{shortStop} where teamId = #{teamId};
 	</update>
 	
 	<!-- 팀이름 중복조회 -->

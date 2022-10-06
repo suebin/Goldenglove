@@ -5,7 +5,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,7 +19,7 @@ public class TeamController {
 	@Autowired
 	TeamService teamService;
 
-//	팀원등록 후 메인으로 이동
+//	팀원등록
 	@ResponseBody
 	@RequestMapping("/teamResult")
 	public String teamResult(String teamDTO, HttpServletRequest request) throws JsonProcessingException {
@@ -50,14 +49,14 @@ public class TeamController {
 		}
 	}
 
-//	팀원수정 폼
+//	팀수정 폼
 	@RequestMapping("/teamUpdate")
 	public ModelAndView teamUpdate(HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		HttpSession session = request.getSession();
 		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 		if (session.getAttribute("loginInfo") != null) {
-			mv.addObject("teamDTO", teamService.selectTeam(user.getName()));
+			mv.addObject("teamDTO", teamService.selectTeam(user.getTeamName()));
 			mv.setViewName("team/teamUpdate");
 			return mv;
 		} else {
@@ -66,14 +65,16 @@ public class TeamController {
 		}
 	}
 
-	@PostMapping("/teamUpdateResult")
-	public String teamUpdateResult(TeamDTO dto, HttpServletRequest request) {
-		if (request.getSession().getAttribute("loginInfo") != null) {
-			teamService.updateTeam(dto);
-			return "mypage/myPage";
-		} else {
-			return "main/main";
-		}
+	@ResponseBody
+	@RequestMapping("/teamUpdateResult")
+	public String teamUpdateResult(String teamDTO, HttpServletRequest request) throws JsonProcessingException {
+		ObjectMapper mapper = new ObjectMapper();
+		TeamDTO dto = mapper.readValue(teamDTO, TeamDTO.class);
+
+		HttpSession session = request.getSession();
+		UserDTO user = teamService.updateTeam(dto);
+		session.setAttribute("loginInfo", user);
+		return "{\"result\":\"success\"}";
 	}
 
 //	중복검사

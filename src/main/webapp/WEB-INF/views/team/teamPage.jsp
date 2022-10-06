@@ -32,6 +32,7 @@ $(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
+		<h1>${loginInfo.getTeamName() }</h1>
 		<jsp:include page="/WEB-INF/views/components/position.jsp" />
 		<div id="passwordInputTeam" hidden>
 			<span>비밀번호 :</span>
@@ -39,7 +40,7 @@ $(document).ready(function() {
 			<button id="submitBtnTeam">확인</button>
 			<span id="checkResultTeam"></span>
 		</div>
-		<button id="updateTeamBtn">팀원 수정</button>
+		<button id="updateTeamBtn">팀 수정</button>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

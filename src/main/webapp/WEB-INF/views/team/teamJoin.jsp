@@ -110,7 +110,7 @@ $(document).ready(function() {
 		<button id="createBtn">팀 생성</button>
 		<button id="searchBtn">팀 가입</button>
 		<div id="createBox" hidden>
-			<form action="teamCreate" id="createForm" autocomplete="off">
+			<form autocomplete="off">
 				<table>
 					<tr>
 						<td>팀 이름 </td>
