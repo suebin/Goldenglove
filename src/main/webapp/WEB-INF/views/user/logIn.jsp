@@ -52,7 +52,7 @@ $(document).ready(function() {
 				<table class="table">
 					<tr>
 						<td>
-							<input type="text" name="id" pattern="[a-z0-9]{3,15}" title="최대 15자리까지 입력가능합니다.(영어,숫자)" required placeholder="아이디">
+							<input type="text" name="id" pattern="[a-z0-9]{3,15}" title="최대 15자리까지 입력가능합니다.(영어,숫자)" required placeholder="아이디" autofocus>
 						</td>
 					</tr>
 					<tr>
