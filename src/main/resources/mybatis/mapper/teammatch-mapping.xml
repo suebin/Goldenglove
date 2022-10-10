@@ -33,5 +33,10 @@
 	</update>
 	
 	
+	<!-- 알림 -->
+	<insert id="insertAlarm">
+		insert into alarm (homeName, awayName, region, possibleDate, possibleTime, homePlace, alarmDate)
+		values(#{homeName}, #{awayName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{alarmDate})
+	</insert>
 	
 </mapper>

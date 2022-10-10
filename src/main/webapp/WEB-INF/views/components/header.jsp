@@ -28,7 +28,10 @@
 					<li><a href="ranking">랭킹</a></li>
 					<li><a href="/notice">공지사항</a></li>
 				</ul>
+				
 				<div class="loginBtnCon">
+					<jsp:include page="/WEB-INF/views/alarm/alarm.jsp" />
+					
 					<% if(session.getAttribute("loginInfo") == null) { %>
 						<button type="button" class="loginBtn" onclick="location.href='/login'">Login</button>
 						<button type="button" class="signupBtn" onclick="location.href='/signup'">Sign Up</button>

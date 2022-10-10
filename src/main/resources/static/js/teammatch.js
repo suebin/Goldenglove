@@ -112,6 +112,9 @@ $(document).ready(function() {
 					}
 					
 					else {
+					// 매치 신청한 날짜
+					const now = new Date();
+					const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
 						
 					// 날짜와 지역을 모두 선택한 경우에만 매치 검색을 할 수 있다.
 					
@@ -157,6 +160,15 @@ $(document).ready(function() {
 									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
 																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn").text().slice(0, -2) + '">'
 																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
+																
+																// 알림 기능 위해 추가
+																+	'<input type="hidden" name="alarmDate" id="alarmDate" value="' + alarmDate + '">'
+																+ 	'<input type="hidden" name="homeName" id="homeName" value="' + data[i].homeName + '">'
+																+ 	'<input type="hidden" name="possibleDate" id="possibleDate" value="' + data[i].possibleDate + '">'
+																+ 	'<input type="hidden" name="possibleTime" id="possibleTime" value="' + data[i].possibleTime + '">'
+																+ 	'<input type="hidden" name="region" id="region" value="' + data[i].region + '">'
+																+ 	'<input type="hidden" name="homePlace" id="homePlace" value="' + data[i].homePlace + '">'
+																
 																+ 	'<input type="submit" id="add_teammatch_btn" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 프로필"> </div>'
 																+ 	'</form>'
 																+ 	'</div>')

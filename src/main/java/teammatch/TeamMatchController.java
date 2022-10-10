@@ -2,8 +2,6 @@ package teammatch;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -76,7 +74,7 @@ public class TeamMatchController {
 	// 팀 매치 신청
 
 	@RequestMapping("/addTeammatch")
-	public ModelAndView addTeamMatch(String awayName, int seq) {
+	public ModelAndView addTeamMatch(String awayName, int seq, String homeName, String region, String possibleDate, String possibleTime, String homePlace, String alarmDate) {
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -84,7 +82,7 @@ public class TeamMatchController {
 		
 		int updatecount1 = service.updateAwayName(awayName, seq); 
 		int updatecount2 = service.updateRegistration(seq);
-			
+
 		if (updatecount1 == 1 && updatecount2 == 1) { 
 			result = "매치가 성공적으로 신청되었습니다.";
 			mv.setViewName("teammatch/addTeamMatch");
@@ -93,7 +91,10 @@ public class TeamMatchController {
 			result = "매치 신청에 실패하였습니다. 다시 시도해주시길 바랍니다.";
 			mv.setViewName("teammatch/addTeamMatch");
 		}
-			 
+		
+		// 알림
+		service.insertAlarm(homeName, awayName, region, possibleDate, possibleTime, homePlace, alarmDate);
+		
 		mv.addObject("result", result);
 			
 		return mv;
