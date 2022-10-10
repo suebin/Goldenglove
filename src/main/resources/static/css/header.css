@@ -67,7 +67,13 @@ body {
   width: 100%;
 }
 
+.loginBtnCon {
+	display: flex;
+	align-items: center;
+}
+
 .loginBtnCon button {
+  margin-left: 5px;
   background-color: #fff;
   border: 2px solid #feca00;
   color: #feca00;

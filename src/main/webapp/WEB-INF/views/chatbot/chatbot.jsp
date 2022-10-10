@@ -61,6 +61,8 @@ $(document).ready(function() {
 	}
 
 	// 퀵 FAQ 버튼 실행 후
+	let response;		// 퀵버튼 success res 담을 전역변수
+	
 	function quickBtn() {
 		addMyAnswer($(this).html());
 		
@@ -68,16 +70,19 @@ $(document).ready(function() {
 			url: "chatbot",
 			data:{ request: $(this).html(), event: "send"},
 			type:"post",
+			async: false,
 			dataType:"json",
 			success: function(res) {
 				
-				addBotAnswer("bot", res.bubbles[0].data.cover.data.description, "faqList");
+				addBotAnswer("bot", res.bubbles[0].data.cover.data.description, "faqList work");
 				
 				for(i=0; i< res.bubbles[0].data.contentTable.length; i++) {
 					$(".bot:last-child .faqList").append(
 						'<button>' + res.bubbles[0].data.contentTable[i][0].data.title + '</button>'
 					)
 				}
+				
+				response = res;		// 퀵버튼 success res 담기
 			}
 		});
 		setTimeout(scrollBottom, 70);
@@ -86,11 +91,20 @@ $(document).ready(function() {
 	
 	// 세부 FAQ 버튼 실행 후
 	$(document).on("click", ".faqList button", function() {
+		let res = response;			// 퀵버튼 success res 담기
+		let req = "";
 		addMyAnswer($(this).html());
+		
+		// 세부버튼 내용과 $(this).html() 내용이 같으면 해당 버튼 세부 내용 req에 담기
+		for(i=0; i< res.bubbles[0].data.contentTable.length; i++) {
+			if ($(this).html() == res.bubbles[0].data.contentTable[i][0].data.title) {
+				req = res.bubbles[0].data.contentTable[i][0].data.data.action.data.postbackFull;
+			}
+		}
 		
 		$.ajax ({
 			url: "chatbot",
-			data:{ request: $(this).html(), event: "send"},
+			data:{ request: req, event: "send"},
 			type:"post",
 			dataType:"json",
 			success: function(res) {
@@ -100,7 +114,7 @@ $(document).ready(function() {
 		
 		setTimeout(scrollBottom, 70);
 	});
-		
+	
 		
 	// 대화 종료
 	$(".closeBtn").on("click", function() {
@@ -201,7 +215,6 @@ $(document).ready(function() {
 				<button type="button">✔</button>
 			</div>
 		</div>
-		
 		
 		<div class="chatbotIcon">
 			<img alt="chatbot.png" src="/images/chatbot.png">

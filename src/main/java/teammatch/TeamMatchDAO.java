@@ -26,4 +26,6 @@ public interface TeamMatchDAO {
 	int updateAwayName(String awayName, int seq);
 	int updateRegistration(int seq);
 
+	// 알림
+	int insertAlarm(String homeName, String awayName, String region, String possibleDate, String possibleTime, String homePlace, String alarmDate);
 }

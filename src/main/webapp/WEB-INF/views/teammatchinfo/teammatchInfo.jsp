@@ -20,6 +20,10 @@
 	$(document).ready(function() {
 		AOS.init();
 
+		// 매치 수락 or 취소 날짜
+		const now = new Date();
+		const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
+
 		// 1. 수락을 기다리는 경기 > 수락하기 버튼
 
 		for (var i = 0; i < 100; i++) {
@@ -43,7 +47,6 @@
 				else {
 					alert("매치 수락을 취소하셨습니다.");
 				}
-				
 			}) 	
 		}	// acceptance_btn end	
 
