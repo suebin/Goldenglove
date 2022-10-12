@@ -35,7 +35,7 @@
 				if (update) {
 					$.ajax({
 						url : 'teammatchAcceptance',
-						data : {'seq' : $(".teammatchlist1_seq").val()},
+						data : {'seq' : $(".teammatchlist1_seq").val(), 'alarmDate': alarmDate},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -87,7 +87,7 @@
 				if (update) {
 					$.ajax({
 						url : 'deleteAddTeammatch',
-						data : {'seq' : $(".teammatchlist3_seq").val()},
+						data : {'seq' : $(".teammatchlist3_seq").val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -113,7 +113,7 @@
 				if (update) {
 					$.ajax({
 						url : 'cancelTeammatch',
-						data : {'seq' : $(".teammatchlist4_seq").val()},
+						data : {'seq' : $(".teammatchlist4_seq").val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -165,8 +165,6 @@
 		else {
 			$(".teammatchlist5_box").hide();
 		}
-		
-		
 		
 }); // ready end
 

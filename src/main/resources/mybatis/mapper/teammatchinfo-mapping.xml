@@ -64,4 +64,32 @@
 	<update id="cancelTeammatch">
 		update teammatching set acceptance=0, registration=0, awayName=null where seq=#{seq}
 	</update>
+
+
+	<!-- 수락/취소 알림 -->
+	<insert id="insertAlarm">
+		insert into alarm (homeName, awayName, region, possibleDate, possibleTime, homePlace, acceptance)
+		select homeName, awayName, region, possibleDate, possibleTime, homePlace, acceptance from teammatching where seq=#{seq}
+	</insert>
+	
+	<!-- 취소 시 null 된 awayName, cancle한 팀 입력 -->
+	<update id="updateCancleAlarm">
+		update alarm set cancleTeam = #{cancleTeam},
+						 awayName = (select awayName from (select awayName from alarm
+										where seq = (select seq from (select seq from alarm 
+														where homeName = (select homeName from teammatching where seq = #{seq})
+															and region = (select region from teammatching where seq = #{seq})
+															and possibleDate = (select possibleDate from teammatching where seq = #{seq})
+															and possibleTime = (select possibleTime from teammatching where seq = #{seq}) 
+															and homePlace = (select homePlace from teammatching where seq = #{seq})
+															and acceptance = 1
+														order by seq desc limit 1) as a1)
+									) as a2)
+						where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a3);
+	</update>
+
+	<!-- 수락/취소 알림 날짜 업데이트 -->
+	<update id="updateAlarmDate">
+		update alarm set alarmDate = #{alarmDate} where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a);
+	</update>
 </mapper>
