@@ -51,12 +51,19 @@ function showMobileMenu() {
 
 // 아이디에 마우스 올리면 내 정보 관련 메뉴 나옴
 function mobileDropDown() {
-	if (window.innerWidth <= 768) {
-    	dropdownBtn.addEventListener('mouseover', openDropDown);
-    	dropdownCon.addEventListener('mouseleave', closeDropDown);
-	} else {
-		dropdownBtn.removeEventListener('mouseover', openDropDown);
-		dropdownCon.removeEventListener('mouseleave', closeDropDown);
+	// 로그인 했을 때 (드롭다운 버튼 생성 시)
+	if (dropdownBtn != null) {
+		if (window.innerWidth <= 768) {
+	    	dropdownBtn.classList.add('addEvent');
+	    	dropdownBtn.addEventListener('mouseover', openDropDown);
+	    	dropdownCon.addEventListener('mouseleave', closeDropDown);
+		} else {
+			if (dropdownBtn.classList.contains('addEvent')) {
+				dropdownBtn.classList.remove('addEvent');
+				dropdownBtn.removeEventListener('mouseover', openDropDown);
+				dropdownCon.removeEventListener('mouseleave', closeDropDown);
+			}
+		}
 	}
 }
 
