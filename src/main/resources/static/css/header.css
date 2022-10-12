@@ -37,6 +37,10 @@ body {
   transition: all 0.2s;
 }
 
+.mobileBtn {
+    display: none;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -90,12 +94,23 @@ body {
 .dropdown {
   position: relative;
   display: inline-block;
+  cursor: pointer;
 }
 
 .dropdownBtn {
-  padding: 8px 10px;
-  font-size: 16px;
-  font-weight: bold;
+ 	display: flex;
+ 	align-items: center;
+	padding: 8px 10px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.dropdownBtn .teamName {
+	margin-right: 5px;
+	max-width: 100px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .dropdown-contents {
@@ -104,7 +119,7 @@ body {
   background-color: #f1f1f1;
   min-width: 100px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
+  z-index: 99;
 }
 
 .dropdown-contents > a {
@@ -112,25 +127,131 @@ body {
   display: block;
 }
 
-.dropdown-contents a:hover {background-color: #ddd;}
+.dropdown-contents a:hover {
+	background-color: #ddd;
+}
  
-.dropdown:hover .dropdown-contents {display: block;}
+.dropdown:hover .dropdown-contents {
+	display: block;
+}
 
 @media (max-width: 768px) {
-  .logo {
-    padding-bottom: 20px;
+   header {
+     position: relative;
+     height: 55px;
+   }
+
+   header > .confix {
+     position: fixed;
+     top: 0;
+     justify-content: flex-start;
+     padding: 0;
+     width: 100%;
+     height: 55px;
+     line-height: 55px;
+     z-index: 1;
+     background: #fff;
+     overflow: hidden;
+     transition: all 0.3s;
+   }
+
+  .mobileBtn {
+    display: inline-block;
+    position: absolute;
+    top: -10px;
+    left: 5%;
+    content: "";
+    padding-top: 25px;
+    cursor: pointer;
   }
 
-  .nav {
-    width: 100%;
+  .mobileBtn span {
+    position: relative;
+    display: block;
+    margin-bottom: 8px;
+    height: 2px;
+    width: 25px;
+    background: #000;
+    transition: all 0.5s;
   }
+
+  .mobileBtn span:nth-child(2).closeBar::after {
+    position: absolute;
+    top: 0;
+    content: "";
+    height: 2px;
+    width: 25px;
+    background: #000;
+    transform: rotate(90deg);
+    transition: all 0.5s;
+  }
+
+  .mobileBtn span:first-child,
+  .mobileBtn span:last-child {
+    transition: all 0.2s;	
+  }
+
+  .rotate {
+    transform: rotate(45deg);
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+  
+  .nav {
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0;
+	width: 100%;
+	height: auto;
+	line-height: 45px;
+	background: #fff;
+	transition: all 0.3s;
+  }
+  
+  .nav li a::after {
+	bottom: 5px;
+  }
+  
+  .dropdown {
+  	position: static;
+  }
+  
+  .dropdownBtn {
+  	margin-right: 15px;
+  	padding: 0;
+  	height: 30px;
+    line-height: 30px;
+  }
+  
+  .dropdown-contents {
+	left: 0;
+  	display: block;
+  	margin-top: 10px;
+	width: 100%;
+    text-align: center;
+	background-color: transparent;
+	box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 0%);
+  }	
+  
+  .dropdown-contents a {
+  	padding: 0;
+  	height: 35px;
+  	line-height: 35px;
+  	font-size: 15px;
+  }	
+
+  .dropdown-contents a:hover {
+  	background: #fff;
+  	font-weight: bold;
+  }	
 
   .loginBtnCon {
-    position: absolute;
-    top: 20px;
-    right: 10px;
+  	display: flex;
+  	align-items: flex-start;
   }
-
+  
   .loginBtnCon button {
     padding: 5px;
   }

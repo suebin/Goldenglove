@@ -34,6 +34,7 @@ button {
 /*=========== alarm ===========*/
 .alarm {
 	position: relative;
+	z-index: 100;
 }
 
 
@@ -73,7 +74,6 @@ button {
 	border-radius: 10px;
 	background: #fff;
 	box-shadow: 5px 6px 18px -15px rgb(0 0 0);
-	z-index: 100;
 }
 
 .alarmCon:after {
@@ -144,6 +144,18 @@ button {
 	font-weight: normal;
 	cursor: default;
 }
+
+@media (max-width: 768px) {
+	/*=========== alarm ===========*/
+	.alarm {
+		position: fixed;
+		top: 5px;
+		right: 5px;
+	}
 	
+	.alarmCon .list li {
+		padding: 8px 10px;
+	}
+}
 	
 	
