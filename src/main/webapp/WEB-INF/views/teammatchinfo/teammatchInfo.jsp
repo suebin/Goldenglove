@@ -26,7 +26,7 @@
 
 		// 1. 수락을 기다리는 경기 > 수락하기 버튼
 
-		for (var i = 0; i < 100; i++) {
+		for (let i = 1; i < 100; i++) {
 
 			var acceptance_btn = 'acceptance_btn' + i;
 
@@ -35,7 +35,7 @@
 				if (update) {
 					$.ajax({
 						url : 'teammatchAcceptance',
-						data : {'seq' : $(".teammatchlist1_seq").val(), 'alarmDate': alarmDate},
+						data : {'seq' : $("#teammatchlist1_seq" + i).val(), 'alarmDate': alarmDate},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -52,15 +52,16 @@
 
 		
 		// 2. 등록한 경기 > 취소하기 버튼
-
-		for (var i = 0; i < 100; i++) {
+		
+		for (let i = 1; i < 100; i++) {
 			var delete_registration_btn = 'delete_registration_btn' + i;
+			
 			$("#" + delete_registration_btn).on("click", function() {
 				var update = confirm("매치를 취소하시겠습니까 ?");
 				if (update) {
 					$.ajax({
 						url : 'deleteTeammatchRegistration',
-						data : {'seq' : $(".teammatchlist2_seq").val()},
+						data : {'seq' : $("#teammatchlist2_seq" + i).val()},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -72,22 +73,22 @@
 				else {
 					alert("매치를 취소하지 않습니다.");
 				}
-			}) 		
+			}) 	
 		}	// delete_registration_btn end
 
 		
 		// 3. 신청한 경기 > 취소하기 버튼
 
-		for (var i = 0; i < 100; i++) {
-
+		for (let i = 1; i < 100; i++) {
 			var delete_add_btn = 'delete_add_btn' + i;
 
 			$("#" + delete_add_btn).on("click", function() {
+
 				var update = confirm("매치를 취소하시겠습니까 ?");
 				if (update) {
 					$.ajax({
 						url : 'deleteAddTeammatch',
-						data : {'seq' : $(".teammatchlist3_seq").val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
+						data : {'seq' : $("#teammatchlist3_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -104,7 +105,8 @@
 		
 
 		// 4. 예정된 경기 > 취소하기 버튼
-		for (var i = 0; i < 100; i++) {
+		
+		for (let i = 1; i < 100; i++) {
 			
 			var cancel_teammatch_btn = 'cancel_teammatch_btn' + i;
 			
@@ -113,7 +115,7 @@
 				if (update) {
 					$.ajax({
 						url : 'cancelTeammatch',
-						data : {'seq' : $(".teammatchlist4_seq").val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
+						data : {'seq' : $(".teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -200,7 +202,7 @@
 		<c:set value="<%=today%>" var="today" />
 		<c:set value="<%=time%>" var="time" />
 
-
+		
 		<!-- 1. 수락을 기다리는 경기 -->
 
 		<div class="teammatchlist1_box" data-aos="fade-up"
@@ -220,17 +222,17 @@
 
 					<div class="teammatch_info_list" id="teammatch__info_list1">
 						<div class="teammatch_info">
-							<span class="teammatch_info_title">${list.homeName} VS
-								${list.awayName}</span> <span class="teammatch_info_date">${list.possibleDate}
-								${list.possibleTime}</span> <span class="teammatch_info_location">${list.region}
-								${list.homePlace}</span>
+							<div class="teammatch_info_title">${list.homeName} VS
+								${list.awayName}</div> <div class="teammatch_info_date">${list.possibleDate}
+								${list.possibleTime}</div> <div class="teammatch_info_location">${list.region}
+								${list.homePlace}</div>
 						</div>
 						<div class="teammatch_info_btn">
 							<c:set var="a" value="${a+1}" />
 							<input type="button" class="btn" id="acceptance_btn${a}"
 								value="수락하기">
 						</div>
-						<input type="hidden" class="teammatchlist1_seq" value=${list.seq}>
+						<input type="hidden" id="teammatchlist1_seq${a}" value=${list.seq}>
 					</div>
 				</c:if>
 
@@ -254,21 +256,21 @@
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${possibleDate > today or (possibleDate == today and possibleTime >= time)}">
-
+					test="${possibleDate > today}">	
+				
 					<div class="teammatch_info_list" id="teammatch__info_list2">
 						<div class="teammatch_info">
-							<span class="teammatch_info_title">${list.homeName} VS &nbsp;  ?
-								${list.awayName}</span> <span class="teammatch_info_date">${list.possibleDate}
-								${list.possibleTime}</span> <span class="teammatch_info_location">${list.region}
-								${list.homePlace}</span>
+							<div class="teammatch_info_title">${list.homeName} VS &nbsp;  ?
+								${list.awayName}</div> <div class="teammatch_info_date">${list.possibleDate}
+								${list.possibleTime}</div> <div class="teammatch_info_location">${list.region}
+								${list.homePlace}</div>
 						</div>
 						<div class="teammatch_info_btn">
 							<c:set var="b" value="${b+1}" />
 							<input type="button" class="btn" id="delete_registration_btn${b}"
 								value="취소하기">
 						</div>
-						<input type="hidden" class="teammatchlist2_seq" value=${list.seq}>
+						<input type="hidden" id="teammatchlist2_seq${b}" value=${list.seq}>
 					</div>
 				</c:if>
 
@@ -295,21 +297,20 @@
 
 					<div class="teammatch_info_list" id="teammatch__info_list3">
 						<div class="teammatch_info">
-							<span class="teammatch_info_title">${list.homeName} VS
-								${list.awayName}</span> <span class="teammatch_info_date">${list.possibleDate}
-								${list.possibleTime}</span> <span class="teammatch_info_location">${list.region}
-								${list.homePlace}</span>
+							<div class="teammatch_info_title">${list.homeName} VS
+								${list.awayName}</div> <div class="teammatch_info_date">${list.possibleDate}
+								${list.possibleTime}</div> <div class="teammatch_info_location">${list.region}
+								${list.homePlace}</div>
 						</div>
 						<div class="teammatch_info_btn">
 							<c:set var="c" value="${c+1}" />
-							<input type="button" class="btn" id="delete_add_btn${c}"
-								value="취소하기">
+							<input type="button" class="btn" id="delete_add_btn${c}" value="취소하기">
 						</div>
+						<input type="hidden" id="teammatchlist3_seq${c}" value=${list.seq}>
 					</div>
 
 				</c:if>
 
-				<input type="hidden" class="teammatchlist3_seq" value=${list.seq}>
 
 			</c:forEach>
 		</div>
@@ -334,10 +335,10 @@
 					
 					<div class="teammatch_info_list" id="teammatch__info_list4">
 						<div class="teammatch_info">
-							<span class="teammatch_info_title">${list.homeName} VS
-								${list.awayName}</span> <span class="teammatch_info_date">${list.possibleDate}
-								${list.possibleTime}</span> <span class="teammatch_info_location">${list.region}
-								${list.homePlace}</span>
+							<div class="teammatch_info_title">${list.homeName} VS
+								${list.awayName}</div> <div class="teammatch_info_date">${list.possibleDate}
+								${list.possibleTime}</div> <div class="teammatch_info_location">${list.region}
+								${list.homePlace}</div>
 						</div>
 						<div class="teammatch_info_btn">
 							<c:set var="d" value="${d+1}" />
@@ -348,7 +349,7 @@
 
 				</c:if>
 
-				<input type="hidden" class="teammatchlist4_seq" value=${list.seq}>
+				<input type="hidden" id="teammatchlist4_seq${d}" value=${list.seq}>
 			</c:forEach>
 		</div>
 
