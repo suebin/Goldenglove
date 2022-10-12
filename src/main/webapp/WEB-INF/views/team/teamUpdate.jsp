@@ -22,7 +22,7 @@ $(document).ready(function() {
 			if(positionMember[i].equals("")) {
 				modiPosition[i] = positionMember[i];
 			} else {
-				if(positionMember[i].split(" ").length > 1) {
+				if(positionMember[i].split(" ").length >= 1) {
 					modiPosition[i] = positionMember[i].replaceAll(" ", "</button><button>");
 				}
 			}
