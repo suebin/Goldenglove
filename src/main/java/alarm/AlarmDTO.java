@@ -10,6 +10,8 @@ public class AlarmDTO {
 	String homePlace;
 	String alarmDate;
 	int checked;
+	int acceptance;
+	String cancleTeam;
 	
 	public int getSeq() {
 		return seq;
@@ -64,6 +66,18 @@ public class AlarmDTO {
 	}
 	public void setChecked(int checked) {
 		this.checked = checked;
+	}
+	public int getAcceptance() {
+		return acceptance;
+	}
+	public void setAcceptance(int acceptance) {
+		this.acceptance = acceptance;
+	}
+	public String getCancleTeam() {
+		return cancleTeam;
+	}
+	public void setCancleTeam(String cancleTeam) {
+		this.cancleTeam = cancleTeam;
 	}
 	
 }

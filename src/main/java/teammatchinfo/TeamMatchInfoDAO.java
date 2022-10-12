@@ -45,4 +45,15 @@ public interface TeamMatchInfoDAO {
 	
 	// 4. 예정된 경기 > 취소하기 버튼
 	int cancelTeammatch(int seq);
+	
+	
+	
+	// 알림 등록
+	void insertAlarm(int seq);
+	
+	// 취소 시 null 된 awayName, cancle한 팀 입력
+	void updateCancleAlarm(int seq, String cancleTeam);
+	
+	// 수락/취소 알림 날짜 업데이트
+	void updateAlarmDate(String alarmDate);
 }

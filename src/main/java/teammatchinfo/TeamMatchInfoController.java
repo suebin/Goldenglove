@@ -56,8 +56,12 @@ public class TeamMatchInfoController {
 	
 	@ResponseBody
 	@RequestMapping("/teammatchAcceptance")
-	public String teammatchAcceptance(int seq) {
+	public String teammatchAcceptance(int seq, String alarmDate) {
 		int updatecount = service.updateAcceptance(seq);
+		
+		// 알림
+		service.insertAlarm(seq);
+		service.updateAlarmDate(alarmDate);
 		
 		String result = "";
 		
@@ -94,8 +98,13 @@ public class TeamMatchInfoController {
 	
 		@ResponseBody
 		@RequestMapping("/deleteAddTeammatch")
-		public String deleteAddTeammatch(int seq) {
+		public String deleteAddTeammatch(int seq, String alarmDate, String cancleTeam) {
 			int updatecount = service.deleteAddTeammatch(seq);
+			
+			// 알림
+			service.insertAlarm(seq);
+			service.updateCancleAlarm(seq, cancleTeam);
+			service.updateAlarmDate(alarmDate);
 			
 			String result = "";
 			
@@ -113,8 +122,14 @@ public class TeamMatchInfoController {
 		
 		@ResponseBody
 		@RequestMapping("/cancelTeammatch")
-		public String cancelTeammatch(int seq) {
+		public String cancelTeammatch(int seq, String alarmDate, String cancleTeam) {
 			int updatecount = service.cancelTeammatch(seq);
+			
+			// 알림
+			service.insertAlarm(seq);
+			service.updateCancleAlarm(seq, cancleTeam);
+			service.updateAlarmDate(alarmDate);
+			
 			
 			String result = "";
 			

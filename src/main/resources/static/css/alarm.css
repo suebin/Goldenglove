@@ -30,6 +30,7 @@ button {
 	color: var(--gray);
 }
 
+
 /*=========== alarm ===========*/
 .alarm {
 	position: relative;
@@ -90,6 +91,23 @@ button {
   	-webkit-transform:rotate(225deg);
 }
 
+.alarmCon .list {
+	max-height: 50vh;
+	overflow-y: scroll;
+}
+
+.alarmCon .list::-webkit-scrollbar {
+    width: 12px;
+}
+
+.alarmCon .list::-webkit-scrollbar-thumb {
+    height: 30%;
+    background: var(--main-color);
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 4px solid transparent;
+}
+
 .alarmCon .list li {
 	display: flex;
 	justify-content: space-between;
@@ -107,14 +125,25 @@ button {
 	
 .alarmCon .list li:hover {
 	font-weight: bold;
-	color: var(--main-color);
+	transform: scale(1.01);
 }
 	
 .alarmCon .list li p {
 	margin-right: 5px;
+	line-height: 18px;
 }	
 	
-	
+.alarmCon .list	.noAlarm {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+	color: #999;
+}
+
+.alarmCon .list li:hover .noAlarm {
+	font-weight: normal;
+	cursor: default;
+}
 	
 	
 	

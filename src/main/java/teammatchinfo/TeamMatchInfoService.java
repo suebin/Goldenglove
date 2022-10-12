@@ -70,4 +70,19 @@ public class TeamMatchInfoService {
 	
 	
 	
+	// 알림 등록
+	public void insertAlarm(int seq) {
+		dao.insertAlarm(seq);
+	}
+	
+	// 취소 시 null 된 awayName, cancle한 팀 입력
+	public void updateCancleAlarm(int seq, String cancleTeam) {
+		dao.updateCancleAlarm(seq, cancleTeam);
+	}
+
+	// 수락/취소 알림 날짜 업데이트
+	public void updateAlarmDate(String alarmDate) {
+		dao.updateAlarmDate(alarmDate);
+	}
+	
 }
