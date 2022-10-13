@@ -83,7 +83,6 @@
 			var delete_add_btn = 'delete_add_btn' + i;
 
 			$("#" + delete_add_btn).on("click", function() {
-
 				var update = confirm("매치를 취소하시겠습니까 ?");
 				if (update) {
 					$.ajax({
@@ -115,7 +114,7 @@
 				if (update) {
 					$.ajax({
 						url : 'cancelTeammatch',
-						data : {'seq' : $(".teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
+						data : {'seq' : $("#teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {

@@ -94,12 +94,12 @@ $(document).ready(function() {
 
 		
 		
-		// 매치 검색 버튼을 누를 경우
+		// 용병 검색 버튼을 누를 경우
 		
 		$("#searchbtn").on("click", function() {
 			
 			$.ajax({
-				url: 'teammatch',
+				url: 'getSoldier',
 				data: {'region':$("#region").val(),'possibleDate':$("#year_month").val() + $("#date").val()},
 				type: 'post',
 				dataType: 'json',
@@ -120,24 +120,21 @@ $(document).ready(function() {
 					
 					if ($("#region").val() != '' && $("#date").val() != '') {
 						
-						// 해당 날짜, 지역에 등록된 매치가 있을 경우
+						// 해당 날짜, 지역에 등록된 용병이 있을 경우
 				
 						if(data.length != 0) {
 						
-							// 날짜, 지역 필터링 한 등록된 매치 조회 
+							// 날짜, 지역 필터링 한 등록된 용병 조회 
 						
 							document.querySelector('.teammatch_info_hashtag').innerHTML = '<div class="teammatch_hashtag">#' + $("#region").val() + '</div><div class="teammatch_hashtag">#' + $("#year_month").val() + $("#date").val() + '</div>'; 
 						
 							document.querySelector('.teammatch_info_boxes').innerHTML = '';
 						
 							for(var i=0; i<data.length; i++) {
-								$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
-																+ '<div class="teammatch_info_one">' + data[i].possibleTime + '</div>'													
-																+ '<div class="teammatch_info_two"><div class="teammatch_teamname">' + data[i].homeName + '</div><div class="teammatch_infoes"><span>' + data[i].region + '</span><span>' + data[i].homePlace + '</span><span>' + data[i].headCount + '명</span></div></div>'
-																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>')
+								$(".teammatch_info_boxes").append('<div>용병 검색하면 나오는 조회 리스트</div>')
 								
 								
-								// 만약 자기 자신의 팀에 매치 신청하려고 하는 경우
+								
 																
 								if($("span.teamName").text() == data[i].homeName) {	
 															
@@ -149,16 +146,16 @@ $(document).ready(function() {
 																+ 	'</div>')
 																
 									$("#add_teammatch_btn" + i).on("click", function() {
-										alert('본인이 속한 팀에게는 매치 신청을 할 수 없습니다.');
+										alert('본인에게는 용병 신청을 할 수 없습니다.');
 									})
 									
 								}
 								
-								// 다른 팀에게 매치 신청을 하는 경우 
+								// 다른 사람에게 용병 신청을 하는 경우 
 								
 								else {
 									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
-																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn .teamName").html() + '">'
+																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("span.teamName").text() + '">'
 																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
 																
 																// 알림 기능 위해 추가
@@ -231,7 +228,7 @@ $(document).ready(function() {
 		}) // searchbtn end
 		
 		
-		// 매치 등록 버튼
+		// 용병 등록 버튼
 		
 		$("#registerbtn").on("click", function() {
 			
@@ -259,10 +256,10 @@ $(document).ready(function() {
 				alert("날짜와 지역을 선택해주시길 바랍니다.");
 			}
 			
-			// 로그인 상태이고, 날짜와 지역을 모두 선택한 경우에만 매치 등록을 할 수 있다.
+			// 로그인 상태이고, 날짜와 지역을 모두 선택한 경우에만 용병 등록을 할 수 있다.
 			
 			else {
-				location.href= "registerTeammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
+				// location.href= "registerTeammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
 			}
 		}) // registerbtn end		
 

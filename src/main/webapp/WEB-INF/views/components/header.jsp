@@ -33,6 +33,7 @@ $(document).ready(function() {
 				
 				<ul class="nav">
 					<li><a href="teammatch">팀 매칭</a></li>
+					<li><a href="getSoldier">용병 구하기</a></li>
 					<li><a href="ranking">랭킹</a></li>
 					<li><a href="/notice">공지사항</a></li>
 				</ul>
