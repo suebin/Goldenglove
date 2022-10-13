@@ -32,6 +32,40 @@ $(document).ready(function() {
 			location.href="exitTeam";
 		}
 	})
+	
+	// 수락
+	$(document).on("click", "#true", function() {
+		const id = $(this).prev().html();
+		const result = $(this).attr("id");
+		$.ajax({
+			url : "registerResult",
+			data : {"id" : id, "result" : result},
+			dataType : "json",
+			success : function(server) {
+				if(server.result == "success") {
+					alert("승인");
+					location.reload();
+				}
+			}
+		})
+	})
+	
+	// 거절
+	$(document).on("click", "#false", function() {
+		const id = $(this).prev().prev().html();
+		const result = $(this).attr("id");
+		$.ajax({
+			url : "registerResult",
+			data : {"id" : id, "result" : result},
+			dataType : "json",
+			success : function(server) {
+				if(server.result == "false") {
+					alert("거절");
+					location.reload();
+				}
+			}
+		})
+	})
 });
 </script>
 </head>
@@ -48,8 +82,19 @@ $(document).ready(function() {
 		</div>
 		<% String teamId = (String)request.getAttribute("teamId");
 			String loginId = (String)request.getAttribute("loginId");
+			String[] teamRegisterInfoUser = (String[])request.getAttribute("teamRegisterInfo");
 			if(teamId.equals(loginId)) { %>
-				<button id="updateTeamBtn">팀 수정</button>				
+				<button id="updateTeamBtn">팀 수정</button>
+				<div>
+					<h1>승인 대기 중인 요청</h1>
+					<%
+						for(int i = 0;i < teamRegisterInfoUser.length;i++) {%>
+							<p><%=teamRegisterInfoUser[i]%></p>
+							<button id="true">승인</button>
+							<button id="false">거절</button>
+						<%}
+					%>
+				</div>				
 			<%} else {%>
 				<button id="exitTeamBtn">팀 탈퇴</button>
 			<%}

@@ -60,4 +60,30 @@ public class TeamService {
 		teamDao.exitTeam(teamInfo);
 		return userDao.selectUser(teamInfo.get("id"));
 	}
+
+//	팀 가입 신청
+	public void registerTeam(HashMap<String, String> registerInfo) {
+		teamDao.makeRegi(registerInfo.get("id"));
+		teamDao.registerTeam(registerInfo);
+	}
+
+//	팀 가입 신청 조회
+	public String selectRegisterInfo(String id) {
+		return teamDao.selectRegisterInfo(id);
+	}
+
+	public String[] selectRegisterInfoUser(String id) {
+		return teamDao.selectRegisterInfoUser(id);
+	}
+
+//	팀 가입 신청 승인
+	public void updateRegister(HashMap<String, String> registerInfo) {
+		teamDao.updateRegisterResult(registerInfo);
+		teamDao.updatePosition(registerInfo);
+	}
+
+//	팀 가입 신청 거절
+	public void updateRegisterFalse(HashMap<String, String> registerInfo) {
+		teamDao.updateRegisterResult(registerInfo);
+	}
 }

@@ -44,4 +44,9 @@ public class UserService {
 	public void updatePassword(UserDTO dto) {
 		userDao.updatePassword(dto);
 	}
+
+//	팀 가입 승인
+	public void updateTeamName(HashMap registerInfo) {
+		userDao.updateTeamName(registerInfo);
+	}
 }

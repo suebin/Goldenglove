@@ -37,4 +37,9 @@
 		update user set password = #{password} where id = #{id} and name = #{name} and email = #{email};
 	</update>
 	
+	<!-- 팀 가입 승인 -->
+	<update id="updateTeamName" parameterType="HashMap">
+		update user set teamName = #{teamName} where id = #{id};
+	</update>
+	
 </mapper>

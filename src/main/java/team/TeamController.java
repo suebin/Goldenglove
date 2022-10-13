@@ -15,11 +15,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import user.UserDTO;
+import user.UserService;
 
 @Controller
 public class TeamController {
 	@Autowired
 	TeamService teamService;
+	@Autowired
+	UserService userService;
 
 //	팀원등록
 	@ResponseBody
@@ -35,7 +38,7 @@ public class TeamController {
 		return "{\"result\":\"success\"}";
 	}
 
-//	팀 점보
+//	팀 정보
 	@RequestMapping("/teampage")
 	public String teamPage(HttpServletRequest request) {
 		if (request.getSession().getAttribute("loginInfo") == null) {
@@ -44,9 +47,13 @@ public class TeamController {
 			HttpSession session = request.getSession();
 			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			if (user.getTeamName() == null) {
+				String teamRegisterInfo = teamService.selectRegisterInfo(user.getId());
+				request.setAttribute("teamRegisterInfo", teamRegisterInfo);
 				return "team/teamJoin";
 			} else {
 				String teamId = teamService.selectTeamId(user.getTeamName());
+				String[] teamRegisterInfo = teamService.selectRegisterInfoUser(teamId);
+				request.setAttribute("teamRegisterInfo", teamRegisterInfo);
 				request.setAttribute("teamId", teamId);
 				request.setAttribute("loginId", user.getId());
 				return "team/teamPage";
@@ -142,5 +149,52 @@ public class TeamController {
 			session.setAttribute("loginInfo", user);
 		}
 		return "main/main";
+	}
+
+//	팀가입
+	@ResponseBody
+	@RequestMapping("/searchTeam")
+	public String searchTeam(String teamName) {
+		TeamDTO team = teamService.selectTeam(teamName);
+		if (team != null) {
+			return "{\"result\":\"" + team.getTeamName() + "\"}";
+		} else {
+			return "{\"result\":\"팀 이름을 확인해주세요.\"}";
+		}
+	}
+
+	@ResponseBody
+	@RequestMapping("/teamRegisterResult")
+	public String teamRegisterResult(String teamName, HttpServletRequest request) {
+		TeamDTO team = teamService.selectTeam(teamName);
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		HashMap<String, String> registerInfo = new HashMap<>();
+		registerInfo.put("teamName", teamName);
+		registerInfo.put("teamId", team.getTeamId());
+		registerInfo.put("id", user.getId());
+		teamService.registerTeam(registerInfo);
+		return "{\"result\":\"success\"}";
+	}
+
+	@ResponseBody
+	@RequestMapping("/registerResult")
+	public String registerResult(String id, String result, HttpServletRequest request) {
+		HashMap<String, String> registerInfo = new HashMap<>();
+		registerInfo.put("result", result);
+		registerInfo.put("id", id);
+		if (result.equals("true")) {
+			HttpSession session = request.getSession();
+			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+			String position = userService.selectUser(id).getPosition();
+			registerInfo.put("teamName", user.getTeamName());
+			registerInfo.put("position", position);
+			userService.updateTeamName(registerInfo);
+			teamService.updateRegister(registerInfo);
+			return "{\"result\":\"success\"}";
+		} else {
+			teamService.updateRegisterFalse(registerInfo);
+			return "{\"result\":\"false\"}";
+		}
 	}
 }

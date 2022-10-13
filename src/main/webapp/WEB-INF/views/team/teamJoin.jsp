@@ -19,6 +19,7 @@ $(document).ready(function() {
 	$("#searchBtn").on("click", function() {
 		$("#searchBox").removeAttr("hidden");
 		$("#createBox").attr("hidden", "hidden");
+		$("#searchTeamName").focus();
 	})
 	
 	//팀이름 중복조회
@@ -99,6 +100,40 @@ $(document).ready(function() {
 				}
 			}
 		})
+	})
+	
+	//팀가입
+	$("#checkBtn").on("click", function() {
+		$.ajax({
+			url : "searchTeam",
+			data : {"teamName" : $("#searchTeamName").val()},
+			dataType : "json",
+			success : function(server) {
+				if(server.result == "팀 이름을 확인해주세요.") {
+					$("#searchResult").html(server.result);
+				} else {
+					$("#searchResult").html("");
+					$("#teamBtn").removeAttr("hidden");
+					$("#teamBtn").html(server.result);
+				}
+			}
+		})
+	})
+	
+	$("#teamBtn").on("click", function() {
+		if(confirm("가입신청을 하시겠습니까?")) {
+			$.ajax({
+				url : "teamRegisterResult",
+				data : {"teamName" : $("#teamBtn").html()},
+				dataType : "json",
+				success : function(server) {
+					if(server.result == "success") {
+						alert("신청완료");
+						location.href="/"
+					}
+				}
+			})
+		}
 	})
 });
 </script>
@@ -224,12 +259,19 @@ $(document).ready(function() {
 			</form>
 		</div>
 		<div id="searchBox" hidden>
-			<form autocomplete="off">
 				<table>
-					<tr><td>팀 이름</td><td><input type="text"></td><td><button>검색</button></td></tr>
+					<tr><td>팀 이름 </td><td><input type="text" id="searchTeamName" autocapitalize="none"></td><td><p id="searchResult"></p><button id="teamBtn" type="button" hidden></button></td></tr>
 				</table>
-			</form>
+				<button id="checkBtn" type="button">검색</button>
 		</div>
+		<%
+			if(request.getAttribute("teamRegisterInfo") != null) {%>
+				<div>
+					<h1>승인 대기 중인 팀</h1>
+					<p>${teamRegisterInfo }</p>
+				</div>
+			<%}
+		%>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

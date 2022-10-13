@@ -50,4 +50,31 @@
 	<select id="selectPosition" resultType="String" parameterType="userDTO">
 		select ${position} from team where teamName = #{teamName};
 	</select>
+	
+	<!-- 팀 가입 신청 -->
+	<insert id="makeRegi" parameterType="String">
+		insert into teamregister(id) values(#{id});
+	</insert>
+	
+	<update id="registerTeam" parameterType="HashMap">
+		update teamregister set teamId = #{teamId}, teamName = #{teamName} where id = #{id};
+	</update>
+	
+	<!-- 팀 가입 신청 조회 -->
+	<select id="selectRegisterInfo" parameterType="String" resultType="String">
+		select teamName from teamregister where id = #{id} and result = 'null';
+	</select>
+	
+	<select id="selectRegisterInfoUser" parameterType="String" resultType="String">
+		select id from teamregister where teamId = #{teamId} and requester = 'user' and result = 'null';
+	</select>
+	
+	<!-- 팀 가입 승인 -->
+	<update id="updateRegisterResult" parameterType="HashMap">
+		update teamregister set result = #{result} where id = #{id} and result = 'null';
+	</update>
+	
+	<update id="updatePosition" parameterType="HashMap">
+		update team set ${position} = concat(${position}, ' ', #{id}) where teamName = #{teamName};
+	</update>
 </mapper>
