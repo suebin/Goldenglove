@@ -83,7 +83,6 @@
 			var delete_add_btn = 'delete_add_btn' + i;
 
 			$("#" + delete_add_btn).on("click", function() {
-
 				var update = confirm("매치를 취소하시겠습니까 ?");
 				if (update) {
 					$.ajax({
