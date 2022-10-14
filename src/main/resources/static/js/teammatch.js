@@ -158,7 +158,7 @@ $(document).ready(function() {
 								
 								else {
 									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
-																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn").text().slice(0, -2) + '">'
+																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn .teamName").html() + '">'
 																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
 																
 																// 알림 기능 위해 추가

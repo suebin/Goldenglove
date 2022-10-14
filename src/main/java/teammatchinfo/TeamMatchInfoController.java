@@ -142,6 +142,15 @@ public class TeamMatchInfoController {
 			
 			return "{\"result\" : \"" + result + "\"}";
 		}
+		
+		
+		// 오늘의 매칭
+		@ResponseBody
+		@RequestMapping("/mainMatching")
+		public List<TeamMatchDTO> getTodayMatching(String today) {
+			List<TeamMatchDTO> list = service.getTodayMatching(today);
+			return list;
+		}
 	
 	
 

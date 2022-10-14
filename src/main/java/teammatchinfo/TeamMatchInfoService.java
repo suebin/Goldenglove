@@ -84,5 +84,10 @@ public class TeamMatchInfoService {
 	public void updateAlarmDate(String alarmDate) {
 		dao.updateAlarmDate(alarmDate);
 	}
+
+	// 오늘의 매칭
+	public List<TeamMatchDTO> getTodayMatching(String today) {
+		return dao.getTodayMatching(today);
+	}
 	
 }
