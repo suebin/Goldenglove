@@ -7,6 +7,15 @@ public class TeamDTO {
 	private String teamId, teamName, registerDate, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder,
 			rightFielder, centerFielder, shortStop;
 	private int winCount, loseCount;
+	private double winningRate;
+
+	public double getWinningRate() {
+		return winningRate;
+	}
+
+	public void setWinningRate(double winningRate) {
+		this.winningRate = winningRate;
+	}
 
 	public String getRegisterDate() {
 		return registerDate;

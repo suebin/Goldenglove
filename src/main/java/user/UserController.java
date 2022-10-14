@@ -1,5 +1,6 @@
 package user;
 
+import java.io.FileOutputStream;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import team.TeamService;
 
@@ -34,7 +36,22 @@ public class UserController {
 
 //	회원가입 완료
 	@PostMapping("/signupResult")
-	public String signupResult(UserDTO dto) {
+	public String signupResult(UserDTO dto, MultipartFile photo, HttpServletRequest request) {
+		String path = request.getRealPath("img");
+		MultipartFile uploadFile = photo;
+		String fName = uploadFile.getOriginalFilename();
+		if (fName != null && !fName.equals("")) {
+			String fileName = System.nanoTime() + "." + fName.substring(fName.lastIndexOf(".") + 1);
+			try {
+				byte[] data = uploadFile.getBytes();
+				FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+				fos.write(data);
+				fos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			dto.setFileName(fileName);
+		}
 		userService.insertUser(dto);
 		return "main/main";
 	}
@@ -119,9 +136,28 @@ public class UserController {
 
 //	내정보 수정
 	@PostMapping("/updateResult")
-	public String updateResult(UserDTO dto, HttpServletRequest request) {
+	public String updateResult(UserDTO dto, MultipartFile photo, HttpServletRequest request) {
 		HttpSession session = request.getSession();
 		UserDTO loginInfo = (UserDTO) session.getAttribute("loginInfo");
+
+		String path = request.getRealPath("img");
+		MultipartFile uploadFile = photo;
+		String fName = uploadFile.getOriginalFilename();
+		if (fName != null && !fName.equals("")) {
+			String fileName = System.nanoTime() + "." + fName.substring(fName.lastIndexOf(".") + 1);
+			try {
+				byte[] data = uploadFile.getBytes();
+				FileOutputStream fos = new FileOutputStream(path + "/" + fileName);
+				fos.write(data);
+				fos.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			dto.setFileName(fileName);
+		} else {
+			dto.setFileName(loginInfo.getFileName());
+		}
+
 		dto.setId(loginInfo.getId());
 		userService.updateUser(dto);
 		UserDTO updateInfo = userService.selectUser(dto.getId());

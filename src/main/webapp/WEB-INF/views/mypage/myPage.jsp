@@ -53,7 +53,7 @@ $(document).ready(function() {
 		<div class="contentBox">
 			<h1 class="h1">내정보</h1>
 			<table class="table">
-				<tr><td width="20%">이름 </td><td>${loginInfo.getName() }</td></tr>
+				<tr><td width="20%">이름 </td><td width="20%">${loginInfo.getName() }</td><td rowspan="5" width="40%"><jsp:include page="/WEB-INF/views/components/card.jsp" /></td></tr>
 				<tr><td>연락처 </td><td>${loginInfo.getPhone() }</td></tr>
 				<tr><td>이메일 </td><td>${loginInfo.getEmail() }</td></tr>
 				<tr><td>지역 </td><td>${loginInfo.getRegion() }</td></tr>

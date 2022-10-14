@@ -58,7 +58,7 @@
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 		<div class="confix">
 			<h1 class="h1">회원가입</h1>
-			<form action="signupResult" method="post" id="signupForm" autocomplete="off">
+			<form action="signupResult" method="post" id="signupForm" autocomplete="off" enctype="multipart/form-data">
 				<input type="text" name="kakaoId" value="${kakaoId }" hidden>
 				<input type="text" name="naverId" value="${naverId }" hidden>
 				<table class="table">
@@ -140,6 +140,10 @@
 								<option value="shortStop">유격수</option>
 							</select>
 						</td>
+					</tr>
+					<tr>
+						<td>프로필 사진 </td>
+						<td><input type="file" name="photo"></td>
 					</tr>
 				</table>
 				<div class="btnBox">

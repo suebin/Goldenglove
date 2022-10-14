@@ -4,8 +4,26 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UserDTO {
-	private String id, password, name, phone, email, region, registerDate, kakaoId, naverId, position, teamName;
+	private String id, password, name, phone, email, region, registerDate, kakaoId, naverId, position, teamName,
+			fileName = "2358530750712600.jfif";
 	private int winCount, loseCount;
+	private double winningRate;
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public double getWinningRate() {
+		return winningRate;
+	}
+
+	public void setWinningRate(double winningRate) {
+		this.winningRate = winningRate;
+	}
 
 	public String getTeamName() {
 		return teamName;

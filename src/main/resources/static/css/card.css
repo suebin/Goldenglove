@@ -1,0 +1,59 @@
+.profile-card-6 {
+	width: 300px;
+	height: 500px;
+	background-color: #FFF;
+	border-radius: 5px;
+	box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.1);
+	overflow: hidden;
+	position: relative;
+	margin: 10px auto;
+	cursor: pointer;
+}
+
+.profile-card-6 img {
+	width: 300px;
+	height: 500px;
+}
+
+.profile-card-6 .profile-name {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	font-size: 25px;
+	font-weight: bold;
+	padding: 15px 20px;
+	background: linear-gradient(140deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0) 50%);
+}
+
+.profile-card-6 .profile-position {
+	position: absolute;
+	color: rgba(0, 0, 0, 0.4);
+	left: 30px;
+	top: 100px;
+}
+
+.profile-card-6 .profile-overview {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background: linear-gradient(0deg, rgba(0, 0, 0, 0.4) 50%, rgba(255, 255, 0, 0));
+	color: #FFF;
+	padding: 50px 0px 20px 0px;
+	display: flex;
+	justify-content: space-around;
+}
+
+.profile-card-6 .profile-overview h3 {
+	font-weight: bold;
+	margin-right: 8px;
+}
+
+.profile-card-6 .profile-overview p {
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.profile-card-6 .profile-overview div {
+	display: flex;
+	align-items: center;
+}

@@ -65,10 +65,10 @@ $(document).ready(function() {
 		<div class="confix">
 			<h1 class="h1">내정보 수정</h1>
 			<div class="contentBox">
-				<form action="updateResult" method="post" id="updateForm" autocomplete="off">
+				<form action="updateResult" method="post" id="updateForm" enctype="multipart/form-data" autocomplete="off">
 					<table class="table">
 						<tr>
-							<td width="15%">이름 </td>
+							<td width="25%">이름 </td>
 							<td>
 								<input type="text" name="name" pattern="[a-zA-Z0-9가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,숫자,한글)" required value="${loginInfo.getName() }" readonly>
 							</td>
@@ -132,6 +132,10 @@ $(document).ready(function() {
 									<option value="shortStop">유격수</option>
 								</select>
 							</td>
+						</tr>
+						<tr>
+							<td>프로필 사진 </td>
+							<td><input type="file" name="photo"></td>
 						</tr>
 					</table>
 					<button type="submit" class="submitBtn">수정</button>
