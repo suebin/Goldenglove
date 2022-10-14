@@ -4,6 +4,7 @@ public class RankingDTO {
 	String id, password, name, phone, email, region, registerDate;
 	int winCount, loseCount; 
 	float winningRate;
+	String teamName;
 	
 	public String getId() {
 		return id;
@@ -65,6 +66,11 @@ public class RankingDTO {
 	public void setWinningRate(float winningRate) {
 		this.winningRate = winningRate;
 	}
-	
+	public String getTeamName() {
+		return teamName;
+	}
+	public void setTeamName(String teamName) {
+		this.teamName = teamName;
+	}
 	
 }

@@ -26,7 +26,7 @@ $(document).ready(function() {
 				 			+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 				
 				} else if (res[i].acceptance == 1 && res[i].awayName == "${loginInfo.getName()}") {
-					result = "<p>[수락] " + "<strong>" + res[i].awayName + "</strong> 팀이 매칭 신청을 수락하였습니다.<br/>"
+					result = "<p>[수락] " + "<strong>" + res[i].homeName + "</strong> 팀이 매칭 신청을 수락하였습니다.<br/>"
 	 						+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 				
 				} else if (res[i].acceptance == 0 && res[i].cancleTeam != "${loginInfo.getName()}") {

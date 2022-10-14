@@ -92,4 +92,10 @@
 	<update id="updateAlarmDate">
 		update alarm set alarmDate = #{alarmDate} where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a);
 	</update>
+	
+	
+	<!-- 오늘의 매칭 -->
+	<select id="getTodayMatching" resultType="teammatchdto">
+		select * from teammatching where possibleDate=#{today} order by possibleDate asc, possibleTime asc
+	</select>
 </mapper>

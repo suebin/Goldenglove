@@ -56,4 +56,7 @@ public interface TeamMatchInfoDAO {
 	
 	// 수락/취소 알림 날짜 업데이트
 	void updateAlarmDate(String alarmDate);
+	
+	// 오늘의 매칭
+	List<TeamMatchDTO> getTodayMatching(String today);
 }

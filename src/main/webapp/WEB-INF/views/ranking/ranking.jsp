@@ -53,7 +53,7 @@ $(document).ready(function() {
 							
 							<div class="rankingInfo">
 								<div class="teamInfo">
-									<span class="id">${ list.id }</span>
+									<span class="id">${ list.teamName }</span>
 									<div class="region">
 										<span>${ list.region }</span>
 									</div>
