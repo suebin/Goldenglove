@@ -10,11 +10,12 @@ import user.UserDTO;
 @Mapper
 @Repository("teamDAO")
 public interface TeamDAO {
-//	팀원등록
+//	팀생성
+	void updateUserTeam(TeamDTO dto);
+
 	void insertTeam(TeamDTO dto);
 
-//	팀가입
-	void updateUserTeam(TeamDTO dto);
+	void updateSelf(UserDTO position);
 
 //	팀원조회
 	TeamDTO selectTeam(String teamName);
@@ -27,6 +28,8 @@ public interface TeamDAO {
 
 //	팀원추가 가입조회
 	UserDTO selectUser(String id);
+
+	UserDTO selectUserPhone(String phone);
 
 //	팀아이디 조회
 	String selectTeamId(String teamName);
@@ -56,4 +59,14 @@ public interface TeamDAO {
 
 //	팀원 명 전체 조회
 	String selectAllMember(String teamId);
+
+//	팀원 등록 요청
+	void makeRegister(HashMap teamInfo);
+
+	void registerUser(HashMap userInfo);
+
+//	요청 조회
+	String[] selectRegisterUser(String teamId);
+
+	String[] selectRegisterTeam(String id);
 }
