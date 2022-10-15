@@ -1,9 +1,12 @@
 .cardBox {
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 }
 
 .card {
 	width: 150px;
 	height: 200px;
+	margin-right: 16px;
+	margin-bottom: 16px;
 }
