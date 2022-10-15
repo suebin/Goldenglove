@@ -237,22 +237,13 @@ public class TeamController {
 			teamService.updateRegister(registerInfo);
 			user = teamService.selectUser(user.getId());
 			session.setAttribute("loginInfo", user);
-			
-			// 가입 수락 알림
-			teamService.acceptJoinAlarm(id, user.getTeamName(), alarmDate);
-			
 			return "{\"result\":\"success\"}";
 		} else {
 			teamService.updateRegisterFalse(registerInfo);
-
-			// 가입 거절 알림
-			HttpSession session = request.getSession();
-			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
-			teamService.cancleJoinAlarm(id, user.getTeamName(), alarmDate);
-			
 			return "{\"result\":\"false\"}";
 		}
 	}
+	
 	@ResponseBody
 	@RequestMapping("/exitTeamAlarm")
 	public void exitTeamAlarm(String id, String teamName, String alarmDate) {
