@@ -30,9 +30,11 @@ public class TeamController {
 	public String teamResult(String teamDTO, HttpServletRequest request) throws JsonProcessingException {
 		ObjectMapper mapper = new ObjectMapper();
 		TeamDTO dto = mapper.readValue(teamDTO, TeamDTO.class);
-
 		HttpSession session = request.getSession();
-		UserDTO user = teamService.insertTeam(dto);
+		UserDTO position = (UserDTO) session.getAttribute("loginInfo");
+
+		UserDTO user = teamService.insertTeam(dto, position);
+		teamService.registerUser(dto);
 
 		session.setAttribute("loginInfo", user);
 		return "{\"result\":\"success\"}";
@@ -48,12 +50,17 @@ public class TeamController {
 			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			if (user.getTeamName() == null) {
 				String teamRegisterInfo = teamService.selectRegisterInfo(user.getId());
+				String[] registerTeam = teamService.selectRegisterTeam(user.getId());
 				request.setAttribute("teamRegisterInfo", teamRegisterInfo);
+				request.setAttribute("registerTeam", registerTeam);
 				return "team/teamJoin";
 			} else {
 				String teamId = teamService.selectTeamId(user.getTeamName());
 				UserDTO[] allMember = teamService.selectAllMember(teamId);
-				String[] teamRegisterInfo = teamService.selectRegisterInfoUser(teamId);
+				UserDTO[] teamRegisterInfo = teamService.selectRegisterInfoUser(teamId);
+				UserDTO[] registerUser = teamService.selectRegisterUser(teamId);
+
+				request.setAttribute("registerUser", registerUser);
 				request.setAttribute("allMember", allMember);
 				request.setAttribute("teamRegisterInfo", teamRegisterInfo);
 				request.setAttribute("teamId", teamId);
@@ -108,11 +115,11 @@ public class TeamController {
 //	팀원추가 가입조회
 	@ResponseBody
 	@RequestMapping("/userCheck")
-	public String userCheck(String id, String position) {
-		UserDTO user = teamService.selectUser(id);
+	public String userCheck(String phone, String position) {
+		UserDTO user = teamService.selectUserPhone(phone);
 		String result = "";
 		if (user == null) {
-			result = "아이디를 확인해주세요.";
+			result = "전화번호를 확인해주세요.";
 		} else if (user.getTeamName() != null) {
 			result = "이미 가입된 팀이 존재합니다.";
 		} else if (!user.getPosition().equals(position)) {
@@ -210,6 +217,29 @@ public class TeamController {
 			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			teamService.cancleJoinAlarm(id, user.getTeamName(), alarmDate);
 			
+			return "{\"result\":\"false\"}";
+		}
+	}
+
+	@ResponseBody
+	@RequestMapping("/registerResultUser")
+	public String registerResultUser(String teamName, String result, HttpServletRequest request) {
+		HashMap<String, String> registerInfo = new HashMap<>();
+		registerInfo.put("result", result);
+		registerInfo.put("teamName", teamName);
+		if (result.equals("true")) {
+			HttpSession session = request.getSession();
+			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+			String position = user.getPosition();
+			registerInfo.put("id", user.getId());
+			registerInfo.put("position", position);
+			userService.updateTeamName(registerInfo);
+			teamService.updateRegister(registerInfo);
+			user = teamService.selectUser(user.getId());
+			session.setAttribute("loginInfo", user);
+			return "{\"result\":\"success\"}";
+		} else {
+			teamService.updateRegisterFalse(registerInfo);
 			return "{\"result\":\"false\"}";
 		}
 	}

@@ -2,12 +2,33 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="team.TeamDAO">
 	
-	<!-- 팀원 등록 -->
-	<insert id="insertTeam" parameterType="teamDTO">
-		insert into team(teamId, teamName, firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder, centerFielder, shortStop) values(#{teamId}, #{teamName}, #{firstBase}, #{secondBase}, #{thirdBase}, #{catcher}, #{pitcher}, #{leftFielder}, #{rightFielder}, #{centerFielder}, #{shortStop});
+	<!-- 팀원 등록 요청 -->
+	<insert id="makeRegister" parameterType="HashMap">
+		insert into teamregister(teamId, teamName, requester) values(#{teamId}, #{teamName}, #{requester});
 	</insert>
 	
+	<update id="registerUser" parameterType="HashMap">
+		update teamregister set id = #{id} where teamId = #{teamId}
+	</update>
+	
+	<!-- 요청 조회 -->
+	<select id="selectRegisterUser" parameterType="String" resultType="String">
+		select id from teamregister where teamId = #{teamId} and requester = 'team' and result = 'null';
+	</select>
+	
+	<select id="selectRegisterTeam" parameterType="String" resultType="String">
+		select teamName from teamregister where id = #{id} and requester = 'team' and result = 'null';
+	</select>
+	
 	<!-- 팀 생성 -->
+	<insert id="insertTeam" parameterType="teamDTO">
+		insert into team(teamId, teamName) values(#{teamId}, #{teamName});
+	</insert>
+	
+	<update id="updateSelf" parameterType="UserDTO">
+		update team set ${position} = #{id} where teamId = #{id};
+	</update>
+	
 	<update id="updateUserTeam" parameterType="teamDTO">
 		update user set teamName = #{teamName} where id = #{teamId};
 	</update>
@@ -30,6 +51,10 @@
 	<!-- 팀원 추가 가입조회 -->
 	<select id="selectUser" resultType="userDTO" parameterType="String">
 		select * from user where id = #{id};
+	</select>
+	
+	<select id="selectUserPhone" resultType="userDTO" parameterType="String">
+		select * from user where phone = #{phone};
 	</select>
 	
 	<!-- 팀아이디 조회 -->
@@ -62,7 +87,7 @@
 	
 	<!-- 팀 가입 신청 조회 -->
 	<select id="selectRegisterInfo" parameterType="String" resultType="String">
-		select teamName from teamregister where id = #{id} and result = 'null';
+		select teamName from teamregister where id = #{id} and result = 'null' and requester = 'user';
 	</select>
 	
 	<select id="selectRegisterInfoUser" parameterType="String" resultType="String">
@@ -71,7 +96,7 @@
 	
 	<!-- 팀 가입 승인 -->
 	<update id="updateRegisterResult" parameterType="HashMap">
-		update teamregister set result = #{result} where id = #{id} and result = 'null';
+		update teamregister set result = #{result} where id = #{id} and teamName = #{teamName} and result = 'null';
 	</update>
 	
 	<update id="updatePosition" parameterType="HashMap">

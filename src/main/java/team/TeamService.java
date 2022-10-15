@@ -15,9 +15,43 @@ public class TeamService {
 	@Autowired
 	UserDAO userDao;
 
-//	팀원등록
-	public UserDTO insertTeam(TeamDTO dto) {
+//	팀원 등록 요청
+	public void registerUser(TeamDTO dto) {
+		String member = dto.getFirstBase() + " " + dto.getSecondBase() + " " + dto.getThirdBase() + " "
+				+ dto.getCatcher() + " " + dto.getPitcher() + " " + dto.getLeftFielder() + " " + dto.getRightFielder()
+				+ " " + dto.getCenterFielder() + " " + dto.getShortStop();
+		String[] arr = member.replaceAll("\\s+", " ").trim().split(" ");
+		HashMap<String, String> map = new HashMap<>();
+		map.put("teamId", dto.getTeamId());
+		map.put("teamName", dto.getTeamName());
+		map.put("requester", "team");
+		for (int i = 0; i < arr.length; i++) {
+			if (!dto.getTeamId().equals(arr[i])) {
+				map.put("id", arr[i]);
+				teamDao.makeRegister(map);
+				teamDao.registerUser(map);
+			}
+		}
+	}
+
+//	팀원 등록 요청 조회
+	public UserDTO[] selectRegisterUser(String teamId) {
+		String[] arr = teamDao.selectRegisterUser(teamId);
+		UserDTO[] userArr = new UserDTO[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			userArr[i] = teamDao.selectUser(arr[i]);
+		}
+		return userArr;
+	}
+
+	public String[] selectRegisterTeam(String id) {
+		return teamDao.selectRegisterTeam(id);
+	}
+
+//	팀생성
+	public UserDTO insertTeam(TeamDTO dto, UserDTO position) {
 		teamDao.insertTeam(dto);
+		teamDao.updateSelf(position);
 		teamDao.updateUserTeam(dto);
 		return userDao.selectUser(dto.getTeamId());
 	}
@@ -42,6 +76,10 @@ public class TeamService {
 //	팀원추가 가입조회
 	public UserDTO selectUser(String id) {
 		return teamDao.selectUser(id);
+	}
+
+	public UserDTO selectUserPhone(String phone) {
+		return teamDao.selectUserPhone(phone);
 	}
 
 //	팀아이디 조회
@@ -72,8 +110,13 @@ public class TeamService {
 		return teamDao.selectRegisterInfo(id);
 	}
 
-	public String[] selectRegisterInfoUser(String id) {
-		return teamDao.selectRegisterInfoUser(id);
+	public UserDTO[] selectRegisterInfoUser(String id) {
+		String[] arr = teamDao.selectRegisterInfoUser(id);
+		UserDTO[] userArr = new UserDTO[arr.length];
+		for (int i = 0; i < arr.length; i++) {
+			userArr[i] = teamDao.selectUser(arr[i]);
+		}
+		return userArr;
 	}
 
 //	팀 가입 신청 승인
