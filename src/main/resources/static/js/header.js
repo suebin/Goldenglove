@@ -37,7 +37,7 @@ function showMobileMenu() {
 		    mobileBtnBar[2].classList.toggle('hidden');
 		
 		    if (mobileBtnBar[0].classList.contains('hidden')) {
-		    	headerBar.style.height = '280px';
+		    	headerBar.style.height = '320px';
 		    	
 		    } else if (!mobileBtnBar[0].classList.contains('hidden')) {
 		    	headerBar.style.height = '55px';
@@ -69,14 +69,14 @@ function mobileDropDown() {
 
 // 내 정보 관련 메뉴 보임
 function openDropDown() {
-	if (headerBar.style.height = '280px') {
-    	headerBar.style.height = '390px';
+	if (headerBar.style.height = '320px') {
+    	headerBar.style.height = '440px';
     } 
 }
 
 // 내 정보 관련 메뉴 숨김
 function closeDropDown() {
-	if (headerBar.style.height = '390px') {
-    	headerBar.style.height = '280px';
+	if (headerBar.style.height = '440px') {
+    	headerBar.style.height = '320px';
     } 
 }

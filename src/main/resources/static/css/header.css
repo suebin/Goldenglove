@@ -154,9 +154,13 @@ body {
      background: #fff;
      overflow: hidden;
      transition: all 0.3s;
-     z-index: 1;
+     z-index: 99;
    }
 
+  .logo {
+	 font-size: 25px;
+  }
+  
   .mobileBtn {
     display: inline-block;
     position: absolute;
@@ -225,6 +229,7 @@ body {
   	padding: 0;
   	height: 30px;
     line-height: 30px;
+   	color: #000;
   }
   
   .dropdown-contents {

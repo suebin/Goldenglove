@@ -13,7 +13,6 @@
 <link rel="stylesheet" href="/css/owl.theme.default.min.css">
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/owl.carousel.min.js" defer></script>
-<script src="js/main.js" defer></script>
 <script>
 $(document).ready(function() {
 	history.replaceState({}, null, location.pathname);
@@ -31,6 +30,7 @@ $(document).ready(function() {
 			if (res.length == 0) {
 				let matching = result("Who's Next", '', '', '', "Who's Next");
 				$(".matchingListBox").append( matching );
+				$(".timePlace").css("display", "none");
 				
 			} else {
 				for(let j=0; j<res.length; j++) {
@@ -58,11 +58,11 @@ $(document).ready(function() {
 								
 							+	'<div class="center">'
 							+		'<span class="vs">vs</span>'
-							+		'<span class="timePlace">' + possibleDate + ' ' + possibleTime + ' / ' + homePlace + '</span>'
+							+		'<span class="timePlace">' + possibleDate + ' ' + possibleTime + '<br>' + homePlace + '</span>'
 							+	'</div>'
 								
 							+	'<div class="team">'
-							+		'<span class="teamName">' + awayName + '</span>'
+							+		'<span class="teamName awayTeam">' + awayName + '</span>'
 							+		'<img class="badge" alt="badge2" src="/images/badge2.png">'
 							+	'</div>'
 							+'</li>';
@@ -141,6 +141,7 @@ $(document).ready(function() {
 
 	<div class="mainTop">
 		<img class="mainImg" alt="mainImg" src="/images/mainImg.jpg">
+		<img class="mainImgMobile" alt="mainImgMobile" src="/images/mainImgMobile.jpg">
 		
 		<div class="intro">
 			<div class="confix">

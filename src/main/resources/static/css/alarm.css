@@ -156,6 +156,10 @@ button {
 	.alarmCon .list li {
 		padding: 8px 10px;
 	}
+	
+	.alarmImg .alarmCircle {
+		top: 12px;
+	}
 }
 	
 	
