@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -47,13 +48,16 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<body>
+<%
+	UserDTO user = (UserDTO)session.getAttribute("loginInfo"); 
+	request.setAttribute("user", user);
+%>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<div class="contentBox">
 			<h1 class="h1">내정보</h1>
 			<table class="table">
-				<tr><td width="20%">이름 </td><td width="20%">${loginInfo.getName() }</td><td rowspan="5" width="40%"><jsp:include page="/WEB-INF/views/components/card.jsp" /></td></tr>
+				<tr><td width="20%">이름 </td><td width="20%">${loginInfo.getName() }</td><td rowspan="5" width="40%" class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></td></tr>
 				<tr><td>연락처 </td><td>${loginInfo.getPhone() }</td></tr>
 				<tr><td>이메일 </td><td>${loginInfo.getEmail() }</td></tr>
 				<tr><td>지역 </td><td>${loginInfo.getRegion() }</td></tr>
@@ -68,6 +72,5 @@ $(document).ready(function() {
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
-</body>
 </body>
 </html>

@@ -52,7 +52,9 @@ public class TeamController {
 				return "team/teamJoin";
 			} else {
 				String teamId = teamService.selectTeamId(user.getTeamName());
+				UserDTO[] allMember = teamService.selectAllMember(teamId);
 				String[] teamRegisterInfo = teamService.selectRegisterInfoUser(teamId);
+				request.setAttribute("allMember", allMember);
 				request.setAttribute("teamRegisterInfo", teamRegisterInfo);
 				request.setAttribute("teamId", teamId);
 				request.setAttribute("loginId", user.getId());

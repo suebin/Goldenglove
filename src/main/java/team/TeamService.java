@@ -86,4 +86,16 @@ public class TeamService {
 	public void updateRegisterFalse(HashMap<String, String> registerInfo) {
 		teamDao.updateRegisterResult(registerInfo);
 	}
+
+//	팀원 명 전체 조회
+	public UserDTO[] selectAllMember(String teamId) {
+		String allMember = teamDao.selectAllMember(teamId);
+		String[] allMemberArr = allMember.replaceAll("\\s+", " ").trim().split(" ");
+
+		UserDTO[] allUser = new UserDTO[allMemberArr.length];
+		for (int i = 0; i < allMemberArr.length; i++) {
+			allUser[i] = teamDao.selectUser(allMemberArr[i]);
+		}
+		return allUser;
+	}
 }

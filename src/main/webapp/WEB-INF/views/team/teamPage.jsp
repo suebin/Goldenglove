@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,6 +9,7 @@
 <title>골든글러브</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
+<link href="/css/teamPage.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -73,7 +75,17 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<h1>${loginInfo.getTeamName() }</h1>
-		<jsp:include page="/WEB-INF/views/components/position.jsp" />
+		<div class="cardBox">
+			<%
+				UserDTO[] all = (UserDTO[])request.getAttribute("allMember");
+				for(int i = 0;i < all.length;i++) {
+					request.setAttribute("user", all[i]);%>
+					<div class="card">
+						<jsp:include page="/WEB-INF/views/components/card.jsp"/>
+					</div>	
+				<%}
+			%>
+		</div>
 		<div id="passwordInputTeam" hidden>
 			<span>비밀번호 :</span>
 			<input type="password" id="passwordTeam">

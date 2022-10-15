@@ -53,4 +53,7 @@ public interface TeamDAO {
 	void updateRegisterResult(HashMap registerInfo);
 
 	void updatePosition(HashMap registerInfo);
+
+//	팀원 명 전체 조회
+	String selectAllMember(String teamId);
 }

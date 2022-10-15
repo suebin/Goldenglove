@@ -17,15 +17,15 @@
 </head>
 <body>
 <%
-	UserDTO user = (UserDTO)session.getAttribute("loginInfo");
+	UserDTO user = (UserDTO)request.getAttribute("user");
 	int winCount = user.getWinCount();
 	int loseCount = user.getLoseCount();
 	double winningRate = (winCount == 0) ? 0.0 : (winCount / (winCount + loseCount)) * 100;
 %>
 	<div class="profile-card-6">
-		<img src="img/${loginInfo.fileName }" class="img img-responsive">
-		<div class="profile-name">${loginInfo.name }</div>
-		<div class="profile-position">${loginInfo.position }</div>
+		<img src="img/<%=user.getFileName() %>" class="img img-responsive">
+		<div class="profile-name"><%=user.getName() %></div>
+		<div class="profile-position"><%=user.getPosition() %></div>
 		<div class="profile-overview">
 			<div>
 				<h3><%=winCount %></h3>

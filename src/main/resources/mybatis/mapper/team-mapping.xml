@@ -77,4 +77,9 @@
 	<update id="updatePosition" parameterType="HashMap">
 		update team set ${position} = concat(${position}, ' ', #{id}) where teamName = #{teamName};
 	</update>
+	
+	<!-- 팀원 명 전체 조회 -->
+	<select id="selectAllMember" parameterType="String" resultType="String">
+		select concat_ws(' ', firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder, centerFielder, shortStop) from team where teamId = #{teamId};
+	</select>
 </mapper>
