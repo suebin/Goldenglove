@@ -243,7 +243,6 @@ public class TeamController {
 			return "{\"result\":\"false\"}";
 		}
 	}
-
 	@ResponseBody
 	@RequestMapping("/exitTeamAlarm")
 	public void exitTeamAlarm(String id, String teamName, String alarmDate) {

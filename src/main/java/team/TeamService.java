@@ -146,7 +146,6 @@ public class TeamService {
 		}
 		return allUser;
 	}
-
 	// 가입 신청 알림
 	public void applyJoinAlarm(String id, String teamName, String alarmDate) {
 		teamDao.applyJoinAlarm(id, teamName, alarmDate);
@@ -156,7 +155,6 @@ public class TeamService {
 	public void acceptJoinAlarm(String id, String teamName, String alarmDate) {
 		teamDao.acceptJoinAlarm(id, teamName, alarmDate);
 	}
-
 	// 가입 거절 알림
 	public void cancleJoinAlarm(String id, String teamName, String alarmDate) {
 		teamDao.cancleJoinAlarm(id, teamName, alarmDate);
