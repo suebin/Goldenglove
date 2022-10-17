@@ -11,9 +11,8 @@ public class AlarmDTO {
 	String alarmDate;
 	int checked;
 	int acceptance;
-	String cancleTeam, teamLeader, teamMember;
-	int applyJoin, acceptJoin, cancleJoin, exitTeam;
-
+	String cancleTeam;
+	
 	public int getSeq() {
 		return seq;
 	}
@@ -101,18 +100,8 @@ public class AlarmDTO {
 	public void setCancleTeam(String cancleTeam) {
 		this.cancleTeam = cancleTeam;
 	}
-
-	public String getTeamLeader() {
-		return teamLeader;
-	}
-
-	public void setTeamLeader(String teamLeader) {
-		this.teamLeader = teamLeader;
-	}
-
-	public String getTeamMember() {
-		return teamMember;
-	}
+	
+}
 
 	public void setTeamMember(String teamMember) {
 		this.teamMember = teamMember;
