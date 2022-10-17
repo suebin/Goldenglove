@@ -70,6 +70,9 @@ public interface TeamDAO {
 
 	String[] selectRegisterTeam(String id);
 
+//	seq조회
+	String selectSeq(HashMap idTeamName);
+	
 	
 	// 가입 신청 알림
 	void applyJoinAlarm(String id, String teamName, String alarmDate);
