@@ -82,4 +82,37 @@
 	<select id="selectAllMember" parameterType="String" resultType="String">
 		select concat_ws(' ', firstBase, secondBase, thirdBase, catcher, pitcher, leftFielder, rightFielder, centerFielder, shortStop) from team where teamId = #{teamId};
 	</select>
+	
+	
+	<!-- 가입 신청 알림 -->
+	<insert id="applyJoinAlarm" parameterType="String">
+		insert into alarm(alarmDate, applyJoin, teamLeader, teamMember) 
+		values (#{alarmDate}, 1, 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}));
+	</insert>
+
+	<!-- 가입 수락 알림 -->
+	<insert id="acceptJoinAlarm" parameterType="String">
+		insert into alarm(alarmDate, acceptJoin, teamLeader, teamMember) 
+		values (#{alarmDate}, 1, 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}));
+	</insert>
+
+	<!-- 가입 거절 알림 -->
+	<insert id="cancleJoinAlarm" parameterType="String">
+		insert into alarm(alarmDate, cancleJoin, teamLeader, teamMember) 
+		values (#{alarmDate}, 1, 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}));
+	</insert>
+
+	<!-- 팀 탈퇴 알림 -->
+	<insert id="exitTeamAlarm" parameterType="String">
+		insert into alarm(alarmDate, exitTeam, teamLeader, teamMember)
+		values (#{alarmDate}, 1, 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}));
+	</insert>
 </mapper>

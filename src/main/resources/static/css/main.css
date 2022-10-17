@@ -110,6 +110,7 @@ button {
 
 .matchingList ul li .team {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
 	width: 30%;
 	min-width: max-content;
