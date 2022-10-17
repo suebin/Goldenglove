@@ -43,7 +43,7 @@ public interface TeamDAO {
 	String selectPosition(UserDTO user);
 
 //	팀 가입 신청
-	void makeRegi(String id);
+	void makeRegi(HashMap idSeq);
 
 	void registerTeam(HashMap registerInfo);
 
@@ -69,4 +69,7 @@ public interface TeamDAO {
 	String[] selectRegisterUser(String teamId);
 
 	String[] selectRegisterTeam(String id);
+
+//	seq조회
+	String selectSeq(HashMap idTeamName);
 }

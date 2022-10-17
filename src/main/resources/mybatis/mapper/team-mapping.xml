@@ -4,11 +4,11 @@
 	
 	<!-- 팀원 등록 요청 -->
 	<insert id="makeRegister" parameterType="HashMap">
-		insert into teamregister(teamId, teamName, requester) values(#{teamId}, #{teamName}, #{requester});
+		insert into teamregister(teamId, teamName, requester, seq) values(#{teamId}, #{teamName}, #{requester}, #{seq});
 	</insert>
 	
 	<update id="registerUser" parameterType="HashMap">
-		update teamregister set id = #{id} where teamId = #{teamId}
+		update teamregister set id = #{id} where teamId = #{teamId} and seq = #{seq} and result = 'null' and requester = 'team';
 	</update>
 	
 	<!-- 요청 조회 -->
@@ -77,12 +77,12 @@
 	</select>
 	
 	<!-- 팀 가입 신청 -->
-	<insert id="makeRegi" parameterType="String">
-		insert into teamregister(id) values(#{id});
+	<insert id="makeRegi" parameterType="HashMap">
+		insert into teamregister(id, seq) values(#{id}, #{seq});
 	</insert>
 	
 	<update id="registerTeam" parameterType="HashMap">
-		update teamregister set teamId = #{teamId}, teamName = #{teamName} where id = #{id};
+		update teamregister set teamId = #{teamId}, teamName = #{teamName} where id = #{id} and seq = #{seq};
 	</update>
 	
 	<!-- 팀 가입 신청 조회 -->
@@ -102,6 +102,11 @@
 	<update id="updatePosition" parameterType="HashMap">
 		update team set ${position} = concat(${position}, ' ', #{id}) where teamName = #{teamName};
 	</update>
+	
+	<!-- seq 조회 -->
+	<select id="selectSeq" resultType="String" parameterType="HashMap">
+		select seq from teamregister where id = #{id} and teamName = #{teamName} and result = 'null';
+	</select>
 	
 	<!-- 팀원 명 전체 조회 -->
 	<select id="selectAllMember" parameterType="String" resultType="String">

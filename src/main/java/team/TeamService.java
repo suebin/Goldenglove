@@ -25,8 +25,11 @@ public class TeamService {
 		map.put("teamId", dto.getTeamId());
 		map.put("teamName", dto.getTeamName());
 		map.put("requester", "team");
+
 		for (int i = 0; i < arr.length; i++) {
 			if (!dto.getTeamId().equals(arr[i])) {
+				String seq = String.valueOf(System.nanoTime());
+				map.put("seq", seq);
 				map.put("id", arr[i]);
 				teamDao.makeRegister(map);
 				teamDao.registerUser(map);
@@ -101,7 +104,9 @@ public class TeamService {
 
 //	팀 가입 신청
 	public void registerTeam(HashMap<String, String> registerInfo) {
-		teamDao.makeRegi(registerInfo.get("id"));
+		String seq = String.valueOf(System.nanoTime());
+		registerInfo.put("seq", seq);
+		teamDao.makeRegi(registerInfo);
 		teamDao.registerTeam(registerInfo);
 	}
 
