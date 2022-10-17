@@ -183,10 +183,10 @@ public class TeamController {
 		registerInfo.put("teamId", team.getTeamId());
 		registerInfo.put("id", user.getId());
 		teamService.registerTeam(registerInfo);
-		
+
 		// 가입 신청 알림
 		teamService.applyJoinAlarm(user.getId(), teamName, alarmDate);
-		
+
 		return "{\"result\":\"success\"}";
 	}
 
@@ -204,10 +204,10 @@ public class TeamController {
 			registerInfo.put("position", position);
 			userService.updateTeamName(registerInfo);
 			teamService.updateRegister(registerInfo);
-			
+
 			// 가입 수락 알림
 			teamService.acceptJoinAlarm(id, user.getTeamName(), alarmDate);
-			
+
 			return "{\"result\":\"success\"}";
 		} else {
 			teamService.updateRegisterFalse(registerInfo);
@@ -216,7 +216,7 @@ public class TeamController {
 			HttpSession session = request.getSession();
 			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			teamService.cancleJoinAlarm(id, user.getTeamName(), alarmDate);
-			
+
 			return "{\"result\":\"false\"}";
 		}
 	}
@@ -242,7 +242,8 @@ public class TeamController {
 			teamService.updateRegisterFalse(registerInfo);
 			return "{\"result\":\"false\"}";
 		}
-	
+	}
+
 	@ResponseBody
 	@RequestMapping("/exitTeamAlarm")
 	public void exitTeamAlarm(String id, String teamName, String alarmDate) {
