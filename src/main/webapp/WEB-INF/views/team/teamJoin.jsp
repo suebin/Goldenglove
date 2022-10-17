@@ -12,6 +12,11 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+	// 알림 날짜
+	const now = new Date();
+	const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
+	
+	
 	$("#createBtn").on("click", function() {
 		$("#createBox").removeAttr("hidden");
 		$("#searchBox").attr("hidden", "hidden");
@@ -138,11 +143,11 @@ $(document).ready(function() {
 		if(confirm("가입신청을 하시겠습니까?")) {
 			$.ajax({
 				url : "teamRegisterResult",
-				data : {"teamName" : $("#teamBtn").html()},
+				data : {"teamName" : $("#teamBtn").html(), "alarmDate" : alarmDate},
 				dataType : "json",
 				success : function(server) {
 					if(server.result == "success") {
-						alert("신청완료");
+						alert("신청이 완료되었습니다.");
 						location.href="/"
 					}
 				}

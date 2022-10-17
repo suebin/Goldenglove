@@ -2,7 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="alarm.AlarmDAO">
 	<select id="selectAlarm" resultType="alarmDTO">
-		select * from alarm where ((homeName = #{homeName} and awayName IS NOT NULL) or awayName = #{homeName}) and alarmDate >= DATE_SUB(NOW(), INTERVAL 7 DAY);
+		select * from alarm where ((homeName = #{homeName} and awayName IS NOT NULL) 
+									or awayName = #{homeName}
+									or teamLeader = #{homeName}
+									or teamMember = #{homeName}) 
+		and alarmDate >= DATE_SUB(NOW(), INTERVAL 7 DAY);
 	</select>
 
 	<update id="checkAlarm" parameterType="int">

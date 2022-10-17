@@ -22,17 +22,29 @@ $(document).ready(function() {
 			
 			for(let i=0; i< res.length; i++) {
 				if(res[i].acceptance == -1 && res[i].homeName == "${loginInfo.getName()}") {
-				 	result = "<p>[신청] " + "<strong>" + res[i].awayName + "</strong> 팀이 매칭 신청을 하였습니다.<br/>"
+				 	result = "<p class='teammatchpage'>[신청] <strong>" + res[i].awayName + "</strong> 팀이 매칭 신청을 하였습니다.<br/>"
 				 			+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 				
 				} else if (res[i].acceptance == 1 && res[i].awayName == "${loginInfo.getName()}") {
-					result = "<p>[수락] " + "<strong>" + res[i].homeName + "</strong> 팀이 매칭 신청을 수락하였습니다.<br/>"
+					result = "<p class='teammatchpage'>[수락] <strong>" + res[i].homeName + "</strong> 팀이 매칭 신청을 수락하였습니다.<br/>"
 	 						+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 				
 				} else if (res[i].acceptance == 0 && res[i].cancleTeam != "${loginInfo.getName()}") {
-					result = "<p>[취소] " + "<strong>" + res[i].cancleTeam + "</strong> 팀이 매칭을 취소하였습니다.<br/>"
+					result = "<p class='teammatchpage'>[취소] <strong>" + res[i].cancleTeam + "</strong> 팀이 매칭을 취소하였습니다.<br/>"
 							+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 				
+				} else if (res[i].applyJoin == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[신청] <strong>" + res[i].teamMember + "</strong> 님이 팀 가입을 신청하였습니다.</p>";
+		
+				} else if (res[i].acceptJoin == 1 && res[i].teamMember == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[수락] <strong>" + res[i].teamLeader + "</strong> 님이 팀 가입을 수락하였습니다.</p>";
+		
+				} else if (res[i].cancleJoin == 1 && res[i].teamMember == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[거절] <strong>" + res[i].teamLeader + "</strong> 님이 팀 가입을 거절하였습니다.</p>";
+		
+				} else if (res[i].exitTeam == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[탈퇴] <strong>" + res[i].teamMember + "</strong> 님이 팀을 탈퇴하였습니다.</p>";
+		
 				} else {
 					result = "";
 				}
@@ -87,7 +99,13 @@ $(document).ready(function() {
 	// 알람 목록 클릭 시
 	$(document).on("click", ".li", function() {
 		$(this).addClass("clicked");
-		location.href = "teammatchpage?myTeamName=${loginInfo.getName()}";
+		
+		if ($(this).children("p").hasClass("teammatchpage")) {
+			location.href = "teammatchpage?myTeamName=${loginInfo.getName()}";
+			
+		} else if ($(this).children("p").hasClass("teampage")) {
+			location.href = "teampage";
+		}
 		
 		$.ajax ({
 			url: "checkAlarm",

@@ -13,6 +13,11 @@
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
+	// 알림 날짜
+	const now = new Date();
+	const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
+	
+	
 	$("#updateTeamBtn").on("click", function() {
 		$("#passwordInputTeam").removeAttr("hidden");
 		$("#passwordTeam").focus();
@@ -32,6 +37,14 @@ $(document).ready(function() {
 	$("#exitTeamBtn").on("click", function() {
 		if(confirm("팀에서 탈퇴하시겠습니까?")) {
 			location.href="exitTeam";
+			
+			$.ajax({
+				url : "exitTeamAlarm",
+				data : {"id" : id, "teamName" : "${loginInfo.getTeamName()}", "alarmDate" : alarmDate},
+				dataType : "json",
+				success : function(server) {
+				}
+			})
 		}
 	})
 	
@@ -41,7 +54,7 @@ $(document).ready(function() {
 		const result = $(this).attr("id");
 		$.ajax({
 			url : "registerResult",
-			data : {"id" : id, "result" : result},
+			data : {"id" : id, "result" : result, "alarmDate" : alarmDate},
 			dataType : "json",
 			success : function(server) {
 				if(server.result == "success") {
@@ -58,7 +71,7 @@ $(document).ready(function() {
 		const result = $(this).attr("id");
 		$.ajax({
 			url : "registerResult",
-			data : {"id" : id, "result" : result},
+			data : {"id" : id, "result" : result, "alarmDate" : alarmDate},
 			dataType : "json",
 			success : function(server) {
 				if(server.result == "false") {

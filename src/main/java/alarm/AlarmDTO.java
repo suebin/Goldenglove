@@ -11,7 +11,8 @@ public class AlarmDTO {
 	String alarmDate;
 	int checked;
 	int acceptance;
-	String cancleTeam;
+	String cancleTeam, teamLeader, teamMember;
+	int applyJoin, acceptJoin, cancleJoin, exitTeam;
 	
 	public int getSeq() {
 		return seq;
@@ -78,6 +79,42 @@ public class AlarmDTO {
 	}
 	public void setCancleTeam(String cancleTeam) {
 		this.cancleTeam = cancleTeam;
+	}
+	public String getTeamLeader() {
+		return teamLeader;
+	}
+	public void setTeamLeader(String teamLeader) {
+		this.teamLeader = teamLeader;
+	}
+	public String getTeamMember() {
+		return teamMember;
+	}
+	public void setTeamMember(String teamMember) {
+		this.teamMember = teamMember;
+	}
+	public int getApplyJoin() {
+		return applyJoin;
+	}
+	public void setApplyJoin(int applyJoin) {
+		this.applyJoin = applyJoin;
+	}
+	public int getAcceptJoin() {
+		return acceptJoin;
+	}
+	public void setAcceptJoin(int acceptJoin) {
+		this.acceptJoin = acceptJoin;
+	}
+	public int getCancleJoin() {
+		return cancleJoin;
+	}
+	public void setCancleJoin(int cancleJoin) {
+		this.cancleJoin = cancleJoin;
+	}
+	public int getExitTeam() {
+		return exitTeam;
+	}
+	public void setExitTeam(int exitTeam) {
+		this.exitTeam = exitTeam;
 	}
 	
 }

@@ -174,7 +174,7 @@ public class TeamController {
 
 	@ResponseBody
 	@RequestMapping("/teamRegisterResult")
-	public String teamRegisterResult(String teamName, HttpServletRequest request) {
+	public String teamRegisterResult(String teamName, HttpServletRequest request, String alarmDate) {
 		TeamDTO team = teamService.selectTeam(teamName);
 		HttpSession session = request.getSession();
 		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
@@ -183,12 +183,16 @@ public class TeamController {
 		registerInfo.put("teamId", team.getTeamId());
 		registerInfo.put("id", user.getId());
 		teamService.registerTeam(registerInfo);
+		
+		// 가입 신청 알림
+		teamService.applyJoinAlarm(user.getId(), teamName, alarmDate);
+		
 		return "{\"result\":\"success\"}";
 	}
 
 	@ResponseBody
 	@RequestMapping("/registerResult")
-	public String registerResult(String id, String result, HttpServletRequest request) {
+	public String registerResult(String id, String result, HttpServletRequest request, String alarmDate) {
 		HashMap<String, String> registerInfo = new HashMap<>();
 		registerInfo.put("result", result);
 		registerInfo.put("id", id);
@@ -200,9 +204,19 @@ public class TeamController {
 			registerInfo.put("position", position);
 			userService.updateTeamName(registerInfo);
 			teamService.updateRegister(registerInfo);
+			
+			// 가입 수락 알림
+			teamService.acceptJoinAlarm(id, user.getTeamName(), alarmDate);
+			
 			return "{\"result\":\"success\"}";
 		} else {
 			teamService.updateRegisterFalse(registerInfo);
+
+			// 가입 거절 알림
+			HttpSession session = request.getSession();
+			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+			teamService.cancleJoinAlarm(id, user.getTeamName(), alarmDate);
+			
 			return "{\"result\":\"false\"}";
 		}
 	}
@@ -228,5 +242,11 @@ public class TeamController {
 			teamService.updateRegisterFalse(registerInfo);
 			return "{\"result\":\"false\"}";
 		}
+	
+	@ResponseBody
+	@RequestMapping("/exitTeamAlarm")
+	public void exitTeamAlarm(String id, String teamName, String alarmDate) {
+		// 팀 탈퇴 알림
+		teamService.exitTeamAlarm(id, teamName, alarmDate);
 	}
 }

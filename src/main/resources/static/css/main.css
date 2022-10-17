@@ -1,7 +1,456 @@
-.confix {
-  position: relative;
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px 0;
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
+body {
+	position: relative;
+}
+
+body span {
+	display: inline-block;
+}
+
+h2 {
+	padding-bottom: 20px;
+}
+
+button {
+	font-family: "비트로 프라이드 OTF";
+}
+
+/* main에서만 적용되는 header */
+.main header {
+	border-bottom: none;
+}
+
+.main .nav li a {
+	color: #fff;
+}
+
+.main .dropdown {
+	color: #fff;
+}
+
+.main .loginBtnCon button {
+	background-color: transparent;
+}
+
+.main h3 {
+	padding-bottom: 20px;
+	font-family: "비트로 코어 OTF";
+	font-size: 25px;
+	cursor: default;
+}
+
+/* main */
+.mainTop {
+	position: relative;
+	top: -80px;
+	width: 100%;
+	font-size: 0;
+	background: #f2f2f2;
+	z-index: -1;
+}
+
+.mainTop .mainImg {
+	display: block;
+	width: 100%;
+}
+
+.mainImgMobile {
+	display: none;
+}
+	
+.mainTop .intro {
+	position: absolute;
+	bottom: -50px;
+	width: 100%;
+	background: var(--main-color);
+	background: #444;
+}
+
+.mainTop .intro .confix {
+	padding: 15px 0;
+}
+	
+.mainTop .intro span {
+	font-size: 16px;
+	color: #fff;
+}
+
+/*======= todayMatching =======*/
+.todayMatching {
+	background-image: linear-gradient(to bottom, #ffffff, #f2f2f2);
+}
+
+/*======= matchingList =======*/
+.matchingList {
+	display: flex;
+	padding: 3% 0;
+	width: 100%;
+}
+
+.matchingList ul {
+	display: flex;
+	width: 100%;
+    transition: all 1s;
+}
+
+.matchingList ul li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+	width: 100%;
+}
+
+.matchingList ul li .team {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 30%;
+	min-width: max-content;
+	font-weight: bold;
+	font-size: 25px;
+}
+
+.matchingList ul li .team .teamName {
+	padding: 0 10%;
+	width: 200px;
+}
+
+.matchingList ul li .team .awayTeam {
+	text-align: right;
+}
+
+.matchingList ul li .team img {
+	width: 100px;
+}
+
+.matchingList ul li .center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 30%;
+}
+
+.matchingList ul li .center .vs {
+	padding-bottom: 15px;
+	font-size: 45px;
+	font-family: "비트로 코어 OTF";
+}
+
+.matchingList ul li .center .timePlace {
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 25px;
+}
+
+/*======= info =======*/
+.info {
+	padding: 3% 0;
+	background: #f2f2f2;
+}
+
+.info > .confix {
+	display: flex;
+	justify-content: space-between;
+}
+
+/*======= ranking =======*/
+.ranking {
+	width: 35%;
+	cursor: default;
+}
+
+.rankingList li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 12px 10px;
+	font-size: 14px;
+}
+
+.rankingList li img {
+	width: 25px;
+}
+
+.rankingList li:nth-child(2n+1) {
+	background: #e8e8e8;
+}
+
+.rankingList li:nth-child(2n) {
+	background: #fff;
+}
+
+.rankingList li:first-child {
+	color: #fff;
+	font-weight: bold;
+	background: var(--main-color);
+}
+
+.rankingList li .teamInfo {
+	font-weight: bold;
+}
+
+.rankingList li .result {
+	width: 40px;
+	text-align: center;
+}
+	
+.rankingList li span:first-child {
+	padding: 0 5px;
+}
+
+.rankingList li span:nth-child(2) {
+	width: 30%;
+}
+
+
+/*======= notice =======*/
+.notice {
+	width: 55%;
+	overflow: hidden;
+}
+
+.noticeTop {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.noticeTop a {
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.noticeTop a:hover {
+	text-decoration: underline;
+}
+
+.noticeList > li {
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 1px solid var(--gray);
+	background: #fff;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+.noticeList > li:first-child {
+	padding: 12px 10px;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	background: var(--main-color);
+	border-bottom: none;
+	cursor: default;
+}
+
+.noticeList > li ul{
+	display: flex;
+	justify-content: space-between;
+	width :100%;
+	padding: 12px 10px;
+	font-size: 14px;
+}
+
+.noticeList > li:not(:first-child):hover {
+	font-weight: bold;
+	transform: scale(1.01);
+}
+
+.noticeList .noList {
+    padding: 12px 0;
+    color: var(--gray);
+    font-size: 14px;
+}
+
+.noticeList .title {
+	width: 80%;
+	padding: 0 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.noticeList .date {
+	font-size: 13px;
+}
+	
+/*======= joinAdvice =======*/	
+.joinAdvice {
+    position: relative;
+    width: 100%;
+    text-align: right;
+    background: url(/images/mainImg2.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    height: 350px;
+}
+
+.joinAdvice .joinAdviceTxt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    padding: 3%;
+    width: 100%;
+    color: #fff;
+}
+
+.joinAdvice .joinAdviceTxt h3 {
+	font-size: 40px;
+}
+	
+.joinAdvice .joinAdviceTxt span:first-child {
+	font-size: 20px;
+	font-weight: bold;
+}
+	
+.joinAdvice .joinAdviceTxt span:not(:first-child) {
+	padding: 0 5px;
+	line-height: 25px;
+	font-weight: bold;
+	background-color: rgba(102, 051, 051, 0.5);
+}
+	
+/*======= proSchedule =======*/	
+.proSchedule {
+	padding: 3% 0 5%;
+	background: #f2f2f2;
+}
+
+.proSchedule h3 {
+	padding-bottom: 5px;
+}
+
+.proSchedule .desc {
+	padding-bottom: 20px;
+}
+
+.proSchedule .proList {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.proSchedule .proList li {
+	width: 32.333%;
+	border-radius: 5px;
+	background: #fff;
+	overflow: hidden;
+}
+
+.proSchedule .proList li a {
+	width: 100%;
+}
+
+.proSchedule .proList li a img {
+	width: 100%;
+	transition: all 0.3s;
+}
+
+.proSchedule .proList li:hover a img {
+	font-size: 0;
+	transform: scale(1.04);
+}
+
+.proSchedule .proList li a .siteBtnBox {
+	padding: 10px;
+}
+
+.proSchedule .proList li a span {
+	display: block;
+	font-weight: bold;
+}
+
+.proSchedule .proList li a .siteBtn {
+	text-align: right;
+	color: var(--main-color);
+	font-size: 13px;
+}
+
+.proSchedule .proList li:hover a .siteBtn {
+	text-decoration: underline;
+}
+
+
+/*======= 768 =======*/	
+@media (max-width: 768px) {
+	.main .nav li a {
+		color: black;
+	}
+	
+	.mainTop .mainImg {
+		display: none;
+	}
+
+	.mainImgMobile {
+		display: block;
+		width: 100%;
+		margin-top: 55px;
+	}
+	
+	.mainTop .intro {
+		bottom: -45px;
+	}
+	
+	.mainTop .intro span {
+	    font-size: 14px;
+	}
+	
+	.matchingList ul li {
+		flex-direction: column;
+	}
+	
+	.matchingList ul li .team img {
+	    width: 80px;
+	}
+	
+	.matchingList ul li .center {
+	    width: 100%;
+	}
+	
+	.info > .confix {
+		flex-direction: column;
+	}
+	
+	.ranking {
+		width: 100%;
+	}
+	
+	.notice {
+		margin-top: 30px;
+	    width: 100%;
+	}
+	
+	.noticeList > li:first-child {
+	    font-size: 14px;
+	}
+	
+	.noticeList .title {
+	    width: 70%;
+	}
+	
+	.joinAdvice .joinAdviceTxt span:not(:first-child) {
+	    line-height: 20px;
+	    font-size: 13px;
+	}
+	
+	.proSchedule .proList {
+		flex-direction: column;
+	}
+	
+	.proSchedule .proList li {
+		width: 100%;
+    	margin-bottom: 30px;
+	}
 }
