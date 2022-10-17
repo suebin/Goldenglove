@@ -242,7 +242,8 @@ public class TeamController {
 			teamService.updateRegisterFalse(registerInfo);
 			return "{\"result\":\"false\"}";
 		}
-	
+	}
+
 	@ResponseBody
 	@RequestMapping("/exitTeamAlarm")
 	public void exitTeamAlarm(String id, String teamName, String alarmDate) {
