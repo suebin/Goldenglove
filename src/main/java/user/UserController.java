@@ -30,7 +30,6 @@ public class UserController {
 	public String modalResult(String name) {
 		UserDTO user = userService.selectName(name);
 
-		System.out.println(name);
 		JSONObject json = new JSONObject();
 		json.put("name", user.getName());
 		json.put("phone", user.getPhone());
