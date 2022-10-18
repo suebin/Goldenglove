@@ -1,385 +1,70 @@
 @charset "UTF-8";
 
-/* 캘린더 및 지역 선택 */
+/* 용병 검색 form */
 
-.select_box {
+.soldier_boxes {
 	display: flex;
-	justify-content: center;
-}
-
-.select_two {
-	margin-top: 10px;
-	text-align: right;
-}
-
-.select_region {
-	margin: 0 auto;
-	width: 300px;
+	justify-content: space-between;
+	margin: 30px 0px;
 }
 
 
-.region_btn {
-	border: 2px solid #00912e;
+input#dateSelector {
+	padding-left: 7px;
+	width: 116px;
+}
+
+#searchSoldierForm > input,select {
+	border: 1px solid black;
 	border-radius: 10px;
-	background-color: white ;
-	font: 15px "비트로 프라이드 OTF";
-	font-weight: bold;
-	color: #00912e;
-	width: 110px; 
-	height: 40px;
-	margin-bottom: 5px;
-	margin-top: 5px;
+	height: 27px;
+	font-family: "비트로 프라이드 OTF";
 	cursor: pointer;
+	margin-right: 4px;
 }
 
-.region_btn:hover {
-	border: 2px solid #feca00;
-	color: #feca00;
-	transition: all 0.1s;
-}
-
-/* input.region_btn:hover {
-	background-color: #72CC82;
-	color: white;
-	transition: all 0.2s;
-}
- */
-
-
-
-
-/* 매치 검색, 매치 등록 버튼 */
-
-.match_btn {
-	display: flex;
-	justify-content: center;
-	height: 150px;
-	padding: 50px 0px;
-}
-
-.search_btn {
-	margin-right: 10px;
-}
-
-.register_btn {
-	margin-left: 10px;
-}
-
-.search_btn, .register_btn {
-	border: 2px solid #00912e;
-	border-radius: 10px;
-	background-color: #00912e;
-	font: 18px "비트로 코어 OTF";
-	color: white;
-	font-weight: bold;
-	width: 200px; 
-	height: 60px;
-}
-
-input.search_btn:hover, input.register_btn:hover {
-	border: 2px solid #217517;
-	background-color: #217517;
-	cursor:pointer;
-}
-
-
-
-
-
-/* 캘린더 */
-
-.select_date {
-    width: 360px;
-    margin: 0 auto;
-    font-family: "비트로 프라이드 OTF";
-}
-
-.select_date .cal_nav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 78px;
-}
-
-.cal_nav {
-	color: black;
-}
-
-.select_date .cal_nav .year-month {
-    width: 300px;
-    text-align: center;
-    line-height: 1;
-}
-
-.select_date .cal_nav .nav {
-    display: flex;
-    border: 1px solid #333333;
-    border-radius: 5px;
-}
-
-.select_date .cal_nav .go-prev,
-.select_date .cal_nav .go-next {
-    display: block;
-    width: 50px;
-    height: 78px;
-    font-size: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.select_date .cal_nav .go-prev::before,
-.select_date .cal_nav .go-next::before {
-    content: "";
-    display: block;
-    width: 20px;
-    height: 20px;
-    border: 3px solid #000;
-    border-width: 3px 3px 0 0;
-    transition: border 0.1s;
-}
-
-.select_date .cal_nav .go-prev:hover::before,
-.select_date .cal_nav .go-next:hover::before {
-    border-color: #00912e;
-}
-
-.select_date .cal_nav .go-prev::before {
-    transform: rotate(-135deg);
-}
-
-.select_date .cal_nav .go-next::before {
-    transform: rotate(45deg);
-}
-
-.select_date .cal_wrap {
-    padding-top: 40px;
-    position: relative;
-    margin: 0 auto;
-}
-
-.select_date .cal_wrap .days {
-    display: flex;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-}
-
-.select_date .cal_wrap::after {
-    top: 368px;
-}
-
-.select_date .cal_wrap .day {
-    display:flex;
-    align-items: center;
-    justify-content: center;
-    width: calc(100% / 7);
-    text-align: left;
-    color: #999;
-    font-size: 12px;
-    text-align: center;
-    border-radius:5px;
-}
-
-.select_date .cal_wrap .dates .day {
-    cursor: pointer;
-}
-	
-.select_date .cal_wrap .dates .day:hover {
-	background: rgba(242, 242, 242, 0.5);
-}
-
-.current.today {background: rgb(242 242 242);}
-
-.select_date .cal_wrap .dates {
-    display: flex;
-    flex-flow: wrap;
-    height: 290px;
-}
-
-.select_date .cal_wrap .day:nth-child(7n -1) {
-    color: #3c6ffa;
-}
-
-.select_date .cal_wrap .day:nth-child(7n) {
-    color: #ed2a61;
-}
-
-.select_date .cal_wrap .day.disable {
-    color: #ddd;
-}
-
-
-
-
-
-/* 매치 검색 버튼을 누르면 하단에 나오는 매치 조회 */
-
-.teammatch_info {
-	margin: auto;
-	padding-top: 10px;
-}
-
-.teammatch_info_hashtag {
-	height:60px;
-	margin-top: 50px;
-}
-
-.teammatch_hashtag {
-	display: inline-block;
-	margin-right: 15px;
-	font-size: 25px;
+.searchSoldierBtn {
+	width: 70px;
+	background-color: #feca00;
 	font-weight: bold;
 }
 
-
-.teammatch_info_box {
-	border: 1px solid #E3E9D5;
-	border-bottom: 0px;
-	border-left: 0px;
-	border-right: 0px;
-	padding: 20px 0px 10px 20px;
-	height: 90px;
-}
-
-.teammatch_info_box > div {
-	display: inline-block;
-	margin-right: 15px;
-	vertical-align: middle;	
-}
-
-.teammatch_info_one {
-	text-align: center;
-	width:80px;
-	font: 16px "비트로 코어 OTF";
-}
-
-.teammatch_info_two {
-	width: 200px;
-}
-
-.teammatch_teamname {
+.registerSoldierBtn {
+	border: none;
+	background-color: white;
 	font-size: 19px;
 	font-weight: bold;
-	margin-bottom: 5px;
 }
 
-.teammatch_infoes > span {
-	margin-right: 10px;
-	font-size: 15px;
-	color: grey;
+.registerSoldierBtn:hover {
+	font-size: 21px;
 }
 
 
-.teammatch_info_three {
-	width: 250px;
+/* 용병 리스트 */
+
+.swiper-slide {
+	padding: 50px 70px;
+	background-color: green;
+}
+.swiper {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
 }
 
-.teammatch_info_comment_title {
-	font-size: 13px;
-	font-weight: bold;
-	margin-bottom: 10px;
+div.swiper-button-prev, div.swiper-button-next {
+	color: #feca00;
 }
 
-.teammatch_info_comment {
-	font-size: 12px;
-	color: grey;
+div.swiper-button-prev:hover, div.swiper-button-next:hover {
+	color: #e1b500;
 }
 
-form {
-	width: 200px;
-	display: inline-block;
-	margin-left: 50px;
-	text-align: right;
-	margin-bottom: 20px;
+div.swiper-pagination {
+	display: block;
 }
 
-.teammatch_btn {
-	background-color: #00912e;
-	border: 0px;
-	border-radius: 10px;
-	font: 13px "비트로 프라이드 OTF";
-	font-weight: bold;
-	color: white;
-	width: 65px; 
-	height: 35px;
-	margin-right: 8px;
+span.swiper-pagination-bullet-active {
+	background-color: #feca00;
 }
-
-input.teammatch_btn:hover {
-		background-color: #217517;
-		cursor:pointer;;
-}
-
-
-
-@media (max-width: 1002px) {
-    .teammatch_info_three,
-    .teammatch_info_comment_title,
-    .teammatch_info_comment {
-        display:none;
-        width: 0px;
-    }
-}
-
-@media (max-width: 700px) {
-	
-	.select_box {
-		display: block;
-	}
-	
-	.select_one {
-		display: flex;
-		justify-content: center;
-		margin-bottom: 50px;
-	}
-	
-	.select_two {
-		display: flex;
-		justify-content: center;
-		text-align: center;
-	}
-	
-	.select_region {
-		width: 400px;
-	}
-	
-	.region_btn {
-		font: 11px "비트로 프라이드 OTF";
-		font-weight: bold;
-		width: 99px; 
-		height: 35px;	
-	}
-	
-	.match_btn {
-		display: block;
-		padding: 50px 0px;
-		height: 190px;
-	}
-	
-	.search_btn, .register_btn {
-		display: block;
-		margin: 0 auto;
-		margin-bottom: 20px;
-	}
-	
-	.register_btn {
-		margin-bottom: 40px;
-	}
-}
-
-
-
-
-/* 매치 등록 버튼을 누르면 나오는 모달 창 */
-
-/* .teammatch_registration_modal {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: rgba(0,0,0,0.8);
-	top:0; left: 0;
-	display: none;
-} */
