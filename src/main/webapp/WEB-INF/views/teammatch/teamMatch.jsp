@@ -19,8 +19,21 @@
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 
-	<div class="confix">
+	<div class="teamMatchImg teamMatch">
+		<img alt="teamMatchImg" src="/images/teamMatch.jpg">
+		
+		<div class="confix intro">
+			<h1>Team Matching</h1>
+			<span>손쉽게 원하는 팀과 경기를 해보세요!</span>
+		</div>
+	</div>
 	
+	<div class="confix">
+		<div class="teamMatchTitle">
+			<h2>Search your game</h2>
+			<span>원하는 시간과 날짜에 매칭 신청 및 등록이 가능합니다.</span>
+		</div>
+		
 		<!-- 선택한 지역과 날짜 데이터 전송 -->
 		
 		<form action="teammatch" method="post">
@@ -112,6 +125,7 @@
 			</div>
 		</div>	 -->	
 		
+		<jsp:include page="/WEB-INF/views/map/map.jsp" />
 	</div>
 
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />

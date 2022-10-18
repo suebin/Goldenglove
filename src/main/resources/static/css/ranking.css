@@ -11,7 +11,7 @@ body span {
 }
 
 h2 {
-	padding-bottom: 20px;
+	padding: 20px 0;
 }
 
 /*=========== topRanking ===========*/
@@ -160,6 +160,10 @@ h2 {
 	.intro h1 {
 		font-size: 8vw;
 		padding: 5px 0;
+	}
+	
+	.intro span {
+		font-size: 14px;
 	}
 	
 	.teamInfo .id {
