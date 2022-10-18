@@ -31,4 +31,7 @@ public interface UserDAO {
 
 //	팀 가입 승인
 	void updateTeamName(HashMap registerInfo);
+
+//	이름조회
+	UserDTO selectName(String name);
 }

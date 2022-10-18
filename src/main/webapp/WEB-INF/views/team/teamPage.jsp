@@ -92,7 +92,7 @@ $(document).ready(function() {
 		<%
 			UserDTO[] all = (UserDTO[])request.getAttribute("allMember");
 			for(int i = 0;i < all.length;i++) {
-				request.setAttribute("user", all[i]);%>
+				request.setAttribute("user", all[i]);%>				
 				<div class="card">
 					<jsp:include page="/WEB-INF/views/components/card.jsp"/>
 				</div>	

@@ -42,4 +42,9 @@
 		update user set teamName = #{teamName} where id = #{id};
 	</update>
 	
+	<!-- 이름 조회 -->
+	<select id="selectName" parameterType="String" resultType="userDTO">
+		select * from user where name = #{name};
+	</select>
+	
 </mapper>
