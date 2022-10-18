@@ -48,3 +48,11 @@ body {
 h1, h2 {
 	font-family: "비트로 코어 OTF";
 }
+
+.red {
+	color: red;
+}
+
+.green {
+	color: green;
+}

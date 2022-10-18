@@ -92,9 +92,9 @@ public class TeamController {
 		ObjectMapper mapper = new ObjectMapper();
 		TeamDTO dto = mapper.readValue(teamDTO, TeamDTO.class);
 
-		HttpSession session = request.getSession();
-		UserDTO user = teamService.updateTeam(dto);
-		session.setAttribute("loginInfo", user);
+//		HttpSession session = request.getSession();
+		teamService.registerUser(dto);
+//		session.setAttribute("loginInfo", user);
 		return "{\"result\":\"success\"}";
 	}
 

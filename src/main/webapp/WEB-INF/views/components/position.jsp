@@ -12,7 +12,7 @@ $(document).ready(function() {
 	const mycanvas = document.getElementById("mycanvas");
 	const mycontext = mycanvas.getContext("2d");
 	const myimage = new Image();
-	myimage.src = "position.jpg";
+	myimage.src = "playground.png";
 	
 	if(myimage.width > mycanvas.width) {
 		mycanvas.width = myimage.width;		
