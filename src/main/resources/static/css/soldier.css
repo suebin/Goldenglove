@@ -29,7 +29,13 @@
 	height: 40px;
 	margin-bottom: 5px;
 	margin-top: 5px;
-	
+	cursor: pointer;
+}
+
+.region_btn:hover {
+	border: 2px solid #feca00;
+	color: #feca00;
+	transition: all 0.1s;
 }
 
 /* input.region_btn:hover {
@@ -174,7 +180,15 @@ input.search_btn:hover, input.register_btn:hover {
     color: #999;
     font-size: 12px;
     text-align: center;
-    border-radius:5px
+    border-radius:5px;
+}
+
+.select_date .cal_wrap .dates .day {
+    cursor: pointer;
+}
+	
+.select_date .cal_wrap .dates .day:hover {
+	background: rgba(242, 242, 242, 0.5);
 }
 
 .current.today {background: rgb(242 242 242);}

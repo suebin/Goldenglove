@@ -1,5 +1,44 @@
 @charset "UTF-8";
 
+/*=========== topRanking ===========*/
+.teamMatch {
+	position: relative;
+}
+
+.teamMatch img {
+	width: 100%;
+}
+
+.teamMatch .intro {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	flex-direction: column;
+	max-width: 1200px;
+	color: #fff;
+}
+
+.intro h1 {
+	font-size: 5vw;
+	padding-bottom: 20px;
+}
+
+.intro span {
+	font-size: 18px;
+}
+
+.teamMatchTitle {
+	padding: 20px 0;
+}
+.teamMatchTitle h2 {
+	padding-bottom: 10px;
+}
+.teamMatchTitle span {
+	font-size: 14px;
+} 
+
 /* 캘린더 및 지역 선택 */
 
 .select_box {
@@ -29,7 +68,13 @@
 	height: 40px;
 	margin-bottom: 5px;
 	margin-top: 5px;
-	
+	cursor: pointer;
+}
+
+.region_btn:hover {
+	border: 2px solid #feca00;
+	color: #feca00;
+	transition: all 0.1s;
 }
 
 /* input.region_btn:hover {
@@ -38,8 +83,6 @@
 	transition: all 0.2s;
 }
  */
-
-
 
 
 /* 매치 검색, 매치 등록 버튼 */
@@ -174,7 +217,15 @@ input.search_btn:hover, input.register_btn:hover {
     color: #999;
     font-size: 12px;
     text-align: center;
-    border-radius:5px
+    border-radius:5px;
+}
+
+.select_date .cal_wrap .dates .day {
+    cursor: pointer;
+}
+	
+.select_date .cal_wrap .dates .day:hover {
+	background: rgba(242, 242, 242, 0.5);
 }
 
 .current.today {background: rgb(242 242 242);}
@@ -356,7 +407,16 @@ input.teammatch_btn:hover {
 	}
 }
 
-
+@media (max-width: 600px) {
+	.intro h1 {
+		font-size: 8vw;
+		padding: 5px 0;
+	}
+	
+	.intro span {
+		font-size: 14px;
+	}
+}
 
 
 /* 매치 등록 버튼을 누르면 나오는 모달 창 */
