@@ -5,102 +5,133 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>골든글러브 > 용병 구하기</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/soldier.css" rel="stylesheet" />
 
+<!-- flatpickr (날짜 선택하는 라이브러리) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<!-- swiper (슬라이더) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="js/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="js/getSoldier.js"></script>
 
+<script>
+$(document).ready(function() {
+	
+	// 용병 검색 form > 날짜 선택
+	
+	var dateSelector = document.querySelector('#dateSelector');
+	dateSelector.flatpickr({dateFormat: "Y년 m월 d일"});
+	
+	
+	// 용병 리스트 
+	
+	const swiper = new Swiper('.swiper', {
+		  direction: 'horizontal',
+		  spaceBetween: 30,
+		  loop: true,
+		  
+		  pagination: {
+		    el: '.swiper-pagination',
+		    clickable: true,
+		  },
+
+		  navigation: {
+		    nextEl: '.swiper-button-next',
+		    prevEl: '.swiper-button-prev',
+		  },
+		});
+	
+	// 용병 등록 작은 창
+	
+	$(".registerSoldierBtn").on("click", function() {
+		window.open('registerSoldier', '용병 등록', "width=500, height=230");
+	})
+	
+});
+
+</script>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	
 	<div class="confix">
-			<!-- 선택한 지역과 날짜 데이터 전송 -->
-		
-		<form action="teammatch" method="post">
-			<input type="hidden" name="region" id="region" value=""> 
-			<input type="hidden" name="year_month" id="year_month" value=""> 
-			<input type="hidden" name="date" id="date" value=""> 
-		</form>
 	
-
-		<!-- 지역 및 날짜 선택 -->
-		
-		<div class="select_box">
-
-			<!-- 1. 날짜 선택 -->
-			
-			<div class="select_one"> 	
-				<div class="select_date">
-				<div class="cal_nav">
-					<a href="javascript:;" class="nav-btn go-prev" style="color:#72CC82;">prev</a>
-					<div class="year-month"></div>
-					<a href="javascript:;" class="nav-btn go-next" style="color:#72CC82;">next</a>
-				</div>
-				<div class="cal_wrap">
-					<div class="days">
-						<div class="day">MON</div>
-						<div class="day">TUE</div>
-						<div class="day">WED</div>
-						<div class="day">THU</div>
-						<div class="day">FRI</div>
-						<div class="day">SAT</div>
-						<div class="day">SUN</div>
-					</div>
-					<div class="dates">
-					</div>
-				</div>
-				</div>
-			</div>		
-
-			<!-- 2. 지역 선택 -->
-			
-			<div class="select_two">
-				<div class="select_region">
-					<input type="button" value="전체" name="0" id="0" class="region_btn"> 
-					<input type="button" value="강원도" name="1" id="1" class="region_btn">
-					<input type="button" value="광주광역시" name="2" id="2" class="region_btn"> 
-					<input type="button" value="경기도" name="3" id="3" class="region_btn">
-					<input type="button" value="경상남도" name="4" id="4" class="region_btn"> 
-					<input type="button" value="경상북도" name="5" id="5" class="region_btn">
-					<input type="button" value="대구광역시" name="6" id="6" class="region_btn"> 
-					<input type="button" value="대전광역시" name="7" id="7" class="region_btn">
-					<input type="button" value="부산광역시" name="8" id="8" class="region_btn">
-					<input type="button" value="서울특별시" name="9" id="9" class="region_btn">
-					<input type="button" value="세종특별자치시" name="10" id="10" class="region_btn">
-					<input type="button" value="인천광역시" name="11" id="11" class="region_btn"> 
-					<input type="button" value="울산광역시" name="12" id="12" class="region_btn">
-					<input type="button" value="전라남도" name="13" id="13" class="region_btn">
-					<input type="button" value="전라북도" name="14" id="14" class="region_btn">
-					<input type="button" value="제주특별자치도" name="15" id="15" class="region_btn"> 
-					<input type="button" value="충청남도" name="16" id="16" class="region_btn">
-					<input type="button" value="충청북도" name="17" id="17" class="region_btn">
-				</div>
-			</div>
+	<!-- 용병 검색 form -->
+	<div class="soldier_boxes">
+	<div class="soldier_box">
+	<form action="searchSoldier" method="post" id="searchSoldierForm">
 	
-		</div>
-
-		
-		<!-- 용병 검색, 용병 등록 버튼 -->
-		
-		<div class="match_btn">
-			<input type="button" id="searchbtn" class="search_btn" value="용병 검색">
-			<input type="button" id="registerbtn" class="register_btn" value="용병 등록">
-		</div>
+	<select name="region" id="regionSelector" value="">
+		<option selected>지역 전체</option>
+		<option>강원도</option>
+		<option>광주광역시</option>
+		<option>경기도</option>
+		<option>경상남도</option>
+		<option>경상북도</option>
+		<option>대구광역시</option>
+		<option>대전광역시</option>
+		<option>부산광역시</option>
+		<option>서울특별시</option>
+		<option>세종특별자치시</option>
+		<option>인천광역시</option>
+		<option>울산광역시</option>
+		<option>전라남도</option>
+		<option>전라북도</option>
+		<option>제주특별자치도</option>
+		<option>충청남도</option>
+		<option>충청북도</option>
+	</select>
 	
-		<!-- 용병 검색 버튼을 누르면 나오는 등록된 용병 리스트 -->
-		
-		<div class="teammatch_info">
-			<div class="teammatch_info_hashtag"></div>
-			<div class="teammatch_info_boxes"></div>
-		</div>
+	<select name="position" id="positionSelector" value="">
+		<option selected>포지션 전체</option>
+		<option>1루수</option>
+		<option>2루수</option>
+		<option>3루수</option>
+		<option>포수</option>
+		<option>투수</option>
+		<option>좌익수</option>
+		<option>우익수</option>
+		<option>중견수</option>
+		<option>유격수</option>
+	</select>
 	
-	
+	<input name="date" id="dateSelector" placeholder="날짜" />
+	<input type="submit" class="searchSoldierBtn" value="용병 검색" style="border:none;"/>
+	</form>
 	</div>
+	<!-- 용병 등록 -->
+	<button class="soldier_box registerSoldierBtn">+ 용병 등록</button>
+	</div>
+	
+	
+	<!-- 용병 리스트 -->
+	
+	<div id="soldier-slide" class="swiper">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide">슬라이드1</div>
+			<div class="swiper-slide">슬라이드2</div>
+			<div class="swiper-slide">슬라이드3</div>
+		</div>
+	
+ 	 	<div class="swiper-button-prev"></div>
+ 	 	<div class="swiper-button-next"></div>
+		
+		<div class="swiper-pagination"></div>
+	</div>
+
+
+
+	</div>
+	
 	
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
