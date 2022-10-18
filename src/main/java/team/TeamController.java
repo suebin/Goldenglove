@@ -250,10 +250,4 @@ public class TeamController {
 		// 팀 탈퇴 알림
 		teamService.exitTeamAlarm(id, teamName, alarmDate);
 	}
-	@ResponseBody
-	@RequestMapping("/exitTeamAlarm")
-	public void exitTeamAlarm(String id, String teamName, String alarmDate) {
-		// 팀 탈퇴 알림
-		teamService.exitTeamAlarm(id, teamName, alarmDate);
-	}
 }
