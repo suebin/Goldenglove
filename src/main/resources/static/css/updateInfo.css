@@ -1,58 +1,103 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
 .contentBox {
+	margin: 30px 0;
 	text-align: center;
+}
+
+.contentBox button:hover {
+	opacity: 0.8;
 }
 
 .h1 {
+    font-family: "비트로 프라이드 OTF";
 	text-align: center;
-	margin-bottom: 20px;
+	padding-bottom: 20px;
 }
 
 .table {
-	width: 50%;
-	margin: auto;
+	width: 100%;
+	max-width: 600px;
+	margin: 10px auto;
 	border-collapse: collapse;
+	border-radius: 3px;
+	overflow: hidden;
 }
 
 .table td {
-	padding: 16px;
+	padding: 16px 0;
 	text-align: left;
 }
 
 .table td:first-child {
+    width: 120px;
+	min-width: max-content;
 	font-weight: 700;
-	font-size: 20px;
+	font-size: 18px;
 }
 
-.table button {
-	width: 110px;
-	background: #666;
-	border: 1px solid #666;
-    color: #eee;
-	font-size: 16px;
-	padding: 2px 0;
+.table td:nth-child(2) {
+	display: flex;
 }
-
-.submitBtn {
-	text-align: center;
-	width: 45%;
-    max-width: 180px;
-    line-height: 40px;
-    height: 40px;
-    background: #555;
-    border: 1px solid #333;
-    color: #fff;
-    margin-top: 20px;
-}
-
+	
 .table input, .table select {
-	width: 50%;
-	height: 28px;
-	padding: 0 8px;
+    max-width: 60%;
+    width: 100%;
+	padding: 8px;
 	margin-right: 8px;
+    border: 1px solid gray;	
+   	border-radius: 3px;
+    font-family: "비트로 프라이드 OTF";
+    outline: none;
+}
+
+.table select {
+	cursor: pointer;
 }
 
 .table input:focus {
 	background: #feca00;
+}
+
+input[type=file] {
+	border: none;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+input[type=file]:focus {
+	background: transparent;
+}
+
+#phoneDuplicate, #emailDuplicate {
+    width: 64px;
+    background: #444;
+    border: 1px solid #444;
+    color: #fff;
+	padding: 8px;
+	border-radius: 3px;
+	cursor: pointer;
+}
+
+.submitBtn {
+	margin-top: 20px;
+	text-align: center;
+	width: 45%;
+    max-width: 180px;
+    background: #444;
+    color: #fff;
+    margin-right: 8px;
+    border: none;
+    padding: 15px 0;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .red {
@@ -65,4 +110,22 @@
 	color :green;
 	font-weight: 700;
 	margin-top: 8px;
+}
+
+
+/*======= 768 =======*/	
+@media (max-width: 768px) {
+	.table td:first-child {
+		width: 80px;
+	    font-size: 16px;
+	}
+	
+	.table input, .table select {
+	    max-width: 63%;
+	}
+	
+	input[type=file] {
+	    max-width: 100%;
+	}
+	
 }

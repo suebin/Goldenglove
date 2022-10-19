@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>골든글러브</title>
-<link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/teamJoin.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
@@ -130,9 +129,11 @@ $(document).ready(function() {
 					$("#searchResult").html(server.result);
 					$("#searchResult").attr("class", "red");
 					$("#teamBtn").attr("hidden", "hidden");
+					$(".teamBtn").attr("hidden", "hidden");
 				} else {
 					$("#searchResult").html("");
 					$("#teamBtn").removeAttr("hidden");
+					$(".teamBtn").removeAttr("hidden");
 					$("#teamBtn").html(server.result);
 				}
 			}
@@ -196,123 +197,133 @@ $(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
-		<div id="noneTeam">
-			<h1 class="h1">가입된 팀이 없습니다.</h1>
-			<div class="btnBox">
-				<button class="button" id="createBtn">팀 생성</button>
-				<button class="button" id="searchBtn">팀 가입</button>
-			</div>
-		</div>
-		<div id="createBox" hidden>
-			<form autocomplete="off">
-				<div class="teamName">
-					팀 이름
-					<input type="text" name="teamName" id="teamName">
-					<button type="button" id="duplicate">중복검사</button>
-					<p id="teamNameResult"></p>
-				</div>
-				<div class="inputBox" style="background-image: url('playground.png'); background-size: 100% 100%;">
-					<!-- 1루수  -->
-					<div class="firstBase">
-						<input type="text" placeholder="전화번호 입력" name="firstBase">
-						<input type="button" value="검색" />
-						<p id="firstBase"></p>
-						<p></p>
-					</div>
-					<!-- 2루수 --> 
-					<div class="secondBase">
-						<input type="text" placeholder="전화번호 입력" name="secondBase">
-						<input type="button" value="검색" />
-						<p id="secondBase"></p>
-						<p></p>
-					</div>
-					<!-- 3루수  -->
-					<div class="thirdBase">
-						<input type="text" placeholder="전화번호 입력" name="thirdBase">
-						<input type="button" value="검색" />
-						<p id="thirdBase"></p>
-						<p></p>
-					</div>
-					<!-- 포수 --> 
-					<div class="catcher">
-						<input type="text" placeholder="전화번호 입력" name="catcher">
-						<input type="button" value="검색" />
-						<p id="catcher"></p>
-						<p></p>
-					</div>
-					<!-- 투수  -->
-					<div class="pitcher">
-						<input type="text" placeholder="전화번호 입력" name="pitcher">
-						<input type="button" value="검색" />
-						<p id="pitcher"></p>
-						<p></p>
-					</div>
-					<!-- 좌익수 --> 
-					<div class="leftFielder">
-						<input type="text" placeholder="전화번호 입력" name="leftFielder">
-						<input type="button" value="검색" />
-						<p id="leftFielder"></p>
-						<p></p>
-					</div>
-					<!-- 우익수  -->
-					<div class="rightFielder">
-						<input type="text" placeholder="전화번호 입력" name="rightFielder">
-						<input type="button" value="검색" />
-						<p id="rightFielder"></p>
-						<p></p>
-					</div>
-					<!-- 중견수  -->
-					<div class="centerFielder">
-						<input type="text" placeholder="전화번호 입력" name="centerFielder">
-						<input type="button" value="검색" />
-						<p id="centerFielder"></p>
-						<p></p>
-					</div>
-					<!-- 유격수 --> 
-					<div class="shortStop">
-						<input type="text" placeholder="전화번호 입력" name="shortStop">
-						<input type="button" value="검색" />
-						<p id="shortStop"></p>
-						<p></p>
-					</div>		
-				</div>
+		<div class="teamContainer">
+			<div id="noneTeam">
+				<h1 class="h1">가입된 팀이 없습니다.</h1>
 				<div class="btnBox">
-					<button class="button" id="submitBtn" type="button">생성</button>
-					<button class="button" id="exitBtn" type="button">취소</button>
+					<button class="button" id="createBtn">팀 생성</button>
+					<button class="button" id="searchBtn">팀 가입</button>
 				</div>
-			</form>
-		</div>
-		<div id="searchBox" hidden>
+			</div>
+			<div id="createBox" hidden>
+				<h2>Create Team</h2>
+				<form autocomplete="off">
+					<div class="teamName">
+						팀 이름
+						<input type="text" name="teamName" id="teamName">
+						<button type="button" id="duplicate">중복검사</button>
+						<p id="teamNameResult"></p>
+					</div>
+					<div class="inputBoxCon">
+						<div class="inputBox" style="background-image: url('playground.png'); background-size: 100% 100%;">
+							<!-- 1루수  -->
+							<div class="firstBase">
+								<input type="text" placeholder="전화번호 입력" name="firstBase">
+								<input type="button" value="검색" />
+								<p id="firstBase"></p>
+								<p></p>
+							</div>
+							<!-- 2루수 --> 
+							<div class="secondBase">
+								<input type="text" placeholder="전화번호 입력" name="secondBase">
+								<input type="button" value="검색" />
+								<p id="secondBase"></p>
+								<p></p>
+							</div>
+							<!-- 3루수  -->
+							<div class="thirdBase">
+								<input type="text" placeholder="전화번호 입력" name="thirdBase">
+								<input type="button" value="검색" />
+								<p id="thirdBase"></p>
+								<p></p>
+							</div>
+							<!-- 포수 --> 
+							<div class="catcher">
+								<input type="text" placeholder="전화번호 입력" name="catcher">
+								<input type="button" value="검색" />
+								<p id="catcher"></p>
+								<p></p>
+							</div>
+							<!-- 투수  -->
+							<div class="pitcher">
+								<input type="text" placeholder="전화번호 입력" name="pitcher">
+								<input type="button" value="검색" />
+								<p id="pitcher"></p>
+								<p></p>
+							</div>
+							<!-- 좌익수 --> 
+							<div class="leftFielder">
+								<input type="text" placeholder="전화번호 입력" name="leftFielder">
+								<input type="button" value="검색" />
+								<p id="leftFielder"></p>
+								<p></p>
+							</div>
+							<!-- 우익수  -->
+							<div class="rightFielder">
+								<input type="text" placeholder="전화번호 입력" name="rightFielder">
+								<input type="button" value="검색" />
+								<p id="rightFielder"></p>
+								<p></p>
+							</div>
+							<!-- 중견수  -->
+							<div class="centerFielder">
+								<input type="text" placeholder="전화번호 입력" name="centerFielder">
+								<input type="button" value="검색" />
+								<p id="centerFielder"></p>
+								<p></p>
+							</div>
+							<!-- 유격수 --> 
+							<div class="shortStop">
+								<input type="text" placeholder="전화번호 입력" name="shortStop">
+								<input type="button" value="검색" />
+								<p id="shortStop"></p>
+								<p></p>
+							</div>		
+						</div>
+					</div>
+					<div class="btnBox">
+						<button class="button" id="submitBtn" type="button">생성</button>
+						<button class="button" id="exitBtn" type="button">취소</button>
+					</div>
+				</form>
+			</div>
+			<div id="searchBox" hidden>
+				<h2>Team Join</h2>
 				<table>
-					<tr><td>팀 이름 </td><td><input type="text" id="searchTeamName" autocapitalize="none"></td><td><button id="checkBtn" type="button">검색</button></td></tr>
+					<tr><td>가입하고 싶은 팀 이름을 입력해주세요 </td><td><input type="text" id="searchTeamName" autocapitalize="none"></td><td><button id="checkBtn" type="button">검색</button></td></tr>
 				</table>
 				<p id="searchResult"></p>
-				<button id="teamBtn" type="button" hidden></button>
-				
+				<div class="teamBtn" hidden>
+					<div class="BtnCon">
+						<button id="teamBtn" type="button" hidden></button>
+						<img alt="teamCardImg" src="/images/baseball.png">
+					</div>
+				</div>
+			</div>
+			<%
+				if(request.getAttribute("teamRegisterInfo") != null) {%>
+					<div>
+						<h1>승인 대기 중인 팀</h1>
+						<p>${teamRegisterInfo }</p>
+					</div>
+				<%}
+			%>
+			<%	
+				String[] arr =(String[])request.getAttribute("registerTeam");
+				if(arr.length != 0) {%>
+					<div>
+						<h1>받은 요청</h1>
+						<%
+							for(int i = 0;i < arr.length;i++) {%>
+								<p><%=arr[i] %></p>
+								<button id="true" name="<%=arr[i]%>">승인</button>
+								<button id="false" name="<%=arr[i]%>">거절</button>							
+							<%}
+						%>
+					</div>
+				<%}
+			%>
 		</div>
-		<%
-			if(request.getAttribute("teamRegisterInfo") != null) {%>
-				<div>
-					<h1>승인 대기 중인 팀</h1>
-					<p>${teamRegisterInfo }</p>
-				</div>
-			<%}
-		%>
-		<%	
-			String[] arr =(String[])request.getAttribute("registerTeam");
-			if(arr.length != 0) {%>
-				<div>
-					<h1>받은 요청</h1>
-					<%
-						for(int i = 0;i < arr.length;i++) {%>
-							<p><%=arr[i] %></p>
-							<button id="true" name="<%=arr[i]%>">승인</button>
-							<button id="false" name="<%=arr[i]%>">거절</button>							
-						<%}
-					%>
-				</div>
-			<%}
-		%>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>

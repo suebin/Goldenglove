@@ -1,38 +1,63 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
 .contentBox {
+	margin: 30px 0;
 	text-align: center;
 	width: 100%;
 }
 
 .h1 {
+    font-family: "비트로 프라이드 OTF";
 	text-align: center;
 	margin-bottom: 20px;
 }
 
 .table {
-	width: 60%;
-	margin: auto;
-	border-collapse: collapse;
+	display: flex;
+	width: 100%;
+    max-width: 600px;
+	margin: 40px auto;
 }
 
-.table td {
+.table li {
+	width: 100%;
+}
+
+.table li ul {
+	display: flex;
 	padding: 16px;
 	text-align: left;
 }
 
-.table td:first-child {
+.table li ul li:first-child {
+	width: 100px;
+	min-width: max-content;
 	font-weight: 700;
-	font-size: 20px;
+	font-size: 18px;
 }
 
 .contentBox button {
 	text-align: center;
-	width: 45%;
+    width: 45%;
     max-width: 180px;
-    line-height: 40px;
-    height: 40px;
-    background: #555;
-    border: 1px solid #333;
+    background: #444;
     color: #fff;
+    margin-right: 8px;
+    border: none;
+    padding: 15px 0;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.contentBox button:hover {
+	opacity: 0.8;
 }
 
 .updateBtn {
@@ -48,4 +73,68 @@
 
 .table input:focus {
 	background: #feca00;
+}
+
+.pwTable, .modalCon {
+  	width: 100%;
+    max-width: 600px;
+	margin: 20px auto;
+    text-align: left;
+}
+
+.pwTable li {
+	margin-bottom: 10px;
+	padding-left: 16px;
+}
+
+.modalCon {
+    padding: 10px 30px;
+}
+
+.modalCon li {
+	display: flex;
+	margin-bottom: 16px;
+}
+
+.pwTable li:first-child span {
+	width: 150px;
+    padding-right: 16px;
+	min-width: max-content;
+	font-weight: 700;
+	font-size: 18px;
+}
+
+.modalCon li span:first-child {
+	width: 100px;
+	padding-right: 16px;
+	min-width: max-content;
+	font-weight: 700;
+	font-size: 18px;
+}
+	
+#passwordUser {
+	padding: 5px 8px;
+	border-radius: 4px;
+	outline: none;
+}
+
+#updateUserBtn {
+	margin-right: 0;
+}
+
+/*======= 768 =======*/	
+@media (max-width: 768px) {
+	.table {
+		flex-direction: column;
+	}
+	
+	.modalCon {
+		max-width: 200px;
+	    padding: 10px 0;
+	}
+
+	.modalCon li span:first-child {
+		min-width: 80px;
+	}
+	
 }
