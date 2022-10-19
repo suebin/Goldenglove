@@ -63,12 +63,12 @@ $(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 		<div class="confix">
-			<h1 class="h1">내정보 수정</h1>
 			<div class="contentBox">
+				<h1 class="h1">내정보 수정</h1>
 				<form action="updateResult" method="post" id="updateForm" enctype="multipart/form-data" autocomplete="off">
 					<table class="table">
 						<tr>
-							<td width="25%">이름 </td>
+							<td>이름 </td>
 							<td>
 								<input type="text" name="name" pattern="[a-zA-Z0-9가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,숫자,한글)" required value="${loginInfo.getName() }" readonly>
 							</td>
@@ -79,8 +79,6 @@ $(document).ready(function() {
 								<input class="input" type="text" name="phone" placeholder="ex)01012345678" pattern="[0-9]{11}" title="숫자만 입력해주세요." required value="${loginInfo.getPhone() }">
 								<button id="phoneDuplicate">중복검사</button>
 								<p id="phoneCheckResult" hidden></p>
-							</td>
-							<td>
 							</td>
 						</tr>
 						<tr>

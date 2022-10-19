@@ -82,35 +82,52 @@ $(document).ready(function() {
 	double winningRate = (winCount == 0) ? 0.0 : (winCount / (winCount + loseCount)) * 100;
 %>
 <div id="ex1" class="modal">
-	<table class="table">
-		<tr><td width="20%">이름 </td><td width="20%" class="modalName"></td></tr>
-		<tr><td>연락처 </td><td class="modalPhone"></td></tr>
-		<tr><td>이메일 </td><td class="modalEmail"></td></tr>
-		<tr><td>지역 </td><td class="modalRegion"></td></tr>
-		<tr><td>포지션 </td><td class="position"></td></tr>
-	</table>
+	<ul class="modalCon">
+		<li><span>이름 </span><span class="modalName"></span></li>
+		<li><span>연락처 </span><span class="modalPhone"></span></li>
+		<li><span>이메일 </span><span class="modalEmail"></span></li>
+		<li><span>지역 </span><span class="modalRegion"></span></li>
+		<li><span>포지션 </span><span class="position"></span></li>
+	</ul>
 	<div class="a">
 		<a href="#" rel="modal:close">Close</a>
 	</div>
 </div>
 <a class="modalLink" href="#ex1" rel="modal:open">
-	<div class="profile-card-6">
-		<img src="img/<%=user.getFileName() %>" class="img img-responsive">
-		<div class="profile-name"><%=user.getName() %></div>
-		<div class="profile-position"><%=user.getPosition() %></div>
-		<div class="profile-overview">
-			<div>
-				<h3><%=winCount %></h3>
-				<p>승</p>
-			</div>
-			<div>
-				<h3><%=loseCount %></h3>
-				<p>패</p>
-			</div>
-			<div>
-				<h3><%=winningRate %></h3>
-				<p>%</p>
-			</div>
+	<div class="cardCon">
+		<div class="card__border"></div>
+		<div class="card__border-line"></div>
+		<div class="profile-card-6">
+			<div class="card__img">
+		        <div class="img__team">
+		            <img src="images/gold-medal.png" alt="rankingImg">
+		        </div>
+		        <div class="img__athlete">
+		        	<div class="img__Wrapper">
+		            	<img src="img/<%=user.getFileName() %>" class="img img-responsive">
+		        	</div>
+		        </div>
+		    </div>
+		    <div class="card__text">
+		        <div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);">
+		        	<%=user.getPosition() %>
+	        	</div>
+		        <div class="profile-name"><%=user.getName() %></div>
+		        <div class="profile-overview">
+					<div>
+						<h3><%=winCount %></h3>
+						<p>승</p>
+					</div>
+					<div>
+						<h3><%=loseCount %></h3>
+						<p>패</p>
+					</div>
+					<div>
+						<h3><%=winningRate %></h3>
+						<p>%</p>
+					</div>
+				</div>
+		    </div>
 		</div>
 	</div>
 </a>

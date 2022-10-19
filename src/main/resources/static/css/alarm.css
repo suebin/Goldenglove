@@ -34,7 +34,7 @@ button {
 /*=========== alarm ===========*/
 .alarm {
 	position: relative;
-	z-index: 100;
+	z-index: 0;
 }
 
 
