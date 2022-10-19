@@ -35,12 +35,12 @@
 				if (update) {
 					$.ajax({
 						url : 'teammatchAcceptance',
-						data : {'seq' : $("#teammatchlist1_seq" + i).val(), 'alarmDate': alarmDate},
+						data : {'seq' : $("#teammatchlist1_seq" + i).val(), 'alarmDate': alarmDate, 'teamName': $("#teamName").val()},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
 							alert(data.result);
-							location.href = "teammatchpage?myTeamName=${loginInfo.getName()}";
+							location.href = "teammatchpage?myTeamName=" + $("#teamName").val();
 						}
 					});
 				} 
@@ -61,12 +61,12 @@
 				if (update) {
 					$.ajax({
 						url : 'deleteTeammatchRegistration',
-						data : {'seq' : $("#teammatchlist2_seq" + i).val()},
+						data : {'seq' : $("#teammatchlist2_seq" + i).val(), 'teamName': $("#teamName").val()},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
 							alert(data.result);
-							location.href = "teammatchpage?myTeamName=${loginInfo.getName()}";
+							location.href = "teammatchpage?myTeamName=" + $("#teamName").val();
 						}
 					});
 				} 
@@ -87,12 +87,12 @@
 				if (update) {
 					$.ajax({
 						url : 'deleteAddTeammatch',
-						data : {'seq' : $("#teammatchlist3_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
+						data : {'seq' : $("#teammatchlist3_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}", 'teamName': $("#teamName").val()},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
 							alert(data.result);
-							location.href = "teammatchpage?myTeamName=${loginInfo.getName()}";
+							location.href = "teammatchpage?myTeamName=" + $("#teamName").val();
 						}
 					});
 				} 
@@ -114,12 +114,12 @@
 				if (update) {
 					$.ajax({
 						url : 'cancelTeammatch',
-						data : {'seq' : $("#teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}"},
+						data : {'seq' : $("#teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}", 'teamName': $("#teamName").val()},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
 							alert(data.result);
-							location.href = "teammatchpage?myTeamName=${loginInfo.getName()}";
+							location.href = "teammatchpage?myTeamName=" + $("#teamName").val();
 						}
 					});
 				} 
@@ -191,14 +191,23 @@
 		int day = now.getDayOfMonth();
 
 		int hour = now.getHour();
+		
+		String time= "";
+		
+		if (hour < 10) {
+			time = "0" + hour + ":00";
+		}
+		else {
+			time = hour + ":00";
+		}
 
 		String today = year + "." + month + "." + day;
-		String time = hour + ":00";
 		%>
 
 		<!-- 현재 시간과 날짜 -->
 
 		<c:set value="<%=today%>" var="today" />
+		<c:set value="<%=today.length()%>" var="todayLen" />
 		<c:set value="<%=time%>" var="time" />
 
 		
@@ -210,14 +219,15 @@
 			<h2>수락을 기다리는 경기</h2>
 
 			<c:forEach items="${teammatchlist1}" var="list">
-
+				
 				<c:set value="${list.possibleDate}" var="possibleDate" />
 				<c:set value="${list.possibleTime}" var="possibleTime" />
-
+				
+				
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${possibleDate > today or (possibleDate == today and possibleTime >= time)}">
+					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}"> 
 
 					<div class="teammatch_info_list" id="teammatch__info_list1">
 						<div class="teammatch_info">
@@ -233,7 +243,7 @@
 						</div>
 						<input type="hidden" id="teammatchlist1_seq${a}" value=${list.seq}>
 					</div>
-				</c:if>
+					</c:if>
 
 				<!-- 해당 경기 정보 seq를 저장 -->
 			</c:forEach>
@@ -248,15 +258,17 @@
 				<h2>등록한 경기</h2>	
 
 			<c:forEach items="${teammatchlist2}" var="list">
-
+	
 				<c:set value="${list.possibleDate}" var="possibleDate" />
+				<c:set value="${list.possibleDate.length()}" var="possibleDateLen" />
 				<c:set value="${list.possibleTime}" var="possibleTime" />
-
+			
+	
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${possibleDate > today}">	
-				
+					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">	
+			
 					<div class="teammatch_info_list" id="teammatch__info_list2">
 						<div class="teammatch_info">
 							<div class="teammatch_info_title">${list.homeName} VS &nbsp;  ?
@@ -292,7 +304,7 @@
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${possibleDate > today or (possibleDate == today and possibleTime >= time)}">
+					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">
 
 					<div class="teammatch_info_list" id="teammatch__info_list3">
 						<div class="teammatch_info">
@@ -330,7 +342,7 @@
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${possibleDate > today or (possibleDate == today and possibleTime >= time)}">
+					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">
 					
 					<div class="teammatch_info_list" id="teammatch__info_list4">
 						<div class="teammatch_info">
@@ -380,6 +392,10 @@
 		</div>
 		
 		<div class="finish"></div>
+		
+		<!-- 자신의 팀 저장해두기 -->
+		
+		<input type="hidden" id="teamName" value=${loginInfo.getTeamName()}> 
 
 	</div>
 

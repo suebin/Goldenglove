@@ -32,7 +32,12 @@ $(document).ready(function() {
                 </div>
 				
 				<ul class="nav">
-					<li><a href="teammatch">팀 매칭</a></li>
+					<% if(session.getAttribute("loginInfo") == null) {%>
+						<li><a href="teammatch">팀 매칭</a></li>
+					<%} else {%>
+						<li><a href="teammatch?teamName=${loginInfo.getTeamName()}">팀 매칭</a></li>
+					<%}%>
+
 					<li><a href="getSoldier">용병 구하기</a></li>
 					<li><a href="ranking">랭킹</a></li>
 					<li><a href="/notice">공지사항</a></li>
@@ -52,7 +57,7 @@ $(document).ready(function() {
 							<div class="dropdown-contents">
 								<a href="mypage">내 정보</a>
 								<a href="teampage">팀 정보</a>
-								<a href="teammatchpage?myTeamName=${loginInfo.getName()}">경기 정보</a>
+								<a href="teammatchpage?myTeamName=${loginInfo.getTeamName()}">경기 정보</a>
 							</div>
 						</div>
 						<button type="button" onclick="location.href='/logout'">Log Out</button>								

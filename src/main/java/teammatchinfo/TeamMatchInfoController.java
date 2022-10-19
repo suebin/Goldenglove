@@ -2,6 +2,9 @@ package teammatchinfo;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -9,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import team.TeamDTO;
 import teammatch.TeamMatchDTO;
+import user.UserDTO;
 
 @Controller
 public class TeamMatchInfoController {
@@ -52,25 +57,42 @@ public class TeamMatchInfoController {
 	}
 	
 	
-	// 1. 수락을 기다리는 경기 > 수락하기 버튼
+	// 1. 수락을 기다리는 경기 > 수락하기 버튼 (팀 주장만 할 수 있다.)
 	
 	@ResponseBody
 	@RequestMapping("/teammatchAcceptance")
-	public String teammatchAcceptance(int seq, String alarmDate) {
-		int updatecount = service.updateAcceptance(seq);
+	public String teammatchAcceptance(int seq, String alarmDate, String teamName, HttpServletRequest request) {
 		
-		// 알림
-		service.insertAlarm(seq);
-		service.updateAlarmDate(alarmDate);
+		// 팀 주장인지 확인을 한다.
 		
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		String userId = user.getId(); // 유저 아이디		
+		String teamId = service.selectTeamId(teamName); // 유저가 속한 팀의 주장 아이디
+
 		String result = "";
+
+		// 유저가 팀의 주장인 경우 수락하기 버튼을 누를 수 있다.
 		
-		if(updatecount == 1) {
-			result = "매치 수락이 완료되었습니다. 매치 시간을 준수해주시길 바랍니다.";
+		if (userId.equals(teamId)) {
+			int updatecount = service.updateAcceptance(seq);
+			
+			if(updatecount == 1) {
+				result = "매치 수락이 완료되었습니다. 매치 시간을 준수해주시길 바랍니다.";
+			}
+			else {
+				result = "매치 수락에 실패하였습니다. 다시 한 번 시도해주세요.";
+			}
 		}
 		else {
-			result = "매치 수락에 실패하였습니다. 다시 한 번 시도해주세요.";
+			result = "본인이 속한 팀의 주장만 수락할 수 있습니다.";
 		}
+		
+		// 알림
+		
+		service.insertAlarm(seq);
+		service.updateAlarmDate(alarmDate);
+	
 		
 		return "{\"result\" : \"" + result + "\"}";
 	}
@@ -79,16 +101,31 @@ public class TeamMatchInfoController {
 	
 	@ResponseBody
 	@RequestMapping("/deleteTeammatchRegistration")
-	public String deleteTeammatchRegistration(int seq) {
-		int updatecount = service.deleteTeammatchRegistration(seq);
+	public String deleteTeammatchRegistration(int seq, String teamName, HttpServletRequest request) {
 		
+		// 팀 주장인지 확인을 한다.
+		
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		String userId = user.getId(); // 유저 아이디		
+		String teamId = service.selectTeamId(teamName); // 유저가 속한 팀의 주장 아이디
+
 		String result = "";
-		
-		if(updatecount == 1) {
-			result = "매치 취소가 완료되었습니다.";
+
+		// 유저가 팀의 주장인 경우 취소하기 버튼을 누를 수 있다.
+				
+		if (userId.equals(teamId)) {
+			int updatecount = service.deleteTeammatchRegistration(seq);
+					
+			if(updatecount == 1) {
+				result = "매치 취소가 완료되었습니다.";
+			}
+			else {
+				result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
+			}
 		}
 		else {
-			result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
+			result = "본인이 속한 팀의 주장만 취소할 수 있습니다.";
 		}
 		
 		return "{\"result\" : \"" + result + "\"}";
@@ -98,22 +135,39 @@ public class TeamMatchInfoController {
 	
 		@ResponseBody
 		@RequestMapping("/deleteAddTeammatch")
-		public String deleteAddTeammatch(int seq, String alarmDate, String cancleTeam) {
-			int updatecount = service.deleteAddTeammatch(seq);
+		public String deleteAddTeammatch(int seq, String alarmDate, String cancleTeam, String teamName, HttpServletRequest request) {
+			
+			// 팀 주장인지 확인을 한다.
+			
+			HttpSession session = request.getSession();
+			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+			String userId = user.getId(); // 유저 아이디		
+			String teamId = service.selectTeamId(teamName); // 유저가 속한 팀의 주장 아이디
+
+			String result = "";
+
+			// 유저가 팀의 주장인 경우 취소하기 버튼을 누를 수 있다.
+					
+			if (userId.equals(teamId)) {
+				int updatecount = service.deleteAddTeammatch(seq);
+				
+				if(updatecount == 1) {
+					result = "매치 취소가 완료되었습니다.";
+				}
+				else {
+					result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
+				}
+				
+			}
+			else {
+				result = "본인이 속한 팀의 주장만 취소할 수 있습니다.";
+			}
+			
 			
 			// 알림
 			service.insertAlarm(seq);
 			service.updateCancleAlarm(seq, cancleTeam);
 			service.updateAlarmDate(alarmDate);
-			
-			String result = "";
-			
-			if(updatecount == 1) {
-				result = "매치 취소가 완료되었습니다.";
-			}
-			else {
-				result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
-			}
 			
 			return "{\"result\" : \"" + result + "\"}";
 		}
@@ -122,23 +176,39 @@ public class TeamMatchInfoController {
 		
 		@ResponseBody
 		@RequestMapping("/cancelTeammatch")
-		public String cancelTeammatch(int seq, String alarmDate, String cancleTeam) {
-			int updatecount = service.cancelTeammatch(seq);
+		public String cancelTeammatch(int seq, String alarmDate, String cancleTeam, String teamName, HttpServletRequest request) {
+			
+			// 팀 주장인지 확인을 한다.
+			
+			HttpSession session = request.getSession();
+			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+			String userId = user.getId(); // 유저 아이디		
+			String teamId = service.selectTeamId(teamName); // 유저가 속한 팀의 주장 아이디
+
+			String result = "";
+
+			// 유저가 팀의 주장인 경우 취소하기 버튼을 누를 수 있다.
+								
+			if (userId.equals(teamId)) {
+				int updatecount = service.cancelTeammatch(seq);
+				
+				if(updatecount == 1) {
+					result = "매치 취소가 완료되었습니다.";
+				}
+				else {
+					result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
+				}
+							
+			}
+			else {
+				result = "본인이 속한 팀의 주장만 취소할 수 있습니다.";
+			}
 			
 			// 알림
 			service.insertAlarm(seq);
 			service.updateCancleAlarm(seq, cancleTeam);
 			service.updateAlarmDate(alarmDate);
 			
-			
-			String result = "";
-			
-			if(updatecount == 1) {
-				result = "매치 취소가 완료되었습니다.";
-			}
-			else {
-				result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";
-			}
 			
 			return "{\"result\" : \"" + result + "\"}";
 		}
@@ -151,8 +221,5 @@ public class TeamMatchInfoController {
 			List<TeamMatchDTO> list = service.getTodayMatching(today);
 			return list;
 		}
-	
-	
-
 
 }

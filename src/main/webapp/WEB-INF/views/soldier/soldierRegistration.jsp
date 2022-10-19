@@ -9,16 +9,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
 <title>골든글러브 > 용병 등록</title>
-<link href="/css/main.css" rel="stylesheet" />
-<link href="/css/common.css" rel="stylesheet" />
+<link href="/css/soldier_registration.css" rel="stylesheet" />
+
+<!-- flatpickr (날짜 선택하는 라이브러리) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 	$(document).ready(function() {
 		
+		// 날짜 선택
+		
+		var dateSelector = document.querySelector('#possibleDate');
+		dateSelector.flatpickr({dateFormat: "Y년 m월 d일"});
 	}); // ready end
 </script>
 </head>
@@ -28,16 +34,24 @@
 	
 	<div class="soldierRegistration">
 		
-		<div class="title">용병 등록</div>
-		
+		<div class="soldierRegistration_title">
+			<h2>용병 등록</h2>
+			<span>용병으로 출전하고 싶은 날짜를 선택하세요</span>
+		</div>
 
 		<form action="registerSoldier" method="post" id="registerSoldierForm">
-			<input type="text" name="region" value="${loginInfo.getRegion()}"  />
-			<input type="text" name="position" value="${loginInfo.getPosition()}" />
-			<input type="text" name="soldierName" value="${loginInfo.getName()}" />
-			<input type="text" name="email" value="${loginInfo.getEmail()}" />
-			<input type="text" name="teamName" value="${loginInfo.teamName()}" />
-			<input type="text" name="fileName" value="${loginInfo.fileName()}" />
+			<input type="text" name="possibleDate" id="possibleDate" placeholder="날짜 선택하기" /> 
+			<input type="hidden" name="region" value="${loginInfo.getRegion()}"  />
+			<input type="hidden" name="position" value="${loginInfo.getPosition()}" />
+			<input type="hidden" name="soldierName" value="${loginInfo.getName()}" />
+			<input type="hidden" name="phone" value="${loginInfo.getPhone()}" />
+			<input type="hidden" name="email" value="${loginInfo.getEmail()}" />
+			<input type="hidden" name="teamName" value="${loginInfo.getTeamName()}" /> 
+			<input type="hidden" name="fileName" value="${loginInfo.getFileName()}" />
+			<input type="hidden" name="winningRate" value="${loginInfo.getWinningRate()}" />
+			<input type="hidden" name="winCount" value="${loginInfo.getWinCount()}" />
+			<input type="hidden" name="loseCount" value="${loginInfo.getLoseCount()}" />
+			<input type="submit" class="registerSoldierBtn" value="등록" />
 		</form>
 		
 	</div>

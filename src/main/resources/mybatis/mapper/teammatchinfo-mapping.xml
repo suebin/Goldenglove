@@ -41,6 +41,12 @@
 		order by possibleDate asc, possibleTime asc
 	</select>
 	
+	<!-- 유저 팀의 주장 Id 확인 -->
+	
+	<select id="selectTeamId" resultType="String">
+		select teamId from team where teamName=#{teamName}
+	</select>
+	
 	<!-- 1. 수락을 기다리는 경기 > 수락하기 버튼 -->
 	
 	<update id="updateAcceptance">

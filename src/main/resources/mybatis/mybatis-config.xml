@@ -10,5 +10,6 @@
 		<typeAlias type="teammatch.TeamMatchDTO" alias="teammatchdto"/>
 		<typeAlias type="ranking.RankingDTO" alias="rankingDTO"/>
 		<typeAlias type="alarm.AlarmDTO" alias="alarmDTO"/>
+		<typeAlias type="soldier.SoldierDTO" alias="soldierdto"/>
 	</typeAliases>
 </configuration>

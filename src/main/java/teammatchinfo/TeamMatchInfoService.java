@@ -44,6 +44,12 @@ public class TeamMatchInfoService {
 		return dao.getTeamMatchList5(myTeamName);
 	}
 	
+	// 유저가 팀 주장인지 확인
+	
+	public String selectTeamId(String teamName) {
+		return dao.selectTeamId(teamName);
+	}
+
 	// 1. 수락을 기다리는 경기 > 수락하기 버튼
 	
 	public int updateAcceptance(int seq) {

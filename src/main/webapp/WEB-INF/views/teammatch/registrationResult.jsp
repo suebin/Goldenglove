@@ -10,7 +10,7 @@
 <script>
 $(document).ready(function() {
 	alert('${result}');
-	location.href = "teammatch"; // 나중에 '경기 정보'로 이동하도록 변경하기
+	location.href = "teammatchpage?myTeamName=${loginInfo.getTeamName()}"; 
 }); // ready end
 </script>
 </head>

@@ -43,15 +43,27 @@ input#dateSelector {
 
 /* 용병 리스트 */
 
-.swiper-slide {
-	padding: 50px 70px;
-	background-color: green;
-}
 .swiper {
   width: 100%;
-  height: 400px;
+  height: 420px;
   margin-top: 20px;
 }
+
+.swiper-slide {
+	padding: 50px 70px;
+	display: flex;
+	justify-content: space-around;
+}
+
+
+.card{
+	width: 200px;
+	height: 300px;
+	background-color: red;
+	border-radius: 10px;
+}
+
+
 
 div.swiper-button-prev, div.swiper-button-next {
 	color: #feca00;
@@ -68,3 +80,5 @@ div.swiper-pagination {
 span.swiper-pagination-bullet-active {
 	background-color: #feca00;
 }
+
+

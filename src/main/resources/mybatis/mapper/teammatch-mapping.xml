@@ -14,12 +14,14 @@
 	
 	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
 		select * from teammatching where region=#{region} and possibleDate=#{possibleDate} and awayName is null and registration=0
+		order by teammatching.possibleTime
 	</select>
 	
 	<!-- 매치 검색 (지역: 전체) -->
 	
 	<select id="getAllTeamMatchList" parameterType="String" resultType="teammatchdto">
 		select * from teammatching where possibleDate=#{possibleDate} and awayName is null
+		order by teammatching.possibleTime
 	</select>
 	
 	<!-- 매치 신청 -->
