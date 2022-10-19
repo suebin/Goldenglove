@@ -32,7 +32,43 @@ $(document).ready(function() {
 	dateSelector.flatpickr({dateFormat: "Y년 m월 d일"});
 	
 	
-	// 용병 리스트 
+	// 용병 검색 > 리스트
+	
+	$(".searchSoldierBtn").on("click", function() {
+		$.ajax({
+			url: 'getSoldier',
+			data: {'region':$("#regionSelector").val(),'position':$("#positionSelector").val(), 'possibleDate':$("#dateSelector").val()},
+			type: 'post',
+			dataType: 'json',
+			success: function(list){
+				
+				const cardContents = '';
+
+				// 용병 리스트가 한 개 있는 경우
+
+					$('#slide0').append('<div class="card"><div>'+ list[0].soldierName + '</div>'
+					+ '<div>' + list[0].region +'</div><div>'+ list[0].position + '</div><div>'+ list[0].possibleDate +'</div>'
+					+ '<div>용병 승률 ' + list[0].winningRate + ' %</div>'
+					+ '<div>소속 팀 ' + list[0].teamName + '</div>'
+					+ '<div>연락처 ' + list[0].phone.substr(0, 3) + "-" + list[0].phone.substr(3, 4) + "-"  + list[0].phone.substr(7, 11) + '</div>'
+					+ '<div>이메일 ' + list[0].email + '</div></div>'
+					+ '<div class="card"></div><div class="card"></div><div class="card"></div></div>')
+					
+					$('#slide1').html('');
+						
+
+
+					
+			
+			} // success end
+		
+		
+		}); // ajax end
+	
+	}) // searchSoldierBtn end
+	
+	
+	// 용병 리스트 페이지 슬라이딩
 	
 	const swiper = new Swiper('.swiper', {
 		  direction: 'horizontal',
@@ -41,7 +77,7 @@ $(document).ready(function() {
 		  
 		  pagination: {
 		    el: '.swiper-pagination',
-		    clickable: true,
+			    clickable: true,
 		  },
 
 		  navigation: {
@@ -50,10 +86,17 @@ $(document).ready(function() {
 		  },
 		});
 	
+	
 	// 용병 등록 작은 창
 	
 	$(".registerSoldierBtn").on("click", function() {
-		window.open('registerSoldier', '용병 등록', "width=500, height=230");
+		
+		if ($(".dropdownBtn").text() == "") {
+			alert("로그인이 필요한 서비스입니다.");	
+		}
+		else {
+		window.open('registerSoldier', '용병 등록', "width=330, height=420");
+		}
 	})
 	
 });
@@ -66,11 +109,12 @@ $(document).ready(function() {
 	<div class="confix">
 	
 	<!-- 용병 검색 form -->
+	
 	<div class="soldier_boxes">
 	<div class="soldier_box">
-	<form action="searchSoldier" method="post" id="searchSoldierForm">
+	<form action="getSoldier" method="post" id="searchSoldierForm">
 	
-	<select name="region" id="regionSelector" value="">
+	<select name="region" id="regionSelector">
 		<option selected>지역 전체</option>
 		<option>강원도</option>
 		<option>광주광역시</option>
@@ -91,7 +135,7 @@ $(document).ready(function() {
 		<option>충청북도</option>
 	</select>
 	
-	<select name="position" id="positionSelector" value="">
+	<select name="position" id="positionSelector">
 		<option selected>포지션 전체</option>
 		<option>1루수</option>
 		<option>2루수</option>
@@ -104,28 +148,32 @@ $(document).ready(function() {
 		<option>유격수</option>
 	</select>
 	
-	<input name="date" id="dateSelector" placeholder="날짜" />
-	<input type="submit" class="searchSoldierBtn" value="용병 검색" style="border:none;"/>
+	<input name="possibleDate" id="dateSelector" placeholder="날짜" />
+	<input type="button" class="searchSoldierBtn" value="용병 검색" style="border:none;"/>
 	</form>
 	</div>
+	
+	
 	<!-- 용병 등록 -->
 	<button class="soldier_box registerSoldierBtn">+ 용병 등록</button>
 	</div>
 	
 	
-	<!-- 용병 리스트 -->
-	
+	<!-- 용병 리스트 : swiper 페이징 처리해야 함 !!! -->
+
 	<div id="soldier-slide" class="swiper">
 		<div class="swiper-wrapper">
-			<div class="swiper-slide">슬라이드1</div>
-			<div class="swiper-slide">슬라이드2</div>
-			<div class="swiper-slide">슬라이드3</div>
+		
+			<div class="swiper-slide" id="slide0"></div>
+			<div class="swiper-slide" id="slide1"></div>
+			<div class="swiper-slide"></div>
+
 		</div>
-	
- 	 	<div class="swiper-button-prev"></div>
- 	 	<div class="swiper-button-next"></div>
 		
 		<div class="swiper-pagination"></div>
+		
+		<div class="swiper-button-prev"></div>
+		<div class="swiper-button-next"></div>
 	</div>
 
 

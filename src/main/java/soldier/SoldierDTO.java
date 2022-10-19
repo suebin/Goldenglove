@@ -6,6 +6,7 @@ public class SoldierDTO {
 	String position;
 	String possibleDate;
 	String soldierName;
+	String phone;
 	String email;
 	String teamName;
 	String fileName;
@@ -42,6 +43,12 @@ public class SoldierDTO {
 	}
 	public void setSoldierName(String soldierName) {
 		this.soldierName = soldierName;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getEmail() {
 		return email;

@@ -45,7 +45,7 @@
 			<div class="teammatch_registration_elements"> 
 				<div class="teammatch_registratioin_element">
 					<div>팀 이름</div>
-					<input type="text" name="homeName" value=${loginInfo.getName()} readonly>
+					<input type="text" name="homeName" value=${loginInfo.getTeamName()} readonly>
 				</div>
 				
 				<div class="teammatch_registratioin_element">

@@ -33,7 +33,7 @@
 			<h2>Search your game</h2>
 			<span>원하는 시간과 날짜에 매칭 신청 및 등록이 가능합니다.</span>
 		</div>
-		
+
 		<!-- 선택한 지역과 날짜 데이터 전송 -->
 		
 		<form action="teammatch" method="post">
@@ -41,7 +41,11 @@
 			<input type="hidden" name="year_month" id="year_month" value=""> 
 			<input type="hidden" name="date" id="date" value=""> 
 		</form>
-	
+		
+		<!-- 자신의 팀 저장해두기 -->
+		
+		<input type="hidden" id="teamName" value=${loginInfo.getTeamName()}> 
+		<input type="hidden" id="teamReader" value=${check}> <!-- 1 이면 팀 주장 -->
 
 		<!-- 지역 및 날짜 선택 -->
 		

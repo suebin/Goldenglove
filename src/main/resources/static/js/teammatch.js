@@ -11,7 +11,6 @@ $(document).ready(function() {
 		for (var i=1; i<31; i++) {
 			$(".dates").on('click', "#" +i, function(){ 	
 				$('input[name=date]').attr('value', '.' + $(this).text());
-				
 			});
 			
 			// 선택한 날짜는 색상으로 표시
@@ -23,6 +22,7 @@ $(document).ready(function() {
 		}
 		
 		
+	 	
 
 		// 선택한 지역 form에 저장
 		
@@ -115,7 +115,8 @@ $(document).ready(function() {
 					// 매치 신청한 날짜
 					const now = new Date();
 					const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
-						
+					
+			
 					// 날짜와 지역을 모두 선택한 경우에만 매치 검색을 할 수 있다.
 					
 					if ($("#region").val() != '' && $("#date").val() != '') {
@@ -138,8 +139,8 @@ $(document).ready(function() {
 								
 								
 								// 만약 자기 자신의 팀에 매치 신청하려고 하는 경우
-																
-								if($("span.teamName").text() == data[i].homeName) {	
+								
+								if($("#teamName").val() == data[i].homeName) {	
 															
 									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form>' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
 																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("span.teamName").text() + '">'
@@ -154,11 +155,28 @@ $(document).ready(function() {
 									
 								}
 								
+								else if ($("#teamReader").val() == 0) {
+									
+									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form>' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
+																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("span.teamName").text() + '">'
+																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
+																+ 	'<input type="button" id="add_teammatch_btn' + i + '" class="teammatch_btn" value="매치 신청"><input type="button" id="team_info_btn" class="teammatch_btn" value="팀 프로필"> </div>'
+																+ 	'</form>'
+																+ 	'</div>')
+																
+									$("#add_teammatch_btn" + i).on("click", function() {
+										alert('매치 신청은 팀 주장만 가능합니다.');
+									})
+								
+								
+								
+								}
+								
 								// 다른 팀에게 매치 신청을 하는 경우 
 								
 								else {
 									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form action="addTeammatch" method="post">' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
-																+	'<input type="hidden" name="awayName" id="awayName" value="' + $(".dropdownBtn .teamName").html() + '">'
+																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("#teamName").val()  + '">'
 																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
 																
 																// 알림 기능 위해 추가
@@ -234,11 +252,28 @@ $(document).ready(function() {
 		// 매치 등록 버튼
 		
 		$("#registerbtn").on("click", function() {
+
+			// 날짜 정보
+		
+			const now = new Date();
+			const nowYear = now.getFullYear();
+			const nowMonth = now.getMonth()+1;
+			const nowDate = now.getDate();
 			
+			const year = Number($("#year_month").val().substr(0,4));
+			const month = Number($("#year_month").val().substr(5));
+			const date = Number($("#date").val().substr(1));
+		
 			// 로그인을 하지 않은 경우
 			
 			if ($(".dropdownBtn").text() == "") {
 				alert("로그인이 필요한 서비스입니다.");
+			}
+			
+			// 팀 주장이 아닌 경우
+			
+			else if ($("#teamReader").val() == 0) {
+				alert("매치 등록은 팀 주장만 가능합니다.");
 			}
 			
 			// 날짜만 선택한 경우
@@ -259,6 +294,12 @@ $(document).ready(function() {
 				alert("날짜와 지역을 선택해주시길 바랍니다.");
 			}
 			
+			// 지난 날짜를 선택한 경우
+			
+			else if (nowYear > year || nowYear == year && nowMonth > month || nowYear == year && nowMonth == month && nowDate > date) {
+				alert("이미 지난 날짜입니다. 다시 날짜를 선택해주시길 바랍니다.");
+			}
+
 			// 로그인 상태이고, 날짜와 지역을 모두 선택한 경우에만 매치 등록을 할 수 있다.
 			
 			else {

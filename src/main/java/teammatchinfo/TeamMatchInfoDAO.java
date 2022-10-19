@@ -31,6 +31,10 @@ public interface TeamMatchInfoDAO {
 	
 	List<TeamMatchDTO> getTeamMatchList5(String myTeamName);
 	
+	// 유저 팀의 주장 Id 확인
+	
+	String selectTeamId(String teamName);
+	
 	// 1. 수락을 기다리는 경기 > 수락하기 버튼
 	
 	int updateAcceptance(int seq);

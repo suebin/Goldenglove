@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="soldier.SoldierDAO">
+	
+	<!-- 용병 검색 1 -->
+	
+	<select id="getSoldierList1" parameterType="String" resultType="soldierdto">
+		select * from soldier 
+	</select>
+	
+	<!-- 용병 검색 2 -->
+	
+	<select id="getSoldierList2" parameterType="String" resultType="soldierdto">
+		select * from soldier where possibleDate=#{possibleDate}
+	</select>
+	
+	<!-- 용병 검색 3 -->
+	
+	<select id="getSoldierList3" parameterType="String" resultType="soldierdto">
+		select * from soldier where position=#{position}
+	</select>
+	
+	<!-- 용병 검색 4 -->
+	
+	<select id="getSoldierList4" parameterType="String" resultType="soldierdto">
+		select * from soldier where position=#{position} and possibleDate=#{possibleDate}
+	</select>
+	
+	<!-- 용병 검색 5 -->
+	
+	<select id="getSoldierList5" parameterType="String" resultType="soldierdto">
+		select * from soldier where region=#{region} 
+	</select>
+	
+	<!-- 용병 검색 6 -->
+	
+	<select id="getSoldierList6" parameterType="String" resultType="soldierdto">
+		select * from soldier where region=#{region} and possibleDate=#{possibleDate}
+	</select>
+	
+	<!-- 용병 검색 7 -->
+	
+	<select id="getSoldierList7" parameterType="String" resultType="soldierdto">
+		select * from soldier where region=#{region} and position=#{position}
+	</select>
+	
+	<!-- 용병 검색 8 -->
+	
+	<select id="getSoldierList8" parameterType="String" resultType="soldierdto">
+		select * from soldier where region=#{region} and position=#{position} and possibleDate=#{possibleDate}
+	</select>
+	
+	<!-- 용병 등록 -->
+	
+	<insert id="insertSoldier" parameterType="soldierdto">
+		insert into soldier (region, position, possibleDate, soldierName, phone, email, teamName, fileName, winningRate, winCount, loseCount)
+		values (#{region}, #{position}, #{possibleDate}, #{soldierName}, #{phone}, #{email}, #{teamName}, #{fileName}, #{winningRate}, #{winCount}, #{loseCount})		
+	</insert>
+	
+	<select id="selectMylog" parameterType="String" resultType="int">
+		select count(possibleDate) from soldier where possibleDate=#{possibleDate} and soldierName=#{soldierName}
+	</select>
+</mapper>
