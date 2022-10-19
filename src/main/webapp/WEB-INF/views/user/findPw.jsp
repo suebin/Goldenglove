@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>골든글러브</title>
-<link href="/css/main.css" rel="stylesheet" />
+<link href="/css/login.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
@@ -44,35 +44,37 @@ $(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 		<div class="confix">
-			<h1 class="h1">비밀번호 찾기</h1>
-			<form id="findForm" autocomplete="off">
-				<table id="inputBox">
-					<tr>
-						<td>
-							<input type="text" id="id" name="id" pattern="[a-z0-9]{3,15}" title="최대 15자리까지 입력가능합니다.(영어,숫자)" required placeholder="아이디">
-						</td>
-					<tr>
-						<td>
-							<input type="text" id="name" name="name" pattern="[a-zA-Z가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,한글)" required placeholder="이름">
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<input type="email" id="email" name="email" required placeholder="이메일">
-						</td>
-					</tr>
-						<tr><td><button type="submit">비밀번호 찾기</button></td></tr>
-				</table>
-			</form>
-			<form action="updatePassword" id="updateForm">
-				<table id="updateBox" hidden>
-					<tr><td><input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,15}$" title="최소 8자리, 최대 15자리까지 입력하능합니다.(영어,특수문자,숫자 필수)" required plceholder="새로운 비밀번호를 입력해주세요."></td></tr>
-					<tr><td><input type="text" id="id2" name="id" hidden></td></tr>
-					<tr><td><input type="text" id="name2" name="name" hidden></td></tr>
-					<tr><td><input type="text" id="email2" name="email" hidden></td></tr>
-					<tr><td><button type="submit">수정</button></td></tr>
-				</table>
-			</form>
+			<div class="loginContainer findPwContainer">
+				<h1 class="h1">비밀번호 찾기</h1>
+				<form id="findForm" class="table" autocomplete="off">
+					<table id="inputBox">
+						<tr>
+							<td>
+								<input type="text" id="id" name="id" pattern="[a-z0-9]{3,15}" title="최대 15자리까지 입력가능합니다.(영어,숫자)" required placeholder="아이디">
+							</td>
+						<tr>
+							<td>
+								<input type="text" id="name" name="name" pattern="[a-zA-Z가-힣]{1,30}" title="최대 30자리까지 입력가능합니다.(영어,한글)" required placeholder="이름">
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="email" id="email" name="email" required placeholder="이메일">
+							</td>
+						</tr>
+							<tr><td><button class="findBtn" type="submit">비밀번호 찾기</button></td></tr>
+					</table>
+				</form>
+				<form action="updatePassword" id="updateForm">
+					<table id="updateBox" hidden>
+						<tr><td><input type="password" name="password" pattern="^(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,15}$" title="최소 8자리, 최대 15자리까지 입력하능합니다.(영어,특수문자,숫자 필수)" required plceholder="새로운 비밀번호를 입력해주세요."></td></tr>
+						<tr><td><input type="text" id="id2" name="id" hidden></td></tr>
+						<tr><td><input type="text" id="name2" name="name" hidden></td></tr>
+						<tr><td><input type="text" id="email2" name="email" hidden></td></tr>
+						<tr><td><button type="submit">수정</button></td></tr>
+					</table>
+				</form>
+			</div>
 		</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
 </body>
