@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-/*=========== topRanking ===========*/
+/* teamMatch */
 .teamMatch {
 	position: relative;
 }
@@ -29,15 +29,20 @@
 	font-size: 18px;
 }
 
+
+/* teamMatchTitle */
 .teamMatchTitle {
 	padding: 20px 0;
 }
+
 .teamMatchTitle h2 {
 	padding-bottom: 10px;
 }
+
 .teamMatchTitle span {
 	font-size: 14px;
 } 
+
 
 /* 캘린더 및 지역 선택 */
 

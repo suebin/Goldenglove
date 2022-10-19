@@ -1,49 +1,108 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
+.signUpContainer {
+	margin: 30px 0;
+}
+
+.signUpContainer input, .signUpContainer select {
+    font-family: "비트로 프라이드 OTF";
+    border-radius: 3px;
+    outline: none;
+}
+
+ .signUpContainer select {
+ 	cursor: pointer;
+ }
+ 
+.signUpContainer button:hover {
+	opacity: 0.8;
+}
+
 .h1 {
+    font-family: "비트로 프라이드 OTF";
 	text-align: center;
 	margin-bottom: 20px;
 }
 
 .table {
-	width: 70%;
+	width: 100%;
+	max-width: 600px;
 	margin: auto;
-	border-top: 1px solid #666;
 	border-collapse: collapse;
+	border-radius: 3px;
+	overflow: hidden;
 }
 
+tr {
+	display: flex;
+    align-content: center;
+}
 .th {
-	background: #c0c0c0;
-	color: #00912e;
-}
-
-tr:last-child {
-	border-bottom: 1px solid #666;	
-}
-
-td, th {
+	width: 100%;
 	padding: 16px;
+	color: #fff;
+	background: #00912e;
+}
+
+td {
+    padding: 16px 0 16px 16px;
+	font-size: 15px;
 	border-bottom: 1px solid #d5d5d5;
 }
 
+td:first-child {
+	width: 17%;
+	min-width: max-content;
+	line-height: 30px;
+}
+
+td:nth-child(2) {
+	display: flex;
+	align-items: center;
+	width: 100%;	
+}
+
 input:first-child, select {
-	width: 50%;
-	height: 28px;
-	padding: 0 8px;
+    max-width: 60%;
+    width: 100%;
+	padding: 8px;
 	margin-right: 8px;
+    border: 1px solid gray;	
 }
 
 input:first-child:focus {
 	background: #feca00;
 }
 
+input[type=file] {
+	border: none;
+    max-width: 100%;
+    cursor: pointer;
+}
+
+input[type=file]:focus {
+	background: transparent;
+}
+
 input:nth-child(2) {
-    background: #555;
-    border: 1px solid #333;
+    background: #444;
+    border: 1px solid #444;
     color: #fff;
-	padding: 4px 6px;
+	padding: 8px;
 	margin-right: 8px;
 	cursor: pointer;
 }
 
+input:nth-child(2):hover {
+	opacity: 0.8;
+}
+	
 .btnBox {
 	text-align: center;
 	padding-top: 30px; 
@@ -53,12 +112,14 @@ input:nth-child(2) {
 	text-align: center;
 	width: 45%;
     max-width: 180px;
-    line-height: 40px;
-    height: 40px;
-    background: #555;
-    border: 1px solid #333;
+    background: #444;
     color: #fff;
     margin-right: 8px;
+    border: none;
+    padding: 15px 0;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .red {
@@ -67,4 +128,13 @@ input:nth-child(2) {
 
 .green {
 	color: green;
+}
+
+
+/*======= 768 =======*/	
+@media (max-width: 768px) {
+	td:first-child {
+	    width: 30%;
+	    min-width: max-content;
+	}
 }
