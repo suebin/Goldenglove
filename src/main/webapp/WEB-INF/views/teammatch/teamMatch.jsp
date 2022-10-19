@@ -19,7 +19,7 @@
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 
-	<div class="teamMatchImg teamMatch">
+	<div class="teamMatch">
 		<img alt="teamMatchImg" src="/images/teamMatch.jpg">
 		
 		<div class="confix intro">

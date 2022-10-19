@@ -1,16 +1,37 @@
+@charset "utf-8";
+
+:root {
+  --main-color: #00912e;
+  --point-color : #feca00;
+  --gray : rgb(221,221,221);
+}
+
+.loginContainer {
+	margin: 30px 0;
+}
+
+.loginContainer input {
+    font-family: "비트로 프라이드 OTF";
+}
+
+.loginContainer button:hover {
+	opacity: 0.8;
+}
+
 .h1 {
+    font-family: "비트로 프라이드 OTF";
 	text-align: center;
 	margin-bottom: 20px;
 }
 
 .table {
-	width: 50%;
+	width: 100%;
+	max-width: 350px;
 	margin: auto;
 	border-collapse: collapse;
 }
 
 .table td {
-	padding: 16px;
 	text-align: center;
 }
 
@@ -19,10 +40,12 @@ input {
 }
 
 input, .table button {
-	font-size: 20px;
-	width: 75%;
+	font-size: 16px;
+	width: 100%;
 	height: 50px;
-	padding: 0 8px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	border-radius: 3px;
 }
 
 .login {
@@ -32,22 +55,30 @@ input, .table button {
     font-weight: 900;
 }
 
+.kakaoLogin, .naverLogin {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+}
+
+.kakaoLogin img, .naverLogin img {
+	height: 50px;
+}
+
 .kakaoLogin {
-	color: #fff;
-	background: #feca00;
-	border: 1px solid #feca00;
-    font-weight: 900;
+	background: #FEE500;
+	border: 1px solid #FEE500;
 }
 
 .naverLogin {
 	color: #fff;
-	background: #00912e;
-	border: 1px solid #00912e;
-    font-weight: 900;
+	background: #03C75A;
+	border: 1px solid #03C75A;
 }
 
 input:focus {
-	background: #feca00;
+	background: #f2f2f2;
+	outline: none;
 }
 
 .table2 {
@@ -56,7 +87,8 @@ input:focus {
 }
 
 .findBox {
-	width: 35%;
+	width: 100%;
+	max-width: 350px;
 	margin: auto;
 	padding: 12px 0;
 	border-top: 1px solid #d5d5d5;
@@ -65,7 +97,7 @@ input:focus {
 
 .table2 td {
 	width: 65%;
-	padding: 6px 0;
+	padding: 3px 0;
 	text-align: justify;
 }
 
@@ -79,10 +111,28 @@ input:focus {
 }
 
 .table2 button {
-	width: 110px;
-	background: #666;
-	border: 1px solid #666;
+    width: 100px;
+    background: #666;
+    border: 1px solid #666;
     color: #eee;
-	font-size: 16px;
-	padding: 2px 0;
+    font-size: 14px;
+    padding: 5px 0;
+    border-radius: 3px;
+}
+
+
+/*====== 아이디, 비밀번호 찾기 ======*/
+.findIdContainer {
+    margin: 30px 0 39vh;
+}
+
+.findPwContainer {
+    margin: 30px 0 31vh;
+}
+
+#findBtn, .findBtn {
+	font-weight: bold;
+	color: #fff;
+	border: none;
+	background: var(--main-color);
 }
