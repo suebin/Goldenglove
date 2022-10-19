@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -42,24 +43,7 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(list){
 				
-				const cardContents = '';
-
-				// 용병 리스트가 한 개 있는 경우
-
-					$('#slide0').append('<div class="card"><div>'+ list[0].soldierName + '</div>'
-					+ '<div>' + list[0].region +'</div><div>'+ list[0].position + '</div><div>'+ list[0].possibleDate +'</div>'
-					+ '<div>용병 승률 ' + list[0].winningRate + ' %</div>'
-					+ '<div>소속 팀 ' + list[0].teamName + '</div>'
-					+ '<div>연락처 ' + list[0].phone.substr(0, 3) + "-" + list[0].phone.substr(3, 4) + "-"  + list[0].phone.substr(7, 11) + '</div>'
-					+ '<div>이메일 ' + list[0].email + '</div></div>'
-					+ '<div class="card"></div><div class="card"></div><div class="card"></div></div>')
-					
-					$('#slide1').html('');
-						
-
-
-					
-			
+							
 			} // success end
 		
 		
@@ -160,11 +144,17 @@ $(document).ready(function() {
 	
 	
 	<!-- 용병 리스트 : swiper 페이징 처리해야 함 !!! -->
+<%
+	UserDTO user = (UserDTO)session.getAttribute("loginInfo"); 
+	request.setAttribute("user", user);
+%>
 
 	<div id="soldier-slide" class="swiper">
 		<div class="swiper-wrapper">
 		
-			<div class="swiper-slide" id="slide0"></div>
+			<div class="swiper-slide" id="slide0">
+				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
+			</div>
 			<div class="swiper-slide" id="slide1"></div>
 			<div class="swiper-slide"></div>
 
