@@ -11,14 +11,10 @@
 <link href="/css/common.css" rel="stylesheet" />
 <link rel="stylesheet" href="/css/owl.carousel.min.css">
 <link rel="stylesheet" href="/css/owl.theme.default.min.css">
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="js/jquery-3.6.0.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="js/owl.carousel.min.js" defer></script>
 <script>
 $(document).ready(function() {
- 	AOS.init();
- 	
 	history.replaceState({}, null, location.pathname);
 	
 	// 매칭
@@ -167,7 +163,7 @@ $(document).ready(function() {
 	
 	<div class="info">
 		<div class="confix">
-			<div class="ranking" data-aos="fade-right" data-aos-duration="1000">
+			<div class="ranking">
 				<h3>TEAM RANKING</h3>
 				<ul class="rankingList">
 					<li>
@@ -180,7 +176,7 @@ $(document).ready(function() {
 				</ul>
 			</div>
 	
-			<div class="notice" data-aos="fade-left" data-aos-duration="1000">
+			<div class="notice">
 				<div class="noticeTop">
 					<h3>LATEST NOTICE</h3>
 					<a href="notice">VIEW ALL</a>
@@ -208,7 +204,7 @@ $(document).ready(function() {
 		<div class="confix">
 	        <h3>PRO MATCH SCHEDULE</h3>
 	        <span class="desc">프로 경기 일정을 확인해보세요</span>
-	        <ul class="proList" data-aos="fade-up" data-aos-duration="2000">
+	        <ul class="proList">
 	        	<li>
 	        		<a href="https://www.koreabaseball.com/Schedule/Schedule.aspx" target="blank">
 		        		<img class="mainPro1" alt="mainProImg" src="/images/mainPro1.jpg">

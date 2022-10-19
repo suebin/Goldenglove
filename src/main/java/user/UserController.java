@@ -24,6 +24,21 @@ public class UserController {
 	@Autowired
 	TeamService teamService;
 
+//	모달
+	@ResponseBody
+	@RequestMapping("/modalResult")
+	public String modalResult(String name) {
+		UserDTO user = userService.selectName(name);
+
+		JSONObject json = new JSONObject();
+		json.put("name", user.getName());
+		json.put("phone", user.getPhone());
+		json.put("email", user.getEmail());
+		json.put("region", user.getRegion());
+		json.put("position", user.getPosition());
+		return json.toString();
+	}
+
 //	회원가입
 	@RequestMapping("/signup")
 	public String signUp(HttpServletRequest request) {

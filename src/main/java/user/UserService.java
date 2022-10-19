@@ -49,4 +49,9 @@ public class UserService {
 	public void updateTeamName(HashMap registerInfo) {
 		userDao.updateTeamName(registerInfo);
 	}
+
+//	이름조회
+	public UserDTO selectName(String name) {
+		return userDao.selectName(name);
+	}
 }
