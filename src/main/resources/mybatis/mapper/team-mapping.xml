@@ -145,4 +145,9 @@
 				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
 				(select name from user where id = #{id}));
 	</insert>
+	
+	<!-- 팀 순위 리스트 -->
+	<select id="selectRank" resultType="String">
+		select teamName from team order by winningRate desc, winCount desc;
+	</select>
 </mapper>

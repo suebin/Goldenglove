@@ -1,8 +1,8 @@
 .cardCon {
   position: relative;
   width: 280px;
-  -webkit-filter: drop-shadow(0px 0px 5px hsl(36, 100%, 50%)) drop-shadow(0px 0px 15px hsl(36, 100%, 50%));
-  filter: drop-shadow(0px 0px 5px hsl(36, 100%, 50%)) drop-shadow(0px 0px 15px hsl(36, 100%, 50%));
+  -webkit-filter: drop-shadow(0px 0px 5px var(--color)) drop-shadow(0px 0px 15px var(--color));
+  filter: drop-shadow(0px 0px 5px var(--color)) drop-shadow(0px 0px 15px var(--color));
 }
 
 .card__border,
@@ -17,7 +17,7 @@
 
 .card__border {
   position: absolute;
-  background: hsl(36, 100%, 50%);
+  background: var(--color);
   top: 0;
   left: 0;
   width: 102%;
@@ -37,7 +37,7 @@
   position: relative;
   top: 9px;
   left: -3px;
-  background: linear-gradient(179deg, hsl(36, 100%, 50%), #e3a83b 90%);
+  background: linear-gradient(179deg, var(--color), #e3a83b 90%);
   padding: 0.5rem 0.2rem 0rem;
   margin-left: 4%;
 }

@@ -15,7 +15,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script>
 $(document).ready(function() {
-	const position = {
+	const r = {
+		1 : "--color: hsl(36, 100%, 50%);",		
+		2 : "--color:hsl(237, 63%, 19%);",		
+		3 : "--color: hsl(357, 100%, 49%);",
+		4 : "--color: hsl(172, 94%, 21%);"
+	}
+	const medal = {
+			1 : "images/gold-medal.png",
+			2 : "images/silver-medal.png",			
+			3 : "images/bronze-medal.png",			
+			4 : "images/baseball.png",			
+	}
+	$(".cardCon").attr("style", r["${rank}"]);
+	$("#medalImg").attr("src", medal["${rank}"]);
+	
+/* 	const position = {
 			firstBase : "1루수",
 			secondBase : "2루수",
 			thirdBase : "3루수",
@@ -25,7 +40,7 @@ $(document).ready(function() {
 			rightFielder : "우익수",
 			centerFielder : "중견수",
 			shortStop : "유격수"
-	}
+	} */
 	
 	$(".modalLink").on("click",function() {
 		$.ajax({
@@ -100,7 +115,7 @@ $(document).ready(function() {
 		<div class="profile-card-6">
 			<div class="card__img">
 		        <div class="img__team">
-		            <img src="images/gold-medal.png" alt="rankingImg">
+		            <img id="medalImg" alt="rankingImg">
 		        </div>
 		        <div class="img__athlete">
 		        	<div class="img__Wrapper">
