@@ -88,7 +88,7 @@ $(document).ready(function() {
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
 		<h1>${loginInfo.getTeamName() }</h1>
-		<div class="cardBox">
+		<div class="cardBox teamCard">
 		<%
 			UserDTO[] all = (UserDTO[])request.getAttribute("allMember");
 			for(int i = 0;i < all.length;i++) {
@@ -112,7 +112,7 @@ $(document).ready(function() {
 				<button id="updateTeamBtn">팀 수정</button>
 				<div>
 					<h1>승인 대기 중인 요청</h1>
-					<div class="cardBox">
+					<div class="cardBox defaultCard">
 					<%
 						UserDTO[] teamRegisterInfoUser = (UserDTO[])request.getAttribute("teamRegisterInfo");
 						for(int i = 0;i < teamRegisterInfoUser.length;i++) {
@@ -128,7 +128,7 @@ $(document).ready(function() {
 				</div>	
 				<div>
 					<h1>보낸 요청</h1>
-					<div class="cardBox">
+					<div class="cardBox defaultCard">
 					<%
 						UserDTO[] registerUser = (UserDTO[])request.getAttribute("registerUser");
 						for(int i = 0;i < registerUser.length;i++) {

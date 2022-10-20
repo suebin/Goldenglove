@@ -54,4 +54,9 @@ public class UserService {
 	public UserDTO selectName(String name) {
 		return userDao.selectName(name);
 	}
+
+//	팀명조회
+	public String selectTeamName(String name) {
+		return userDao.selectTeamName(name);
+	}
 }

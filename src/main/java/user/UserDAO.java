@@ -34,4 +34,7 @@ public interface UserDAO {
 
 //	이름조회
 	UserDTO selectName(String name);
+
+//	팀명조회
+	String selectTeamName(String name);
 }

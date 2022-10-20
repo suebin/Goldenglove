@@ -65,7 +65,7 @@ $(document).ready(function() {
 					<ul><li>포지션 </li><li class="position"></li></ul>
 				</li>
 				<li>
-					<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
+					<div class="card teamCard"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
 				</li>
 			</ul>
 			<ul class="pwTable" id="passwordInputUser" hidden>
