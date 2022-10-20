@@ -129,6 +129,19 @@
 			})
 		} // cancel_teammatch_btn	
 		
+		// 6. 승패 선택 버튼
+		
+			for (let i = 1; i < 100; i++) {
+			
+			var select_winner_btn = 'select_winner_btn' + i;
+			
+			$("#" + select_winner_btn).on("click", function() {
+				var url = 'selectWinner?seq=' +  $("#teammatchlist6_seq" + i).val() + '&myTeam=' + $("#teamName").val() + '&team1=' + $("#teammatchlist6_homeName" + i).val() + '&team2=' + $("#teammatchlist6_awayName" + i).val() ;
+				window.open(url, '승패 선택', "width=330, height=420");	
+			})
+		} // select_winner_btn	
+		
+		
 
 		// 만약 경기 정보가 하나도 없는 섹터는 보이지 않도록 하기
 
@@ -165,6 +178,12 @@
 		} 
 		else {
 			$(".teammatchlist5_box").hide();
+		}
+		if ($("#teammatch__info_list6").length) {
+			$(".teammatchlist6_box").show();
+		} 
+		else {
+			$(".teammatchlist6_box").hide();
 		}
 		
 }); // ready end
@@ -210,6 +229,9 @@
 		<c:set value="<%=today.length()%>" var="todayLen" />
 		<c:set value="<%=time%>" var="time" />
 
+		<!-- 자신의 팀 저장해두기 -->
+		
+		<input type="hidden" id="teamName" value=${loginInfo.getTeamName()}> 
 		
 		<!-- 1. 수락을 기다리는 경기 -->
 
@@ -380,8 +402,8 @@
 
 					<div class="teammatch_info_list" id="teammatch__info_list5">
 						<div class="teammatch_info">
-							<span class="teammatch_info_title">${list.homeName} VS
-								${list.awayName}</span> <span class="teammatch_info_date">${list.possibleDate}
+							<span class="teammatch_info_title">${list.winner} VS
+								${list.loser}</span> <span class="teammatch_info_date">${list.possibleDate}
 								${list.possibleTime}</span> <span class="teammatch_info_location">${list.region}
 								${list.homePlace}</span>
 						</div>
@@ -390,6 +412,46 @@
 				<input type="hidden" class="teammatchlist5_seq" value=${list.seq}>
 			</c:forEach>
 		</div>
+		
+		<!-- 6. 승패 선택 -->
+
+		<div class="teammatchlist6_box" data-aos="fade-up"
+			data-aos-duration="1000" >
+
+			<h2>승패 선택</h2>
+
+			<c:forEach items="${teammatchlist4}" var="list">
+
+				<c:set value="${list.possibleDate}" var="possibleDate" />
+				<c:set value="${list.possibleTime}" var="possibleTime" />
+
+				<!-- 날짜와 시간이 지난 경기만 보여준다. -->
+
+				<c:if
+					test="${(possibleDate < today and possibleDateLen < todayLen)  or (possibleDate == today and possibleTime < time)}">
+					
+					<div class="teammatch_info_list" id="teammatch__info_list6">
+						<div class="teammatch_info">
+							<div class="teammatch_info_title">${list.homeName} VS
+								${list.awayName}</div> <div class="teammatch_info_date">${list.possibleDate}
+								${list.possibleTime}</div> <div class="teammatch_info_location">${list.region}
+								${list.homePlace}</div>
+						</div>
+						<div class="teammatch_info_btn">
+							<c:set var="e" value="${e+1}" />
+							<input type="button" class="btn" id="select_winner_btn${e}"
+								value="승패 선택">
+						</div>
+					</div>
+
+				</c:if>
+
+				<input type="hidden" id="teammatchlist6_seq${e}" value=${list.seq}>
+				<input type="hidden" id="teammatchlist6_homeName${e}" value=${list.homeName}>
+				<input type="hidden" id="teammatchlist6_awayName${e}" value=${list.awayName}>
+			</c:forEach>
+		</div>
+		
 		
 		<div class="finish"></div>
 		

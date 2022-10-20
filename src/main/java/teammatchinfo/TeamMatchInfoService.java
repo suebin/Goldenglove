@@ -43,6 +43,7 @@ public class TeamMatchInfoService {
 	public List<TeamMatchDTO> getTeamMatchList5(String myTeamName) {
 		return dao.getTeamMatchList5(myTeamName);
 	}
+		
 	
 	// 유저가 팀 주장인지 확인
 	
@@ -74,7 +75,15 @@ public class TeamMatchInfoService {
 		return dao.cancelTeammatch(seq);
 	}
 	
+	// 승패 반영
 	
+	public void updateWinner(int seq, String myTeam, String awayTeam) {
+		dao.updateWinner(seq, myTeam, awayTeam);
+	}
+	
+	public void updateLoser(int seq, String myTeam, String awayTeam) {
+		dao.updateLoser(seq, myTeam, awayTeam);
+	}
 	
 	// 알림 등록
 	public void insertAlarm(int seq) {

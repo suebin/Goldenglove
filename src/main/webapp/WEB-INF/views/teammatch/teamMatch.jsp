@@ -42,10 +42,11 @@
 			<input type="hidden" name="date" id="date" value=""> 
 		</form>
 		
-		<!-- 자신의 팀 저장해두기 -->
+		<!-- 자신의 팀 정보 저장해두기 -->
 		
 		<input type="hidden" id="teamName" value=${loginInfo.getTeamName()}> 
 		<input type="hidden" id="teamReader" value=${check}> <!-- 1 이면 팀 주장 -->
+		<input type="hidden" id="winnerCount" value=${winnerCount}>
 
 		<!-- 지역 및 날짜 선택 -->
 		

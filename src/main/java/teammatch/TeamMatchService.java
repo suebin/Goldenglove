@@ -39,7 +39,6 @@ public class TeamMatchService {
 		return dao.updateRegistration(seq);
 	}
 	
-	
 	// 알림
 	public int insertAlarm(String homeName, String awayName, String region, String possibleDate, String possibleTime, String homePlace, String alarmDate) {
 		return dao.insertAlarm(homeName, awayName, region, possibleDate, possibleTime, homePlace, alarmDate);

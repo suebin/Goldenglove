@@ -27,8 +27,8 @@
 	<!-- 예정된 경기 -->
 	
 	<select id="getTeamMatchList4" resultType="teammatchdto">
-		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration=1 and acceptance=1)
-		or (awayName=#{myTeamName} and registration=1 and acceptance=1)
+		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration=1 and acceptance=1 and winner is null)
+		or (awayName=#{myTeamName} and registration=1 and acceptance=1 and winner is null)
 		order by possibleDate asc, possibleTime asc
 	</select>
 
@@ -69,6 +69,16 @@
 	
 	<update id="cancelTeammatch">
 		update teammatching set acceptance=0, registration=0, awayName=null where seq=#{seq}
+	</update>
+	
+	<!-- 승패 반영 -->
+	
+	<update id="updateWinner">
+		update teammatching set winner=#{myTeam}, loser=#{awayTeam} where seq=#{seq}
+	</update>
+
+	<update id="updateLoser">
+		update teammatching set loser=#{myTeam}, winner=#{awayTeam} where seq=#{seq}
 	</update>
 
 

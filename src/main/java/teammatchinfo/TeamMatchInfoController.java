@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -42,7 +43,10 @@ public class TeamMatchInfoController {
 		// 지난 경기
 		List<TeamMatchDTO> teammatchlist5 = service.getTeamMatchList5(myTeamName);
 				
-		 
+		 // 승패 선택
+		List<TeamMatchDTO> teammatchlist6 = service.getTeamMatchList5(myTeamName);
+		
+		
 		ModelAndView mv = new ModelAndView();
 		
 		mv.addObject("teammatchlist1", teammatchlist1);
@@ -213,6 +217,65 @@ public class TeamMatchInfoController {
 			return "{\"result\" : \"" + result + "\"}";
 		}
 		
+		// 승패 선택
+		
+		@RequestMapping("/selectWinner")
+		public String selectWinner() {
+			return "teammatchinfo/selectWinner";
+		}
+		
+		@PostMapping("/selectWinner")
+		public ModelAndView selectWinnerResult(int seq, String myTeam, String team1, String team2, int result) {
+			
+			String message = "";
+			
+			// homeName 이 우리 팀일 경우
+			
+			if (myTeam.equals(team1)) {
+				System.out.println("나는 우리팀이다.");
+				// 이긴 경우
+				
+				if (result == 1) {
+					service.updateWinner(seq, team1, team2);
+					System.out.println("나 이겼음");
+					message = "승패 선택이 완료되었습니다.";
+				}
+				
+				// 진 경우
+				
+				else if (result == 0) {
+					service.updateLoser(seq, team1, team2);
+					System.out.println("나 졌음");
+				}
+				
+			}
+			
+			// awayName 이 우리 팀일 경우
+			
+			if (myTeam.equals(team2)) {
+				
+				// 이긴 경우
+				
+				if (result == 1) {
+					service.updateWinner(seq, team2, team1);
+					System.out.println("나 이겼음");
+				}
+				
+				// 진 경우
+				
+				else if (result == 0) {
+					service.updateLoser(seq, team2, team1);
+					System.out.println("나 졌음");
+				}
+			}
+			
+			
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("message", message);
+			mv.setViewName("teammatchinfo/selectWinnerResult");
+			
+			return mv;
+		}
 		
 		// 오늘의 매칭
 		@ResponseBody

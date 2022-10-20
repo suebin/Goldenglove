@@ -31,6 +31,12 @@ public interface TeamMatchInfoDAO {
 	
 	List<TeamMatchDTO> getTeamMatchList5(String myTeamName);
 	
+	// 승패 반영
+	
+	void updateLoser(int seq, String myTeam, String awayTeam);
+	
+	void updateWinner(int seq, String myTeam, String awayTeam);
+	
 	// 유저 팀의 주장 Id 확인
 	
 	String selectTeamId(String teamName);

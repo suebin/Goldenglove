@@ -53,7 +53,7 @@ public class TeamMatchController {
 				check = 0;
 			}
 		}
-		
+
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("check", check);
@@ -97,7 +97,7 @@ public class TeamMatchController {
 
 		if (insertcount == 1) {
 			result = "매치가 성공적으로 등록되었습니다.";
-			// 나중에 경기정보로 이동하도록 하기
+		
 		} 
 		
 		else {

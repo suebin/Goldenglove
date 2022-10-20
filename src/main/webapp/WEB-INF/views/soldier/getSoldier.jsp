@@ -154,6 +154,8 @@ $(document).ready(function() {
 		
 			<div class="swiper-slide" id="slide0">
 				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
+				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
+				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
 			</div>
 			<div class="swiper-slide" id="slide1"></div>
 			<div class="swiper-slide"></div>
