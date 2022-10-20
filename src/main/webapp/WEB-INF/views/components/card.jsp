@@ -25,22 +25,21 @@ $(document).ready(function() {
 			1 : "images/gold-medal.png",
 			2 : "images/silver-medal.png",			
 			3 : "images/bronze-medal.png",			
-			4 : "images/baseball.png",			
+			4 : "images/baseball.png",
 	}
-	$(".cardCon").attr("style", r["${rank}"]);
-	$("#medalImg").attr("src", medal["${rank}"]);
 	
-/* 	const position = {
-			firstBase : "1루수",
-			secondBase : "2루수",
-			thirdBase : "3루수",
-			catcher : "포수",
-			pitcher : "투수",
-			leftFielder : "좌익수",
-			rightFielder : "우익수",
-			centerFielder : "중견수",
-			shortStop : "유격수"
-	} */
+	$(".defaultCard .medalImg").attr("src", medal["4"]);
+	$(".defaultCard .cardCon").attr("style", r["4"]);
+	
+	$.ajax({
+		url : "tierResult",
+		data : {"name" : $(".profile-name").html()},
+		dataType : "json",
+		success : function(server) {
+			$(".teamCard .cardCon").attr("style", r[server]);
+			$(".teamCard .medalImg").attr("src", medal[server]);
+		}
+	})		
 	
 	$(".modalLink").on("click",function() {
 		$.ajax({
@@ -115,7 +114,7 @@ $(document).ready(function() {
 		<div class="profile-card-6">
 			<div class="card__img">
 		        <div class="img__team">
-		            <img id="medalImg" alt="rankingImg">
+		            <img class="medalImg" alt="rankingImg">
 		        </div>
 		        <div class="img__athlete">
 		        	<div class="img__Wrapper">

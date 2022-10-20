@@ -47,4 +47,9 @@
 		select * from user where name = #{name};
 	</select>
 	
+	<!-- 팀명 조회 -->
+	<select id="selectTeamName" parameterType="String" resultType="String">
+		select teamName from user where name = #{name};
+	</select>
+	
 </mapper>
