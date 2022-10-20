@@ -84,8 +84,9 @@ $(document).ready(function() {
 					btn.prev().focus();
 					btn.next().next().attr("class", "red");
 					btn.next().next().html(server.result);
-				} else if(btn.next().text() == "") {
+				} else if(btn.next().text() == " ") {
 					btn.next().removeAttr("hidden");
+					btn.next().next().html("");
 					btn.next().html("<button>" + server.result + " </button>");
 				} else {
 					const done = btn.next().text().split(" ");
