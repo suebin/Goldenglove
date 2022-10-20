@@ -21,7 +21,14 @@ $(document).ready(function() {
 		3 : "background:red;",
 		4 : "background:green;"
 	}
+	const medal = {
+			1 : "images/gold-medal.png",
+			2 : "images/silver-medal.png",			
+			3 : "images/bronze-medal.png",			
+			4 : "images/baseball.png",			
+	}
 	$(".profile-card-6").attr("style", r["${rank}"]);
+	$("#medalImg").attr("src", medal["${rank}"]);
 	
 /* 	const position = {
 			firstBase : "1루수",
@@ -108,7 +115,7 @@ $(document).ready(function() {
 		<div class="profile-card-6">
 			<div class="card__img">
 		        <div class="img__team">
-		            <img src="images/gold-medal.png" alt="rankingImg">
+		            <img id="medalImg" alt="rankingImg">
 		        </div>
 		        <div class="img__athlete">
 		        	<div class="img__Wrapper">
