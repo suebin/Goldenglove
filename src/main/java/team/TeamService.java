@@ -146,8 +146,7 @@ public class TeamService {
 		}
 		return allUser;
 	}
-	
-	
+
 	// 가입 신청 알림
 	public void applyJoinAlarm(String id, String teamName, String alarmDate) {
 		teamDao.applyJoinAlarm(id, teamName, alarmDate);
@@ -157,7 +156,7 @@ public class TeamService {
 	public void acceptJoinAlarm(String id, String teamName, String alarmDate) {
 		teamDao.acceptJoinAlarm(id, teamName, alarmDate);
 	}
-	
+
 	// 가입 거절 알림
 	public void cancleJoinAlarm(String id, String teamName, String alarmDate) {
 		teamDao.cancleJoinAlarm(id, teamName, alarmDate);
@@ -166,5 +165,17 @@ public class TeamService {
 	// 팀 탈퇴 알림
 	public void exitTeamAlarm(String id, String teamName, String alarmDate) {
 		teamDao.exitTeamAlarm(id, teamName, alarmDate);
+	}
+
+//	팀 순위 리스트
+	public int selectRank(String teamName) {
+		String[] list = teamDao.selectRank();
+		int rank = 0;
+		for (int i = 0; i < list.length; i++) {
+			if (list[i].equals(teamName)) {
+				rank = i + 1;
+			}
+		}
+		return rank;
 	}
 }

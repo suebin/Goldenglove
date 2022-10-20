@@ -15,7 +15,15 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 <script>
 $(document).ready(function() {
-	const position = {
+	const r = {
+		1 : "background:gold;",		
+		2 : "background:black;",		
+		3 : "background:red;",
+		4 : "background:green;"
+	}
+	$(".profile-card-6").attr("style", r["${rank}"]);
+	
+/* 	const position = {
 			firstBase : "1루수",
 			secondBase : "2루수",
 			thirdBase : "3루수",
@@ -25,7 +33,7 @@ $(document).ready(function() {
 			rightFielder : "우익수",
 			centerFielder : "중견수",
 			shortStop : "유격수"
-	}
+	} */
 	
 	$(".modalLink").on("click",function() {
 		$.ajax({

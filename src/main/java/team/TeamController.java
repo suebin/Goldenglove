@@ -225,13 +225,13 @@ public class TeamController {
 	@RequestMapping("/registerResultUser")
 	public String registerResultUser(String teamName, String result, HttpServletRequest request) {
 		HashMap<String, String> registerInfo = new HashMap<>();
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 		registerInfo.put("result", result);
 		registerInfo.put("teamName", teamName);
+		registerInfo.put("id", user.getId());
 		if (result.equals("true")) {
-			HttpSession session = request.getSession();
-			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			String position = user.getPosition();
-			registerInfo.put("id", user.getId());
 			registerInfo.put("position", position);
 			userService.updateTeamName(registerInfo);
 			teamService.updateRegister(registerInfo);

@@ -113,8 +113,17 @@ public class UserController {
 			result = "아이디와 비밀번호가 일치하지 않습니다.";
 		} else if (loginInfo.getPassword().equals(password)) {
 			result = "성공";
+			int rank = teamService.selectRank(loginInfo.getTeamName());
+			int tier = 4;
+			if (loginInfo.getTeamName() == null || tier > 4) {
+				tier = 4;
+			} else {
+				tier = (rank % 5 == 0) ? rank / 5 : rank / 5 + 1;
+			}
+
 			HttpSession session = request.getSession();
 			session.setAttribute("loginInfo", loginInfo);
+			session.setAttribute("rank", tier);
 		}
 		return "{\"result\":\"" + result + "\"}";
 	}

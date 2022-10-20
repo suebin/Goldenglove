@@ -72,17 +72,19 @@ public interface TeamDAO {
 
 //	seq조회
 	String selectSeq(HashMap idTeamName);
-	
-	
+
 	// 가입 신청 알림
 	void applyJoinAlarm(String id, String teamName, String alarmDate);
-		
+
 	// 가입 수락 알림
 	void acceptJoinAlarm(String id, String teamName, String alarmDate);
-	
+
 	// 가입 거절 알림
 	void cancleJoinAlarm(String id, String teamName, String alarmDate);
 
 	// 팀 탈퇴 알림
 	void exitTeamAlarm(String id, String teamName, String alarmDate);
+
+//	팀 순위 리스트
+	String[] selectRank();
 }
