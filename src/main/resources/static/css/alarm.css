@@ -74,6 +74,7 @@ button {
 	border-radius: 10px;
 	background: #fff;
 	box-shadow: 5px 6px 18px -15px rgb(0 0 0);
+	line-height: 30px;
 }
 
 .alarmCon:after {
@@ -89,6 +90,30 @@ button {
     border-bottom:1px solid var(--gray);
  	-moz-transform:rotate(225deg);
   	-webkit-transform:rotate(225deg);
+}
+
+.alarmCon .allRead {
+    display: flex;
+    justify-content: space-between;
+	padding: 2px 13px;
+	width: 100%;
+	text-align: left;
+	font-size: 12px;
+	border-bottom: 1px solid var(--gray);
+}
+
+.alarmCon .allRead span:first-child {
+	font-size: 14px;
+	font-weight: bold;
+}
+	
+.alarmCon .allRead .allReadBtn {
+	color: #444;
+}
+
+.alarmCon .allRead .allReadBtn:hover {
+	text-decoration: underline;
+	cursor: pointer;
 }
 
 .alarmCon .list {
@@ -112,7 +137,7 @@ button {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	padding: 15px 10px;
+	padding: 12px 8px;
 	margin: 0 5px;
 	font-size: 12px;
 	border-bottom: 1px solid var(--gray);

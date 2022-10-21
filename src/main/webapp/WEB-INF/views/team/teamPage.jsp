@@ -40,7 +40,7 @@ $(document).ready(function() {
 			
 			$.ajax({
 				url : "exitTeamAlarm",
-				data : {"id" : id, "teamName" : "${loginInfo.getTeamName()}", "alarmDate" : alarmDate},
+				data : {"id" : "${loginInfo.getId()}", "teamName" : "${loginInfo.getTeamName()}", "alarmDate" : alarmDate},
 				dataType : "json",
 				success : function(server) {
 				}
@@ -105,10 +105,6 @@ $(document).ready(function() {
 					request.setAttribute("user", all[i]);%>				
 					<div class="card">
 						<jsp:include page="/WEB-INF/views/components/card.jsp"/>
-						
-						<div class="leader">
-							<span>Team Leader</span>
-						</div>
 					</div>	
 				<%}				
 			%>

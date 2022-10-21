@@ -155,6 +155,8 @@ button {
 .info {
 	padding: 3% 0;
 	background: #f2f2f2;
+	width: 100%;
+    overflow: hidden;
 }
 
 .info > .confix {
@@ -205,6 +207,8 @@ button {
 	
 .rankingList li span:first-child {
 	padding: 0 5px;
+	font-weight: bold;
+	color: var(--main-color);
 }
 
 .rankingList li span:nth-child(2) {

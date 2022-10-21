@@ -59,6 +59,12 @@ button {
 	transition: all 0.3s;
 }
 
+@media screen and (max-width: 768px) {
+	.chatbotBox .chat {
+    	width: 405%;
+	}
+}
+
 .chatbotBox .chat::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
 }
@@ -76,6 +82,12 @@ button {
 	border-radius: 10px 10px 0 0;
 	background: #fff;
 	font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+	.chat .top {
+    	width: 282px;
+	}
 }
 
 .chat .top .botName {
@@ -206,6 +218,12 @@ button {
 	background: #fff;
 }
 
+@media screen and (max-width: 768px) {
+	.chat .inputBox {
+    	width: 282px;
+	}
+}
+
 .chat .inputBox input {
 	width: 100%;
 	border: 0;
@@ -251,12 +269,18 @@ button {
 
 
 .chatbotBox .chatbotIcon img {
-	width: 100%;
+	width: 90%;
 	transition: all 0.3s;
 }
 
+@media screen and (max-width: 768px) {
+	.chatbotBox .chatbotIcon img {
+		width: 70%;
+	}
+}
+
 .chatbotBox .chatbotIcon:hover img {
-	width: 105%;
+	width: 100%;
 }
 
 .chatbotBox .chatbotIcon span {

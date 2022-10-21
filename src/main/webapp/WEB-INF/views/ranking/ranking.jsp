@@ -36,38 +36,35 @@ $(document).ready(function() {
 			<% int i = 1; %>
 			<c:forEach items="${ list }" var="list">
 				<% if(i <= 30) { %>
-				
-					<c:if test="${list.id != 'admin'}">
-						<li data-aos="fade-up" data-aos-duration="1000">
-							<div class="rankingNum">
-							<% if (i == 1) {%>
-								<img alt="defaultImg" src="/images/gold-medal.png">
-							<% } else if (i == 2) {%>
-								<img alt="defaultImg" src="/images/silver-medal.png">
-							<% } else if (i == 3) {%>
-								<img alt="defaultImg" src="/images/bronze-medal.png">
-							<% } else {%>
-								<span><%= i %></span> 
-							<%} %>
+					<li data-aos="fade-up" data-aos-duration="1000">
+						<div class="rankingNum">
+						<% if (i == 1) {%>
+							<img alt="defaultImg" src="/images/gold-medal.png">
+						<% } else if (i == 2) {%>
+							<img alt="defaultImg" src="/images/silver-medal.png">
+						<% } else if (i == 3) {%>
+							<img alt="defaultImg" src="/images/bronze-medal.png">
+						<% } else {%>
+							<span><%= i %></span> 
+						<%} %>
+						</div>
+						
+						<div class="rankingInfo">
+							<div class="teamInfo">
+								<span class="id">${ list.teamName }</span>
+								<div class="region">
+									<span>${ list.region }</span>
+								</div>
 							</div>
 							
-							<div class="rankingInfo">
-								<div class="teamInfo">
-									<span class="id">${ list.teamName }</span>
-									<div class="region">
-										<span>${ list.region }</span>
-									</div>
-								</div>
-								
-								<div class="winningRate">
-									<span class="win">승 ${ list.winCount }</span>
-									<span class="lose">패 ${ list.loseCount }</span>
-									<span class="rate">승률 <fmt:formatNumber value="${list.winningRate}" pattern="0.000"/></span>
-								</div>
+							<div class="winningRate">
+								<span class="win">승 ${ list.winCount }</span>
+								<span class="lose">패 ${ list.loseCount }</span>
+								<span class="rate">승률 <fmt:formatNumber value="${list.winningRate}" pattern="0.000"/></span>
 							</div>
-						</li>	
-						<% i++; %>
-					</c:if>	
+						</div>
+					</li>	
+					<% i++; %>
 				<% } %>
 			</c:forEach>
 		</ul>
