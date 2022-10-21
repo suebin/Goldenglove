@@ -10,6 +10,6 @@
 	</select>
 
 	<update id="checkAlarm" parameterType="int">
-		update alarm set checked = 1 where seq = #{seq}
+		update alarm set checked = 1 where seq = #{seq};
 	</update>
 </mapper>

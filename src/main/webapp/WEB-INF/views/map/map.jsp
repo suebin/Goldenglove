@@ -21,7 +21,8 @@ $(document).ready(function() {
 	<div class="map">
 		<div class="title">
 			<h2>Search the place</h2>
-			<span>매칭 신청 전에 경기 장소를 검색해보세요. 장소 목록을 누르면 길찾기로 연결됩니다.</span>
+			<span>매칭 신청 전에 경기 장소를 검색해보세요.</span>
+			<span>장소 목록을 누르면 길찾기로 연결됩니다.</span>
 		</div>
 		
 		<div class="map_wrap">

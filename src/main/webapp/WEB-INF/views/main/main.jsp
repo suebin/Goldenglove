@@ -156,7 +156,7 @@ $(document).ready(function() {
 	
 	<div class="todayMatching">
 		<div class="confix">
-			<h3>UPCOMING MATCH</h3>
+			<h3>TODAY MATCH</h3>
 			<div id="slide" class="owl-carousel owl-theme owl-loaded">
 				<div class="matchingList owl-stage-outer">
 					<ul class="matchingListBox owl-stage"></ul>

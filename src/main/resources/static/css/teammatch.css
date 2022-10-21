@@ -131,7 +131,8 @@ input.search_btn:hover, input.register_btn:hover {
 /* 캘린더 */
 
 .select_date {
-    width: 360px;
+    width: 100%;
+    max-width: 360px;
     margin: 0 auto;
     font-family: "비트로 프라이드 OTF";
 }
@@ -143,6 +144,12 @@ input.search_btn:hover, input.register_btn:hover {
     font-weight: 700;
     font-size: 48px;
     line-height: 78px;
+}
+
+@media (max-width: 700px) {
+	.select_date .cal_nav {
+	   font-size: 40px;
+	}
 }
 
 .cal_nav {
@@ -389,10 +396,10 @@ input.teammatch_btn:hover {
 	}
 	
 	.region_btn {
-		font: 11px "비트로 프라이드 OTF";
+		font: 12px "비트로 프라이드 OTF";
 		font-weight: bold;
-		width: 99px; 
-		height: 35px;	
+	    width: 32%;
+	    height: 40px;
 	}
 	
 	.match_btn {
@@ -404,6 +411,8 @@ input.teammatch_btn:hover {
 	.search_btn, .register_btn {
 		display: block;
 		margin: 0 auto;
+		max-width: 400px;
+    	width: 100%;
 		margin-bottom: 20px;
 	}
 	

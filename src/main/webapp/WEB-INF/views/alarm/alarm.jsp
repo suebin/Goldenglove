@@ -81,6 +81,27 @@ $(document).ready(function() {
 		}
 	});
 	
+	// 알림 모두 읽음 표시
+	$(".allReadBtn").on("click", function() {
+		const list = document.getElementsByClassName("li");
+		
+		for (let item of list) {
+			item.classList.add("clicked"); 
+
+			$.ajax ({
+				url: "checkAlarm",
+				data:{ alarmSeq: item.childNodes[0].innerText, homeName: "${loginInfo.getName()}" },
+				type:"post",
+				dataType:"json",
+				success: function(res) {
+				}
+			}) 
+		}
+		
+		$(".alarmCircle").addClass("alarmHidden");
+		
+	});
+	
 	// 알람 버튼 누르면 나옴
 	$(".alarmImg").on("click", function() {
 		$(".alarmCon").toggleClass("alarmHidden");
@@ -96,6 +117,7 @@ $(document).ready(function() {
 			$(".alarmCon").addClass("alarmHidden");
 		}
 	}); 
+	
 	// 알람 목록 클릭 시
 	$(document).on("click", ".li", function() {
 		$(this).addClass("clicked");
@@ -129,6 +151,10 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="alarmCon alarmHidden">
+			<div class="allRead">
+				<span>전체 알림</span>
+				<span class="allReadBtn">모두 읽음</span>
+			</div>
 			<ul class="list">
 			</ul>
 		</div>

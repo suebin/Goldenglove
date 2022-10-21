@@ -72,6 +72,8 @@ public interface TeamDAO {
 
 //	seq조회
 	String selectSeq(HashMap idTeamName);
+	
+	
 	// 가입 신청 알림
 	void applyJoinAlarm(String id, String teamName, String alarmDate);
 

@@ -105,6 +105,9 @@
     width: 31%;
     margin-right: 3%;
   }
+  .card:nth-child(4n) {
+	margin-right: 3%;
+  } 
   .card:nth-child(3n) {
   	margin-right: 0;
   }
@@ -113,6 +116,9 @@
   .card {
     width: 49%;
     margin-right: 2%;
+  }
+  .card:nth-child(3n) {
+  	margin-right: 2%;
   }
   .card:nth-child(2n) {
   	margin-right: 0;
@@ -151,4 +157,22 @@
 .leader span {
 	font-weight: bold;
 	margin-bottom: 4px;
+}
+
+#exitTeamBtn {
+ 	margin-top: 5px;
+    padding: 12px 20px;
+    min-width: max-content;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: var(--main-color);
+    cursor: pointer;	
+    transition: all 0.3s;
+}
+
+#exitTeamBtn:hover {
+	transform: scale(1.05);
 }

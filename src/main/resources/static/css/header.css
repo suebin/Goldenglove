@@ -44,7 +44,7 @@ body {
 .nav {
   display: flex;
   justify-content: space-between;
-  width: 35%;
+  width: 40%;
   max-width: 500px;
 }
 
