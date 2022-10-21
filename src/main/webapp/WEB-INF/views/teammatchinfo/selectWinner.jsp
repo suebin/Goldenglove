@@ -33,7 +33,6 @@ $(document).ready(function() {
 		<input type="hidden" name="myTeam" value=${param.myTeam}>
 		<input type="hidden" name="team1" value=${param.team1}>
 		<input type="hidden" name="team2" value=${param.team2}>
-		<input type="hidden" name="result" value=1>
 		<input type="hidden" name="result" value=0>
 		<input type="submit" value="LOSE">	
 	</form>

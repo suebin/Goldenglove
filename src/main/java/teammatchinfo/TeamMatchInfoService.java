@@ -85,6 +85,31 @@ public class TeamMatchInfoService {
 		dao.updateLoser(seq, myTeam, awayTeam);
 	}
 	
+	// 승률 반영
+	
+	public void updateTeamWinningRate(String team) {
+		dao.updateTeamWinningRate(team);
+	}
+	
+	public void updateUserWinningRate(String team) {
+		dao.updateUserWinningRate(team);
+	}
+	
+	// 기본 팀 매칭 승률
+	
+	public void updateTeamWinCount(String team) {
+		dao.updateTeamWinCount(team);
+	}
+	public void updateTeamLoseCount(String team) {
+		dao.updateTeamLoseCount(team);
+	}
+	public void updateUserWinCount(String team) {
+		dao.updateUserWinCount(team);
+	}
+	public void updateUserLoseCount(String team) {
+		dao.updateUserLoseCount(team);
+	}
+	
 	// 알림 등록
 	public void insertAlarm(int seq) {
 		dao.insertAlarm(seq);

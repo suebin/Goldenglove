@@ -80,7 +80,36 @@
 	<update id="updateLoser">
 		update teammatching set loser=#{myTeam}, winner=#{awayTeam} where seq=#{seq}
 	</update>
-
+	
+	<!-- 기본 팀 매칭 승률  -->
+	
+	<update id="updateTeamWinCount">
+		update team set winCount=winCount+1 where teamName=#{team}
+	</update>
+	
+	<update id="updateTeamLoseCount">
+		update team set loseCount=loseCount+1 where teamName=#{team}
+	</update>
+	
+	<update id="updateUserWinCount">
+		update user set winCount=winCount+1 where teamName=#{team}
+	</update>
+	
+	<update id="updateUserLoseCount">
+		update user set loseCount=loseCount+1 where teamName=#{team}
+	</update>
+	
+	<update id="updateTeamWinningRate">
+		update team set winningRate=(winCount / (winCount + loseCount)) * 100 where teamName=#{team};
+	</update>
+	
+	<update id="updateUserWinningRate">
+		update user set winningRate=(winCount / (winCount + loseCount)) * 100 where teamName=#{team};
+	</update>
+	
+	
+	
+	
 
 	<!-- 수락/취소 알림 -->
 	<insert id="insertAlarm">

@@ -43,6 +43,15 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(list){
 				
+				document.querySelector('#soldier_list').innerHTML = '';
+				
+				for (var i=0; i<list.length; i++) {
+					
+					$('#soldier_list').append('<div class="card"><div class="box1"><span class="soldierName">'+ list[i].soldierName + '</span><br><span class="soldier_info">승률 : ' + list[i].winningRate + ' %   포지션 : ' + list[i].position + '</div><div class="box2"><input type="button" value="용병 추가"></div></div>')
+					
+					
+				
+				}
 							
 			} // success end
 		
@@ -142,18 +151,14 @@ $(document).ready(function() {
 	
 	
 	<!-- 용병 리스트 : swiper 페이징 처리해야 함 !!! -->
-<%
-	UserDTO user = (UserDTO)session.getAttribute("loginInfo"); 
-	request.setAttribute("user", user);
-%>
+	
+	<div id="soldier_list"></div>
 
-	<div id="soldier-slide" class="swiper">
+<%-- 	<div id="soldier-slide" class="swiper">
 		<div class="swiper-wrapper">
 		
 			<div class="swiper-slide" id="slide0">
-				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
-				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
-				<div class="card"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
+				<jsp:include page="/WEB-INF/views/components/card.jsp" />
 			</div>
 			<div class="swiper-slide" id="slide1"></div>
 			<div class="swiper-slide"></div>
@@ -164,7 +169,7 @@ $(document).ready(function() {
 		
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-button-next"></div>
-	</div>
+	</div> --%>
 
 
 

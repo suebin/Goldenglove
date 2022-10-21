@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="teammatch.TeamMatchDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

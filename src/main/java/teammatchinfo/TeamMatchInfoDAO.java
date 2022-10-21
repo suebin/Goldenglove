@@ -37,6 +37,20 @@ public interface TeamMatchInfoDAO {
 	
 	void updateWinner(int seq, String myTeam, String awayTeam);
 	
+	// 기본 팀 매칭 승률
+	
+	void updateTeamWinCount(String team);
+	
+	void updateTeamLoseCount(String team);
+	
+	void updateUserWinCount(String team);
+	
+	void updateUserLoseCount(String team);
+	
+	void updateTeamWinningRate(String team);
+	
+	void updateUserWinningRate(String team);
+	
 	// 유저 팀의 주장 Id 확인
 	
 	String selectTeamId(String teamName);

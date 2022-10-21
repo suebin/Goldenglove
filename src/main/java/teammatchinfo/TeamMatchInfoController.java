@@ -230,22 +230,33 @@ public class TeamMatchInfoController {
 			String message = "";
 			
 			// homeName 이 우리 팀일 경우
-			
+
 			if (myTeam.equals(team1)) {
-				System.out.println("나는 우리팀이다.");
+
 				// 이긴 경우
 				
 				if (result == 1) {
 					service.updateWinner(seq, team1, team2);
-					System.out.println("나 이겼음");
-					message = "승패 선택이 완료되었습니다.";
+					
+					service.updateTeamWinCount(team1);
+					service.updateTeamLoseCount(team2);
+					
+					service.updateUserWinCount(team1);
+					service.updateUserLoseCount(team2);
+					
 				}
 				
 				// 진 경우
 				
 				else if (result == 0) {
 					service.updateLoser(seq, team1, team2);
-					System.out.println("나 졌음");
+					
+					service.updateTeamLoseCount(team1);
+					service.updateTeamWinCount(team2);
+					
+					service.updateUserLoseCount(team1);
+					service.updateUserWinCount(team2);
+					
 				}
 				
 			}
@@ -258,19 +269,37 @@ public class TeamMatchInfoController {
 				
 				if (result == 1) {
 					service.updateWinner(seq, team2, team1);
-					System.out.println("나 이겼음");
+					
+					service.updateTeamWinCount(team2);
+					service.updateTeamLoseCount(team1);
+					
+					service.updateUserWinCount(team2);
+					service.updateUserLoseCount(team1);
+
 				}
 				
 				// 진 경우
 				
 				else if (result == 0) {
 					service.updateLoser(seq, team2, team1);
-					System.out.println("나 졌음");
+					
+					service.updateTeamLoseCount(team2);
+					service.updateTeamWinCount(team1);
+					
+					service.updateUserLoseCount(team2);
+					service.updateUserWinCount(team1);
+
 				}
 			}
 			
+			service.updateTeamWinningRate(team1);
+			service.updateUserWinningRate(team1);
+			
+			service.updateTeamWinningRate(team2);
+			service.updateUserWinningRate(team2);
 			
 			ModelAndView mv = new ModelAndView();
+			message = "승패 선택이 완료되었습니다.";
 			mv.addObject("message", message);
 			mv.setViewName("teammatchinfo/selectWinnerResult");
 			
