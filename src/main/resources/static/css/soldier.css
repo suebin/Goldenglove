@@ -53,8 +53,12 @@ input#dateSelector {
 	padding: 50px 70px;
 	display: flex;
 	justify-content: space-around;
+    align-items: center;
 }
 
+.swiper-slide .modalLink {
+    margin-right: 2%;
+}
 
 div.swiper-button-prev, div.swiper-button-next {
 	color: #feca00;

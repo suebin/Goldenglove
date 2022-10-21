@@ -6,10 +6,6 @@
   --gray : rgb(221,221,221);
 }
 
-.teamContainer {
-	margin: 30px 0;
-}
-
 .teamContainer input {
 	font-family: "비트로 프라이드 OTF";
 }
@@ -26,13 +22,13 @@
 .h1 {
     font-family: "비트로 프라이드 OTF";
 	text-align: center;
-	margin-bottom: 20px;
+	margin: 30px 0 20px;
 }
 
 .btnBox {
 	text-align: center;
 	padding-top: 30px; 
-	margin-bottom: 30px;
+	margin-bottom: 40px;
 }
 
 .button {
@@ -49,15 +45,19 @@
     font-weight: bold;
 }
 
-#searchBox {
+#searchBox, .waitBox, .joinRequestBox {
 	width: 100%;
 	max-width: 380px;
 	margin: 0 auto;
 	padding: 20px 0;	
 }
 
-#searchBox h2 {
-	padding-bottom: 10px;
+#searchBox {
+	padding-bottom: 60px;
+}
+
+.waitBox, .joinRequestBox {
+	max-width: 100%;
 }
 
 #searchBox table {
@@ -68,6 +68,7 @@
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	margin-bottom: 20px;
 }
 
 #searchBox td {
@@ -114,20 +115,37 @@ input[type=button] {
 }
 
 .teamBtn {
-	margin: 20px 0;
     width: 43%;
-    height: 230px;
     perspective: 1000px;
 }
 
-.BtnCon {
+.register {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.registerBox {
+    width: 23.5%;
+    max-width: 160px;
+    perspective: 1000px;
+    margin-right: 2%;
+}
+@media screen and (max-width: 768px) {
+  .registerBox {
+    width: 48%;
+    margin-right: 2%;
+  }
+}
+
+
+.BtnCon, .registerBtnCon {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 230px;
 	font-size: 16px;
 	font-weight: bold;
     border-radius: 20px;
@@ -137,56 +155,16 @@ input[type=button] {
     transform-style: preserve-3d;
 } 
 
-.BtnCon:hover {
+.BtnCon:hover, .registerBtnCon:hover {
 	transform: rotateY(360deg);
     transition: all 0.8s;
-}
-
-.register {
-	display: flex;
-}
-
-.registerBtnCon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    position: relative;
-    width: 90%;
-    height: 100%;
-	font-size: 24px;
-	font-weight: bold;
-    border-radius: 20px;
-    border: 4px solid var(--main-color);
-    background: #fff;
-    box-shadow: 5px 5px 10px #cecece;
-    margin: 8px 0px;
-    padding: 8px 0px;
-	text-align: center;
-}
-
-.registerBtnBox {
-	text-align: center;
-	width: 90%;
-}
-
-.registerBox {
-	display: flex;
-	align-content: center;
-	justify-content: center;
-	flex-direction: column;
-	width: 10%;
 }
 
 #waiting {
 	cursor: pointer;
 }
 
-#waiting:hover {
-	background: var(--point-color);
-}
-
-#teamBtn {
+#teamBtn, .registerBtnCon > span {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -197,9 +175,38 @@ input[type=button] {
     transform: translateZ(60px) scale(0.94);
 }
 
-.teamBtn img {
+.teamBtn img, .registerBox img {
 	width: 80%;
 	transform: rotateY(180deg) translateZ(1px) scale(0.94);
+}
+
+.registerBtnCon > span {
+	text-align: center;
+    line-height: 222px;	
+}
+
+.registerBtnBox {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.registerBtnBox input:hover {
+	opacity: 0.8;
+}
+
+#true, #false {
+	margin: 20px 0;
+    width: 45%;
+    padding: 4% 0;
+	min-width: max-content; 
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: #444;
+	cursor: pointer;
 }
 
 #duplicate {

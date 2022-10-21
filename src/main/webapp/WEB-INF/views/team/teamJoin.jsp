@@ -319,10 +319,13 @@ $(document).ready(function() {
 			</div>
 			<%
 				if(request.getAttribute("teamRegisterInfo") != null) {%>
-					<div>
-						<h1>승인 대기 중인 팀</h1>
+					<div class="waitBox">
+						<h2>승인 대기 중인 팀</h2>
 						<div class="registerBox">
-						<div class="registerBtnCon" id="waiting">${teamRegisterInfo }</div>
+							<div class="registerBtnCon">
+								<span id="waiting">${teamRegisterInfo }</span>
+								<img alt="teamCardImg" src="/images/baseball.png">
+							</div>
 						</div>
 					</div>
 				<%}
@@ -330,14 +333,15 @@ $(document).ready(function() {
 			<%	
 				String[] arr =(String[])request.getAttribute("registerTeam");
 				if(arr.length != 0) {%>
-					<div>
-						<h1>받은 요청</h1>
+					<div class="joinRequestBox">
+						<h2>받은 요청</h2>
 							<div class="register">
 								<%
 									for(int i = 0;i < arr.length;i++) {%>
 										<div class="registerBox">
 											<div class="registerBtnCon">
-												<%=arr[i] %>
+												<span><%=arr[i] %></span>
+												<img alt="teamCardImg" src="/images/baseball.png">
 											</div>
 											<div class="registerBtnBox">
 												<input type="button" id="true" name="<%=arr[i]%>" value="승인" >

@@ -86,32 +86,46 @@ $(document).ready(function() {
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
-	<div class="confix">
-		<h1>${loginInfo.getTeamName() }</h1>
-		<div class="cardBox teamCard">
-		<%
-			UserDTO[] all = (UserDTO[])request.getAttribute("allMember");
-			for(int i = 0;i < all.length;i++) {
-				request.setAttribute("user", all[i]);%>				
-				<div class="card">
-					<jsp:include page="/WEB-INF/views/components/card.jsp"/>
-				</div>	
-			<%}				
-		%>
+	<div class="confix teamPage">
+		<div class="myTeam">
+			<div class="myTeamName">
+				<h1>${loginInfo.getTeamName() }</h1>
+				
+				<% String teamId = (String)request.getAttribute("teamId");
+				String loginId = (String)request.getAttribute("loginId");
+				
+				if(teamId.equals(loginId)) { %>
+					<button id="updateTeamBtn">팀 수정</button>
+				<%}	%>
+			</div>
+			<div class="cardBox teamCard">
+			<%
+				UserDTO[] all = (UserDTO[])request.getAttribute("allMember");
+				for(int i = 0;i < all.length;i++) {
+					request.setAttribute("user", all[i]);%>				
+					<div class="card">
+						<jsp:include page="/WEB-INF/views/components/card.jsp"/>
+						
+						<div class="leader">
+							<span>Team Leader</span>
+						</div>
+					</div>	
+				<%}				
+			%>
+			</div>
 		</div>
+		
 		<div id="passwordInputTeam" hidden>
-			<span>비밀번호 :</span>
+			<span>비밀번호</span>
 			<input type="password" id="passwordTeam">
 			<button id="submitBtnTeam">확인</button>
 			<span id="checkResultTeam"></span>
 		</div>
-		<% String teamId = (String)request.getAttribute("teamId");
-			String loginId = (String)request.getAttribute("loginId");
-			if(teamId.equals(loginId)) { %>
-				
-				<button id="updateTeamBtn">팀 수정</button>
+		<% String teamId2 = (String)request.getAttribute("teamId");
+			String loginId2 = (String)request.getAttribute("loginId");
+			if(teamId2.equals(loginId2)) { %>
 				<div>
-					<h1>승인 대기 중인 요청</h1>
+					<h2>승인 대기 중인 요청</h2>
 					<div class="cardBox defaultCard">
 					<%
 						UserDTO[] teamRegisterInfoUser = (UserDTO[])request.getAttribute("teamRegisterInfo");
@@ -119,15 +133,23 @@ $(document).ready(function() {
 							request.setAttribute("user", teamRegisterInfoUser[i]);%>
 							<div class="card">
 								<jsp:include page="/WEB-INF/views/components/card.jsp"/>
-								<button id="true" name="<%=teamRegisterInfoUser[i].getId()%>">승인</button>
-								<button id="false" name="<%=teamRegisterInfoUser[i].getId()%>">거절</button>
+								
+								<div class="acceptRejectBtn">
+									<button id="true" name="<%=teamRegisterInfoUser[i].getId()%>">승인</button>
+									<button id="false" name="<%=teamRegisterInfoUser[i].getId()%>">거절</button>
+								</div>
 							</div>
-						<%}							
+						<%}		
+						
+						if(teamRegisterInfoUser.length == 0) {%>
+							<span>승인 대기 중인 요청이 없습니다.</span>
+						<%}
+						
 					%>
 					</div>
 				</div>	
 				<div>
-					<h1>보낸 요청</h1>
+					<h2>보낸 요청</h2>
 					<div class="cardBox defaultCard">
 					<%
 						UserDTO[] registerUser = (UserDTO[])request.getAttribute("registerUser");
@@ -136,7 +158,12 @@ $(document).ready(function() {
 							<div class="card">
 								<jsp:include page="/WEB-INF/views/components/card.jsp"/>
 							</div>
-						<%}							
+							
+						<%}
+						
+						if(registerUser.length == 0) {%>
+							<span>보낸 요청이 없습니다.</span>
+						<%}
 					%>
 					</div>
 				</div>			

@@ -1,21 +1,154 @@
+@charset "utf-8";
+
+.teamPage > div {
+	padding-bottom : 5%; 
+}
+
+@media screen and (max-width: 768px) {
+	.teamPage > div {
+		padding-bottom : 30px; 
+	}
+}
+
+.teamPage h1, .teamPage h2 {
+	padding-bottom: 3%;
+}
+
+@media screen and (max-width: 768px) {
+	.teamPage h1, .teamPage h2 {
+		padding-bottom: 20px;
+	}
+	.teamPage h1 {
+		font-size: 28px;
+	}
+	.teamPage h2 {
+		font-size: 24px;
+	}
+}
+
+.myTeamName {
+	display: flex;
+	justify-content: space-between;	
+}
+
+#updateTeamBtn {
+	align-self: baseline;
+    margin-top: 5px;
+    padding: 12px 20px;
+    min-width: max-content;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+    background: var(--main-color);
+    cursor: pointer;	
+    transition: all 0.3s;
+}
+
+#updateTeamBtn:hover {
+	transform: scale(1.05);
+}
+
+#passwordInputTeam input {
+	margin: 0 5px;
+    width: 100%;
+    max-width: 200px;
+    margin-bottom: 0;
+	padding: 6px 8px;
+	font-size: 15px;
+    border: 1px solid gray;	
+    border-radius: 3px;
+    outline: none;
+}
+
+#passwordInputTeam input:focus {
+	background: var(--point-color);
+}
+
+#passwordInputTeam button {
+	background: #555;
+    border: none;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 3px;
+	cursor: pointer;
+}
+
+#passwordInputTeam button:hover {
+	opacity: 0.8;
+}
+
 .cardBox {
 	display: flex;
 	justify-content: flex-start;
 	flex-wrap: wrap;
-	margin-bottom: 25px;
+	width: 100%;
 }
 
 .card {
-	width: 150px;
-	height: 200px;
-	margin-right: 16px;
-	margin-bottom: 16px;
+	position: relative;
+	width: 23.5%;
+	margin-right: 2%;
+    margin-bottom: 4%;
+    padding: 3% 2% 3% 2%;
+    border: 3px solid var(--point-color);
+   	background: #eaeaea;
+   	border-radius: 5px;
+   	box-shadow: 5px 6px 18px -15px rgb(0 0 0);
+}
+.card:nth-child(4n) {
+	margin-right: 0;
+}
+@media screen and (max-width: 1000px) {
+  .card {
+    width: 31%;
+    margin-right: 3%;
+  }
+  .card:nth-child(3n) {
+  	margin-right: 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .card {
+    width: 49%;
+    margin-right: 2%;
+  }
+  .card:nth-child(2n) {
+  	margin-right: 0;
+  }
+}
+
+.card .modalLink {
+	width: 100%;
+}
+
+.acceptRejectBtn, .leader {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+	margin-top: 20%;
+	font-size: min(5vw, 1rem);
+}
+
+.acceptRejectBtn button:hover {
+	opacity: 0.8;
 }
 
 #true, #false {
-    background: #555;
-    border: 1px solid #333;
+    width: 45%;
+    padding: 5% 0;
+	min-width: max-content; 
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    text-align: center;
     color: #fff;
-	padding: 4px 6px;
+    background: #444;
 	cursor: pointer;
+}
+
+.leader span {
+	font-weight: bold;
+	margin-bottom: 4px;
 }
