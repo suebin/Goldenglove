@@ -10,6 +10,7 @@
 
 <title>골든글러브 > 용병 구하기</title>
 <link href="/css/main.css" rel="stylesheet" />
+<link href="/css/card.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
 <link href="/css/soldier.css" rel="stylesheet" />
 
@@ -23,6 +24,9 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
 <script src="js/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <script>
 $(document).ready(function() {
@@ -43,18 +47,32 @@ $(document).ready(function() {
 			dataType: 'json',
 			success: function(list){
 				
-				document.querySelector('#soldier_list').innerHTML = '';
+				// 용병 리스트가 있는 경우
 				
-				for (var i=0; i<list.length; i++) {
+				if (list.length !=0) {
 					
-					$('#soldier_list').append('<div class="card"><div class="box1"><span class="soldierName">'+ list[i].soldierName + '</span><br><span class="soldier_info">승률 : ' + list[i].winningRate + ' %   포지션 : ' + list[i].position + '</div><div class="box2"><input type="button" value="용병 추가"></div></div>')
+					// 용병 이름 데이터를 jsp 의 input value 값으로 저장
 					
+					var soldierName = list[0].soldierName + ',';
 					
-				
+					if (list.length != 0)
+					
+					for (var i=1; i<list.length; i++) {		
+						soldierName = soldierName + list[i].soldierName + ',';
+					}
+					
+					soldierName = soldierName.substr(0, soldierName.length-1);
+					
+					$('input[name=soldierName]').attr('value', soldierName);
 				}
+				
+				else {
+					
+				}
+				
+		
 							
 			} // success end
-		
 		
 		}); // ajax end
 	
@@ -148,16 +166,29 @@ $(document).ready(function() {
 	<!-- 용병 등록 -->
 	<button class="soldier_box registerSoldierBtn">+ 용병 등록</button>
 	</div>
-	
+
 	
 	<!-- 용병 리스트 : swiper 페이징 처리해야 함 !!! -->
 	
-	<div id="soldier_list"></div>
+	<form action=""></form>
+		<input type="text" name="soldierName" value="">	
+	
+	
+	<div id="soldier_list defaultTeam">
+		
+	</div>
 
-<%-- 	<div id="soldier-slide" class="swiper">
+
+
+
+
+<%-- - 	<div id="soldier-slide" class="swiper">
 		<div class="swiper-wrapper">
 		
-			<div class="swiper-slide" id="slide0">
+			<div class="swiper-slide teamCard" id="slide0">
+
+				<jsp:include page="/WEB-INF/views/components/card.jsp" />
+				<jsp:include page="/WEB-INF/views/components/card.jsp" />
 				<jsp:include page="/WEB-INF/views/components/card.jsp" />
 			</div>
 			<div class="swiper-slide" id="slide1"></div>
@@ -169,9 +200,15 @@ $(document).ready(function() {
 		
 		<div class="swiper-button-prev"></div>
 		<div class="swiper-button-next"></div>
-	</div> --%>
+	</div>  --%>
 
 
+	<!-- 팀 꾸리기 -->
+	
+	<div class="makeNewTeam">
+	 	<div class="newTeamPosition"></div>
+	
+	</div>
 
 	</div>
 	

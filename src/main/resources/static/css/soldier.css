@@ -76,4 +76,16 @@ span.swiper-pagination-bullet-active {
 	background-color: #feca00;
 }
 
+/* 팀 꾸리기 */
+
+.makeNewTeam {
+	padding-top: 60px;
+}
+
+.newTeamPosition {
+	background-image: url('/images/playground.png'); 
+	background-size: 100% 100%;
+	width:80%;
+	height: 700px;
+}
 
