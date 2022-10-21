@@ -141,18 +141,22 @@ $(document).ready(function() {
 	})
 	
 	$("#teamBtn").on("click", function() {
-		if(confirm("가입신청을 하시겠습니까?")) {
-			$.ajax({
-				url : "teamRegisterResult",
-				data : {"teamName" : $("#teamBtn").html(), "alarmDate" : alarmDate},
-				dataType : "json",
-				success : function(server) {
-					if(server.result == "success") {
-						alert("신청이 완료되었습니다.");
-						location.href="/"
+		if("${teamRegisterInfo}" == "") {
+			if(confirm("가입신청을 하시겠습니까?")) {
+				$.ajax({
+					url : "teamRegisterResult",
+					data : {"teamName" : $("#teamBtn").html(), "alarmDate" : alarmDate},
+					dataType : "json",
+					success : function(server) {
+						if(server.result == "success") {
+							alert("신청이 완료되었습니다.");
+							location.href="/"
+						}
 					}
-				}
-			})
+				})
+			}
+		} else {
+			alert("이미 신청중인 팀이 있습니다.")		;	
 		}
 	})
 	
@@ -168,7 +172,6 @@ $(document).ready(function() {
 			dataType : "json",
 			success : function(server) {
 				if(server.result == "success") {
-					alert("승인");
 					location.reload();
 				}
 			}
@@ -185,11 +188,25 @@ $(document).ready(function() {
 			dataType : "json",
 			success : function(server) {
 				if(server.result == "false") {
-					alert("거절");
 					location.reload();
 				}
 			}
 		})
+	})
+	
+	$(document).on("click", "#waiting", function() {
+		if(confirm("취소 하시겠습니까?")) {
+			$.ajax({
+				url : "registerResultUser",
+				data : {"teamName" : "${teamRegisterInfo}", "result" : "false"},
+				dataType : "json",
+				success : function(server) {
+					if(server.result == "false") {
+						location.reload();
+					}
+				}
+			})
+		}
 	})
 });
 </script>
@@ -304,7 +321,9 @@ $(document).ready(function() {
 				if(request.getAttribute("teamRegisterInfo") != null) {%>
 					<div>
 						<h1>승인 대기 중인 팀</h1>
-						<p>${teamRegisterInfo }</p>
+						<div class="registerBox">
+						<div class="registerBtnCon" id="waiting">${teamRegisterInfo }</div>
+						</div>
 					</div>
 				<%}
 			%>
@@ -313,13 +332,21 @@ $(document).ready(function() {
 				if(arr.length != 0) {%>
 					<div>
 						<h1>받은 요청</h1>
-						<%
-							for(int i = 0;i < arr.length;i++) {%>
-								<p><%=arr[i] %></p>
-								<button id="true" name="<%=arr[i]%>">승인</button>
-								<button id="false" name="<%=arr[i]%>">거절</button>							
-							<%}
-						%>
+							<div class="register">
+								<%
+									for(int i = 0;i < arr.length;i++) {%>
+										<div class="registerBox">
+											<div class="registerBtnCon">
+												<%=arr[i] %>
+											</div>
+											<div class="registerBtnBox">
+												<input type="button" id="true" name="<%=arr[i]%>" value="승인" >
+												<input type="button" id="false" name="<%=arr[i]%>" value="거절">							
+											</div>
+										</div>
+									<%}
+								%>
+							</div>
 					</div>
 				<%}
 			%>

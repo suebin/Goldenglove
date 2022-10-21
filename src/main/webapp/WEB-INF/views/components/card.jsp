@@ -89,7 +89,7 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div id="ex1" class="modal">
+<div id="ex1" class="modal" style="z-index:1000;">
 	<ul class="modalCon">
 		<li><span>이름 </span><span class="modalName"></span></li>
 		<li><span>연락처 </span><span class="modalPhone"></span></li>

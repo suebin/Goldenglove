@@ -9,7 +9,7 @@
 <title>골든글러브</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
-<link href="/css/teamJoin.css" rel="stylesheet" />
+<link href="/css/teamUpdate.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -144,71 +144,76 @@ $(document).ready(function() {
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
-		<div class="teamName">
-			팀 이름 
-			<input type="text" autocomplete="off" name="teamName" id="teamName" value="${loginInfo.teamName }">
-			<button type="button" id="duplicate">중복검사</button>
-			<p id="teamNameResult"></p>
-		</div>
-		<div class="inputBox" style="background-image: url('playground.png'); background-size: 100% 100%;">
-			<div class="firstBase">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="firstBase">
-				<input type="button" value="검색" />
-				<div id="firstBase"><button><%=modiPosition[0] %> </button></div>
-				<p></p>
+		<div class="teamContainer">
+			<h2>Update Team</h2>
+			<div class="teamName">
+				팀 이름 
+				<input type="text" autocomplete="off" name="teamName" id="teamName" value="${loginInfo.teamName }">
+				<button type="button" id="duplicate">중복검사</button>
+				<p id="teamNameResult"></p>
 			</div>
-			<div class="secondBase">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="secondBase">
-				<input type="button" value="검색" />
-				<div id="secondBase"><button><%=modiPosition[1] %> </button></div>
-				<p></p>
+			<div class="inputBoxCon">
+				<div class="inputBox" style="background-image: url('playground.png'); background-size: 100% 100%;">
+					<div class="firstBase">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="firstBase">
+						<input type="button" value="검색" />
+						<div id="firstBase"><button><%=modiPosition[0] %> </button></div>
+						<p></p>
+					</div>
+					<div class="secondBase">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="secondBase">
+						<input type="button" value="검색" />
+						<div id="secondBase"><button><%=modiPosition[1] %> </button></div>
+						<p></p>
+					</div>
+					<div class="thirdBase">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="thirdBase">
+						<input type="button" value="검색" />
+						<div id="thirdBase"><button><%=modiPosition[2] %></button></div>
+						<p></p>
+					</div>
+					<div class="catcher">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="catcher">
+						<input type="button" value="검색" />
+						<div id="catcher"><button><%=modiPosition[3] %></button></div>
+						<p></p>
+					</div>
+					<div class="pitcher">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="pitcher">
+						<input type="button" value="검색" />
+						<div id="pitcher"><button><%=modiPosition[4] %></button></div>
+						<p></p>
+					</div>
+					<div class="leftFielder">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="leftFielder">
+						<input type="button" value="검색" />
+						<div id="leftFielder"><button><%=modiPosition[5] %></button></div>
+						<p></p>
+					</div>
+					<div class="rightFielder">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="rightFielder">
+						<input type="button" value="검색" />
+						<div id="rightFielder"><button><%=modiPosition[6] %></button></div>
+						<p></p>
+					</div>
+					<div class="centerFielder">
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="centerFielder">
+						<input type="button" value="검색" />
+						<div id="centerFielder"><button><%=modiPosition[7] %></button></div>
+						<p></p>
+					</div>
+					<div class="shortStop">
+							<input type="text" autocomplete="off" placeholder="전화번호 입력" name="shortStop">
+							<input type="button" value="검색" />
+							<div id="shortStop"><button><%=modiPosition[8] %></button></div>
+							<p></p>
+					</div>
+				</div>
 			</div>
-			<div class="thirdBase">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="thirdBase">
-				<input type="button" value="검색" />
-				<div id="thirdBase"><button><%=modiPosition[2] %></button></div>
-				<p></p>
+			<div class="btnBox">
+				<button class="button" id="submitBtn" type="button">수정</button>
+				<button class="button" id="exitBtn" type="button">취소</button>
 			</div>
-			<div class="catcher">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="catcher">
-				<input type="button" value="검색" />
-				<div id="catcher"><button><%=modiPosition[3] %></button></div>
-				<p></p>
-			</div>
-			<div class="pitcher">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="pitcher">
-				<input type="button" value="검색" />
-				<div id="pitcher"><button><%=modiPosition[4] %></button></div>
-				<p></p>
-			</div>
-			<div class="leftFielder">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="leftFielder">
-				<input type="button" value="검색" />
-				<div id="leftFielder"><button><%=modiPosition[5] %></button></div>
-				<p></p>
-			</div>
-			<div class="rightFielder">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="rightFielder">
-				<input type="button" value="검색" />
-				<div id="rightFielder"><button><%=modiPosition[6] %></button></div>
-				<p></p>
-			</div>
-			<div class="centerFielder">
-				<input type="text" autocomplete="off" placeholder="전화번호 입력" name="centerFielder">
-				<input type="button" value="검색" />
-				<div id="centerFielder"><button><%=modiPosition[7] %></button></div>
-				<p></p>
-			</div>
-			<div class="shortStop">
-					<input type="text" autocomplete="off" placeholder="전화번호 입력" name="shortStop">
-					<input type="button" value="검색" />
-					<div id="shortStop"><button><%=modiPosition[8] %></button></div>
-					<p></p>
-			</div>
-		</div>
-		<div class="btnBox">
-			<button class="button" id="submitBtn" type="button">수정</button>
-			<button class="button" id="exitBtn" type="button">취소</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
