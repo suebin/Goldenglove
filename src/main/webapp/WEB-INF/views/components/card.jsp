@@ -89,12 +89,6 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<%
-	UserDTO user = (UserDTO)request.getAttribute("user");
-	int winCount = user.getWinCount();
-	int loseCount = user.getLoseCount();
-	double winningRate = (winCount == 0) ? 0.0 : (winCount / (winCount + loseCount)) * 100;
-%>
 <div id="ex1" class="modal">
 	<ul class="modalCon">
 		<li><span>이름 </span><span class="modalName"></span></li>
@@ -118,26 +112,26 @@ $(document).ready(function() {
 		        </div>
 		        <div class="img__athlete">
 		        	<div class="img__Wrapper">
-		            	<img src="img/<%=user.getFileName() %>" class="img img-responsive">
+		            	<img src="img/${user.fileName }" class="img img-responsive">
 		        	</div>
 		        </div>
 		    </div>
 		    <div class="card__text">
 		        <div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);">
-		        	<%=user.getPosition() %>
+		        	${user.position }
 	        	</div>
-		        <div class="profile-name"><%=user.getName() %></div>
+		        <div class="profile-name">${user.name }</div>
 		        <div class="profile-overview">
 					<div>
-						<h3><%=winCount %></h3>
+						<h3>${user.winCount }</h3>
 						<p>승</p>
 					</div>
 					<div>
-						<h3><%=loseCount %></h3>
+						<h3>${user.loseCount }</h3>
 						<p>패</p>
 					</div>
 					<div>
-						<h3><%=winningRate %></h3>
+						<h3>${user.winningRate }</h3>
 						<p>%</p>
 					</div>
 				</div>
