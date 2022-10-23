@@ -3,19 +3,30 @@ package soldier;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import teammatchinfo.TeamMatchInfoService;
+import user.UserDTO;
 
 @Controller
 public class SoldierController {
 	@Autowired
 	@Qualifier("soldierservice")
 	SoldierService service;
+	
+	@Autowired
+	@Qualifier("teammatchinfoservice")
+	TeamMatchInfoService service2;
 	
 	
 	// 용병 구하기 메인
@@ -137,7 +148,7 @@ public class SoldierController {
 		
 		// 지나가지 않은 날짜만 선택 가능하다.
 		
-		if (myYear >= year && myMonth >= month && myDay >= day) {
+		if (myYear >= year && myMonth >= month && myDay >= day || myYear >= year && myMonth > month || myYear > year) {
 			
 			// 선택한 날짜에 이미 용병 등록한 적이 있는지 확인한다.
 			
@@ -182,4 +193,102 @@ public class SoldierController {
 
 		return mv;
 	}
+	
+	// 용병 로그 
+	
+	@RequestMapping("/soldierLog")
+	public ModelAndView soldierLog(HttpServletRequest request) {
+		
+		// 팀 주장인지 확인을 한다.
+		
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		String userId = user.getId(); // 유저 아이디	
+		String userTeamName = user.getTeamName(); // 유저 팀 이름
+		String teamId = service2.selectTeamId(userTeamName); // 유저가 속한 팀의 주장 아이디
+		
+		String userName = user.getName(); // 유저 이름
+		
+		List<SoldierDTO> list1 = service.selectMySoldierLog(userName); 
+		List<SoldierDTO> list2 = service.selectOffer(userName);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("list1", list1);
+		mv.addObject("list2", list2);
+		mv.setViewName("soldier/soldierLog");
+		
+		return mv;
+	}
+	
+	
+	// 용병 스카우트 제의 (팀 주장만)
+	
+	@ResponseBody
+	@RequestMapping("/addSoldier")
+	public String addSoldier(int seq, String soldierTeamName, HttpServletRequest request) {
+		
+		// 팀 주장인지 확인을 한다.
+		
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		String userId = user.getId(); // 유저 아이디	
+		String userTeamName = user.getTeamName(); // 유저 팀 이름
+		String teamId = service2.selectTeamId(userTeamName); // 유저가 속한 팀의 주장 아이디
+		
+		String result = "";
+		
+		// 신청하려는 용병이 이미 자신의 팀원인 경우
+		
+		if (soldierTeamName.equals(userTeamName)) {
+			result = "이미 같은 팀입니다.";
+		}
+		else {
+			// 팀 주장인 경우
+		
+			if (userId.equals(teamId)) {
+			
+				userTeamName = userTeamName + ",";
+				
+				int updateMateTeam = service.updateMateTeam(seq, userTeamName);
+			
+			
+				if(updateMateTeam == 1) {
+					result = "스카우트 제의를 해당 용병에게 보냈습니다. 스카우트 제의 수락 여부는 용병 로그에서 확인해주세요.";
+				}
+				else {
+					result = "스카우트 제의에 실패하였습니다. 다시 한 번 시도해주세요.";
+				}
+			}
+		
+			else {
+				result = "본인이 속한 팀의 주장만 스카우트 제의를 할 수 있습니다.";
+			}
+		}
+		
+		
+		return "{\"result\" : \"" + result + "\"}";
+	}
+	
+	
+	// 용병 로그 : 스카우트 제의 수락하기 버튼
+	
+		@ResponseBody
+		@RequestMapping("/mateTeamAceptance")
+		public String mateTeamAceptance(int seq, String mateTeam) {
+			
+			int updatecount1 = service.updateMateTeamAceptance(seq);
+			int updatecount2 = service.updateFinalMateTeam(seq, mateTeam);
+
+			String result="";
+			
+			if(updatecount1 == 1 && updatecount2 == 1) {
+				result = "스카우트 제의 수락이 완료되었습니다. 팀 매칭 일정은 알림으로 알려드립니다.";
+			}
+			else {
+				result = "스카우트 제의 수락에 실패하였습니다. 다시 한 번 시도해주세요.";
+			}
+			
+			
+			return "{\"result\" : \"" + result + "\"}";
+		}
 }

@@ -46,5 +46,19 @@ public interface SoldierDAO {
 	
 	int insertSoldier(SoldierDTO dto);
 	int selectMylog(String soldierName, String possibleDate);
+	
+	// 용병 스카우트 제의 (팀 주장만)
+	
+	int updateMateTeam(int seq, String userTeamName);
+	
+	// 용병 로그 
+	
+	List<SoldierDTO> selectMySoldierLog(String userName);
+	List<SoldierDTO> selectOffer(String userName);
+	
+	// 용병 로그 (스카우트 제의 수락하기 버튼)
+	
+	int updateMateTeamAceptance(int seq);
+	int updateFinalMateTeam(int seq, String mateTeam);
 
 }

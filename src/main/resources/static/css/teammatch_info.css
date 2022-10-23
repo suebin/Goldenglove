@@ -58,6 +58,7 @@ h2 {
 	height: 40px;
 	background-color: #feca00;
 	font: 15px "비트로 프라이드 OTF";
+	font-weight: bold;
 	border: 0px;
 	border-radius: 10px;
 	cursor:pointer;

@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,6 +14,7 @@
 <title>골든글러브 > 매치 등록</title>
 <link href="/css/main.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
+<link href="/css/teamPage.css" rel="stylesheet" />
 <link href="/css/teammatch_registration.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
@@ -34,12 +36,35 @@
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	<div class="confix">
-	
-	<div class="teammatch_registration">
+		<div class="teammatch_registration_title">팀 매칭 등록</div>
+		<div class="teammatch_registration_notice">
+			<h2>Step 1</h2>
+			<span>이번 경기에 출전할 선수를 선택해주세요.</span>
+		</div>
 		
-		<div class="teammatch_registration_title">팀 매치 등록</div>
+		<div class="cardBox teamCard">
+			<%
+				UserDTO[] all = (UserDTO[])request.getAttribute("allMember");
+				for(int i = 0;i < all.length;i++) {
+					request.setAttribute("user", all[i]);%>				
+					<div class="card">
+						<jsp:include page="/WEB-INF/views/components/card.jsp"/>
+						
+						<div class="leader">
+							<span>Team Leader</span>
+						</div>
+					</div>	
+				<%}				
+			%>
+		</div>
 		
-
+		<div class="teammatch_registration_notice">
+			<h2>Step 2</h2>
+			<span>등록 폼을 작성해주세요.</span>
+		</div>
+		
+		<div class="teammatch_registration">
+			
 		<form action="registerTeammatch" method="post" id="registerTeammatchForm">
 			
 			<div class="teammatch_registration_elements"> 
@@ -140,13 +165,13 @@
 				
 			</div>
 			
-			<div class="teammatch_registration_btn"> 
-				<input type="submit" value="매치 등록">
-			</div>
-			
 		</form>
+		</div>
 		
-	</div>
+		<div class="teammatch_registration_btn"> 
+				<input type="submit" value="매치 등록">
+		</div>
+
 	
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />

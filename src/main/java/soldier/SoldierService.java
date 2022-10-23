@@ -70,5 +70,31 @@ public class SoldierService {
 	public int selectMylog(String soldierName, String possibleDate) {
 		return dao.selectMylog(soldierName, possibleDate);
 	}
+	
+	// 용병 스카우트 제의 (팀 주장만)
+	
+	public int updateMateTeam(int seq, String userTeamName) {
+		return dao.updateMateTeam(seq, userTeamName);
+	}
+	
+	// 용병 로그
+	
+	public List<SoldierDTO> selectMySoldierLog(String userName) {
+		return dao.selectMySoldierLog(userName);
+	}
+	public List<SoldierDTO> selectOffer(String userName) {
+		return dao.selectOffer(userName);
+	}
+	
+	// 용병 로그 (스카우트 제의 수락하기 버튼)
+	
+	public int updateMateTeamAceptance(int seq) {
+		return dao.updateMateTeamAceptance(seq);
+	}
+	public int updateFinalMateTeam(int seq, String mateTeam) {
+		return dao.updateFinalMateTeam(seq, mateTeam);
+	}
+	
+	
 	 
 }

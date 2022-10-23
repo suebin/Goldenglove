@@ -13,6 +13,9 @@ public class SoldierDTO {
 	float winningRate;
 	int winCount;
 	int loseCount;
+	String mateTeam;
+	int acceptance;
+	
 	
 	public int getSeq() {
 		return seq;
@@ -85,5 +88,17 @@ public class SoldierDTO {
 	}
 	public void setLoseCount(int loseCount) {
 		this.loseCount = loseCount;
+	}
+	public String getMateTeam() {
+		return mateTeam;
+	}
+	public void setMateTeam(String mateTeam) {
+		this.mateTeam = mateTeam;
+	}
+	public int getAcceptance() {
+		return acceptance;
+	}
+	public void setAcceptance(int acceptance) {
+		this.acceptance = acceptance;
 	}
 }

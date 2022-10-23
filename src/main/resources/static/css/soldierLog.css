@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+.title {
+	margin-top: 20px;
+	text-align: center;
+	color: #00912e;
+
+}
+
+.small_title {
+	border-bottom: 2.2px solid #feca00;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	padding-bottom: 6px;
+}
+
+.small_title > h3 {
+	font-family: "비트로 코어 OTF";
+}
+
+.small_title > span {
+	font-size: 12px;
+}
+
+
+.myList, .mateTeamList {
+	border: 1px solid rgba(0,0,0,0.1);
+	box-shadow: 5px 6px 18px -15px rgba(0,0,0,1);
+	border-radius: 10px;
+	padding: 10px 20px;
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.mateTeamList {
+	justify-content: space-between;
+}
+
+.mateTeamList1 {
+	display: block;
+}
+
+.mateTeam {
+	font-size: 16px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+.mateTeam_possibleDate {
+	font-size: 12px;
+}
+
+.myListDate {
+	margin-top: 4px;
+}
+
+.none_myList, .none_mateTeamList {
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
+.calendarIcon {
+	width: 30px;
+	height: 30px;
+	margin-right: 10px;
+}
+
+.mateTeamAceptanceBtn {
+	width: 60px;
+	height: 40px;
+	background-color: #feca00;
+	font: 13px "비트로 프라이드 OTF";
+	font-weight: bold;
+	border: 0px;
+	border-radius: 10px;
+	cursor:pointer;
+}
+

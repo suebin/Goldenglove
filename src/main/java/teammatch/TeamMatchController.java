@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import team.TeamService;
 import teammatchinfo.TeamMatchInfoService;
 import user.UserDTO;
 
@@ -25,6 +26,10 @@ public class TeamMatchController {
 	@Autowired
 	@Qualifier("teammatchinfoservice")
 	TeamMatchInfoService service2;
+	
+	@Autowired
+	@Qualifier("teamService")
+	TeamService service3;
 
 	// 팀 매치 메인
 
@@ -82,8 +87,17 @@ public class TeamMatchController {
 	// 팀 매치 등록
 
 	@RequestMapping("/registerTeammatch")
-	public String matchform() {
+	public String matchform(HttpServletRequest request) {
 		
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		
+			String teamId = service3.selectTeamId(user.getTeamName());
+			UserDTO[] allMember = service3.selectAllMember(teamId);
+
+			request.setAttribute("allMember", allMember);
+			request.setAttribute("teamId", teamId);
+			
 		return "teammatch/teamMatchRegistration";
 	}
 
