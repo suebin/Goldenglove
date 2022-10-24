@@ -14,6 +14,9 @@ public class TeamMatchDTO {
 	int acceptance;
 	String winner;
 	String loser;
+	String homePerson;
+	String awayPerson;
+	
 	
 	// getter, setter
 	
@@ -94,5 +97,17 @@ public class TeamMatchDTO {
 	}
 	public void setLoser(String loser) {
 		this.loser = loser;
+	}
+	public String getHomePerson() {
+		return homePerson;
+	}
+	public void setHomePerson(String homePerson) {
+		this.homePerson = homePerson;
+	}
+	public String getAwayPerson() {
+		return awayPerson;
+	}
+	public void setAwayPerson(String awayPerson) {
+		this.awayPerson = awayPerson;
 	}
 }

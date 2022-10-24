@@ -19,10 +19,6 @@
 <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/confetti.css">
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
-<!-- swiper (슬라이더) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
-
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
@@ -323,7 +319,7 @@ $(document).ready(function() {
 	
 	<!-- 용병 리스트 -->
 	
-	<div class="cardBox teamCard cardContainer"></div>
+	<div class="cardBox defaultCard cardContainer"></div>
 	
 	<div class="none_cardBox"></div>
 	

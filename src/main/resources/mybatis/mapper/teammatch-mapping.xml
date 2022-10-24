@@ -6,9 +6,15 @@
 	<!-- 매치 등록 -->
 	
 	<insert id="insertTeamMatch" parameterType="teammatchdto">
-		insert into teammatching (homeName, region, possibleDate, possibleTime, homePlace, headCount, comment)
-		values(#{homeName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment})
+		insert into teammatching (homeName, region, possibleDate, possibleTime, homePlace, headCount, comment, homePerson)
+		values(#{homeName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment}, #{homePerson})
 	</insert>
+	
+	<!-- 용병 리스트 -->
+	
+	<select id="getSoldierList" parameterType="String" resultType="soldierdto">
+		select * from soldier where finalMateTeam=#{teamName}
+	</select>
 
 	<!-- 매치 검색 -->
 	

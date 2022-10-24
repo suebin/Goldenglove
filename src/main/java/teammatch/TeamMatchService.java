@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import soldier.SoldierDTO;
+
 @Service("teammatchservice")
 public class TeamMatchService {
 	@Autowired
@@ -16,6 +18,11 @@ public class TeamMatchService {
 
 	public int insertTeamMatch(TeamMatchDTO dto) {
 		return dao.insertTeamMatch(dto);
+	}
+	
+	// 스카우트 한 용병 리스트 
+	public List<SoldierDTO> getSoldierList(String teamName) {
+		return dao.getSoldierList(teamName);
 	}
 
 	// 매치 검색 > 지역별 조회

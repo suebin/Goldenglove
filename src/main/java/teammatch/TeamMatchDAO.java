@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import soldier.SoldierDTO;
+
 @Mapper
 @Repository("teammatchdao")
 public interface TeamMatchDAO {
@@ -12,6 +14,9 @@ public interface TeamMatchDAO {
 	// 매치 등록
 
 	int insertTeamMatch(TeamMatchDTO dto);
+	
+	List<SoldierDTO> getSoldierList(String teamName);
+	
 
 	// 매치 검색 > 지역별 조회
 

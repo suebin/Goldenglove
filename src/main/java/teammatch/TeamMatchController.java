@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import soldier.SoldierDTO;
+import soldier.SoldierService;
 import team.TeamService;
 import teammatchinfo.TeamMatchInfoService;
 import user.UserDTO;
@@ -30,6 +32,7 @@ public class TeamMatchController {
 	@Autowired
 	@Qualifier("teamService")
 	TeamService service3;
+
 
 	// 팀 매치 메인
 
@@ -92,11 +95,17 @@ public class TeamMatchController {
 		HttpSession session = request.getSession();
 		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 		
-			String teamId = service3.selectTeamId(user.getTeamName());
-			UserDTO[] allMember = service3.selectAllMember(teamId);
-
-			request.setAttribute("allMember", allMember);
-			request.setAttribute("teamId", teamId);
+		String teamId = service3.selectTeamId(user.getTeamName());
+		UserDTO[] allMember = service3.selectAllMember(teamId);
+		
+		// 용병 리스트
+		
+		String teamName = user.getTeamName();
+		List<SoldierDTO> soldierList = service.getSoldierList(teamName);
+		
+		request.setAttribute("allMember", allMember);
+		request.setAttribute("soldierList", soldierList);
+		request.setAttribute("teamId", teamId);
 			
 		return "teammatch/teamMatchRegistration";
 	}
