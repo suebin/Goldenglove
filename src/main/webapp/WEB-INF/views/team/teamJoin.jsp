@@ -232,7 +232,7 @@ $(document).ready(function() {
 						<p id="teamNameResult"></p>
 					</div>
 					<div class="inputBoxCon">
-						<div class="inputBox" style="background-image: url('playground.png'); background-size: 100% 100%;">
+						<div class="inputBox" style="background-image: url('images/playground.png'); background-size: 100% 100%;">
 							<!-- 1루수  -->
 							<div class="firstBase">
 								<input type="text" placeholder="전화번호 입력" name="firstBase">

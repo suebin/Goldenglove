@@ -18,13 +18,12 @@ $(document).ready(function() {
 		String[] positionMember = {team.getFirstBase(), team.getSecondBase(), team.getThirdBase(), team.getCatcher(), team.getPitcher(), team.getLeftFielder(), team.getRightFielder(), team.getCenterFielder(), team.getShortStop()};
 		String[] position = {"firstBase", "secondBase", "thirdBase", "catcher", "pitcher", "leftFielder", "rightFielder", "centerFielder", "shortStop"};
 		String[] modiPosition = {"","","","","","","","",""};
-		String a = "aaa";
 		for(int i = 0;i < position.length;i++) {
 			if(positionMember[i].equals("")) {
 				modiPosition[i] = positionMember[i];
 			} else {
 				if(positionMember[i].split(" ").length >= 1) {
-					modiPosition[i] = positionMember[i].replaceAll(" ", " </button><button>");
+					modiPosition[i] = positionMember[i].trim().replaceAll(" ", "</button><button>");
 				}
 			}
 		}
@@ -153,59 +152,59 @@ $(document).ready(function() {
 				<p id="teamNameResult"></p>
 			</div>
 			<div class="inputBoxCon">
-				<div class="inputBox" style="background-image: url('playground.png'); background-size: 100% 100%;">
+				<div class="inputBox" style="background-image: url('images/playground.png'); background-size: 100% 100%;">
 					<div class="firstBase">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="firstBase">
 						<input type="button" value="검색" />
-						<div id="firstBase"><button><%=modiPosition[0] %> </button></div>
+						<div id="firstBase"><button><%=modiPosition[0]%></button></div>
 						<p></p>
 					</div>
 					<div class="secondBase">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="secondBase">
 						<input type="button" value="검색" />
-						<div id="secondBase"><button><%=modiPosition[1] %> </button></div>
+						<div id="secondBase"><button><%=modiPosition[1]%></button></div>
 						<p></p>
 					</div>
 					<div class="thirdBase">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="thirdBase">
 						<input type="button" value="검색" />
-						<div id="thirdBase"><button><%=modiPosition[2] %></button></div>
+						<div id="thirdBase"><button><%=modiPosition[2]%></button></div>
 						<p></p>
 					</div>
 					<div class="catcher">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="catcher">
 						<input type="button" value="검색" />
-						<div id="catcher"><button><%=modiPosition[3] %></button></div>
+						<div id="catcher"><button><%=modiPosition[3]%></button></div>
 						<p></p>
 					</div>
 					<div class="pitcher">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="pitcher">
 						<input type="button" value="검색" />
-						<div id="pitcher"><button><%=modiPosition[4] %></button></div>
+						<div id="pitcher"><button><%=modiPosition[4]%></button></div>
 						<p></p>
 					</div>
 					<div class="leftFielder">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="leftFielder">
 						<input type="button" value="검색" />
-						<div id="leftFielder"><button><%=modiPosition[5] %></button></div>
+						<div id="leftFielder"><button><%=modiPosition[5]%></button></div>
 						<p></p>
 					</div>
 					<div class="rightFielder">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="rightFielder">
 						<input type="button" value="검색" />
-						<div id="rightFielder"><button><%=modiPosition[6] %></button></div>
+						<div id="rightFielder"><button><%=modiPosition[6]%></button></div>
 						<p></p>
 					</div>
 					<div class="centerFielder">
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="centerFielder">
 						<input type="button" value="검색" />
-						<div id="centerFielder"><button><%=modiPosition[7] %></button></div>
+						<div id="centerFielder"><button><%=modiPosition[7]%></button></div>
 						<p></p>
 					</div>
 					<div class="shortStop">
 							<input type="text" autocomplete="off" placeholder="전화번호 입력" name="shortStop">
 							<input type="button" value="검색" />
-							<div id="shortStop"><button><%=modiPosition[8] %></button></div>
+							<div id="shortStop"><button><%=modiPosition[8]%></button></div>
 							<p></p>
 					</div>
 				</div>
