@@ -77,7 +77,7 @@ $(document).ready(function() {
 			</form>		
 		</div>
 		
-		<c:if test="${loginInfo.getName() == 'admin'}">
+		<c:if test="${loginInfo.getId() == 'admin'}">
 			<div class="btnContainer">
 				<button class="insertBtn" type="button" >글쓰기</button>
 			</div>

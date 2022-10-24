@@ -80,7 +80,7 @@ $(document).ready(function() {
 		<div class="btnContainer">
 			<button class="backBtn" type="button"><a href="notice?page=1">목록</a></button>
 			
-			<c:if test="${loginInfo.getName() == 'admin'}">
+			<c:if test="${loginInfo.getId() == 'admin'}">
 				<button class="updateBtn" type="button" >수정</button>
 				<button class="deleteBtn" type="button">삭제</button>
 			</c:if>
