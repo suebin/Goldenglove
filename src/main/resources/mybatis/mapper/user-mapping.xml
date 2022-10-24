@@ -52,8 +52,8 @@
 		select teamName from user where name = #{name};
 	</select>
 	
-	<select id="selectTeamNameId" parameterType="String" resultType="String">
-		select teamName from user where id = #{id};
+	<select id="selectTeamNameId" parameterType="String" resultType="userDTO">
+		select * from user where id = #{id};
 	</select>
 	
 </mapper>

@@ -27,8 +27,8 @@ public class TeamService {
 		map.put("requester", "team");
 
 		for (int i = 0; i < arr.length; i++) {
-			String teamName = userDao.selectTeamNameId(arr[i]);
-			if (!dto.getTeamId().equals(arr[i]) && teamName == null) {
+			UserDTO teamName = userDao.selectTeamNameId(arr[i]);
+			if (!dto.getTeamId().equals(arr[i]) && teamName != null && teamName.getTeamName() == null) {
 				String seq = String.valueOf(System.nanoTime());
 				map.put("seq", seq);
 				map.put("id", arr[i]);
