@@ -83,14 +83,15 @@ $(document).ready(function() {
 					btn.prev().focus();
 					btn.next().next().attr("class", "red");
 					btn.next().next().html(server.result);
-				} else if(btn.next().text() == " ") {
+				} else if(btn.next().children().html() == "") {
 					btn.next().removeAttr("hidden");
 					btn.next().next().html("");
-					btn.next().html("<button>" + server.result + " </button>");
+					btn.next().html("<button>" + server.result + "</button>");
 				} else {
 					const done = btn.next().text().split(" ");
 					if(!done.includes(server.result)) {
-						btn.next().append("<button>" + server.result + " </button>");
+						btn.next().removeAttr("hidden");
+						btn.next().append("<button> " + server.result + "</button>");
 					}
 				}
 			}

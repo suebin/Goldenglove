@@ -38,5 +38,5 @@ public interface UserDAO {
 //	팀명조회
 	String selectTeamName(String name);
 
-	String selectTeamNameId(String id);
+	UserDTO selectTeamNameId(String id);
 }
