@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import soldier.SoldierDTO;
+import user.UserDTO;
 
 @Service("teammatchservice")
 public class TeamMatchService {
@@ -39,11 +40,21 @@ public class TeamMatchService {
 	
 	// 매치 신청
 	
-	public int updateAwayName(String awayName, int seq) {
-		return dao.updateAwayName(awayName, seq);
+	public int updateAway(String awayPerson, String awayName, int seq) {
+		return dao.updateAway(awayPerson, awayName, seq);
 	}
 	public int updateRegistration(int seq) {
 		return dao.updateRegistration(seq);
+	}
+	
+	// 팀 프로필
+	
+	public String getHomePerson(int seq) {
+		return dao.getHomePerson(seq);
+	}
+
+	public UserDTO selectTeamMember(String name) {
+		return dao.selectTeamMember(name);
 	}
 	
 	// 알림

@@ -32,8 +32,16 @@ public class SoldierController {
 	// 용병 구하기 메인
 	
 	@RequestMapping("/getSoldier")
-	public String getSoldier() {
-		return "soldier/getSoldier";
+	public ModelAndView getSoldier() {
+		
+		// 전체 용병 리스트를 default 로 보여준다.
+		
+		List<SoldierDTO> defaultList = service.getSoldierList1();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("defaultList", defaultList);
+		mv.setViewName("soldier/getSoldier");
+		return mv;
 	}
 	
 	// 용병 검색
@@ -109,6 +117,7 @@ public class SoldierController {
 				list = service.getSoldierList8(region, position, possibleDate);
 			}
 		}
+		
 		
 		return list;
 	}

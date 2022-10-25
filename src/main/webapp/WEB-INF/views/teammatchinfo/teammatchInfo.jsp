@@ -144,48 +144,32 @@
 		
 		
 
-		// 만약 경기 정보가 하나도 없는 섹터는 보이지 않도록 하기
+		// 경기 정보가 없는 경우
 
-		if ($("#teammatch__info_list1").length) {
-			$(".teammatchlist1_box").show();
+ 		if ($("#teammatch__info_list1").length == 0) {
+			$(".none_teammatchlist1").append('해당 경기 정보가 없습니다.');
 		} 
-		else {
-			$(".teammatchlist1_box").hide();
-		}
 
-		if ($("#teammatch__info_list2").length) {
-			$(".teammatchlist2_box").show();
+		if ($("#teammatch__info_list2").length == 0) {
+			$(".none_teammatchlist2").append('해당 경기 정보가 없습니다.');
 		}
-		else {
-			$(".teammatchlist2_box").hide();
-		}
-
-		if ($("#teammatch__info_list3").length) {
-			$(".teammatchlist3_box").show();
+		
+		if ($("#teammatch__info_list3").length == 0) {
+			$(".none_teammatchlist3").append('해당 경기 정보가 없습니다.');
 		} 
-		else {
-			$(".teammatchlist3_box").hide();
+		
+		if ($("#teammatch__info_list4").length == 0) {
+			$(".none_teammatchlist4").append('해당 경기 정보가 없습니다.');
 		}
 
-		if ($("#teammatch__info_list4").length) {
-			$(".teammatchlist4_box").show();
-		}
-		else {
-			$(".teammatchlist4_box").hide();
-		}
+		if ($("#teammatch__info_list5").length == 0) {
+			$(".none_teammatchlist5").append('해당 경기 정보가 없습니다.');
+		} 
 
-		if ($("#teammatch__info_list5").length) {
-			$(".teammatchlist5_box").show();
+		if ($("#teammatch__info_list6").length == 0) {
+			$(".none_teammatchlist6").append('해당 경기 정보가 없습니다.');
 		} 
-		else {
-			$(".teammatchlist5_box").hide();
-		}
-		if ($("#teammatch__info_list6").length) {
-			$(".teammatchlist6_box").show();
-		} 
-		else {
-			$(".teammatchlist6_box").hide();
-		}
+		
 		
 }); // ready end
 
@@ -223,20 +207,22 @@
 
 		String today = year + "." + month + "." + day;
 		%>
+		
 
 		<!-- 현재 시간과 날짜 -->
 
 		<c:set value="<%=today%>" var="today" />
 		<c:set value="<%=today.length()%>" var="todayLen" />
 		<c:set value="<%=time%>" var="time" />
-
+		
+		
 		<!-- 자신의 팀 저장해두기 -->
 		
 		<input type="hidden" id="teamName" value=${loginInfo.getTeamName()}> 
 		
 		<!-- 1. 수락을 기다리는 경기 -->
 
-		<div class="teammatchlist1_box" data-aos="fade-up"
+		<div class="teammatchlist1_box list_box" data-aos="fade-up"
 			data-aos-duration="1000">
 
 			<h2>수락을 기다리는 경기</h2>
@@ -244,13 +230,14 @@
 			<c:forEach items="${teammatchlist1}" var="list">
 				
 				<c:set value="${list.possibleDate}" var="possibleDate" />
+				<c:set value="${list.possibleDate.length()}" var="possibleDateLen" />
 				<c:set value="${list.possibleTime}" var="possibleTime" />
 				
 				
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
-
+				
 				<c:if
-					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}"> 
+					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">  
 
 					<div class="teammatch_info_list" id="teammatch__info_list1">
 						<div class="teammatch_info">
@@ -266,16 +253,19 @@
 						</div>
 						<input type="hidden" id="teammatchlist1_seq${a}" value=${list.seq}>
 					</div>
-					</c:if>
+				</c:if>
 
 				<!-- 해당 경기 정보 seq를 저장 -->
 			</c:forEach>
+		
+			<div class="none_teammatchlist1 none_list"></div>
 		</div>
-
+		
+		
 
 		<!-- 2. 등록한 경기 -->
 
-		<div class="teammatchlist2_box" data-aos="fade-up"
+		<div class="teammatchlist2_box list_box" data-aos="fade-up"
 			data-aos-duration="1000">
 
 				<h2>등록한 경기</h2>	
@@ -309,12 +299,16 @@
 				</c:if>
 
 			</c:forEach>
+		
+			<div class="none_teammatchlist2 none_list"></div>
 		</div>
+		
+		
 
 
 		<!-- 3. 신청한 경기 -->
 
-		<div class="teammatchlist3_box" data-aos="fade-up"
+		<div class="teammatchlist3_box list_box" data-aos="fade-up"
 			data-aos-duration="1000">
 
 			<h2>신청한 경기</h2>
@@ -347,12 +341,15 @@
 
 
 			</c:forEach>
+		
+			<div class="none_teammatchlist3 none_list"></div>
 		</div>
-
+		
+		
 
 		<!-- 4. 예정된 경기 -->
 
-		<div class="teammatchlist4_box" data-aos="fade-up"
+		<div class="teammatchlist4_box list_box" data-aos="fade-up"
 			data-aos-duration="1000" >
 
 			<h2>예정된 경기</h2>
@@ -385,12 +382,14 @@
 
 				<input type="hidden" id="teammatchlist4_seq${d}" value=${list.seq}>
 			</c:forEach>
+		
+			<div class="none_teammatchlist4 none_list"></div>
 		</div>
-
+		
 
 		<!-- 5. 지난 경기 -->
 
-		<div class="teammatchlist5_box" data-aos="fade-up"
+		<div class="teammatchlist5_box list_box" data-aos="fade-up"
 			data-aos-duration="1000">
 
 			<h2>지난 경기</h2>
@@ -412,11 +411,14 @@
 
 				<input type="hidden" class="teammatchlist5_seq" value=${list.seq}>
 			</c:forEach>
+		
+			<div class="none_teammatchlist5 none_list"></div>
 		</div>
+		
 		
 		<!-- 6. 승패 선택 -->
 
-		<div class="teammatchlist6_box" data-aos="fade-up"
+		<div class="teammatchlist6_box list_box" data-aos="fade-up"
 			data-aos-duration="1000" >
 
 			<h2>승패 선택</h2>
@@ -451,7 +453,10 @@
 				<input type="hidden" id="teammatchlist6_homeName${e}" value=${list.homeName}>
 				<input type="hidden" id="teammatchlist6_awayName${e}" value=${list.awayName}>
 			</c:forEach>
+		
+			<div class="none_teammatchlist6 none_list"></div>
 		</div>
+		
 		
 		
 		<div class="finish"></div>

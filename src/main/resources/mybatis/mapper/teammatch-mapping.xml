@@ -32,13 +32,23 @@
 	
 	<!-- 매치 신청 -->
 	
-	<update id="updateAwayName">
-		update teammatching set awayName=#{awayName} where seq=#{seq}
+	<update id="updateAway">
+		update teammatching set awayName=#{awayName}, awayPerson=#{awayPerson} where seq=#{seq}
 	</update>
 	
 	<update id="updateRegistration">
 		update teammatching set registration=1 where seq=#{seq}
 	</update>
+	
+	<!-- 팀 프로필 -->
+	<select id="getHomePerson" parameterType="int" resultType="String">
+		select homePerson from teammatching where seq=#{seq}
+	</select>
+	
+	<select id="selectTeamMember" parameterType="String" resultType="userDTO">
+		select * from user where name=#{name}
+	</select>
+	
 	
 	
 	<!-- 알림 -->

@@ -31,6 +31,16 @@ h2 {
 	
 }
 
+.list_box {
+	margin-bottom: 80px;
+}
+
+.none_list {
+	text-align: center;
+	margin-top: 40px;
+	margin-bottom: 30px;
+}
+
 .teammatch_info_title {
 	font-size: 18px;
 	font-weight: bold;
