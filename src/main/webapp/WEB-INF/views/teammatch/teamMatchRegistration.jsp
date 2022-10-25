@@ -162,7 +162,7 @@
 				
 			
 				if($(".soldierCard").text() == "") {
-					$(".none_soldier_box").append('<div class="none_soldier"><img src="/images/cautionIcon.png"/><span>현재 스카우트 한 용병은 없습니다.</span></div>');
+					$(".none_soldier_box").append('<div class="none_soldier"><img src="/images/cautionIcon.png"/><span>해당 날짜에 가능한 용병은 없습니다.</span></div>');
 				}
 		
 	}); // ready end
@@ -174,7 +174,7 @@
 		<div class="teammatch_registration_title">팀 매칭 등록</div>
 		<div class="teammatch_registration_notice">
 			<h2>Step 1</h2>
-			<span>이번 경기에 출전할 우리 팀 선수를 선택해주세요.</span>
+			<span>이번 경기에 출전할 우리 팀 선수를 선택해주세요</span>
 		</div>
 		
 		<div class="cardBox teamCard">
@@ -276,7 +276,7 @@
 		
 		<div class="teammatch_registration_notice">
 			<h2>Step 3</h2>
-			<span>등록 폼을 작성해주세요.</span>
+			<span>등록 폼을 작성해주세요</span>
 		</div>
 		
 		<div class="teammatch_registration">

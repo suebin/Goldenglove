@@ -135,33 +135,85 @@ public class TeamMatchController {
 	
 	
 	// 팀 매치 신청
-
+	
 	@RequestMapping("/addTeammatch")
-	public ModelAndView addTeamMatch(String awayName, int seq, String homeName, String region, String possibleDate, String possibleTime, String homePlace, String alarmDate) {
+	public String addTeammatchForm(HttpServletRequest request) {
 		
-		ModelAndView mv = new ModelAndView();
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 		
-		String result = "";
+		String teamId = service3.selectTeamId(user.getTeamName());
+		UserDTO[] allMember = service3.selectAllMember(teamId);
 		
-		int updatecount1 = service.updateAwayName(awayName, seq); 
-		int updatecount2 = service.updateRegistration(seq);
-
-		if (updatecount1 == 1 && updatecount2 == 1) { 
-			result = "매치가 성공적으로 신청되었습니다.";
-			mv.setViewName("teammatch/addTeamMatch");
-		}
-		else { 
-			result = "매치 신청에 실패하였습니다. 다시 시도해주시길 바랍니다.";
-			mv.setViewName("teammatch/addTeamMatch");
-		}
+		// 용병 리스트
 		
-		// 알림
-		service.insertAlarm(homeName, awayName, region, possibleDate, possibleTime, homePlace, alarmDate);
+		String teamName = user.getTeamName();
+		List<SoldierDTO> soldierList = service.getSoldierList(teamName);
 		
-		mv.addObject("result", result);
-			
-		return mv;
+		request.setAttribute("allMember", allMember);
+		request.setAttribute("soldierList", soldierList);
+		request.setAttribute("teamId", teamId);
+		
+		
+		return "teammatch/addTeamMatchForm";
 	}
+	
+	
+	@PostMapping("/addTeammatch") 
+	public ModelAndView addTeamMatch(String awayName, int seq, String homeName, String region, String possibleDate, String possibleTime, String homePlace, String awayPerson, String alarmDate) {
+	  
+	  ModelAndView mv = new ModelAndView();
+	  
+	  String result = "";
+	  
+	  int updatecount1 = service.updateAway(awayPerson, awayName, seq); 
+	  int updatecount2 = service.updateRegistration(seq);
+	  
+	  if (updatecount1 == 1 && updatecount2 == 1) { 
+		  result = "매치가 성공적으로 신청되었습니다.";
+	  } 
+	  else { 
+		  result ="매치 신청에 실패하였습니다. 다시 시도해주시길 바랍니다."; 
+	  }
+	  
+	  // 알림 
+	  service.insertAlarm(homeName, awayName, region, possibleDate,possibleTime, homePlace, alarmDate);
+	  
+	  mv.setViewName("teammatch/registrationResult");
+	  mv.addObject("result", result);
+	  
+	  return mv; 
+	  
+	 }
+	
+	
+	// 팀 프로필
+	
+	@RequestMapping("/teamProfile")
+	public String teamProfile(int seq, String teamName, HttpServletRequest request) {
+		
+		// 해당 팀 매치에 참여하는 선수
+		
+		String homePerson = service.getHomePerson(seq);
+		
+		homePerson = homePerson.substring(0, homePerson.length()-1);
+		String[] name = homePerson.split(",");
+		
+		UserDTO[] teamMember = new UserDTO[name.length];
+		
+		
+		for (int i=0; i<name.length; i++) {	
+			
+			teamMember[i] = service.selectTeamMember(name[i]);
+			
+		}
+		
+		request.setAttribute("teamMember", teamMember);
+		request.setAttribute("teamName", teamName);
+		
+		return "teammatch/teamProfile";
+	}
+	 
 	
 	
 }

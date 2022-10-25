@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import soldier.SoldierDTO;
+import user.UserDTO;
 
 @Mapper
 @Repository("teammatchdao")
@@ -28,9 +29,15 @@ public interface TeamMatchDAO {
 	
 	// 매치 신청
 	
-	int updateAwayName(String awayName, int seq);
+	int updateAway(String awayPerson, String awayName, int seq);
 	int updateRegistration(int seq);
 
+	// 팀 프로필
+	
+	String getHomePerson(int seq);
+	UserDTO selectTeamMember(String name);
+	
+	
 	// 알림
 	int insertAlarm(String homeName, String awayName, String region, String possibleDate, String possibleTime, String homePlace, String alarmDate);
 }

@@ -17,10 +17,10 @@
 <script>
 $(document).ready(function() {
 	if($(".myListDate").text() == "") {
-		$(".none_myList").append('등록 내역이 없습니다.');
+		$(".none_myList").append('등록 내역이 없습니다');
 	}
 	if($(".mateTeamList1").text() == "") {
-		$(".none_mateTeamList").append('제의 받은 내역이 없습니다.');
+		$(".none_mateTeamList").append('제의 받은 내역이 없습니다');
 	}
 	
 
@@ -126,7 +126,7 @@ String today = year + "년 " + month + "월 " + day + "일";
 	
 	<div class="small_title">
 	<h3>용병 등록 내역</h3>
-	<span>날짜가 지나지 않은 등록 내역을 보여드립니다.</span>
+	<span>날짜가 지나지 않은 등록 내역을 보여드립니다</span>
 	</div>
 	
 	<!-- 용병 등록 날짜  -->
