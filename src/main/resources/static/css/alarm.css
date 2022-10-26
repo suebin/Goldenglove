@@ -118,7 +118,7 @@ button {
 
 .alarmCon .list {
 	max-height: 50vh;
-	overflow-y: scroll;
+	overflow-y: auto;
 }
 
 .alarmCon .list::-webkit-scrollbar {

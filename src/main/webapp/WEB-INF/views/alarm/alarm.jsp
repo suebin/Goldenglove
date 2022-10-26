@@ -22,6 +22,7 @@ $(document).ready(function() {
 			let result = "";
 			
 			for(let i=0; i< res.length; i++) {
+				// 매칭 관련 알림
 				if(res[i].acceptance == -1 && res[i].homeName == "${loginInfo.getName()}") {
 				 	result = "<p class='teammatchpage'>[신청] <strong>" + res[i].awayName + "</strong> 팀이 매칭 신청을 하였습니다.<br/>"
 				 			+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
@@ -29,22 +30,35 @@ $(document).ready(function() {
 				} else if (res[i].acceptance == 1 && res[i].awayName == "${loginInfo.getName()}") {
 					result = "<p class='teammatchpage'>[수락] <strong>" + res[i].homeName + "</strong> 팀이 매칭 신청을 수락하였습니다.<br/>"
 	 						+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
-				
+	 			
 				} else if (res[i].acceptance == 0 && res[i].cancleTeam != "${loginInfo.getName()}") {
 					result = "<p class='teammatchpage'>[취소] <strong>" + res[i].cancleTeam + "</strong> 팀이 매칭을 취소하였습니다.<br/>"
 							+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
-				
+							
+							
+				// 팀 멤버가 팀 신청 시 알림
 				} else if (res[i].applyJoin == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
 					result = "<p class='teampage'>[신청] <strong>" + res[i].teamMember + "</strong> 님이 팀 가입을 신청하였습니다.</p>";
 		
-				} else if (res[i].acceptJoin == 1 && res[i].teamMember == "${loginInfo.getName()}") {
+				} else if (res[i].acceptJoin == 1 && res[i].requestJoin == 0 && res[i].teamMember == "${loginInfo.getName()}") {
 					result = "<p class='teampage'>[수락] <strong>" + res[i].teamLeader + "</strong> 님이 팀 가입을 수락하였습니다.</p>";
 		
-				} else if (res[i].cancleJoin == 1 && res[i].teamMember == "${loginInfo.getName()}") {
+				} else if (res[i].cancleJoin == 1 && res[i].requestJoin == 0 && res[i].teamMember == "${loginInfo.getName()}") {
 					result = "<p class='teampage'>[거절] <strong>" + res[i].teamLeader + "</strong> 님이 팀 가입을 거절하였습니다.</p>";
 		
 				} else if (res[i].exitTeam == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
 					result = "<p class='teampage'>[탈퇴] <strong>" + res[i].teamMember + "</strong> 님이 팀을 탈퇴하였습니다.</p>";
+		
+					
+				// 팀 리더가 팀 가입 요청 신청 시 알림
+				} else if (res[i].requestJoin == 1 && res[i].acceptJoin == 0 && res[i].cancleJoin == 0 && res[i].teamMember == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[요청] <strong>" + res[i].teamLeader + "</strong> 님이 팀 가입을 요청하였습니다.</p>";
+				
+				} else if (res[i].acceptJoin == 1 && res[i].requestJoin == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[수락] <strong>" + res[i].teamMember + "</strong> 님이 팀 가입 요청을 수락하였습니다.</p>";
+		
+				} else if (res[i].cancleJoin == 1 && res[i].requestJoin == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
+					result = "<p class='teampage'>[거절] <strong>" + res[i].teamMember + "</strong> 님이 팀 가입 요청을 거절하였습니다.</p>";
 		
 				} else {
 					result = "";
