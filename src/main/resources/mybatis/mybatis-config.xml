@@ -11,5 +11,6 @@
 		<typeAlias type="ranking.RankingDTO" alias="rankingDTO"/>
 		<typeAlias type="alarm.AlarmDTO" alias="alarmDTO"/>
 		<typeAlias type="soldier.SoldierDTO" alias="soldierdto"/>
+		<typeAlias type="penalty.PenaltyDTO" alias="penaltyDTO"/>
 	</typeAliases>
 </configuration>

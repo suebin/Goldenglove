@@ -19,6 +19,7 @@ import org.springframework.context.annotation.ComponentScan;
 @ComponentScan(basePackages = "teammatchinfo")
 @ComponentScan(basePackages = "alarm")
 @ComponentScan(basePackages = "soldier")
+@ComponentScan(basePackages = "penalty")
 
 @MapperScan(basePackages = "user")
 @MapperScan(basePackages = "team")
@@ -29,6 +30,7 @@ import org.springframework.context.annotation.ComponentScan;
 @MapperScan(basePackages = "teammatchinfo")
 @MapperScan(basePackages = "alarm")
 @MapperScan(basePackages = "soldier")
+@MapperScan(basePackages = "penalty")
 
 @SpringBootApplication
 public class GoldenGloveApplication extends SpringBootServletInitializer {

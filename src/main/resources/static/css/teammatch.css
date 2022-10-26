@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.penaltyTeamName, .penaltyEndDate {
+	display: none;
+}
+
 /* teamMatch */
 .teamMatch {
 	position: relative;

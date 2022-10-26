@@ -82,13 +82,13 @@
 
 		for (let i = 1; i < 100; i++) {
 			var delete_add_btn = 'delete_add_btn' + i;
-
+			
 			$("#" + delete_add_btn).on("click", function() {
 				var update = confirm("매치를 취소하시겠습니까 ?");
 				if (update) {
 					$.ajax({
 						url : 'deleteAddTeammatch',
-						data : {'seq' : $("#teammatchlist3_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}", 'teamName': $("#teamName").val()},
+						data : {'seq' : $("#teammatchlist3_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getTeamName()}", 'teamName': $("#teamName").val()},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -106,16 +106,28 @@
 
 		// 4. 예정된 경기 > 취소하기 버튼
 		
+		const prevDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
+		const prev7Day = prevDay.getFullYear() + "." + ("0" + (prevDay.getMonth() + 1)).slice(-2) + "." + ("0" + (prevDay.getDate())).slice(-2);
+
 		for (let i = 1; i < 100; i++) {
 			
 			var cancel_teammatch_btn = 'cancel_teammatch_btn' + i;
+			let penalty;
 			
 			$("#" + cancel_teammatch_btn).on("click", function() {
-				var update = confirm("매치를 취소하시겠습니까 ?");
+				if ($("#teammatch__info_list4 .teammatch_info_date").html().substring(0, 10) >= prev7Day) {
+					var update = confirm("매치를 취소하시겠습니까 ? \n경기일 7일 이내 취소 시 5일 간 매칭 서비스 이용이 불가합니다.");
+					penalty = true;	
+
+				} else {
+					var update = confirm("매치를 취소하시겠습니까 ?");
+					penalty = false;	
+				}
+				
 				if (update) {
 					$.ajax({
 						url : 'cancelTeammatch',
-						data : {'seq' : $("#teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getName()}", 'teamName': $("#teamName").val()},
+						data : {'seq' : $("#teammatchlist4_seq" + i).val(), 'alarmDate': alarmDate, 'cancleTeam': "${loginInfo.getTeamName()}", 'teamName': $("#teamName").val(), 'penalty' : penalty},
 						type : 'post',
 						dataType : 'json',
 						success : function(data) {
@@ -132,7 +144,7 @@
 		
 		// 6. 승패 선택 버튼
 		
-			for (let i = 1; i < 100; i++) {
+		for (let i = 1; i < 100; i++) {
 			
 			var select_winner_btn = 'select_winner_btn' + i;
 			

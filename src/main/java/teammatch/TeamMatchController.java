@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import penalty.PenaltyDTO;
+import penalty.PenaltyService;
 import soldier.SoldierDTO;
-import soldier.SoldierService;
 import team.TeamService;
 import teammatchinfo.TeamMatchInfoService;
 import user.UserDTO;
@@ -33,11 +34,16 @@ public class TeamMatchController {
 	@Qualifier("teamService")
 	TeamService service3;
 
+	@Autowired
+	@Qualifier("penaltyService")
+	PenaltyService service4;
+
 
 	// 팀 매치 메인
 
 	@RequestMapping("/teammatch")
 	public ModelAndView match(String teamName, HttpServletRequest request) {
+		PenaltyDTO penaltyTeam = service4.selectPenaltyTeam(teamName);
 		
 		int check;
 		// 로그인 상태인지 확인을 한다.
@@ -61,10 +67,10 @@ public class TeamMatchController {
 				check = 0;
 			}
 		}
-
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("check", check);
+		mv.addObject("penaltyTeam", penaltyTeam);
 		mv.setViewName("teammatch/teamMatch");
 		
 		return mv;

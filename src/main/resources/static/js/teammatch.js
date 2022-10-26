@@ -93,7 +93,6 @@ $(document).ready(function() {
 		}
 
 		
-		
 		// 매치 검색 버튼을 누를 경우
 		
 		$("#searchbtn").on("click", function() {
@@ -115,7 +114,7 @@ $(document).ready(function() {
 					// 매치 신청한 날짜
 					const now = new Date();
 					const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
-					
+			
 			
 					// 날짜와 지역을 모두 선택한 경우에만 매치 검색을 할 수 있다.
 					
@@ -195,10 +194,15 @@ $(document).ready(function() {
 																+ 	'</div>')
 								
 								
-								// 매치 신청
+									// 매치 신청
 								
-								$("#add_teammatch_btn" + i).on("click", function() {
-										location.href="addTeammatch?seq=" + $('#seq').val() + "&&awayName=" + $("#teamName").val() + "&&alarmDate=" +  $('#alarmDate').val() +"&&homeName=" + $('#homeName').val() + "&&possibleDate=" + $('#possibleDate').val() + "&&possibleTime=" + $('#possibleTime').val() + "&&region=" + $('#region').val() + "&&homePlace=" + $('#homePlace').val();
+									$("#add_teammatch_btn" + i).on("click", function() {
+										if ($("#teamName").val() == $(".penaltyTeamName").html()) {
+											alert('경기일 7일 이내 취소로 인해 ' + $(".penaltyEndDate").html() + ' 이후부터 가능합니다.');
+											
+										} else { 
+											location.href="addTeammatch?seq=" + $('#seq').val() + "&&awayName=" + $("#teamName").val() + "&&alarmDate=" +  $('#alarmDate').val() +"&&homeName=" + $('#homeName').val() + "&&possibleDate=" + $('#possibleDate').val() + "&&possibleTime=" + $('#possibleTime').val() + "&&region=" + $('#region').val() + "&&homePlace=" + $('#homePlace').val();
+										}
 									})
 								
 								
@@ -294,6 +298,12 @@ $(document).ready(function() {
 			else if ($("#teamReader").val() == 0) {
 				alert("매치 등록은 팀 주장만 가능합니다.");
 			}
+						
+			// 패널티를 받은 팀인 경우
+			
+			else if ($("#teamName").val() == $(".penaltyTeamName").html()) {
+				alert('경기일 7일 이내 취소로 인해 ' + $(".penaltyEndDate").html() + ' 이후부터 가능합니다.');
+			}
 			
 			// 날짜만 선택한 경우
 					
@@ -320,7 +330,7 @@ $(document).ready(function() {
 			}
 
 			// 로그인 상태이고, 날짜와 지역을 모두 선택한 경우에만 매치 등록을 할 수 있다.
-			
+
 			else {
 				location.href= "registerTeammatch?region=" +  $("#region").val() + "&year_month=" + $("#year_month").val() + "&date=" + $("#date").val()
 			}
