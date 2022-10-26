@@ -12,7 +12,7 @@ public class AlarmDTO {
 	int checked;
 	int acceptance;
 	String cancleTeam, teamLeader, teamMember;
-	int applyJoin, acceptJoin, cancleJoin, exitTeam;
+	int applyJoin, acceptJoin, cancleJoin, exitTeam, requestJoin;
 
 	public int getSeq() {
 		return seq;
@@ -149,5 +149,14 @@ public class AlarmDTO {
 	public void setExitTeam(int exitTeam) {
 		this.exitTeam = exitTeam;
 	}
+
+	public int getRequestJoin() {
+		return requestJoin;
+	}
+
+	public void setRequestJoin(int requestJoin) {
+		this.requestJoin = requestJoin;
+	}
+	
 
 }

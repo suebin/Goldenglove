@@ -145,6 +145,33 @@
 				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
 				(select name from user where id = #{id}));
 	</insert>
+
+	<!-- 팀 가입 요청 알림 -->
+	<insert id="requestJoinAlarm" parameterType="HashMap">
+		insert into alarm(alarmDate, teamLeader, teamMember, requestJoin)
+		values (date_format(now(), '%Y.%m.%d'), 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}),
+				1);
+	</insert>
+	
+	<!-- 팀 가입 요청 승인 알림 -->
+	<insert id="requestAcceptAlarm" parameterType="HashMap">
+		insert into alarm(alarmDate, teamLeader, teamMember, acceptJoin, requestJoin)
+		values (date_format(now(), '%Y.%m.%d'), 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}),
+				1, 1);
+	</insert>
+	
+	<!-- 팀 가입 요청 거절 알림 -->
+	<insert id="requestCancleAlarm" parameterType="HashMap">
+		insert into alarm(alarmDate, teamLeader, teamMember, cancleJoin, requestJoin)
+		values (date_format(now(), '%Y.%m.%d'), 
+				(select name from user where id = (select teamId from team where teamName = #{teamName})), 
+				(select name from user where id = #{id}),
+				1, 1);
+	</insert>
 	
 	<!-- 팀 순위 리스트 -->
 	<select id="selectRank" resultType="String">

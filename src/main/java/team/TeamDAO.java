@@ -85,6 +85,16 @@ public interface TeamDAO {
 	// 팀 탈퇴 알림
 	void exitTeamAlarm(String id, String teamName, String alarmDate);
 
+	// 팀 가입 요청 알림
+	void requestJoinAlarm(HashMap userInfo);
+
+	// 팀 가입 요청 승인 알림
+	void requestAcceptAlarm(HashMap registerInfo);
+	
+	// 팀 가입 요청 거절 알림
+	void requestCancleAlarm(HashMap registerInfo);
+
+	
 //	팀 순위 리스트
 	String[] selectRank();
 

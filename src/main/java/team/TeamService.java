@@ -34,10 +34,14 @@ public class TeamService {
 				map.put("id", arr[i]);
 				teamDao.makeRegister(map);
 				teamDao.registerUser(map);
+				
+				// 가입 요청 알림
+				teamDao.requestJoinAlarm(map);
 			}
 		}
 	}
 
+	
 //	팀원 등록 요청 조회
 	public UserDTO[] selectRegisterUser(String teamId) {
 		String[] arr = teamDao.selectRegisterUser(teamId);
@@ -129,11 +133,17 @@ public class TeamService {
 	public void updateRegister(HashMap<String, String> registerInfo) {
 		teamDao.updateRegisterResult(registerInfo);
 		teamDao.updatePosition(registerInfo);
+
+		// 팀 가입 요청 승인 알림
+		teamDao.requestAcceptAlarm(registerInfo);
 	}
 
 //	팀 가입 신청 거절
 	public void updateRegisterFalse(HashMap<String, String> registerInfo) {
 		teamDao.updateRegisterResult(registerInfo);
+
+		// 팀 가입 요청 거절 알림
+		teamDao.requestCancleAlarm(registerInfo);
 	}
 
 //	팀원 명 전체 조회
