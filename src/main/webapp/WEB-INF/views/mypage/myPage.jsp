@@ -35,10 +35,10 @@ $(document).ready(function() {
 	})
 	
 	const info = "${loginInfo.password}";
-	$("#submitBtnUser").on("click", function() {
+	$("#submitFormUser").on("submit", function(e) {
 		if("${loginInfo.password}" == $("#passwordUser").val()) {
-			window.location.href = "updateinfo";
 		} else {
+			e.preventDefault();
 			$("#checkResultUser").html("비밀번호를 확인해주세요.");
 			$("#passwordUser").val("");
 			$("#passwordUser").focus();
@@ -68,12 +68,14 @@ $(document).ready(function() {
 					<div class="card teamCard cardContainer"><jsp:include page="/WEB-INF/views/components/card.jsp" /></div>
 				</li>
 			</ul>
-			<ul class="pwTable" id="passwordInputUser" hidden>
-				<li><span>비밀번호 </span><input type="password" id="passwordUser"></li>
-				<li><div id="checkResultUser" class="red"></div></li>
-			</ul>
+			<form id="submitFormUser" action="updateinfo">
+				<ul class="pwTable" id="passwordInputUser" hidden>
+					<li><span>비밀번호 </span><input type="password" id="passwordUser"></li>
+					<li><div id="checkResultUser" class="red"></div></li>
+				</ul>
+				<button id="submitBtnUser" hidden>확인</button>
+			</form>
 			<button id="updateUserBtn" class="updateBtn">정보 수정</button>
-			<button id="submitBtnUser" hidden>확인</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
