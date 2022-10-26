@@ -24,11 +24,12 @@ $(document).ready(function() {
 	})
 	
 	const info = "${loginInfo.password}";
-	$("#submitBtnTeam").on("click", function() {
+	$("#submitFormTeam").on("submit", function(e) {
 		if ("${loginInfo.password}" == $("#passwordTeam").val()) {
-			window.location.href = "teamUpdate";
 		} else {
+			e.preventDefault();
 			$("#checkResultTeam").html("비밀번호를 확인해주세요.");
+			$("#checkResultTeam").attr("class", "red");
 			$("#passwordTeam").val("");
 			$("#passwordTeam").focus();
 		}
@@ -112,9 +113,11 @@ $(document).ready(function() {
 		</div>
 		
 		<div id="passwordInputTeam" hidden>
-			<span>비밀번호</span>
-			<input type="password" id="passwordTeam">
-			<button id="submitBtnTeam">확인</button>
+			<form id="submitFormTeam" action="teamUpdate">
+				<span>비밀번호</span>
+				<input type="password" id="passwordTeam">
+				<button id="submitBtnTeam">확인</button>
+			</form>
 			<span id="checkResultTeam"></span>
 		</div>
 		<% String teamId2 = (String)request.getAttribute("teamId");
