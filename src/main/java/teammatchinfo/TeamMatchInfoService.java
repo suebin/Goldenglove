@@ -130,4 +130,9 @@ public class TeamMatchInfoService {
 		return dao.getTodayMatching(today);
 	}
 	
+	// 패널티 받는 팀 추가
+	public void insertPenalty(String teamName) {
+		dao.insertPenalty(teamName);
+	}
+	
 }

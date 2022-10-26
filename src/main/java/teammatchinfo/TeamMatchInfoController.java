@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import team.TeamDTO;
 import teammatch.TeamMatchDTO;
 import user.UserDTO;
 
@@ -180,7 +179,7 @@ public class TeamMatchInfoController {
 		
 		@ResponseBody
 		@RequestMapping("/cancelTeammatch")
-		public String cancelTeammatch(int seq, String alarmDate, String cancleTeam, String teamName, HttpServletRequest request) {
+		public String cancelTeammatch(int seq, String alarmDate, String cancleTeam, String teamName, HttpServletRequest request, boolean penalty) {
 			
 			// 팀 주장인지 확인을 한다.
 			
@@ -198,6 +197,11 @@ public class TeamMatchInfoController {
 				
 				if(updatecount == 1) {
 					result = "매치 취소가 완료되었습니다.";
+					
+					// 경기일 7일 이내 경기 취소 시 패널티 추가
+					if (penalty == true) {
+						service.insertPenalty(teamName);
+					}
 				}
 				else {
 					result = "매치 취소에 실패하였습니다. 다시 한 번 시도해주세요.";

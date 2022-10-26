@@ -143,4 +143,10 @@
 	<select id="getTodayMatching" resultType="teammatchdto">
 		select * from teammatching where possibleDate=#{today} and awayName IS NOT NULL and acceptance = 1 order by possibleDate asc, possibleTime asc
 	</select>
+	
+	
+	<!-- 패널티 받는 팀 추가 -->
+	<insert id="insertPenalty">
+		insert into penalty(teamName, penaltyEndDate) values (#{teamName}, ADDDATE(now(), INTERVAL 5 DAY));
+	</insert>
 </mapper>

@@ -15,7 +15,7 @@ $(document).ready(function() {
 	// 알람 내용 가져오기	
 	$.ajax ({
 		url: "alarm",
-		data:{ homeName: "${loginInfo.getName()}" },
+		data:{ homeName: "${loginInfo.getTeamName()}" },
 		type:"post",
 		dataType:"json",
 		success: function(res) {
@@ -23,15 +23,15 @@ $(document).ready(function() {
 			
 			for(let i=0; i< res.length; i++) {
 				// 매칭 관련 알림
-				if(res[i].acceptance == -1 && res[i].homeName == "${loginInfo.getName()}") {
+				if(res[i].acceptance == -1 && res[i].homeName == "${loginInfo.getTeamName()}") {
 				 	result = "<p class='teammatchpage'>[신청] <strong>" + res[i].awayName + "</strong> 팀이 매칭 신청을 하였습니다.<br/>"
 				 			+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 				
-				} else if (res[i].acceptance == 1 && res[i].awayName == "${loginInfo.getName()}") {
+				} else if (res[i].acceptance == 1 && res[i].awayName == "${loginInfo.getTeamName()}") {
 					result = "<p class='teammatchpage'>[수락] <strong>" + res[i].homeName + "</strong> 팀이 매칭 신청을 수락하였습니다.<br/>"
 	 						+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 	 			
-				} else if (res[i].acceptance == 0 && res[i].cancleTeam != "${loginInfo.getName()}") {
+				} else if (res[i].acceptance == 0 && res[i].cancleTeam != "${loginInfo.getTeamName()}") {
 					result = "<p class='teammatchpage'>[취소] <strong>" + res[i].cancleTeam + "</strong> 팀이 매칭을 취소하였습니다.<br/>"
 							+ "<strong># " + res[i].possibleDate + " / " + res[i].possibleTime + " / " + res[i].homePlace + " 경기</strong></p>";
 							

@@ -19,6 +19,10 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
+	
+	<!-- teammatch.js에 서버 데이터 전달하기 위해 -->
+	<span class="penaltyTeamName">${penaltyTeam.teamName}</span>
+	<span class="penaltyEndDate">${penaltyTeam.penaltyEndDate}</span>
 
 	<div class="teamMatch">
 		<img alt="teamMatchImg" src="/images/teamMatch.jpg">

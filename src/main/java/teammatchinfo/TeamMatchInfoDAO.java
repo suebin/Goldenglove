@@ -83,4 +83,7 @@ public interface TeamMatchInfoDAO {
 	
 	// 오늘의 매칭
 	List<TeamMatchDTO> getTodayMatching(String today);
+	
+	// 패널티 받는 팀 추가
+	void insertPenalty(String teamName);
 }
