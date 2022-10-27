@@ -1,3 +1,4 @@
+
 <%@page import="java.time.format.DateTimeFormatter"%>
 <%@page import="java.time.LocalDate"%>
 <%@page import="java.time.LocalDateTime"%>
@@ -36,17 +37,13 @@
 	$(document)
 			.ready(
 					function() {
-
 						// 용병 검색 form > 날짜 선택
-
 						var dateSelector = document
 								.querySelector('#dateSelector');
 						dateSelector.flatpickr({
 							dateFormat : "Y년 m월 d일"
 						});
-
 						// 용병 검색 > 리스트
-
 						$(".searchSoldierBtn")
 								.on(
 										"click",
@@ -71,15 +68,12 @@
 															document
 																	.querySelector('.cardBox').innerHTML = '';
 															//document.querySelector('.none_cardBox').innerHTML = '';
-
 															// 용병 리스트가 있는 경우
-
 															if (list.length != 0) {
 										
 																for (var i = 0; i < list.length; i++) {
 																	
 																	
-
 																	$(
 																			'.cardBox')
 																			.append(
@@ -135,9 +129,7 @@
 																							+ '<div class="addSoldierBtn_box"><input type="button" class="addSoldier_btn" id="addSoldier_btn' + i + '" value="스카우트 하기"></div></div>'
 																							+ '<input type="hidden" id="soldier_seq' + i + '" value="' + list[i].seq + '">'
 																							+ '<input type="hidden" id="soldier_teamName' + i + '" value="' + list[i].teamName + '">')
-
 																	// 카드
-
 																	const r = {
 																		1 : "--color: hsl(36, 100%, 50%);",
 																		2 : "--color:hsl(237, 63%, 19%);",
@@ -150,7 +142,6 @@
 																		3 : "images/bronze-medal.png",
 																		4 : "images/baseball.png",
 																	}
-
 																	$(
 																			".defaultCard .medalImg")
 																			.attr(
@@ -161,7 +152,6 @@
 																			.attr(
 																					"style",
 																					r["4"]);
-
 																	$
 																			.ajax({
 																				url : "tierResult",
@@ -185,7 +175,6 @@
 																									medal[server]);
 																				}
 																			})
-
 																	$(
 																			".modalLink")
 																			.on(
@@ -259,43 +248,31 @@
 																					})
 																}
 															}
-
 															// 용병 리스트가 없는 경우
-
 															else {
 																alert('해당 날짜에 등록된 용병이 없습니다.');
 																location.reload();
-
 															}
-
 															// 스카우트 하기 버튼
-
 															for (let i = 0; i < 100; i++) {
-
 																var addSoldier_btn = 'addSoldier_btn'
 																		+ i;
-
 																$(
 																		"#"
 																				+ addSoldier_btn)
 																		.on(
 																				"click",
 																				function() {
-
 																					// 로그인을 하지 않은 경우
-
 																					if ($(
 																							".dropdownBtn")
 																							.text() == "") {
 																						alert("로그인이 필요한 서비스입니다.");
 																					}
-
 																					// 로그인을 한 경우
-
 																					else {
 																						var update = confirm("용병에게 스카우트를 제의하시겠습니까 ?");
 																						if (update) {
-
 																							$
 																									.ajax({
 																										url : 'addSoldier',
@@ -319,20 +296,13 @@
 																						} else {
 																							alert("용병 스카우트를 취소하셨습니다.");
 																						}
-
 																					}
-
 																				})
 															} // addSoldier_btn end	
-
 														} // success end
-
 													}); // ajax end
-
 										}) // searchSoldierBtn end
-
 						// default card
-
 						const r = {
 							1 : "--color: hsl(36, 100%, 50%);",
 							2 : "--color:hsl(237, 63%, 19%);",
@@ -345,10 +315,8 @@
 							3 : "images/bronze-medal.png",
 							4 : "images/baseball.png",
 						}
-
 						$(".defaultCard .medalImg").attr("src", medal["4"]);
 						$(".defaultCard .cardCon").attr("style", r["4"]);
-
 						$.ajax({
 							url : "tierResult",
 							data : {
@@ -362,7 +330,6 @@
 										medal[server]);
 							}
 						})
-
 						$(".modalLink")
 								.on(
 										"click",
@@ -427,13 +394,10 @@
 														}
 													})
 										})
-
 						// 용병 등록 작은 창
-
 						$(".registerSoldierBtn").on(
 								"click",
 								function() {
-
 									if ($(".dropdownBtn").text() == "") {
 										alert("로그인이 필요한 서비스입니다.");
 									} else {
@@ -441,13 +405,10 @@
 												"width=330, height=420");
 									}
 								})
-
 						// 용병 로그 작은 창
-
 						$(".soldierLogBtn").on(
 								"click",
 								function() {
-
 									if ($(".dropdownBtn").text() == "") {
 										alert("로그인이 필요한 서비스입니다.");
 									} else {
@@ -455,7 +416,6 @@
 												"width=500, height=600");
 									}
 								})
-
 					});
 </script>
 </head>
@@ -475,12 +435,10 @@
 	<div class="confix">
 	
 <%
-
 		 // 현재 날짜 구하기        
 		LocalDate now = LocalDate.now();        
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일");        
 		String formatedNow = now.format(formatter);
-
 %>	
 		<c:set value="<%=formatedNow%>" var="today" />
 	
