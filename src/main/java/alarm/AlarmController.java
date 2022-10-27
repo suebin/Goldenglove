@@ -16,8 +16,8 @@ public class AlarmController {
 
 	@ResponseBody
 	@RequestMapping("/alarm")
-	public List<AlarmDTO> selectAlarm(String homeName) {
-		List<AlarmDTO> list = service.selectAlarm(homeName);
+	public List<AlarmDTO> selectAlarm(String homeName, String name) {
+		List<AlarmDTO> list = service.selectAlarm(homeName, name);
 		return list;
 	}
 

@@ -33,305 +33,86 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
 
 <script>
-	$(document)
-			.ready(
-					function() {
+$(document).ready(function() {
 
-						// 용병 검색 form > 날짜 선택
+	// 용병 검색 form > 날짜 선택
 
-						var dateSelector = document
-								.querySelector('#dateSelector');
-						dateSelector.flatpickr({
-							dateFormat : "Y년 m월 d일"
-						});
+	var dateSelector = document.querySelector('#dateSelector');
+	dateSelector.flatpickr({
+		dateFormat : "Y년 m월 d일"
+	});
 
-						// 용병 검색 > 리스트
+	// 용병 검색 > 리스트
 
-						$(".searchSoldierBtn")
-								.on(
-										"click",
-										function() {
-											$
-													.ajax({
-														url : 'getSoldier',
-														data : {
-															'region' : $(
-																	"#regionSelector")
-																	.val(),
-															'position' : $(
-																	"#positionSelector")
-																	.val(),
-															'possibleDate' : $(
-																	"#dateSelector")
-																	.val()
-														},
-														type : 'post',
-														dataType : 'json',
-														success : function(list) {
-															document
-																	.querySelector('.cardBox').innerHTML = '';
-															//document.querySelector('.none_cardBox').innerHTML = '';
+	$(".searchSoldierBtn").on("click", function() {
+		$.ajax({
+			url : 'getSoldier',
+			data : {'region' : $("#regionSelector").val(),'position' : $("#positionSelector").val(),'possibleDate' : $("#dateSelector").val()},
+			type : 'post',
+			dataType : 'json',
+			success : function(list) {
+				document.querySelector('.cardBox').innerHTML = '';
+				//document.querySelector('.none_cardBox').innerHTML = '';
 
-															// 용병 리스트가 있는 경우
+				// 용병 리스트가 있는 경우
 
-															if (list.length != 0) {
-										
-																for (var i = 0; i < list.length; i++) {
-																	
-																	
+				if (list.length != 0) {
+					for (var i = 0; i < list.length; i++) {
+						$('.cardBox').append(
+							'<div class="card">'
+									+ '<div id="ex1" class="modal" style="z-index:1000;">'
+									+ '<ul class="modalCon">'
+									+ '<li><span>이름 </span><span class="modalName"></span></li>'
+									+ '<li><span>연락처 </span><span class="modalPhone"></span></li>'
+									+ '<li><span>이메일 </span><span class="modalEmail"></span></li>'
+									+ '<li><span>지역 </span><span class="modalRegion"></span></li>'
+									+ '<li><span>포지션 </span><span class="position"></span></li>'
+									+ '</ul>'
+									+ '<div class="a">'
+									+ '<a href="#" rel="modal:close">Close</a>'
+									+ '</div>'
+									+ '</div>'
+									+ '<a class="modalLink" href="#ex1" rel="modal:open">'
+									+ '<div class="cardCon">'
+									+ '<div class="card__border"></div>'
+									+ '<div class="card__border-line"></div>'
+									+ '<div class="profile-card-6">'
+									+ '<div class="card__img">'
+									+ '<div class="img__team">'
+									+ '<img class="medalImg" alt="rankingImg">'
+									+ '</div>'
+									+ '<div class="img__athlete">'
+									+ '<div class="img__Wrapper">'
+									+ '<img src="img/' +list[i].fileName + '" class="img img-responsive">'
+									+ '</div>'
+									+ '</div>'
+									+ '</div>'
+									+ '<div class="card__text">'
+									+ '<div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);">'
+									+ list[i].position
+									+ '</div>'
+									+ '<div class="profile-name">'
+									+ list[i].soldierName
+									+ '</div>'
+									+ '<div class="profile-overview">'
+									+ '<div><h3 class="soldier_winCount">'
+									+ list[i].winCount
+									+ '</h3><p>승</p></div>'
+									+ '<div><h3 class="soldier_loseCount">'
+									+ list[i].loseCount
+									+ '</h3><p>패</p></div>'
+									+ '<div><h3 class="soldier_winningRate">'
+									+ list[i].winningRate
+									+ '</h3><p></p></div>'
+									+ '</div></div></div></div></a>'
+									+ '<div class="possibleDate"><span>⌚ '
+									+ list[i].possibleDate
+									+ '</span></div>'
+									+ '<div class="addSoldierBtn_box"><input type="button" class="addSoldier_btn" id="addSoldier_btn' + i + '" value="스카우트 하기"></div></div>'
+									+ '<input type="hidden" id="soldier_seq' + i + '" value="' + list[i].seq + '">'
+									+ '<input type="hidden" id="soldier_teamName' + i + '" value="' + list[i].teamName + '">')
 
-																	$(
-																			'.cardBox')
-																			.append(
-																					'<div class="card">'
-																							+ '<div id="ex1" class="modal" style="z-index:1000;">'
-																							+ '<ul class="modalCon">'
-																							+ '<li><span>이름 </span><span class="modalName"></span></li>'
-																							+ '<li><span>연락처 </span><span class="modalPhone"></span></li>'
-																							+ '<li><span>이메일 </span><span class="modalEmail"></span></li>'
-																							+ '<li><span>지역 </span><span class="modalRegion"></span></li>'
-																							+ '<li><span>포지션 </span><span class="position"></span></li>'
-																							+ '</ul>'
-																							+ '<div class="a">'
-																							+ '<a href="#" rel="modal:close">Close</a>'
-																							+ '</div>'
-																							+ '</div>'
-																							+ '<a class="modalLink" href="#ex1" rel="modal:open">'
-																							+ '<div class="cardCon">'
-																							+ '<div class="card__border"></div>'
-																							+ '<div class="card__border-line"></div>'
-																							+ '<div class="profile-card-6">'
-																							+ '<div class="card__img">'
-																							+ '<div class="img__team">'
-																							+ '<img class="medalImg" alt="rankingImg">'
-																							+ '</div>'
-																							+ '<div class="img__athlete">'
-																							+ '<div class="img__Wrapper">'
-																							+ '<img src="img/' +list[i].fileName + '" class="img img-responsive">'
-																							+ '</div>'
-																							+ '</div>'
-																							+ '</div>'
-																							+ '<div class="card__text">'
-																							+ '<div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);">'
-																							+ list[i].position
-																							+ '</div>'
-																							+ '<div class="profile-name">'
-																							+ list[i].soldierName
-																							+ '</div>'
-																							+ '<div class="profile-overview">'
-																							+ '<div><h3 class="soldier_winCount">'
-																							+ list[i].winCount
-																							+ '</h3><p>승</p></div>'
-																							+ '<div><h3 class="soldier_loseCount">'
-																							+ list[i].loseCount
-																							+ '</h3><p>패</p></div>'
-																							+ '<div><h3 class="soldier_winningRate">'
-																							+ list[i].winningRate
-																							+ '</h3><p></p></div>'
-																							+ '</div></div></div></div></a>'
-																							+ '<div class="possibleDate"><span>⌚ '
-																							+ list[i].possibleDate
-																							+ '</span></div>'
-																							+ '<div class="addSoldierBtn_box"><input type="button" class="addSoldier_btn" id="addSoldier_btn' + i + '" value="스카우트 하기"></div></div>'
-																							+ '<input type="hidden" id="soldier_seq' + i + '" value="' + list[i].seq + '">'
-																							+ '<input type="hidden" id="soldier_teamName' + i + '" value="' + list[i].teamName + '">')
-
-																	// 카드
-
-																	const r = {
-																		1 : "--color: hsl(36, 100%, 50%);",
-																		2 : "--color:hsl(237, 63%, 19%);",
-																		3 : "--color: hsl(357, 100%, 49%);",
-																		4 : "--color: hsl(172, 94%, 21%);"
-																	}
-																	const medal = {
-																		1 : "images/gold-medal.png",
-																		2 : "images/silver-medal.png",
-																		3 : "images/bronze-medal.png",
-																		4 : "images/baseball.png",
-																	}
-
-																	$(
-																			".defaultCard .medalImg")
-																			.attr(
-																					"src",
-																					medal["4"]);
-																	$(
-																			".defaultCard .cardCon")
-																			.attr(
-																					"style",
-																					r["4"]);
-
-																	$
-																			.ajax({
-																				url : "tierResult",
-																				data : {
-																					"name" : $(
-																							".profile-name")
-																							.html()
-																				},
-																				dataType : "json",
-																				success : function(
-																						server) {
-																					$(
-																							".teamCard .cardCon")
-																							.attr(
-																									"style",
-																									r[server]);
-																					$(
-																							".teamCard .medalImg")
-																							.attr(
-																									"src",
-																									medal[server]);
-																				}
-																			})
-
-																	$(
-																			".modalLink")
-																			.on(
-																					"click",
-																					function() {
-																						$
-																								.ajax({
-																									url : "modalResult",
-																									data : {
-																										"name" : $(
-																												this)
-																												.find(
-																														".profile-name")
-																												.html()
-																									},
-																									dataType : "json",
-																									success : function(
-																											server) {
-																										$(
-																												".modalName")
-																												.html(
-																														server.name);
-																										$(
-																												".modalPhone")
-																												.html(
-																														server.phone);
-																										$(
-																												".modalEmail")
-																												.html(
-																														server.email);
-																										$(
-																												".modalRegion")
-																												.html(
-																														server.region);
-																										let modalPosition = server.position;
-																										switch (server.position) {
-																										case "firstBase":
-																											modalPosition = "1루수";
-																											break;
-																										case "secondBase":
-																											modalPosition = "2루수";
-																											break;
-																										case "thirdBase":
-																											modalPosition = "3루수";
-																											break;
-																										case "catcher":
-																											modalPosition = "포수";
-																											break;
-																										case "pitcher":
-																											modalPosition = "투수";
-																											break;
-																										case "leftFielder":
-																											modalPosition = "좌익수";
-																											break;
-																										case "rightFielder":
-																											modalPosition = "우익수";
-																											break;
-																										case "centerFielder":
-																											modalPosition = "중견수";
-																											break;
-																										case "shortStop":
-																											modalPosition = "유격수";
-																											break;
-																										}
-																										$(
-																												".position")
-																												.html(
-																														modalPosition);
-																									}
-																								})
-																					})
-																}
-															}
-
-															// 용병 리스트가 없는 경우
-
-															else {
-																alert('해당 날짜에 등록된 용병이 없습니다.');
-																location.reload();
-
-															}
-
-															// 스카우트 하기 버튼
-
-															for (let i = 0; i < 100; i++) {
-
-																var addSoldier_btn = 'addSoldier_btn'
-																		+ i;
-
-																$(
-																		"#"
-																				+ addSoldier_btn)
-																		.on(
-																				"click",
-																				function() {
-
-																					// 로그인을 하지 않은 경우
-
-																					if ($(
-																							".dropdownBtn")
-																							.text() == "") {
-																						alert("로그인이 필요한 서비스입니다.");
-																					}
-
-																					// 로그인을 한 경우
-
-																					else {
-																						var update = confirm("용병에게 스카우트를 제의하시겠습니까 ?");
-																						if (update) {
-
-																							$
-																									.ajax({
-																										url : 'addSoldier',
-																										data : {
-																											'seq' : $(
-																													"#soldier_seq"
-																															+ i)
-																													.val(),
-																											'soldierTeamName' : $(
-																													"#soldier_teamName"
-																															+ i)
-																													.val()
-																										},
-																										type : 'post',
-																										dataType : 'json',
-																										success : function(
-																												data) {
-																											alert(data.result);
-																										}
-																									});
-																						} else {
-																							alert("용병 스카우트를 취소하셨습니다.");
-																						}
-
-																					}
-
-																				})
-															} // addSoldier_btn end	
-
-														} // success end
-
-													}); // ajax end
-
-										}) // searchSoldierBtn end
-
-						// default card
+						// 카드
 
 						const r = {
 							1 : "--color: hsl(36, 100%, 50%);",
@@ -346,117 +127,221 @@
 							4 : "images/baseball.png",
 						}
 
-						$(".defaultCard .medalImg").attr("src", medal["4"]);
-						$(".defaultCard .cardCon").attr("style", r["4"]);
+						$(".defaultCard .medalImg").attr("src",medal["4"]);
+						$(".defaultCard .cardCon").attr("style",r["4"]);
 
 						$.ajax({
 							url : "tierResult",
-							data : {
-								"name" : $(".profile-name").html()
-							},
+							data : {"name" : $(".profile-name").html()},
 							dataType : "json",
 							success : function(server) {
-								$(".teamCard .cardCon")
-										.attr("style", r[server]);
-								$(".teamCard .medalImg").attr("src",
-										medal[server]);
+								$(".teamCard .cardCon").attr("style",r[server]);
+								$(".teamCard .medalImg").attr("src",medal[server]);
 							}
 						})
 
-						$(".modalLink")
-								.on(
-										"click",
-										function() {
-											$
-													.ajax({
-														url : "modalResult",
-														data : {
-															"name" : $(this)
-																	.find(
-																			".profile-name")
-																	.html()
-														},
-														dataType : "json",
-														success : function(
-																server) {
-															$(".modalName")
-																	.html(
-																			server.name);
-															$(".modalPhone")
-																	.html(
-																			server.phone);
-															$(".modalEmail")
-																	.html(
-																			server.email);
-															$(".modalRegion")
-																	.html(
-																			server.region);
-															let modalPosition = server.position;
-															switch (server.position) {
-															case "firstBase":
-																modalPosition = "1루수";
-																break;
-															case "secondBase":
-																modalPosition = "2루수";
-																break;
-															case "thirdBase":
-																modalPosition = "3루수";
-																break;
-															case "catcher":
-																modalPosition = "포수";
-																break;
-															case "pitcher":
-																modalPosition = "투수";
-																break;
-															case "leftFielder":
-																modalPosition = "좌익수";
-																break;
-															case "rightFielder":
-																modalPosition = "우익수";
-																break;
-															case "centerFielder":
-																modalPosition = "중견수";
-																break;
-															case "shortStop":
-																modalPosition = "유격수";
-																break;
-															}
-															$(".position")
-																	.html(
-																			modalPosition);
-														}
-													})
-										})
-
-						// 용병 등록 작은 창
-
-						$(".registerSoldierBtn").on(
-								"click",
-								function() {
-
-									if ($(".dropdownBtn").text() == "") {
-										alert("로그인이 필요한 서비스입니다.");
-									} else {
-										window.open('registerSoldier', '용병 등록',
-												"width=330, height=420");
+						$(".modalLink").on("click",function() {
+							$.ajax({
+								url : "modalResult",
+								data : {"name" : $(this).find(".profile-name").html()},
+								dataType : "json",
+								success : function(server) {
+									$(".modalName").html(server.name);
+									$(".modalPhone").html(server.phone);
+									$(".modalEmail").html(server.email);
+									$(".modalRegion").html(server.region);
+									
+									let modalPosition = server.position;
+									switch (server.position) {
+									case "firstBase":
+										modalPosition = "1루수";
+										break;
+									case "secondBase":
+										modalPosition = "2루수";
+										break;
+									case "thirdBase":
+										modalPosition = "3루수";
+										break;
+									case "catcher":
+										modalPosition = "포수";
+										break;
+									case "pitcher":
+										modalPosition = "투수";
+										break;
+									case "leftFielder":
+										modalPosition = "좌익수";
+										break;
+									case "rightFielder":
+										modalPosition = "우익수";
+										break;
+									case "centerFielder":
+										modalPosition = "중견수";
+										break;
+									case "shortStop":
+										modalPosition = "유격수";
+										break;
 									}
-								})
+									
+									$(".position").html(modalPosition);
+								}
+							})
+						})
+					}
+				}
 
-						// 용병 로그 작은 창
+				// 용병 리스트가 없는 경우
 
-						$(".soldierLogBtn").on(
-								"click",
-								function() {
+				else {
+					alert('해당 날짜에 등록된 용병이 없습니다.');
+					location.reload();
 
-									if ($(".dropdownBtn").text() == "") {
-										alert("로그인이 필요한 서비스입니다.");
-									} else {
-										window.open('soldierLog', '용병 로그',
-												"width=500, height=600");
+				}
+
+				// 스카우트 하기 버튼
+
+				for (let i = 0; i < 100; i++) {
+
+					var addSoldier_btn = 'addSoldier_btn'+ i;
+
+					$("#" + addSoldier_btn).on("click", function() {
+
+						// 로그인을 하지 않은 경우
+
+						if ($(".dropdownBtn").text() == "") {
+							alert("로그인이 필요한 서비스입니다.");
+						}
+
+						// 로그인을 한 경우
+
+						else {
+							var update = confirm("용병에게 스카우트를 제의하시겠습니까 ?");
+							if (update) {
+
+								$.ajax({
+									url : 'addSoldier',
+									data : {'seq' : $("#soldier_seq" + i).val(),'soldierTeamName' : $("#soldier_teamName" + i).val()},
+									type : 'post',
+									dataType : 'json',
+									success : function(data) {
+										alert(data.result);
 									}
-								})
+								});
+							} else {
+								alert("용병 스카우트를 취소하셨습니다.");
+							}
 
-					});
+						}
+
+					})
+				} // addSoldier_btn end	
+
+			} // success end
+
+		}); // ajax end
+
+	}) // searchSoldierBtn end
+
+	// default card
+
+	const r = {
+		1 : "--color: hsl(36, 100%, 50%);",
+		2 : "--color:hsl(237, 63%, 19%);",
+		3 : "--color: hsl(357, 100%, 49%);",
+		4 : "--color: hsl(172, 94%, 21%);"
+	}
+	const medal = {
+		1 : "images/gold-medal.png",
+		2 : "images/silver-medal.png",
+		3 : "images/bronze-medal.png",
+		4 : "images/baseball.png",
+	}
+
+	$(".defaultCard .medalImg").attr("src", medal["4"]);
+	$(".defaultCard .cardCon").attr("style", r["4"]);
+
+	$.ajax({
+		url : "tierResult",
+		data : {
+			"name" : $(".profile-name").html()
+		},
+		dataType : "json",
+		success : function(server) {
+			$(".teamCard .cardCon").attr("style", r[server]);
+			$(".teamCard .medalImg").attr("src", medal[server]);
+		}
+	})
+
+	$(".modalLink").on("click", function() {
+		$.ajax({
+			url : "modalResult",
+			data : {"name" : $(this).find(".profile-name").html()},
+			dataType : "json",
+			success : function(server) {
+					$(".modalName").html(server.name);
+					$(".modalPhone").html(server.phone);
+					$(".modalEmail").html(server.email);
+					$(".modalRegion").html(server.region);
+					
+					let modalPosition = server.position;
+					switch (server.position) {
+					case "firstBase":
+						modalPosition = "1루수";
+						break;
+					case "secondBase":
+						modalPosition = "2루수";
+						break;
+					case "thirdBase":
+						modalPosition = "3루수";
+						break;
+					case "catcher":
+						modalPosition = "포수";
+						break;
+					case "pitcher":
+						modalPosition = "투수";
+						break;
+					case "leftFielder":
+						modalPosition = "좌익수";
+						break;
+					case "rightFielder":
+						modalPosition = "우익수";
+						break;
+					case "centerFielder":
+						modalPosition = "중견수";
+						break;
+					case "shortStop":
+						modalPosition = "유격수";
+						break;
+					}
+					$(".position").html(modalPosition);
+				}
+		})
+	})
+
+	// 용병 등록 작은 창
+
+	$(".registerSoldierBtn").on("click",function() {
+		if ($(".dropdownBtn").text() == "") {
+			alert("로그인이 필요한 서비스입니다.");
+		} else {
+			window.open('registerSoldier', '용병 등록', "width=330, height=460"
+					+ ", left = " + Math.ceil(( window.screen.width - 330 )/2)
+					+ ", top = " + Math.ceil(( window.screen.height - 460 )/2));
+		}
+	})
+
+	// 용병 로그 작은 창
+
+	$(".soldierLogBtn").on("click", function() {
+		if ($(".dropdownBtn").text() == "") {
+			alert("로그인이 필요한 서비스입니다.");
+		} else {
+			window.open('soldierLog', '용병 로그', "width=500, height=600"
+					+ ", left = " + Math.ceil(( window.screen.width - 500 )/2) 
+					+ ", top = " + Math.ceil(( window.screen.height - 650 )/2));
+		}
+	})
+
+});
 </script>
 </head>
 <body>
@@ -535,10 +420,10 @@
 			<!-- 용병 등록 -->
 			<div class="soldier_box">
 				<button class="registerSoldierBtn">
-					<img class="plusIcon" src="/images/plusIcon.png" /> 용병 등록
+					<img class="plusIcon" src="/images/plusIcon.png" /><span>용병 등록</span>
 				</button>
 				<button class="soldierLogBtn">
-					<img class="baseballIcon" src="/images/baseball.png" /> 용병 로그
+					<img class="baseballIcon" src="/images/baseball.png" /><span>용병 로그</span>
 				</button>
 			</div>
 

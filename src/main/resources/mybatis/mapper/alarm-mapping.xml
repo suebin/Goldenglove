@@ -4,8 +4,8 @@
 	<select id="selectAlarm" resultType="alarmDTO">
 		select * from alarm where ((homeName = #{homeName} and awayName IS NOT NULL) 
 									or awayName = #{homeName}
-									or teamLeader = #{homeName}
-									or teamMember = #{homeName}) 
+									or teamLeader = #{name}
+									or teamMember = #{name}) 
 		and alarmDate >= DATE_SUB(NOW(), INTERVAL 7 DAY);
 	</select>
 
