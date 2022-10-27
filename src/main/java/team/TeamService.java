@@ -185,4 +185,21 @@ public class TeamService {
 		}
 		return tier;
 	}
+
+//	팀장 변경
+	public String updateTeamLeader(HashMap<String, String> teamLeader) {
+		int result = teamDao.updateTeamLeaderSelect(teamLeader);
+		if (result >= 1) {
+			teamDao.updateTeamLeader(teamLeader);
+			return "변경 되었습니다.";
+		} else {
+			return "아이디를 확인해주세요.";
+		}
+	}
+
+//	팀 삭제
+	public void deleteTeam(String id) {
+		teamDao.deleteTeam(id);
+		teamDao.deleteTeamUser(id);
+	}
 }

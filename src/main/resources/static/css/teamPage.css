@@ -31,7 +31,13 @@
 	justify-content: space-between;	
 }
 
-#updateTeamBtn {
+.teamBtnBox {
+	width: 180px;
+	display: flex;
+	justify-content: space-between;	
+}
+
+.teamBtn {
 	align-self: baseline;
     margin-top: 5px;
     padding: 12px 20px;
@@ -46,11 +52,11 @@
     transition: all 0.3s;
 }
 
-#updateTeamBtn:hover {
+.teamBtn:hover {
 	transform: scale(1.05);
 }
 
-#passwordInputTeam input {
+.passwordInputTeam input {
 	margin: 0 5px;
     width: 100%;
     max-width: 200px;
@@ -62,11 +68,11 @@
     outline: none;
 }
 
-#passwordInputTeam input:focus {
+.passwordInputTeam input:focus {
 	background: var(--point-color);
 }
 
-#passwordInputTeam button {
+.passwordInputTeam button {
 	background: #555;
     border: none;
     color: #fff;
@@ -75,7 +81,7 @@
 	cursor: pointer;
 }
 
-#passwordInputTeam button:hover {
+.passwordInputTeam button:hover {
 	opacity: 0.8;
 }
 

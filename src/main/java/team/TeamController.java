@@ -24,6 +24,28 @@ public class TeamController {
 	@Autowired
 	UserService userService;
 
+//	팀 삭제
+	@ResponseBody
+	@RequestMapping("/deleteTeam")
+	public String deleteTeam(String id, HttpServletRequest request) {
+		teamService.deleteTeam(id);
+		UserDTO user = userService.selectUser(id);
+		HttpSession session = request.getSession();
+		session.setAttribute("loginInfo", user);
+		return "{\"result\":\"success\"}";
+	}
+
+//	팀장 변경
+	@ResponseBody
+	@RequestMapping("/updateTeamLeader")
+	public String updateTeamLeader(String id, String teamName) {
+		HashMap<String, String> teamLeader = new HashMap<>();
+		teamLeader.put("id", id);
+		teamLeader.put("teamName", teamName);
+		String result = teamService.updateTeamLeader(teamLeader);
+		return "{\"result\":\"" + result + "\"}";
+	}
+
 //	팀원등록
 	@ResponseBody
 	@RequestMapping("/teamResult")
@@ -59,7 +81,9 @@ public class TeamController {
 				UserDTO[] allMember = teamService.selectAllMember(teamId);
 				UserDTO[] teamRegisterInfo = teamService.selectRegisterInfoUser(teamId);
 				UserDTO[] registerUser = teamService.selectRegisterUser(teamId);
+				int memberCount = teamService.selectAllMember(teamId).length;
 
+				request.setAttribute("memberCount", memberCount);
 				request.setAttribute("registerUser", registerUser);
 				request.setAttribute("allMember", allMember);
 				request.setAttribute("teamRegisterInfo", teamRegisterInfo);

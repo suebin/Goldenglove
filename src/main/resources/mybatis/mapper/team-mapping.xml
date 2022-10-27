@@ -150,4 +150,20 @@
 	<select id="selectRank" resultType="String">
 		select teamName from team order by winningRate desc, winCount desc;
 	</select>
+	
+	<!-- 팀장 변경 -->
+	<update id="updateTeamLeader" parameterType="HashMap">
+		update team set teamId = #{id} where teamName = #{teamName};
+	</update>
+	<select id="updateTeamLeaderSelect" parameterType="HashMap" resultType="int">
+		select count(*) from user where teamName = #{teamName} and id = #{id}
+	</select>
+	
+	<!-- 팀 삭제 -->
+	<update id="deleteTeamUser" parameterType="String">
+		update user set teamName = NULL where id = #{id};
+	</update>
+	<delete id="deleteTeam" parameterType="String">
+		delete from team where teamId = #{id};
+	</delete>
 </mapper>
