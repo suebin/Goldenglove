@@ -126,7 +126,7 @@ $(document).ready(function() {
 	})
 	//삭제
 	$(document).on("click", ".inputBox div div button",function(e) {
-		if($(this).html() != '${loginInfo.getId()} ') {
+		if($(this).html() != '${loginInfo.getId()}') {
 			if(confirm("삭제 하시겠습니까?")) {
 				$(this).remove();
 			}			

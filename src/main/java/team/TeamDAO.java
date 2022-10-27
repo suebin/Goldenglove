@@ -72,8 +72,7 @@ public interface TeamDAO {
 
 //	seq조회
 	String selectSeq(HashMap idTeamName);
-	
-	
+
 	// 가입 신청 알림
 	void applyJoinAlarm(String id, String teamName, String alarmDate);
 
@@ -98,4 +97,14 @@ public interface TeamDAO {
 	
 //	팀 순위 리스트
 	String[] selectRank();
+
+//	팀장변경
+	void updateTeamLeader(HashMap teamLeader);
+
+	int updateTeamLeaderSelect(HashMap teamLeader);
+
+//	팀 삭제
+	void deleteTeamUser(String id);
+
+	void deleteTeam(String id);
 }

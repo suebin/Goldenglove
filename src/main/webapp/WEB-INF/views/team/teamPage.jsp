@@ -20,9 +20,16 @@ $(document).ready(function() {
 	
 	$("#updateTeamBtn").on("click", function() {
 		$("#passwordInputTeam").removeAttr("hidden");
+		$("#passwordInputTeamLeader").attr("hidden", "hidden");
 		$("#passwordTeam").focus();
 	})
+	$("#updateTeamLeaderBtn").on("click", function() {
+		$("#passwordInputTeamLeader").removeAttr("hidden");
+		$("#passwordInputTeam").attr("hidden", "hidden");
+		$("#passwordTeamLeader").focus();
+	})
 	
+	//팀탈퇴
 	const info = "${loginInfo.password}";
 	$("#submitFormTeam").on("submit", function(e) {
 		if ("${loginInfo.password}" == $("#passwordTeam").val()) {
@@ -44,6 +51,47 @@ $(document).ready(function() {
 				data : {"id" : "${loginInfo.getId()}", "teamName" : "${loginInfo.getTeamName()}", "alarmDate" : alarmDate},
 				dataType : "json",
 				success : function(server) {
+				}
+			})
+		}
+	})
+	
+	//주장변경
+	$("#submitFormTeamLeader").on("submit", function(e) {
+		if ("${loginInfo.password}" == $("#passwordTeamLeader").val()) {
+			e.preventDefault();
+			const newLeader = prompt("새로운 주장의 아이디를 입력해주세요");
+			if(newLeader != null && newLeader.trim() != "") {
+				$.ajax({
+					url : "updateTeamLeader",
+					data : {"id" : newLeader, "teamName" : "${loginInfo.getTeamName()}"},
+					dataType : "json",
+					success : function(server) {
+						alert(server.result);
+						location.reload();
+					}
+				})
+			} else {
+				alert("취소")
+			}
+		} else {
+			e.preventDefault();
+			$("#checkResultTeamLeader").html("비밀번호를 확인해주세요.");
+			$("#checkResultTeamLeader").attr("class", "red");
+			$("#passwordTeamLeader").val("");
+			$("#passwordTeamLeader").focus();
+		}
+	})
+	
+	//팀삭제
+	$("#deleteTeamBtn").on("click", function() {
+		if(confirm("팀을 삭제하시겠습니까?")) {
+			$.ajax({
+				url : "deleteTeam",
+				data : {"id" : "${loginInfo.getId()}"},
+				dataType : "json",
+				success : function(server) {
+					location.reload();
 				}
 			})
 		}
@@ -94,9 +142,17 @@ $(document).ready(function() {
 				
 				<% String teamId = (String)request.getAttribute("teamId");
 				String loginId = (String)request.getAttribute("loginId");
+				int memberCount = (Integer)request.getAttribute("memberCount");
 				
 				if(teamId.equals(loginId)) { %>
-					<button id="updateTeamBtn">팀 수정</button>
+					<div class="teamBtnBox">
+						<button id="updateTeamBtn" class="teamBtn">팀 수정</button>
+						<%if(memberCount == 1) {%>
+							<button id="deleteTeamBtn" class="teamBtn">팀 삭제</button>						
+						<%} else {%>
+							<button id="updateTeamLeaderBtn" class="teamBtn">주장 변경</button>
+						<%} %>
+					</div>
 				<%}	%>
 			</div>
 			<div class="cardBox teamCard">
@@ -112,13 +168,21 @@ $(document).ready(function() {
 			</div>
 		</div>
 		
-		<div id="passwordInputTeam" hidden>
+		<div id="passwordInputTeam" class="passwordInputTeam" hidden>
 			<form id="submitFormTeam" action="teamUpdate">
 				<span>비밀번호</span>
 				<input type="password" id="passwordTeam">
 				<button id="submitBtnTeam">확인</button>
 			</form>
 			<span id="checkResultTeam"></span>
+		</div>
+		<div id="passwordInputTeamLeader" class="passwordInputTeam" hidden>
+			<form id="submitFormTeamLeader">
+				<span>비밀번호</span>
+				<input type="password" id="passwordTeamLeader">
+				<button id="submitBtnTeamLeader">확인</button>
+			</form>
+			<span id="checkResultTeamLeader"></span>
 		</div>
 		<% String teamId2 = (String)request.getAttribute("teamId");
 			String loginId2 = (String)request.getAttribute("loginId");

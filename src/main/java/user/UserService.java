@@ -59,4 +59,9 @@ public class UserService {
 	public String selectTeamName(String name) {
 		return userDao.selectTeamName(name);
 	}
+
+//	회원탈퇴
+	public void deleteUser(String id) {
+		userDao.deleteUser(id);
+	}
 }

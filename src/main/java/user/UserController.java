@@ -24,6 +24,14 @@ public class UserController {
 	@Autowired
 	TeamService teamService;
 
+//	회원탈퇴
+	@ResponseBody
+	@RequestMapping("/deleteUser")
+	public String deleteUser(String id) {
+		userService.deleteUser(id);
+		return "{\"result\":\"success\"}";
+	}
+
 //	팀 랭크
 	@ResponseBody
 	@RequestMapping("/tierResult")

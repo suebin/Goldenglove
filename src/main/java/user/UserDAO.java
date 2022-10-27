@@ -39,4 +39,7 @@ public interface UserDAO {
 	String selectTeamName(String name);
 
 	UserDTO selectTeamNameId(String id);
+
+//	회원탈퇴
+	void deleteUser(String id);
 }

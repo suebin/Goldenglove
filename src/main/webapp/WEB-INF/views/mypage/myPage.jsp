@@ -44,6 +44,24 @@ $(document).ready(function() {
 			$("#passwordUser").focus();
 		}
 	})
+	
+	//회원탈퇴
+	$("#deleteUserBtn").on("click", function() {
+		if(confirm("탈퇴하시겠습니까?")) {
+			if("${loginInfo.teamName}" != "") {
+				alert("팀 탈퇴 먼저 진행해주세요.");
+			} else {
+				$.ajax({
+					url : 'deleteUser',
+					data : {'id' : "${loginInfo.id}"},
+					dataType : 'json',
+					success : function(server) {
+						location.href="logout";
+					}
+				})
+			}
+		}
+	})
 });
 </script>
 </head>
@@ -76,6 +94,7 @@ $(document).ready(function() {
 				<button id="submitBtnUser" hidden>확인</button>
 			</form>
 			<button id="updateUserBtn" class="updateBtn">정보 수정</button>
+			<button id="deleteUserBtn" class="updateBtn">회원 탈퇴</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
