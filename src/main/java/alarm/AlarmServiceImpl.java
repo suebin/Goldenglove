@@ -10,8 +10,8 @@ public class AlarmServiceImpl implements AlarmService {
 	@Autowired
 	AlarmDAO dao;
 	
-	public List<AlarmDTO> selectAlarm(String homeName) {
-		return dao.selectAlarm(homeName);
+	public List<AlarmDTO> selectAlarm(String homeName, String name) {
+		return dao.selectAlarm(homeName, name);
 	}
 
 	public int checkAlarm(int seq) {

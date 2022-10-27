@@ -15,7 +15,7 @@ $(document).ready(function() {
 	// 알람 내용 가져오기	
 	$.ajax ({
 		url: "alarm",
-		data:{ homeName: "${loginInfo.getTeamName()}" },
+		data:{ homeName: "${loginInfo.getTeamName()}", name: "${loginInfo.getName()}"},
 		type:"post",
 		dataType:"json",
 		success: function(res) {

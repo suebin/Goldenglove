@@ -50,6 +50,12 @@
 	margin: 30px 0px;
 }
 
+@media screen and (max-width: 768px) {
+	.soldier_boxes {
+	    flex-direction: column;
+	}
+}
+
 
 input#dateSelector {
 	padding-left: 7px;
@@ -63,6 +69,7 @@ input#dateSelector {
 	font-family: "비트로 프라이드 OTF";
 	cursor: pointer;
 	margin-right: 4px;
+    margin-bottom: 10px
 }
 
 .searchSoldierBtn {
@@ -78,7 +85,14 @@ input#dateSelector {
 	height: 15px;
 }
 
+.soldier_box {
+	display: flex;
+    align-items: flex-start;
+}
+
 .registerSoldierBtn, .soldierLogBtn {
+	display: flex;
+	align-items: center;
 	border: none;
 	background-color: white;
 	font-size: 19px;
@@ -88,6 +102,16 @@ input#dateSelector {
 
 .registerSoldierBtn:hover, .soldierLogBtn:hover {
 	font-size: 21px;
+}
+
+.registerSoldierBtn img , .soldierLogBtn img {
+	margin-right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+	.registerSoldierBtn, .soldierLogBtn {
+		margin-top: 5px;
+	}
 }
 
 
@@ -293,5 +317,11 @@ input#dateSelector {
 	.modalCon li span:first-child {
 		min-width: 80px;
 	}
-	
+}
+
+
+@media (max-width: 400px) {
+	.possibleDate span {
+		font-size: 14px;
+	}
 }
