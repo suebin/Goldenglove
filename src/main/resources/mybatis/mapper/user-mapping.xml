@@ -56,4 +56,9 @@
 		select * from user where id = #{id};
 	</select>
 	
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteUser" parameterType="String">
+		delete from user where id = #{id};
+	</delete>
+	
 </mapper>
