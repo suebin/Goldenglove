@@ -61,4 +61,10 @@ public interface SoldierDAO {
 	int updateMateTeamAceptance(int seq);
 	int updateFinalMateTeam(int seq, String mateTeam);
 
+	
+	// 스카우트 제의 알림
+	void requestScoutAlarm(String teamName, String soldierName);
+	
+	// 스카우트 수락 알림
+	void acceptScoutAlarm(String teamName, String soldierName);
 }

@@ -35,7 +35,7 @@ $(document).ready(function() {
 			if (update) {
 				$.ajax({
 					url : 'mateTeamAceptance',
-					data : {'seq' : $("#mateTeamList_seq" + i).val(), 'mateTeam' : $("#mateTeamList_mateTeam" + i).val()},
+					data : {'seq' : $("#mateTeamList_seq" + i).val(), 'mateTeam' : $("#mateTeamList_mateTeam" + i).val(), 'soldierName' : "${loginInfo.getName()}"},
 					type : 'post',
 					dataType : 'json',
 					success : function(data) {

@@ -155,58 +155,67 @@ $(document).ready(function() {
 			<div class="inputBoxCon">
 				<div class="inputBox" style="background-image: url('images/playground.png'); background-size: 100% 100%;">
 					<div class="firstBase">
+						<span class="positionName">First Base</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="firstBase">
 						<input type="button" value="검색" />
 						<div id="firstBase"><button><%=modiPosition[0]%></button></div>
 						<p></p>
 					</div>
 					<div class="secondBase">
+						<span class="positionName">Second Base</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="secondBase">
 						<input type="button" value="검색" />
 						<div id="secondBase"><button><%=modiPosition[1]%></button></div>
 						<p></p>
 					</div>
 					<div class="thirdBase">
+						<span class="positionName">Third Base</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="thirdBase">
 						<input type="button" value="검색" />
 						<div id="thirdBase"><button><%=modiPosition[2]%></button></div>
 						<p></p>
 					</div>
 					<div class="catcher">
+						<span class="positionName">Catcher</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="catcher">
 						<input type="button" value="검색" />
 						<div id="catcher"><button><%=modiPosition[3]%></button></div>
 						<p></p>
 					</div>
 					<div class="pitcher">
+						<span class="positionName">Pitcher</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="pitcher">
 						<input type="button" value="검색" />
 						<div id="pitcher"><button><%=modiPosition[4]%></button></div>
 						<p></p>
 					</div>
 					<div class="leftFielder">
+						<span class="positionName">Left Fielder</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="leftFielder">
 						<input type="button" value="검색" />
 						<div id="leftFielder"><button><%=modiPosition[5]%></button></div>
 						<p></p>
 					</div>
 					<div class="rightFielder">
+						<span class="positionName">Right Fielder</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="rightFielder">
 						<input type="button" value="검색" />
 						<div id="rightFielder"><button><%=modiPosition[6]%></button></div>
 						<p></p>
 					</div>
 					<div class="centerFielder">
+						<span class="positionName">Center Fielder</span>
 						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="centerFielder">
 						<input type="button" value="검색" />
 						<div id="centerFielder"><button><%=modiPosition[7]%></button></div>
 						<p></p>
 					</div>
 					<div class="shortStop">
-							<input type="text" autocomplete="off" placeholder="전화번호 입력" name="shortStop">
-							<input type="button" value="검색" />
-							<div id="shortStop"><button><%=modiPosition[8]%></button></div>
-							<p></p>
+						<span class="positionName">Short Stop</span>
+						<input type="text" autocomplete="off" placeholder="전화번호 입력" name="shortStop">
+						<input type="button" value="검색" />
+						<div id="shortStop"><button><%=modiPosition[8]%></button></div>
+						<p></p>
 					</div>
 				</div>
 			</div>

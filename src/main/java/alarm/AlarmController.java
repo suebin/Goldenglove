@@ -16,14 +16,14 @@ public class AlarmController {
 
 	@ResponseBody
 	@RequestMapping("/alarm")
-	public List<AlarmDTO> selectAlarm(String homeName, String name) {
-		List<AlarmDTO> list = service.selectAlarm(homeName, name);
+	public List<AlarmDTO> selectAlarm(String teamName, String name) {
+		List<AlarmDTO> list = service.selectAlarm(teamName, name);
 		return list;
 	}
 
 	@ResponseBody
 	@RequestMapping("/checkAlarm")
-	public void checkAlarm(String alarmSeq, String homeName, AlarmDTO dto) {
+	public void checkAlarm(String alarmSeq) {
 		int seq = Integer.parseInt(alarmSeq);
 		service.checkAlarm(seq);
 	}

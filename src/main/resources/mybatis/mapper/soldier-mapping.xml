@@ -89,8 +89,16 @@
 	</update>
 	
 	
+	<!-- 스카우트 제의 알림 -->
+	<insert id="requestScoutAlarm" parameterType="String">
+		insert into alarm(alarmDate, requestScout, scoutTeam, teamMember) 
+		values (date_format(now(), '%Y.%m.%d'), 1, #{teamName}, #{soldierName});
+	</insert>
 	
-	
-	
+	<!-- 스카우트 수락 알림 -->
+	<insert id="acceptScoutAlarm" parameterType="String">
+		insert into alarm(alarmDate, acceptScout, scoutTeam, teamMember) 
+		values (date_format(now(), '%Y.%m.%d'), 1, #{teamName}, #{soldierName});
+	</insert>
 	
 </mapper>

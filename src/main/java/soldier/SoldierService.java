@@ -96,5 +96,13 @@ public class SoldierService {
 	}
 	
 	
-	 
+	// 스카우트 제의 알림
+	public void requestScoutAlarm(String teamName, String soldierName) {
+		dao.requestScoutAlarm(teamName, soldierName);
+	}
+	
+	// 스카우트 수락 알림
+	public void acceptScoutAlarm(String teamName, String soldierName) {
+		dao.acceptScoutAlarm(teamName, soldierName);
+	}
 }

@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -234,7 +233,7 @@ public class SoldierController {
 	
 	@ResponseBody
 	@RequestMapping("/addSoldier")
-	public String addSoldier(int seq, String soldierTeamName, HttpServletRequest request) {
+	public String addSoldier(int seq, String soldierTeamName, HttpServletRequest request, String soldierName) {
 		
 		// 팀 주장인지 확인을 한다.
 		
@@ -262,6 +261,9 @@ public class SoldierController {
 			
 			
 				if(updateMateTeam == 1) {
+					// 스카우트 제의 알림
+					service.requestScoutAlarm(user.getTeamName(), soldierName);
+					
 					result = "스카우트 제의를 해당 용병에게 보냈습니다. 스카우트 제의 수락 여부는 용병 로그에서 확인해주세요.";
 				}
 				else {
@@ -283,10 +285,13 @@ public class SoldierController {
 	
 		@ResponseBody
 		@RequestMapping("/mateTeamAceptance")
-		public String mateTeamAceptance(int seq, String mateTeam) {
+		public String mateTeamAceptance(int seq, String mateTeam, String soldierName) {
 			
 			int updatecount1 = service.updateMateTeamAceptance(seq);
 			int updatecount2 = service.updateFinalMateTeam(seq, mateTeam);
+			
+			// 스카우트 수락 알림
+			service.acceptScoutAlarm(mateTeam, soldierName);
 
 			String result="";
 			

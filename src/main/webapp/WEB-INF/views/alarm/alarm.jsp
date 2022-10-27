@@ -15,7 +15,7 @@ $(document).ready(function() {
 	// 알람 내용 가져오기	
 	$.ajax ({
 		url: "alarm",
-		data:{ homeName: "${loginInfo.getTeamName()}", name: "${loginInfo.getName()}"},
+		data:{ teamName: "${loginInfo.getTeamName()}", name: "${loginInfo.getName()}"},
 		type:"post",
 		dataType:"json",
 		success: function(res) {
@@ -60,9 +60,19 @@ $(document).ready(function() {
 				} else if (res[i].cancleJoin == 1 && res[i].requestJoin == 1 && res[i].teamLeader == "${loginInfo.getName()}") {
 					result = "<p class='teampage'>[거절] <strong>" + res[i].teamMember + "</strong> 님이 팀 가입 요청을 거절하였습니다.</p>";
 		
+					
+				// 용병 관련 알림	
+				} else if (res[i].requestScout == 1 && res[i].teamMember == "${loginInfo.getName()}") {
+					result = "<p class='getSoldier'>[제의] <strong>" + res[i].scoutTeam + "</strong> 팀에서 용병으로 스카우트하였습니다.</p>";
+					
+				} else if (res[i].acceptScout == 1 && res[i].scoutTeam == "${loginInfo.getTeamName()}") {
+					result = "<p class='getSoldier'>[수락] <strong>" + res[i].teamMember + "</strong> 님이 용병 스카우트를 수락하였습니다.</p>";
+
+					
 				} else {
 					result = "";
 				}
+				
 				if (res[i].checked == 1 && result != "") {
 					$(".list").prepend(
 						"<li class='li clicked'>"
@@ -141,6 +151,9 @@ $(document).ready(function() {
 			
 		} else if ($(this).children("p").hasClass("teampage")) {
 			location.href = "teampage";
+
+		} else if ($(this).children("p").hasClass("getSoldier")) {
+			location.href = "getSoldier";
 		}
 		
 		$.ajax ({

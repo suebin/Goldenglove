@@ -151,6 +151,15 @@ input[type=text]:focus {
 	margin-right: 6px;
 }
 
+.positionName {
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background: navajowhite;
+    border-radius: 5px;
+}
+
 .firstBase {
 	right: 20%;
 	bottom: 30%;

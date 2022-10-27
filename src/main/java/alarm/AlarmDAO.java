@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository("AlarmDAO")
 public interface AlarmDAO {
-	List<AlarmDTO> selectAlarm(String homeName, String name); 
+	List<AlarmDTO> selectAlarm(String teamName, String name); 
 	int checkAlarm(int seq); 
 }
