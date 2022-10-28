@@ -85,11 +85,17 @@ $(document).ready(function() {
 			}
 		})
 	})
+	
+	//모달 한개만
+	$(document).on("click", ".modalLink${user.name }", function() {
+		$(".jquery-modal").attr("hidden", "hidden");
+		$("#ex1${user.name }").parent().removeAttr("hidden");
+	})
 });
 </script>
 </head>
 <body>
-<div id="ex1" class="modal" style="z-index:1000;">
+<div id="ex1${user.name }" class="modal" style="z-index:1000;">
 	<ul class="modalCon">
 		<li><span>이름 </span><span class="modalName"></span></li>
 		<li><span>연락처 </span><span class="modalPhone"></span></li>
@@ -101,7 +107,7 @@ $(document).ready(function() {
 		<a href="#" rel="modal:close">Close</a>
 	</div>
 </div>
-<a class="modalLink" href="#ex1" rel="modal:open">
+<a class="modalLink modalLink${user.name }" href="#ex1${user.name }" rel="modal:open">
 	<div class="cardCon">
 		<div class="card__border"></div>
 		<div class="card__border-line"></div>
