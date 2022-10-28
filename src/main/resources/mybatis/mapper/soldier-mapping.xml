@@ -77,6 +77,20 @@
 	<select id="selectOffer" parameterType="String" resultType="soldierdto">
 		select * from soldier where soldierName=#{userName} and acceptance is null order by possibleDate asc
 	</select>
+
+	<select id="selectOfferAcceptance" parameterType="String" resultType="soldierdto">
+		select * from soldier where (soldierName=#{userName} or finalMateTeam=#{userTeamName}) 
+									and acceptance = 1 
+									and possibleDate >= date_format(now(), '%Y년 %m월 %d일') 
+									order by possibleDate asc
+	</select>
+	
+	<select id="selectOfferRequest" parameterType="String" resultType="soldierdto">
+	   select * from soldier where mateTeam like CONCAT('%', #{userTeamName}, ',' ,'%')
+									and acceptance is null
+									and possibleDate >= date_format(now(), '%Y년 %m월 %d일') 
+									order by possibleDate asc
+	</select>
 	
 	<!-- 용병 로그 (스카우트 제의 수락하기 버튼) -->
 	

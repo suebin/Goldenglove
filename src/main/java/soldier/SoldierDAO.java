@@ -55,6 +55,8 @@ public interface SoldierDAO {
 	
 	List<SoldierDTO> selectMySoldierLog(String userName);
 	List<SoldierDTO> selectOffer(String userName);
+	List<SoldierDTO> selectOfferAcceptance(String userName, String userTeamName);
+	List<SoldierDTO> selectOfferRequest(String userTeamName);
 	
 	// 용병 로그 (스카우트 제의 수락하기 버튼)
 	

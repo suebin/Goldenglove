@@ -99,7 +99,7 @@ input[type=text]:focus {
 	margin: 30px 0;
 	padding: 30px 0;
 	width: 100%;
-	overflow-x: scroll;	
+	overflow-x: auto;	
 }
 
 .inputBoxCon::-webkit-scrollbar {

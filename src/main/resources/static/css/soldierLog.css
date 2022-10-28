@@ -1,10 +1,14 @@
 @charset "UTF-8";
 
+section {
+	padding: 10px 0;
+}
+
 .title {
 	margin-top: 20px;
 	text-align: center;
 	color: #00912e;
-
+	padding-bottom: 0;
 }
 
 .small_title {
@@ -34,6 +38,7 @@
 
 .mateTeamList {
 	justify-content: space-between;
+	align-items: center;
 }
 
 .mateTeamList1 {
@@ -54,10 +59,10 @@
 	margin-top: 4px;
 }
 
-.none_myList, .none_mateTeamList {
+.none_myList, .none_mateTeamList, .none_mateTeamList_ {
 	text-align: center;
-	margin-top: 40px;
-	margin-bottom: 30px;
+	margin: 40px 0;
+    font-size: 14px;
 }
 
 .calendarIcon {
@@ -75,5 +80,15 @@
 	border: 0px;
 	border-radius: 10px;
 	cursor:pointer;
+}
+
+.mateTeamAceptance {
+	padding: 12px 10px;
+	background-color: var(--main-color);
+	font: 13px "비트로 프라이드 OTF";
+	font-weight: bold;
+	color: #fff;
+	border: 0px;
+	border-radius: 10px;
 }
 

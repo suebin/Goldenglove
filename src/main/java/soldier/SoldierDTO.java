@@ -13,7 +13,7 @@ public class SoldierDTO {
 	float winningRate;
 	int winCount;
 	int loseCount;
-	String mateTeam;
+	String mateTeam, finalMateTeam;
 	int acceptance;
 	
 	
@@ -94,6 +94,12 @@ public class SoldierDTO {
 	}
 	public void setMateTeam(String mateTeam) {
 		this.mateTeam = mateTeam;
+	}
+	public String getFinalMateTeam() {
+		return finalMateTeam;
+	}
+	public void setFinalMateTeam(String finalMateTeam) {
+		this.finalMateTeam = finalMateTeam;
 	}
 	public int getAcceptance() {
 		return acceptance;

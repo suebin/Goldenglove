@@ -32,9 +32,17 @@
 }
 
 .teamBtnBox {
-	width: 180px;
+	width: 170px;
 	display: flex;
 	justify-content: space-between;	
+}
+
+@media screen and (max-width: 500px) {
+	.teamBtnBox {
+	    margin-left: 10px;
+	    min-width: 120px;
+	    max-width: 120px;
+	}
 }
 
 .teamBtn {
@@ -54,6 +62,12 @@
 
 .teamBtn:hover {
 	transform: scale(1.05);
+}
+
+@media screen and (max-width: 500px) {
+	.teamBtn {
+		padding: 10px;
+	}
 }
 
 .passwordInputTeam input {

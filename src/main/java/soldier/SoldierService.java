@@ -85,6 +85,12 @@ public class SoldierService {
 	public List<SoldierDTO> selectOffer(String userName) {
 		return dao.selectOffer(userName);
 	}
+	public List<SoldierDTO> selectOfferAcceptance(String userName, String userTeamName) {
+		return dao.selectOfferAcceptance(userName, userTeamName);
+	}
+	public List<SoldierDTO> selectOfferRequest(String userTeamName) {
+		return dao.selectOfferRequest(userTeamName);
+	}
 	
 	// 용병 로그 (스카우트 제의 수락하기 버튼)
 	

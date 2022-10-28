@@ -1,6 +1,7 @@
 package soldier;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -219,10 +220,19 @@ public class SoldierController {
 		
 		List<SoldierDTO> list1 = service.selectMySoldierLog(userName); 
 		List<SoldierDTO> list2 = service.selectOffer(userName);
+		List<SoldierDTO> list3 = service.selectOfferAcceptance(userName, userTeamName);
+		List<SoldierDTO> list4 = new ArrayList();
+		
+		if(userTeamName != null) {
+			list4 = service.selectOfferRequest(userTeamName);
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("list1", list1);
 		mv.addObject("list2", list2);
+		mv.addObject("list3", list3);
+		mv.addObject("list4", list4);
+		mv.addObject("teamId", teamId);
 		mv.setViewName("soldier/soldierLog");
 		
 		return mv;

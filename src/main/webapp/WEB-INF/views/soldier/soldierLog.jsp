@@ -1,3 +1,4 @@
+<%@page import="user.UserDTO"%>
 <%@page import="soldier.SoldierDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.time.LocalDateTime"%>
@@ -20,9 +21,10 @@ $(document).ready(function() {
 		$(".none_myList").append('등록 내역이 없습니다');
 	}
 	if($(".mateTeamList1").text() == "") {
+		$(".none_mateTeamList").attr('style', 'display: block');
 		$(".none_mateTeamList").append('제의 받은 내역이 없습니다');
 	}
-	
+
 
 	// 수락하기 버튼
 
@@ -69,85 +71,158 @@ String today = year + "년 " + month + "월 " + day + "일";
 
 	<h2 class="title">용병 로그</h2>
 	<div class="confix">
-	<div class="small_title">
-		<h3>스카우트 제의</h3>
-		<span>해당 날짜에 출전할 수 있도록 스카우트 제의를 수락해주세요 !</span>
-	</div>
 	
-	<!-- 스카우트 제의  -->
-	<div>
-		<%
-		List<SoldierDTO> list2 = (List<SoldierDTO>)request.getAttribute("list2");
-		
-		for(SoldierDTO dto : list2) {
+		<section>
+			<div class="small_title">
+				<h3>받은 스카우트 제의</h3>
+				<span>해당 날짜에 출전할 수 있도록 스카우트 제의를 수락해주세요 !</span>
+			</div>
 			
-				String mateTeam = dto.getMateTeam();
-				String mateTeamDate = dto.getPossibleDate();
-				int seq = dto.getSeq();
+			<!-- 스카우트 제의  -->
+			<div>
+				<%
+				List<SoldierDTO> list2 = (List<SoldierDTO>)request.getAttribute("list2");
 				
-				int myYear =  Integer.parseInt(mateTeamDate.substring(0, 4));
-				int myMonth = Integer.parseInt(mateTeamDate.substring(6, 8));
-				int myDay = Integer.parseInt(mateTeamDate.substring(10, 12));
-				
-				// 시간이 지나지 않은 리스트만 보여준다.
-				
-				if (myYear >= year && myMonth >= month && myDay >= day || myYear >= year && myMonth > month || myYear > year) {
-				
-				if (mateTeam != null) {
-				
-					mateTeam = mateTeam.substring(0, mateTeam.length()-1);
-					String[] mateTeamArr = mateTeam.split(",");
+				for(SoldierDTO dto : list2) {
 					
-					for (int i=0; i<mateTeamArr.length; i++) {				
-					
-					mateTeam = mateTeamArr[i]; %>
-					
-					<div class="mateTeamList">
-						<div class="mateTeamList1">
-							<div class="mateTeam"><%= mateTeam %></div>	
-							<div class="mateTeam_possibleDate"><%= mateTeamDate %></div>
+						String mateTeam = dto.getMateTeam();
+						String mateTeamDate = dto.getPossibleDate();
+						int seq = dto.getSeq();
+						
+						int myYear =  Integer.parseInt(mateTeamDate.substring(0, 4));
+						int myMonth = Integer.parseInt(mateTeamDate.substring(6, 8));
+						int myDay = Integer.parseInt(mateTeamDate.substring(10, 12));
+						
+						// 시간이 지나지 않은 리스트만 보여준다.
+						
+						if (myYear >= year && myMonth >= month && myDay >= day || myYear >= year && myMonth > month || myYear > year) {
+						
+						if (mateTeam != null) {
+						
+							mateTeam = mateTeam.substring(0, mateTeam.length()-1);
+							String[] mateTeamArr = mateTeam.split(",");
+							
+							for (int i=0; i<mateTeamArr.length; i++) {				
+							
+							mateTeam = mateTeamArr[i]; %>
+							
+							<div class="mateTeamList">
+								<div class="mateTeamList1">
+									<div class="mateTeam"><%= mateTeam %></div>	
+									<div class="mateTeam_possibleDate"><%= mateTeamDate %></div>
+								</div>
+								<div class="mateTeamList2">
+									<c:set var="a" value="${a+1}" />
+									<button class="mateTeamAceptanceBtn" id="mateTeamAceptanceBtn${a}">수락하기</button>
+								</div>	
+								<input type="hidden" id="mateTeamList_seq${a}" value=<%= seq %>>
+								<input type="hidden" id="mateTeamList_mateTeam${a}" value=<%= mateTeam %>>
+							</div>
+					<% 		}
+						}
+						}
+					}%>		
+							
+					<div class="none_mateTeamList" style="display:none;"></div>
+			</div>
+		</section>
+	
+		<section>
+			<div class="small_title">
+				<h3>수락한 스카우트 제의</h3>
+				<span>경기 일정을 꼭 지켜주세요 !</span>
+			</div>
+			
+			<c:forEach items="${ list3 }" var="list3">
+				<c:choose>
+					<c:when test="${ list3.soldierName eq loginInfo.getName() }">
+						<!-- 수락한 스카우트 제의  -->
+						<div class="mateTeamList">
+							<div class="mateTeamList1_1">
+								<div class="mateTeam">${ list3.finalMateTeam }</div>	
+								<div class="mateTeam_possibleDate">${ list3.possibleDate }</div>
+							</div>
 						</div>
-						<div class="mateTeamList2">
-							<c:set var="a" value="${a+1}" />
-							<button class="mateTeamAceptanceBtn" id="mateTeamAceptanceBtn${a}">수락하기</button>
-						</div>	
-						<input type="hidden" id="mateTeamList_seq${a}" value=<%= seq %>>
-						<input type="hidden" id="mateTeamList_mateTeam${a}" value=<%= mateTeam %>>
-					</div>
-			<% 		}
-				}
-				}
-			}%>		
-					
-			<div class="none_mateTeamList"></div>
-	</div>
-
-
-	
-	<div class="small_title">
-	<h3>용병 등록 내역</h3>
-	<span>날짜가 지나지 않은 등록 내역을 보여드립니다</span>
-	</div>
-	
-	<!-- 용병 등록 날짜  -->
-	
-	<div>
-	<c:forEach items="${list1}" var="list">
+					</c:when>
+					<c:otherwise>
+						<div class="none_mateTeamList_">수락한 제의 내역이 없습니다.</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>	
+		</section>
 		
-		<c:set value="${list.possibleDate}" var="possibleDate" />
-	
-		<c:if test="${possibleDate >= today}">		
-		<div class="myList">
-				<img class="calendarIcon" src="/images/calendarIcon.png" />
-				<span class="myListDate">${list.possibleDate}</span>	
-		</div>
-		</c:if>
-	</c:forEach>
-	</div>
-	
-	<div class="none_myList"></div>
-	
-
+		<% String teamId = (String) request.getAttribute("teamId");  
+		   UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		   
+		   if (teamId != null && teamId.equals(user.getId())) {%>
+			<section>
+				<div class="small_title">
+					<h3>보낸 스카우트 제의</h3>
+					<span>용병이 수락하기 전까지 조금만 기다려주세요 ! 수락 시 완료 표시가 나타납니다.</span>
+				</div>
+				
+				<!-- 보낸 스카우트 제의  -->
+				<% 
+				List<SoldierDTO> list4 = (List<SoldierDTO>) request.getAttribute("list4");
+				List<SoldierDTO> list3 = (List<SoldierDTO>) request.getAttribute("list3");
+				
+				if(list4.size() != 0) {%>
+					<c:forEach items="${ list4 }" var="list4">
+						<div>
+							<div class="mateTeamList">
+								<div class="mateTeamList1_1">
+									<div class="mateTeam">용병 ${ list4.soldierName }</div>	
+									<div class="mateTeam_possibleDate">${ list4.possibleDate }</div>
+								</div>
+							</div>
+						</div>
+					 </c:forEach>
+						
+				<%} else if(list3.size() != 0) { %>
+					<c:forEach items="${ list3 }" var="list3">
+						<div class="mateTeamList">
+							<div class="mateTeamList1_1">
+								<div class="mateTeam">용병 ${ list3.soldierName }</div>	
+								<div class="mateTeam_possibleDate">${ list3.possibleDate }</div>
+							</div>
+							
+							<div class="mateTeamList2">
+								<span class="mateTeamAceptance">수락 완료</span>
+							</div>	
+						</div>
+					</c:forEach>
+					
+				<% } else {%>
+					<div class="none_mateTeamList_">보낸 제의 내역이 없습니다.</div>
+				<% } %>			
+			</section>
+		<%} %>
+		
+		<section>
+			<div class="small_title">
+			<h3>용병 등록 내역</h3>
+			<span>날짜가 지나지 않은 등록 내역을 보여드립니다</span>
+			</div>
+			
+			<!-- 용병 등록 날짜  -->
+			
+			<div>
+			<c:forEach items="${list1}" var="list">
+				
+				<c:set value="${list.possibleDate}" var="possibleDate" />
+			
+				<c:if test="${possibleDate >= today}">		
+				<div class="myList">
+						<img class="calendarIcon" src="/images/calendarIcon.png" />
+						<span class="myListDate">${list.possibleDate}</span>	
+				</div>
+				</c:if>
+			</c:forEach>
+			</div>
+			
+			<div class="none_myList"></div>
+		
+		</section>
 	</div>
 </body>
 </html>
