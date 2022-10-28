@@ -76,9 +76,9 @@ $(document).ready(function() {
 					btn.next().next().attr("class", "red");
 					btn.next().next().html(server.result);
 				} else {
-					const done = btn.next().html().trim().split(" ");
+					const done = btn.next().text().trim().split(" ");
 					if(!done.includes(server.result)) {
-						btn.next().append(server.result+" ");
+						btn.next().append("<button type='button' id=" + server.result + ">" + server.result + " </button>");
 						btn.next().next().html("");
 						btn.prev().val("");
 					}
@@ -86,6 +86,18 @@ $(document).ready(function() {
 			}
 		})
 	})
+	
+	//삭제
+	$(document).on("click", ".inputBox div p button",function(e) {
+		if($(this).text() != '${loginInfo.getId()} ') {
+			if(confirm("삭제 하시겠습니까?")) {
+				$(this).remove();
+			}		
+		} else {
+			alert("본인은 삭제할 수 없습니다.");
+		}
+	})
+	
 	//팀생성
 	$("#submitBtn").on("click", function() {
 		if($("#teamNameResult").html() == "") {
@@ -94,15 +106,15 @@ $(document).ready(function() {
 			const team = {
 					teamId : '${loginInfo.getId()}',
 					teamName : $("#teamName").val(),
-					firstBase : $("#firstBase").html().trim(),
-					secondBase : $("#secondBase").html().trim(),
-					thirdBase : $("#thirdBase").html().trim(),
-					catcher : $("#catcher").html().trim(),
-					pitcher : $("#pitcher").html().trim(),
-					leftFielder : $("#leftFielder").html().trim(),
-					rightFielder : $("#rightFielder").html().trim(),
-					centerFielder : $("#centerFielder").html().trim(),
-					shortStop : $("#shortStop").html().trim()
+					firstBase : $("#firstBase").text().trim(),
+					secondBase : $("#secondBase").text().trim(),
+					thirdBase : $("#thirdBase").text().trim(),
+					catcher : $("#catcher").text().trim(),
+					pitcher : $("#pitcher").text().trim(),
+					leftFielder : $("#leftFielder").text().trim(),
+					rightFielder : $("#rightFielder").text().trim(),
+					centerFielder : $("#centerFielder").text().trim(),
+					shortStop : $("#shortStop").text().trim()
 			};
 			$.ajax({
 				url : "teamResult",
@@ -111,7 +123,7 @@ $(document).ready(function() {
 				success : function(server) {
 					if(server.result == "success") {
 						alert("팀 생성이 완료되었습니다.");
-						location.reload();				
+						location.reload();
 					}
 				}
 			})			
@@ -156,11 +168,11 @@ $(document).ready(function() {
 				})
 			}
 		} else {
-			alert("이미 신청중인 팀이 있습니다.")		;	
+			alert("이미 신청중인 팀이 있습니다.");	
 		}
 	})
 	
-	$("#${loginInfo.position}").html("${loginInfo.id} ");
+	$("#${loginInfo.position}").html("<button type='button'>${loginInfo.id} </button>");
 	
 	// 수락
 	$(document).on("click", "#true", function() {
@@ -235,6 +247,7 @@ $(document).ready(function() {
 						<div class="inputBox" style="background-image: url('images/playground.png'); background-size: 100% 100%;">
 							<!-- 1루수  -->
 							<div class="firstBase">
+								<span class="positionName">First Base</span>
 								<input type="text" placeholder="전화번호 입력" name="firstBase">
 								<input type="button" value="검색" />
 								<p id="firstBase"></p>
@@ -242,6 +255,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 2루수 --> 
 							<div class="secondBase">
+								<span class="positionName">Second Base</span>
 								<input type="text" placeholder="전화번호 입력" name="secondBase">
 								<input type="button" value="검색" />
 								<p id="secondBase"></p>
@@ -249,6 +263,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 3루수  -->
 							<div class="thirdBase">
+								<span class="positionName">Third Base</span>
 								<input type="text" placeholder="전화번호 입력" name="thirdBase">
 								<input type="button" value="검색" />
 								<p id="thirdBase"></p>
@@ -256,6 +271,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 포수 --> 
 							<div class="catcher">
+								<span class="positionName">Catcher</span>
 								<input type="text" placeholder="전화번호 입력" name="catcher">
 								<input type="button" value="검색" />
 								<p id="catcher"></p>
@@ -263,6 +279,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 투수  -->
 							<div class="pitcher">
+								<span class="positionName">Pitcher</span>
 								<input type="text" placeholder="전화번호 입력" name="pitcher">
 								<input type="button" value="검색" />
 								<p id="pitcher"></p>
@@ -270,6 +287,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 좌익수 --> 
 							<div class="leftFielder">
+								<span class="positionName">Left Fielder</span>
 								<input type="text" placeholder="전화번호 입력" name="leftFielder">
 								<input type="button" value="검색" />
 								<p id="leftFielder"></p>
@@ -277,6 +295,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 우익수  -->
 							<div class="rightFielder">
+								<span class="positionName">Right Fielder</span>
 								<input type="text" placeholder="전화번호 입력" name="rightFielder">
 								<input type="button" value="검색" />
 								<p id="rightFielder"></p>
@@ -284,6 +303,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 중견수  -->
 							<div class="centerFielder">
+								<span class="positionName">Center Fielder</span>
 								<input type="text" placeholder="전화번호 입력" name="centerFielder">
 								<input type="button" value="검색" />
 								<p id="centerFielder"></p>
@@ -291,6 +311,7 @@ $(document).ready(function() {
 							</div>
 							<!-- 유격수 --> 
 							<div class="shortStop">
+								<span class="positionName">Short Stop</span>
 								<input type="text" placeholder="전화번호 입력" name="shortStop">
 								<input type="button" value="검색" />
 								<p id="shortStop"></p>

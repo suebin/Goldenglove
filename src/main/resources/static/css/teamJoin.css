@@ -286,13 +286,26 @@ form .teamName {
 	margin-left: 6px;
 }
 
-.inputBox > div > p {
+.inputBox > div > p:last-child {
 	background: #f2f2f2;
 	border-radius: 3px;
 }
 
+.inputBox > div > p > button {
+	margin-right: 3px;
+}
+
 .inputBox > div > div > button {
 	margin-right: 6px;
+}
+
+.positionName {
+    padding: 2px 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    background: navajowhite;
+    border-radius: 5px;
 }
 
 .firstBase {
