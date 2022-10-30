@@ -341,6 +341,38 @@ $(document).ready(function() {
 		}
 	})
 
+	
+ 	// 스카우트 하기 버튼
+	for (let i = 0; i < 100; i++) {
+		var addSoldier_btn = 'addSoldier_btn' + i;
+		
+		$("#" + addSoldier_btn).on("click", function() {
+			
+			// 로그인을 하지 않은 경우
+			
+			if ($(".dropdownBtn").text() == "") {alert("로그인이 필요한 서비스입니다.");}
+			
+			// 로그인을 한 경우
+			
+			else {
+				var update = confirm("용병에게 스카우트를 제의하시겠습니까 ?");
+				
+				if (update) {
+					$.ajax({
+						url : 'addSoldier',
+						data : {'seq' : $("#soldier_seq" + i).val(),'soldierTeamName' : $("#soldier_teamName" + i).val(), 'soldierName' : $(this).parent().parent().find(".profile-name").html()},
+						type : 'post',
+						dataType : 'json',
+						success : function(data) {
+							alert(data.result);
+						}
+					});
+				} else {
+					alert("용병 스카우트를 취소하셨습니다.");
+				}
+			}
+		})
+	} // addSoldier_btn end	 
 });
 </script>
 </head>
