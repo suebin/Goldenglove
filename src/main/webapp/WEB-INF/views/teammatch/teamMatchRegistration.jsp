@@ -200,6 +200,20 @@
 			%>
 		</div>
 		
+<% 
+String year_month = request.getParameter("year_month"); 
+String date = request.getParameter("date");	
+String year = year_month.substring(0,4);
+String month = year_month.substring(5);
+String day = date.substring(1);
+if (month.length() == 1) {
+	month = "0" + month;
+}
+if (day.length() == 1) {
+	day = "0" + day;
+}
+%>		
+		
 		<div class="teammatch_registration_notice">
 			<h2>Step 2</h2>
 			<span>이번 경기에 출전할 용병 선수를 선택해주세요.</span>
@@ -211,7 +225,16 @@
 			
 				if (soldierList.size() != 0) {
 			
-				for(SoldierDTO dto :soldierList) { %>				
+				for(SoldierDTO dto :soldierList) { 				
+					
+					// 매치 등록 날짜와 용병 날짜가 일치해야만 용병 카드가 보이도록 한다.
+				
+					String soldierYear = dto.getPossibleDate().substring(0,4);
+					String soldierMonth = dto.getPossibleDate().substring(6,8);
+					String soldierDay = dto.getPossibleDate().substring(10,12);
+				
+					if (year.equals(soldierYear) && month.equals(soldierMonth) && day.equals(soldierDay) ) {
+					%>
 					
 					<c:set var="a" value="${a+1}" />
 					<div class="card soldierCard" id="card${a}">
@@ -243,7 +266,7 @@
 							<div class="card__text">
 								<div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);"><%= dto.getPosition() %></div>
 								<div class="profile-name"><%= dto.getSoldierName()  %></div>
-								<div class="profile-overview">'
+								<div class="profile-overview">
 									<div><h3 class="soldier_winCount"><%= dto.getWinCount() %></h3><p>승</p></div>
 									<div><h3 class="soldier_loseCount"><%= dto.getLoseCount() %></h3><p>패</p></div>
 									<div><h3 class="soldier_winningRate"><%= dto.getWinningRate() %></h3><p></p></div>
@@ -266,7 +289,7 @@
 							<button class="selectedBtn" id="selectedBtn${a}">선택 취소하기</button>
 						</div>
 					</div>	
-				<%}	
+				<%}	}
 				}
 			%>
 		</div>
