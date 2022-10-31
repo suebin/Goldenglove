@@ -8,7 +8,7 @@ $(document).ready(function() {
 		
 		// 선택한 날짜 form에 저장
 		
-		for (var i=1; i<31; i++) {
+		for (var i=1; i<=31; i++) {
 			$(".dates").on('click', "#" +i, function(){ 	
 				$('input[name=date]').attr('value', '.' + $(this).text());
 			});
