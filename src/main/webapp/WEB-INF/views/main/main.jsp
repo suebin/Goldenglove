@@ -87,7 +87,7 @@ $(document).ready(function() {
 			let rankNum = "";
 			
 			for(let j=0; j<res.length; j++) {
-				if(i <= 10) { 
+				if(i <= 7) { 
 					if (i == 1) { 
 						rankNum = '<img alt="defaultImg" src="/images/gold-medal.png">';
 					} else if (i == 2) { 

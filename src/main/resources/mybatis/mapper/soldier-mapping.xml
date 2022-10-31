@@ -89,7 +89,7 @@
 	</select>
 	
 	<select id="selectOfferRequest" parameterType="String" resultType="soldierdto">
-	   select * from soldier where mateTeam like CONCAT('%', #{userTeamName}, ',' ,'%')
+	   select * from soldier where mateTeam like CONCAT('%', ' ', #{userTeamName}, ',%')
 									and acceptance is null
 									and possibleDate >= date_format(now(), '%Y년 %m월 %d일') 
 									order by possibleDate asc

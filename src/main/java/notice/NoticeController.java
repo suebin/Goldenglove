@@ -55,7 +55,7 @@ public class NoticeController {
 	@ResponseBody
 	@RequestMapping("/mainNotice")
 	public List<NoticeDTO> selectMainNotice() {
-		List<NoticeDTO> list = service.pagingList(new int[] {0, 10});
+		List<NoticeDTO> list = service.pagingList(new int[] {0, 7});
 		return list;
 	}
 

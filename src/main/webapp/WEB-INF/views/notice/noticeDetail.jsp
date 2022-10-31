@@ -46,7 +46,7 @@ $(document).ready(function() {
 			</li>
 			<li>
 				<ul class="noticeContents">
-					<li style="white-space:pre;">${ list.contents }</li>	
+					<li style="white-space:pre-wrap;">${ list.contents }</li>	
 				</ul>
 			</li>
 		</ul>
