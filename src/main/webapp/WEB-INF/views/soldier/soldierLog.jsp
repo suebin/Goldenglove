@@ -112,7 +112,7 @@ String today = year + "년 " + month + "월 " + day + "일";
 							
 							for (int i=0; i<mateTeamArr.length; i++) {				
 							
-							mateTeam = mateTeamArr[i]; %>
+							mateTeam = mateTeamArr[i].substring(1); %>
 							
 							<div class="mateTeamList">
 								<div class="mateTeamList1">

@@ -269,11 +269,12 @@ public class SoldierController {
 				String teams = "";
 				
 				if(existingTeam != null) {
-					teams = existingTeam + userTeamName + ",";
+					teams = " " + existingTeam + " " + userTeamName + ",";
 				}
 				else {
-					teams = userTeamName + ",";
+					teams = " " + userTeamName + ",";
 				}
+				
 				int updateMateTeam = service.updateMateTeam(seq, teams);
 			
 			
