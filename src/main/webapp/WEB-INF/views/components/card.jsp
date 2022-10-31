@@ -108,13 +108,13 @@ $(document).ready(function() {
 		<a href="#" rel="modal:close">Close</a>
 	</div>
 </div>
-<div class="leaderCheck">
+<div>
 	<%
 		String teamId = (String)request.getAttribute("teamId");
 		UserDTO user = (UserDTO)request.getAttribute("user");
 		String userId = user.getId();
 		if(teamId != null && teamId.equals(userId)) {%>
-			<p>⚾Team Leader</p>		
+			<p class="leaderCheck">⚾Team Leader</p>		
 		<%}
 	%>
 	<a class="modalLink modalLink${user.name }" href="#ex1${user.name }" rel="modal:open">
