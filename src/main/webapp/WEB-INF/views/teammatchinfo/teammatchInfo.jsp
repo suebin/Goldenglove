@@ -249,7 +249,7 @@
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 				
 				<c:if
-					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">  
+					test="${(possibleDate > today)  or (possibleDate == today and possibleTime >= time)}">  
 
 					<div class="teammatch_info_list" id="teammatch__info_list1">
 						<div class="teammatch_info">
@@ -290,9 +290,9 @@
 			
 	
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
-
+				
 				<c:if
-					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">	
+					test="${(possibleDate > today)  or (possibleDate == today and possibleTime >= time)}">	
 			
 					<div class="teammatch_info_list" id="teammatch__info_list2">
 						<div class="teammatch_info">
@@ -333,7 +333,7 @@
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">
+					test="${(possibleDate > today)  or (possibleDate == today and possibleTime >= time)}">
 
 					<div class="teammatch_info_list" id="teammatch__info_list3">
 						<div class="teammatch_info">
@@ -374,7 +374,7 @@
 				<!-- 날짜와 시간이 지나지 않은 경기만 보여준다. -->
 
 				<c:if
-					test="${(possibleDate > today and possibleDateLen >= todayLen)  or (possibleDate == today and possibleTime >= time)}">
+					test="${(possibleDate > today)  or (possibleDate == today and possibleTime >= time)}">
 					
 					<div class="teammatch_info_list" id="teammatch__info_list4">
 						<div class="teammatch_info">
@@ -443,7 +443,7 @@
 				<!-- 날짜와 시간이 지난 경기만 보여준다. -->
 
 				<c:if
-					test="${(possibleDate < today and possibleDateLen < todayLen)  or (possibleDate == today and possibleTime < time)}">
+					test="${(possibleDate < today)  or (possibleDate == today and possibleTime < time)}">
 					
 					<div class="teammatch_info_list" id="teammatch__info_list6">
 						<div class="teammatch_info">
