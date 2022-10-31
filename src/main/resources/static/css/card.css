@@ -1,12 +1,5 @@
 @charset "utf-8";
 
-.leaderCheck {
-	position: absolute;
-	top: 16px;
-	left: 8px; 
-	font-weight: 700;
-}
-
 .modalLink {
 	display: flex;
     justify-content: center;
