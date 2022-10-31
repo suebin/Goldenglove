@@ -211,7 +211,9 @@ $(document).ready(function() {
 								// 팀 프로필
 								
 								$("#team_info_btn" + i).on("click", function() {
-									window.open("teamProfile?seq=" + $('#seq').val() + "&&teamName=" + $("#teamName").val(), '팀 프로필', "width=900, height=420");
+									window.open("teamProfile?seq=" + $('#seq').val() + "&&teamName=" + $("#teamName").val(), '팀 프로필', "width=900, height=420"
+													+ ", left = " + Math.ceil(( window.screen.width - 900 )/2)
+													+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));
 									//location.href="teamProfile?seq=" + $('#seq').val() + "&&teamName=" + $("#teamName").val();
 								})
 								
