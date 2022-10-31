@@ -150,7 +150,9 @@
 			
 			$("#" + select_winner_btn).on("click", function() {
 				var url = 'selectWinner?seq=' +  $("#teammatchlist6_seq" + i).val() + '&myTeam=' + $("#teamName").val() + '&team1=' + $("#teammatchlist6_homeName" + i).val() + '&team2=' + $("#teammatchlist6_awayName" + i).val() ;
-				window.open(url, '승패 선택', "width=330, height=420");	
+				window.open(url, '승패 선택', "width=330, height=420"
+						+ ", left = " + Math.ceil(( window.screen.width - 330 )/2)
+						+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));	
 			})
 		} // select_winner_btn	
 		
