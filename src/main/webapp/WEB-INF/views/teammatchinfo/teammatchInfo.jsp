@@ -470,9 +470,6 @@
 		</div>
 		
 		
-		
-		<div class="finish"></div>
-		
 		<!-- 자신의 팀 저장해두기 -->
 		
 		<input type="hidden" id="teamName" value=${loginInfo.getTeamName()}> 
