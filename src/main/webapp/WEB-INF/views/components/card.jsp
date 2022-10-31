@@ -91,12 +91,7 @@ $(document).ready(function() {
 		$(".jquery-modal").attr("hidden", "hidden");
 		$("#ex1${user.name }").parent().removeAttr("hidden");
 	})
-	
-	if("${teamId}" == "${user.id}") {
-		$("#leaderCheck").append("<p>⚾Team Leader</p>");
-	}
-	
-		
+
 });
 </script>
 </head>
@@ -113,7 +108,15 @@ $(document).ready(function() {
 		<a href="#" rel="modal:close">Close</a>
 	</div>
 </div>
-<div id="leaderCheck">
+<div class="leaderCheck">
+	<%
+		String teamId = (String)request.getAttribute("teamId");
+		UserDTO user = (UserDTO)request.getAttribute("user");
+		String userId = user.getId();
+		if(teamId != null && teamId.equals(userId)) {%>
+			<p>⚾Team Leader</p>		
+		<%}
+	%>
 	<a class="modalLink modalLink${user.name }" href="#ex1${user.name }" rel="modal:open">
 		<div class="cardCon">
 			<div class="card__border"></div>

@@ -221,7 +221,7 @@
 	display: block;
 }
 
-#leaderCheck > p {
+.leaderCheck > p {
 	position: absolute;
 	top: 16px;
 	left: 8px; 
