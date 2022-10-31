@@ -54,19 +54,32 @@ h2 {
 	background: #fff;
 }
 
-.noticeList li, .noticeHeader:first-child li {
-	width: 20%;
+.noticeList li, .noticeHeader li {
+	width: 10%;
+}
+
+.noticeList li:first-child, .noticeHeader li:first-child {
+	width: 10%;
+}
+
+.noticeList li:last-child, .noticeHeader li:last-child {
+	width: 15%;
 }
 
 .notice .noticeHeader .title, .noticeList .title {
 	flex-basis: 70%;
+	padding: 0 3%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 
+.noticeList .title {
+	text-align: left;
+}
+
 .notice .noticeHeader .writer, .noticeList .writer {
-	flex-basis: 20%;
+	flex-basis: 10%;
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -74,6 +87,7 @@ h2 {
 
 .noticeHeader:first-child {
 	font-weight: bold;
+	font-size: 14px;
 }
 
 
@@ -141,8 +155,9 @@ h2 {
 .btnContainer button {
 	margin-left: 5px;
 	padding: 6px 8px;
+    min-width: max-content;
 	background-color: var(--main-color);
-	border: 2px solid #fff;
+	border: 2px solid var(--main-color);
 	color: #fff;
     border-radius: 5px;
     font-family: "비트로 프라이드 OTF";
@@ -193,7 +208,7 @@ h2 {
 	height: 35px;
 }
 
-.searchForm select, input {
+.searchForm select, .searchForm input {
 	margin-right: 5px;
 	padding: 5px;
 	height: 34px;
@@ -205,6 +220,11 @@ h2 {
 
 .searchForm select {
 	cursor: pointer;
+}
+
+.searchForm input {
+	width: 100%;
+	max-width: 276px;
 }
 
 .searchBtnBox {
@@ -263,5 +283,36 @@ h2 {
 
 .nextPrevBtn a:hover {
 	text-decoration: underline;
+}
+
+
+/*======= 768 =======*/	
+@media (max-width: 768px) {
+	.noticeList li, .noticeHeader:first-child li {
+		font-size: 12px;
+	}
+		
+ 	.noticeHeader:first-child li:first-child,
+ 	.noticeList li:first-child {
+		width: 12%;
+	}
+	
+	.noticeList li:last-child, .noticeHeader li:last-child {
+		min-width: max-content;
+	}
+	
+}
+
+/*======= 600 =======*/	
+@media (max-width: 600px) {
+	.notice .noticeHeader .writer, .noticeList .writer,
+	.notice .noticeHeader li:nth-child(4), .noticeList li:nth-child(4) {
+		display: none;
+	}
+	
+	.noticeList li:last-child, .noticeHeader li:last-child {
+	    width: 62px;
+	}
+	
 }
 
