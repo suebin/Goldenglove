@@ -24,8 +24,16 @@ $(document).ready(function() {
 		$(".none_mateTeamList").attr('style', 'display: block');
 		$(".none_mateTeamList").append('제의 받은 내역이 없습니다');
 	}
-
-
+	if($(".acceptOfferBox").height() == 0) {
+		$(".none_acceptOfferBox").attr('style', 'display: block');
+		$(".none_acceptOfferBox").append('수락한 제의 내역이 없습니다.');
+	}
+	if($(".sendOfferBox").height() == 0) {
+		$(".none_sendOfferBox").attr('style', 'display: block');
+		$(".none_sendOfferBox").append('보낸 제의 내역이 없습니다.');
+	}
+		
+		
 	// 수락하기 버튼
 
 	for (let i = 1; i < 100; i++) {
@@ -133,9 +141,9 @@ String today = year + "년 " + month + "월 " + day + "일";
 				<span>경기 일정을 꼭 지켜주세요 !</span>
 			</div>
 			
-			<c:forEach items="${ list3 }" var="list3">
-				<c:choose>
-					<c:when test="${ list3.soldierName eq loginInfo.getName() }">
+			<div class="acceptOfferBox">
+				<c:forEach items="${ list3 }" var="list3">
+					<c:if test="${ list3.soldierName eq loginInfo.getName() }">
 						<!-- 수락한 스카우트 제의  -->
 						<div class="mateTeamList">
 							<div class="mateTeamList1_1">
@@ -143,12 +151,11 @@ String today = year + "년 " + month + "월 " + day + "일";
 								<div class="mateTeam_possibleDate">${ list3.possibleDate }</div>
 							</div>
 						</div>
-					</c:when>
-					<c:otherwise>
-						<div class="none_mateTeamList_">수락한 제의 내역이 없습니다.</div>
-					</c:otherwise>
-				</c:choose>
-			</c:forEach>	
+					</c:if>
+				</c:forEach>
+			</div>	
+			
+			<div class="none_mateTeamList_ none_acceptOfferBox" style="display:none;"></div>
 		</section>
 		
 		<% String teamId = (String) request.getAttribute("teamId");  
@@ -162,39 +169,45 @@ String today = year + "년 " + month + "월 " + day + "일";
 				</div>
 				
 				<!-- 보낸 스카우트 제의  -->
-				<% 
-				List<SoldierDTO> list4 = (List<SoldierDTO>) request.getAttribute("list4");
-				List<SoldierDTO> list3 = (List<SoldierDTO>) request.getAttribute("list3");
-				
-				if(list4.size() != 0) {%>
-					<c:forEach items="${ list4 }" var="list4">
-						<div>
-							<div class="mateTeamList">
-								<div class="mateTeamList1_1">
-									<div class="mateTeam">용병 ${ list4.soldierName }</div>	
-									<div class="mateTeam_possibleDate">${ list4.possibleDate }</div>
-								</div>
-							</div>
-						</div>
-					 </c:forEach>
-						
-				<%} else if(list3.size() != 0) { %>
-					<c:forEach items="${ list3 }" var="list3">
-						<div class="mateTeamList">
-							<div class="mateTeamList1_1">
-								<div class="mateTeam">용병 ${ list3.soldierName }</div>	
-								<div class="mateTeam_possibleDate">${ list3.possibleDate }</div>
-							</div>
-							
-							<div class="mateTeamList2">
-								<span class="mateTeamAceptance">수락 완료</span>
-							</div>	
-						</div>
-					</c:forEach>
+				<div class="sendOfferBox">
+					<% 
+					List<SoldierDTO> list4 = (List<SoldierDTO>) request.getAttribute("list4");
+					List<SoldierDTO> list3 = (List<SoldierDTO>) request.getAttribute("list3");
 					
-				<% } else {%>
-					<div class="none_mateTeamList_">보낸 제의 내역이 없습니다.</div>
-				<% } %>			
+					if(list4.size() != 0) {%>
+						<c:forEach items="${ list4 }" var="list4">
+							<c:if test="${ list4.soldierName ne loginInfo.getName() }">
+								<div>
+									<div class="mateTeamList">
+										<div class="mateTeamList1_1">
+											<div class="mateTeam">용병 ${ list4.soldierName }</div>	
+											<div class="mateTeam_possibleDate">${ list4.possibleDate }</div>
+										</div>
+									</div>
+								</div>
+							</c:if>
+						 </c:forEach>
+					<%}
+					
+					if(list3.size() != 0) { %>
+						<c:forEach items="${ list3 }" var="list3">
+							<c:if test="${ list3.soldierName ne loginInfo.getName() }">
+								<div class="mateTeamList">
+									<div class="mateTeamList1_1">
+										<div class="mateTeam">용병 ${ list3.soldierName }</div>	
+										<div class="mateTeam_possibleDate">${ list3.possibleDate }</div>
+									</div>
+									
+									<div class="mateTeamList2">
+										<span class="mateTeamAceptance">수락 완료</span>
+									</div>	
+								</div>
+							</c:if>
+						</c:forEach>
+					<% } %>
+				</div>
+				
+				<div class="none_mateTeamList_ none_sendOfferBox" style="display:none;"></div>
 			</section>
 		<%} %>
 		
