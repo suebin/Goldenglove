@@ -143,3 +143,50 @@ textarea:focus, select:focus {
 .none_soldier > span {
 	padding-top: 2px;
 }
+
+
+/*======= 560 =======*/	
+@media (max-width: 560px) {
+	.teammatch_registration_title {
+		font-size: 30px;
+	}
+	
+	.teammatch_registration_notice {
+	    margin-top: 50px;
+	}
+	
+	.teammatch_registration {
+		max-width: 530px;
+		width: 100%;
+	}
+	
+	.teammatch_registration_elements {
+	    width: 100%;
+	    height: auto;
+	    margin-left: 0;
+	}
+	
+	.none_soldier {
+		max-width: 290px;
+    	width: 100%;
+	}
+	
+	input[type=text] {
+	    width: 100%;
+	}
+	
+	textarea {
+	    width: 100%;
+	}
+	
+	.teammatch_registration_btn {
+		max-width: 300px;
+   		width: 100%;
+	}
+	
+	input[type=submit] {
+		max-width: 300px;
+   		width: 100%;
+   		font-size: 18px;
+	}
+}
