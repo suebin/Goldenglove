@@ -107,7 +107,7 @@ $(document).ready(function() {
 			dataType : "json",
 			success : function(server) {
 				if(server.result == "success") {
-					alert("승인");
+					alert("팀 가입을 승인하였습니다.");
 					location.reload();
 				}
 			}
@@ -124,7 +124,7 @@ $(document).ready(function() {
 			dataType : "json",
 			success : function(server) {
 				if(server.result == "false") {
-					alert("거절");
+					alert("팀 가입을 거절하였습니다");
 					location.reload();
 				}
 			}
