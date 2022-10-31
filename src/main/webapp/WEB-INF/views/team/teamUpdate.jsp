@@ -87,11 +87,15 @@ $(document).ready(function() {
 					btn.next().removeAttr("hidden");
 					btn.next().next().html("");
 					btn.next().html("<button>" + server.result + "</button>");
+					btn.prev().val("");
+					btn.prev().focus();
 				} else {
 					const done = btn.next().text().split(" ");
 					if(!done.includes(server.result)) {
 						btn.next().removeAttr("hidden");
 						btn.next().append("<button> " + server.result + "</button>");
+						btn.prev().val("");
+						btn.prev().focus();
 					}
 				}
 			}
