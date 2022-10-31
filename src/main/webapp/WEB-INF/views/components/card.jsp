@@ -91,6 +91,12 @@ $(document).ready(function() {
 		$(".jquery-modal").attr("hidden", "hidden");
 		$("#ex1${user.name }").parent().removeAttr("hidden");
 	})
+	
+	if("${teamId}" == "${user.id}") {
+		$("#leaderCheck").append("<p>⚾Team Leader</p>");
+	}
+	
+		
 });
 </script>
 </head>
@@ -107,43 +113,45 @@ $(document).ready(function() {
 		<a href="#" rel="modal:close">Close</a>
 	</div>
 </div>
-<a class="modalLink modalLink${user.name }" href="#ex1${user.name }" rel="modal:open">
-	<div class="cardCon">
-		<div class="card__border"></div>
-		<div class="card__border-line"></div>
-		<div class="profile-card-6">
-			<div class="card__img">
-		        <div class="img__team">
-		            <img class="medalImg" alt="rankingImg">
-		        </div>
-		        <div class="img__athlete">
-		        	<div class="img__Wrapper">
-		            	<img src="img/${user.fileName }" class="img img-responsive">
+<div id="leaderCheck">
+	<a class="modalLink modalLink${user.name }" href="#ex1${user.name }" rel="modal:open">
+		<div class="cardCon">
+			<div class="card__border"></div>
+			<div class="card__border-line"></div>
+			<div class="profile-card-6">
+				<div class="card__img">
+			        <div class="img__team">
+			            <img class="medalImg" alt="rankingImg">
+			        </div>
+			        <div class="img__athlete">
+			        	<div class="img__Wrapper">
+			            	<img src="img/${user.fileName }" class="img img-responsive">
+			        	</div>
+			        </div>
+			    </div>
+			    <div class="card__text">
+			        <div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);">
+			        	${user.position }
 		        	</div>
-		        </div>
-		    </div>
-		    <div class="card__text">
-		        <div class="profile-position" style="--bg-color: hsl(1, 100%, 44%); --text-color: hsl(0, 0%, 100%);">
-		        	${user.position }
-	        	</div>
-		        <div class="profile-name">${user.name }</div>
-		        <div class="profile-overview">
-					<div>
-						<h3>${user.winCount }</h3>
-						<p>승</p>
+			        <div class="profile-name">${user.name }</div>
+			        <div class="profile-overview">
+						<div>
+							<h3>${user.winCount }</h3>
+							<p>승</p>
+						</div>
+						<div>
+							<h3>${user.loseCount }</h3>
+							<p>패</p>
+						</div>
+						<div>
+							<h3>${user.winningRate }</h3>
+							<p>%</p>
+						</div>
 					</div>
-					<div>
-						<h3>${user.loseCount }</h3>
-						<p>패</p>
-					</div>
-					<div>
-						<h3>${user.winningRate }</h3>
-						<p>%</p>
-					</div>
-				</div>
-		    </div>
+			    </div>
+			</div>
 		</div>
-	</div>
-</a>
+	</a>
+</div>
 </body>
 </html>
