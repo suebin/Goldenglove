@@ -6,6 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>골든글러브 > 승패 선택</title>
+<link href="/css/main.css" rel="stylesheet" />
+<link href="/css/common.css" rel="stylesheet" />
+<link href="/css/selectWinner.css" rel="stylesheet" />
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -23,18 +26,22 @@ $(document).ready(function() {
 		<input type="hidden" name="seq" value=${param.seq}>
 		<input type="hidden" name="myTeam" value=${param.myTeam}>
 		<input type="hidden" name="team1" value=${param.team1}>
+		<input type="hidden" name="team1_user" value=${param.team1_user}>
 		<input type="hidden" name="team2" value=${param.team2}>
+		<input type="hidden" name="team2_user" value=${param.team2_user}>
 		<input type="hidden" name="result" value=1>
-		<input type="submit" value="WIN">	
+		<input type="submit" class="winBtn" value="WIN">	
 	</form>
 	
 	<form action="selectWinner" method="post">
 		<input type="hidden" name="seq" value=${param.seq}>
 		<input type="hidden" name="myTeam" value=${param.myTeam}>
 		<input type="hidden" name="team1" value=${param.team1}>
+		<input type="hidden" name="team1_user" value=${param.team1_user}>
 		<input type="hidden" name="team2" value=${param.team2}>
+		<input type="hidden" name="team2_user" value=${param.team2_user}>
 		<input type="hidden" name="result" value=0>
-		<input type="submit" value="LOSE">	
+		<input type="submit" class="loseBtn" value="LOSE">	
 	</form>
 	
 </body>

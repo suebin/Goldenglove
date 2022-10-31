@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+.title {
+	margin-top: 30px;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+h2 {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+	color: #00912e;
+	font-family: "비트로 코어 OTF";
+}
+
+span {
+	font-size: 10px;
+	margin-bottom: 20px
+}
+
+.winBtn, .loseBtn {
+	border-radius: 8px;
+	width: 100px;
+	height: 40px;
+	border: none;
+	background-color: #feca00;
+	cursor: pointer;
+	font-family: "비트로 코어 OTF";
+	margin-bottom: 20px;
+	color: white;
+}
+
+.winBtn {
+	background-color: #006cb7;
+}
+
+.loseBtn {
+	background-color: #ff5232;
+}
+
+form {
+	text-align: center;
+}
+
+.btn:hover {
+	background-color: #e1b500;
+}

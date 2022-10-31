@@ -229,7 +229,16 @@ public class TeamMatchInfoController {
 		}
 		
 		@PostMapping("/selectWinner")
-		public ModelAndView selectWinnerResult(int seq, String myTeam, String team1, String team2, int result) {
+		public ModelAndView selectWinnerResult(int seq, String myTeam, String team1, String team1_user, String team2, String team2_user, int result) {
+			
+			team1_user = team1_user.substring(0, team1_user.length()-1);
+			team2_user = team2_user.substring(0, team2_user.length()-1);
+			
+			System.out.println(team1_user);
+			System.out.println(team2_user);
+			
+			String[] team1_users = team1_user.split(",");
+			String[] team2_users = team2_user.split(",");
 			
 			String message = "";
 			
@@ -245,8 +254,18 @@ public class TeamMatchInfoController {
 					service.updateTeamWinCount(team1);
 					service.updateTeamLoseCount(team2);
 					
-					service.updateUserWinCount(team1);
-					service.updateUserLoseCount(team2);
+					for(int i=0; i<team1_users.length; i++) {
+						String name = team1_users[i];
+						service.updateUserWinCount(name);
+						service.updateUserWinningRate(name);
+					}
+					
+					for(int i=0; i<team2_users.length; i++) {
+						String name = team2_users[i];
+						service.updateUserLoseCount(name);
+						service.updateUserWinningRate(name);
+					}
+					
 					
 				}
 				
@@ -258,8 +277,16 @@ public class TeamMatchInfoController {
 					service.updateTeamLoseCount(team1);
 					service.updateTeamWinCount(team2);
 					
-					service.updateUserLoseCount(team1);
-					service.updateUserWinCount(team2);
+					for(int i=0; i<team1_users.length; i++) {
+						String name = team1_users[i];
+						service.updateUserLoseCount(name);
+						service.updateUserWinningRate(name);
+					}
+					for(int i=0; i<team2_users.length; i++) {
+						String name = team2_users[i];
+						service.updateUserWinCount(name);
+						service.updateUserWinningRate(name);
+					}
 					
 				}
 				
@@ -277,8 +304,17 @@ public class TeamMatchInfoController {
 					service.updateTeamWinCount(team2);
 					service.updateTeamLoseCount(team1);
 					
-					service.updateUserWinCount(team2);
-					service.updateUserLoseCount(team1);
+					
+					for(int i=0; i<team2_users.length; i++) {
+						String name = team2_users[i];
+						service.updateUserWinCount(name);
+						service.updateUserWinningRate(name);
+					}
+					for(int i=0; i<team1_users.length; i++) {
+						String name = team1_users[i];
+						service.updateUserLoseCount(name);
+						service.updateUserWinningRate(name);
+					}
 
 				}
 				
@@ -290,17 +326,23 @@ public class TeamMatchInfoController {
 					service.updateTeamLoseCount(team2);
 					service.updateTeamWinCount(team1);
 					
-					service.updateUserLoseCount(team2);
-					service.updateUserWinCount(team1);
-
+					for(int i=0; i<team1_users.length; i++) {
+						String name = team1_users[i];
+						service.updateUserWinCount(name);
+						service.updateUserWinningRate(name);
+					}
+					
+					for(int i=0; i<team2_users.length; i++) {
+						String name = team2_users[i];
+						service.updateUserLoseCount(name);
+						service.updateUserWinningRate(name);
+						
+					}
 				}
 			}
 			
 			service.updateTeamWinningRate(team1);
-			service.updateUserWinningRate(team1);
-			
 			service.updateTeamWinningRate(team2);
-			service.updateUserWinningRate(team2);
 			
 			ModelAndView mv = new ModelAndView();
 			message = "승패 선택이 완료되었습니다.";

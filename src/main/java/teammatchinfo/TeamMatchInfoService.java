@@ -91,8 +91,8 @@ public class TeamMatchInfoService {
 		dao.updateTeamWinningRate(team);
 	}
 	
-	public void updateUserWinningRate(String team) {
-		dao.updateUserWinningRate(team);
+	public void updateUserWinningRate(String name) {
+		dao.updateUserWinningRate(name);
 	}
 	
 	// 기본 팀 매칭 승률
@@ -103,11 +103,11 @@ public class TeamMatchInfoService {
 	public void updateTeamLoseCount(String team) {
 		dao.updateTeamLoseCount(team);
 	}
-	public void updateUserWinCount(String team) {
-		dao.updateUserWinCount(team);
+	public void updateUserWinCount(String name) {
+		dao.updateUserWinCount(name);
 	}
-	public void updateUserLoseCount(String team) {
-		dao.updateUserLoseCount(team);
+	public void updateUserLoseCount(String name) {
+		dao.updateUserLoseCount(name);
 	}
 	
 	// 알림 등록

@@ -43,13 +43,13 @@ public interface TeamMatchInfoDAO {
 	
 	void updateTeamLoseCount(String team);
 	
-	void updateUserWinCount(String team);
+	void updateUserWinCount(String name);
 	
-	void updateUserLoseCount(String team);
+	void updateUserLoseCount(String name);
 	
 	void updateTeamWinningRate(String team);
 	
-	void updateUserWinningRate(String team);
+	void updateUserWinningRate(String name);
 	
 	// 유저 팀의 주장 Id 확인
 	

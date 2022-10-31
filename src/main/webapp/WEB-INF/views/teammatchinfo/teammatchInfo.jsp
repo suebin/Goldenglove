@@ -149,8 +149,8 @@
 			var select_winner_btn = 'select_winner_btn' + i;
 			
 			$("#" + select_winner_btn).on("click", function() {
-				var url = 'selectWinner?seq=' +  $("#teammatchlist6_seq" + i).val() + '&myTeam=' + $("#teamName").val() + '&team1=' + $("#teammatchlist6_homeName" + i).val() + '&team2=' + $("#teammatchlist6_awayName" + i).val() ;
-				window.open(url, '승패 선택', "width=330, height=420"
+				var url = 'selectWinner?seq=' +  $("#teammatchlist6_seq" + i).val() + '&myTeam=' + $("#teamName").val() + '&team1=' + $("#teammatchlist6_homeName" + i).val() + '&team1_user=' + $("#teammatchlist6_homePerson" + i).val() + '&team2=' + $("#teammatchlist6_awayName" + i).val() + '&team2_user=' + $("#teammatchlist6_awayPerson" + i).val();
+				window.open(url, '승패 선택', "width=330, height=300"
 						+ ", left = " + Math.ceil(( window.screen.width - 330 )/2)
 						+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));	
 			})
@@ -209,14 +209,15 @@
 		int day = now.getDayOfMonth();
 
 		int hour = now.getHour();
+		int minute = now.getMinute();
 		
 		String time= "";
 		
 		if (hour < 10) {
-			time = "0" + hour + ":00";
+			time = "0" + hour + ":" + minute;
 		}
 		else {
-			time = hour + ":00";
+			time = hour + ":" + minute;
 		}
 
 		String today = year + "." + month + "." + day;
@@ -446,7 +447,7 @@
 
 				<c:if
 					test="${(possibleDate < today)  or (possibleDate == today and possibleTime < time)}">
-					
+
 					<div class="teammatch_info_list" id="teammatch__info_list6">
 						<div class="teammatch_info">
 							<div class="teammatch_info_title">${list.homeName} VS
@@ -465,7 +466,9 @@
 
 				<input type="hidden" id="teammatchlist6_seq${e}" value=${list.seq}>
 				<input type="hidden" id="teammatchlist6_homeName${e}" value=${list.homeName}>
+				<input type="hidden" id="teammatchlist6_homePerson${e}" value=${list.homePerson}>
 				<input type="hidden" id="teammatchlist6_awayName${e}" value=${list.awayName}>
+				<input type="hidden" id="teammatchlist6_awayPerson${e}" value=${list.awayPerson}>
 			</c:forEach>
 		
 			<div class="none_teammatchlist6 none_list"></div>
