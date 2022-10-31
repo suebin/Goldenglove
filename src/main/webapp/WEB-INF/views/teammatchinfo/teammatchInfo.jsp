@@ -417,8 +417,8 @@
 
 					<div class="teammatch_info_list" id="teammatch__info_list5">
 						<div class="teammatch_info">
-							<span class="teammatch_info_title">${list.winner} VS
-								${list.loser}</span> <span class="teammatch_info_date">${list.possibleDate}
+							<span class="teammatch_info_title"><span class="finalWinnerIcon">승</span><span class="finalWinner">${list.winner}</span> VS <span class="finalLoserIcon">패</span><span class="finalLoser">${list.loser}</span></span> <br>
+							<span class="teammatch_info_date">${list.possibleDate}
 								${list.possibleTime}</span> <span class="teammatch_info_location">${list.region}
 								${list.homePlace}</span>
 						</div>
@@ -451,7 +451,7 @@
 					<div class="teammatch_info_list" id="teammatch__info_list6">
 						<div class="teammatch_info">
 							<div class="teammatch_info_title">${list.homeName} VS
-								${list.awayName}</div> <div class="teammatch_info_date">${list.possibleDate}
+								${list.awayName}</div><div class="teammatch_info_date">${list.possibleDate}
 								${list.possibleTime}</div> <div class="teammatch_info_location">${list.region}
 								${list.homePlace}</div>
 						</div>
