@@ -266,9 +266,14 @@ public class SoldierController {
 			if (userId.equals(teamId)) {
 				
 				String existingTeam = service.getExistingTeam(seq);
+				String teams = "";
 				
-				String teams = existingTeam + userTeamName + ",";
-				
+				if(existingTeam != null) {
+					teams = existingTeam + userTeamName + ",";
+				}
+				else {
+					teams = userTeamName + ",";
+				}
 				int updateMateTeam = service.updateMateTeam(seq, teams);
 			
 			
