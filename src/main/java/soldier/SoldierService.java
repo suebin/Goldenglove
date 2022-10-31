@@ -73,9 +73,13 @@ public class SoldierService {
 	
 	// 용병 스카우트 제의 (팀 주장만)
 	
-	public int updateMateTeam(int seq, String userTeamName) {
-		return dao.updateMateTeam(seq, userTeamName);
+	public int updateMateTeam(int seq, String teams) {
+		return dao.updateMateTeam(seq, teams);
 	}
+	public String getExistingTeam(int seq) {
+		return dao.getExistingTeam(seq);
+	}
+	
 	
 	// 용병 로그
 	

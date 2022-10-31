@@ -66,9 +66,12 @@
 	<!-- 용병 스카우트 제의 (팀 주장만) -->
 	
 	<update id="updateMateTeam">
-		update soldier set mateTeam=#{userTeamName} where seq=#{seq}
+		update soldier set mateTeam=#{teams} where seq=#{seq}
 	</update>
-	
+	<select id="getExistingTeam" parameterType="int" resultType="String">
+		select mateTeam from soldier where seq=#{seq}
+	</select>
+
 	<!-- 용병 로그 -->
 	<select id="selectMySoldierLog" parameterType="String" resultType="soldierdto">
 		select * from soldier where soldierName=#{userName} order by possibleDate asc

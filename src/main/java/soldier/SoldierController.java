@@ -264,10 +264,12 @@ public class SoldierController {
 			// 팀 주장인 경우
 		
 			if (userId.equals(teamId)) {
-			
-				userTeamName = userTeamName + ",";
 				
-				int updateMateTeam = service.updateMateTeam(seq, userTeamName);
+				String existingTeam = service.getExistingTeam(seq);
+				
+				String teams = existingTeam + userTeamName + ",";
+				
+				int updateMateTeam = service.updateMateTeam(seq, teams);
 			
 			
 				if(updateMateTeam == 1) {

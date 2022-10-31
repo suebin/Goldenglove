@@ -49,7 +49,8 @@ public interface SoldierDAO {
 	
 	// 용병 스카우트 제의 (팀 주장만)
 	
-	int updateMateTeam(int seq, String userTeamName);
+	int updateMateTeam(int seq, String teams);
+	String getExistingTeam(int seq);
 	
 	// 용병 로그 
 	
