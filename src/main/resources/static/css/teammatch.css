@@ -283,8 +283,8 @@ input.search_btn:hover, input.register_btn:hover {
 .teammatch_hashtag {
 	display: inline-block;
 	margin-right: 15px;
-	font-size: 25px;
 	font-weight: bold;
+	font: 25px "비트로 코어 OTF";
 }
 
 
@@ -293,8 +293,10 @@ input.search_btn:hover, input.register_btn:hover {
 	border-bottom: 0px;
 	border-left: 0px;
 	border-right: 0px;
-	padding: 20px 0px 10px 20px;
+	padding-top: 5px;
 	height: 90px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .teammatch_info_box > div {
@@ -303,14 +305,17 @@ input.search_btn:hover, input.register_btn:hover {
 	vertical-align: middle;	
 }
 
+
 .teammatch_info_one {
 	text-align: center;
 	width:80px;
 	font: 16px "비트로 코어 OTF";
+	margin: auto 0;
 }
 
 .teammatch_info_two {
 	width: 200px;
+	margin: auto 0;
 }
 
 .teammatch_teamname {
@@ -328,6 +333,7 @@ input.search_btn:hover, input.register_btn:hover {
 
 .teammatch_info_three {
 	width: 250px;
+	margin: auto 0;
 }
 
 .teammatch_info_comment_title {
@@ -347,6 +353,10 @@ form {
 	margin-left: 50px;
 	text-align: right;
 	margin-bottom: 20px;
+}
+.teammatch_btns {
+	margin: auto 0;
+	text-align: center;
 }
 
 .teammatch_btn {
@@ -436,3 +446,30 @@ input.teammatch_btn:hover {
 	}
 }
 
+@media (max-width: 560px) {
+	
+	.teammatch_hashtag {
+		font-size: 20px;
+	}
+	
+	.teammatch_info_one {
+		margin-right: 5px;
+		font-size: 14px;
+	}
+	
+	.teammatch_teamname {
+		font-size: 15px;
+	}
+	
+	.teammatch_infoes > span {
+		font-size: 12px;
+	}
+	
+	.teammatch_btn {
+		margin-top: 3px;
+		margin-bottom: 3px;
+		font-size: 11px;
+		width: 60px;
+		height: 30px;
+	}
+}

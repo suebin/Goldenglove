@@ -130,24 +130,31 @@ $(document).ready(function() {
 						
 							document.querySelector('.teammatch_info_boxes').innerHTML = '';
 						
-							for(var i=0; i<data.length; i++) {
+							for(let i=0; i<data.length; i++) {
 								$(".teammatch_info_boxes").append('<div class="teammatch_info_box">'
+																
 																+ '<div class="teammatch_info_one">' + data[i].possibleTime + '</div>'													
 																+ '<div class="teammatch_info_two"><div class="teammatch_teamname">' + data[i].homeName + '</div><div class="teammatch_infoes"><span>' + data[i].region + '</span><span>' + data[i].homePlace + '</span><span>' + data[i].headCount + '명</span></div></div>'
-																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>')
+																+ '<div class="teammatch_info_three"><div class="teammatch_info_comment_title">팀 소개</div><div class="teammatch_info_comment">' + data[i].comment + '</div></div>'
+																
+																+ '<div class="teammatch_btns">'
+																+ '<input type="hidden" name="awayName" id="awayName" value="' + $("#teamName").val()  + '">'
+																+ '<input type="hidden" name="seq" id="seq' + i + '" value="' + data[i].seq + '">'
+																+ '<input type="hidden" name="alarmDate" id="alarmDate' + i + '" value="' + alarmDate + '">'
+																+ '<input type="hidden" name="homeName" id="homeName' + i + '" value="' + data[i].homeName + '">'
+																+ '<input type="hidden" name="possibleDate" id="possibleDate' + i + '" value="' + data[i].possibleDate + '">'
+																+ '<input type="hidden" name="possibleTime" id="possibleTime' + i + '" value="' + data[i].possibleTime + '">'
+																+ '<input type="hidden" name="region" id="region' + i + '" value="' + data[i].region + '">'
+																+ '<input type="hidden" name="homePlace" id="homePlace' + i + '" value="' + data[i].homePlace + '">'
+																+ '<input type="button" id="add_teammatch_btn' + i + '" class="teammatch_btn" value="매치 신청">'
+																+ '<input type="button" id="team_info_btn' + i + '" class="teammatch_btn" value="팀 프로필">' 
+																+ '</div>'
+																)
 								
 								
 								// 만약 자기 자신의 팀에 매치 신청하려고 하는 경우
 								
 								if($("#teamName").val() == data[i].homeName) {	
-															
-									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form>' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
-																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("span.teamName").text() + '">'
-																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
-																+ 	'<input type="button" id="add_teammatch_btn' + i + '" class="teammatch_btn" value="매치 신청">'
-																+ 	'<input type="button" id="team_info_btn' + i + '" class="teammatch_btn" value="팀 프로필">'
-																+ 	'</form>'
-																+ 	'</div>')
 																
 									$("#add_teammatch_btn" + i).on("click", function() {
 										alert('본인이 속한 팀에게는 매치 신청을 할 수 없습니다.');
@@ -155,53 +162,29 @@ $(document).ready(function() {
 									
 								}
 								
-								else if ($("#teamReader").val() == 0) {
-									
-									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form>' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
-																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("span.teamName").text() + '">'
-																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
-																+ 	'<input type="button" id="add_teammatch_btn' + i + '" class="teammatch_btn" value="매치 신청">'
-																+ 	'<input type="button" id="team_info_btn' + i + '" class="teammatch_btn" value="팀 프로필">'
-																+ 	'</form>'
-																+ 	'</div>')
+								// 팀 주장이 아닌경우
+								
+								else if ($("#teamReader").val() == 0) {				
 																
 									$("#add_teammatch_btn" + i).on("click", function() {
 										alert('매치 신청은 팀 주장만 가능합니다.');
 									})
-								
-								
 								
 								}
 								
 								// 다른 팀에게 매치 신청을 하는 경우 
 								
 								else {
-									$(".teammatch_info_boxes").append('<div class="teammatch_btns"><form>' // 매치 신청을 위해 해당 매치 정보를 넘겨주기
-																+	'<input type="hidden" name="awayName" id="awayName" value="' + $("#teamName").val()  + '">'
-																+	'<input type="hidden" name="seq" id="seq" value="' + data[i].seq + '">'
-																
-																// 알림 기능 위해 추가
-																+	'<input type="hidden" name="alarmDate" id="alarmDate" value="' + alarmDate + '">'
-																+ 	'<input type="hidden" name="homeName" id="homeName" value="' + data[i].homeName + '">'
-																+ 	'<input type="hidden" name="possibleDate" id="possibleDate" value="' + data[i].possibleDate + '">'
-																+ 	'<input type="hidden" name="possibleTime" id="possibleTime" value="' + data[i].possibleTime + '">'
-																+ 	'<input type="hidden" name="region" id="region" value="' + data[i].region + '">'
-																+ 	'<input type="hidden" name="homePlace" id="homePlace" value="' + data[i].homePlace + '">'
-																
-																+ 	'<input type="button" id="add_teammatch_btn' + i + '" class="teammatch_btn" value="매치 신청">'
-																+ 	'<input type="button" id="team_info_btn' + i + '" class="teammatch_btn" value="팀 프로필">'
-																+ 	'</form>'
-																+ 	'</div>')
-								
 								
 									// 매치 신청
 								
 									$("#add_teammatch_btn" + i).on("click", function() {
+										
 										if ($("#teamName").val() == $(".penaltyTeamName").html()) {
 											alert('경기일 7일 이내 취소로 인해 ' + $(".penaltyEndDate").html() + ' 이후부터 가능합니다.');
 											
-										} else { 
-											location.href="addTeammatch?seq=" + $('#seq').val() + "&&awayName=" + $("#teamName").val() + "&&alarmDate=" +  $('#alarmDate').val() +"&&homeName=" + $('#homeName').val() + "&&possibleDate=" + $('#possibleDate').val() + "&&possibleTime=" + $('#possibleTime').val() + "&&region=" + $('#region').val() + "&&homePlace=" + $('#homePlace').val();
+										} else {
+											location.href="addTeammatch?seq=" + $('#seq' + i).val() + "&&awayName=" + $("#teamName").val() + "&&alarmDate=" +  $('#alarmDate' + i).val() +"&&homeName=" + $('#homeName' + i).val() + "&&possibleDate=" + $('#possibleDate' + i).val() + "&&possibleTime=" + $('#possibleTime' + i).val() + "&&region=" + $('#region' + i).val() + "&&homePlace=" + $('#homePlace' + i).val();
 										}
 									})
 								
@@ -211,9 +194,10 @@ $(document).ready(function() {
 								// 팀 프로필
 								
 								$("#team_info_btn" + i).on("click", function() {
-									window.open("teamProfile?seq=" + $('#seq').val() + "&&teamName=" + $("#teamName").val(), '팀 프로필', "width=900, height=420"
-													+ ", left = " + Math.ceil(( window.screen.width - 900 )/2)
-													+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));
+
+									window.open("teamProfile?seq=" + $('#seq' + i).val() + "&&teamName=" + $("#homeName" + i).val(), '팀 프로필', "width=900, height=420"
+													+ ", left = " + Math.ceil(( window.screen.width - 900 )/2)
+													+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));
 									//location.href="teamProfile?seq=" + $('#seq').val() + "&&teamName=" + $("#teamName").val();
 								})
 								

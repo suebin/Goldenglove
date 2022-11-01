@@ -20,17 +20,12 @@
 <script>
 	$(document).ready(function() {
 		AOS.init();
-
 		// 매치 수락 or 취소 날짜
 		const now = new Date();
 		const alarmDate = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
-
 		// 1. 수락을 기다리는 경기 > 수락하기 버튼
-
 		for (let i = 1; i < 100; i++) {
-
 			var acceptance_btn = 'acceptance_btn' + i;
-
 			$("#" + acceptance_btn).on("click", function() {
 				var update = confirm("매치를 수락하시겠습니까 ?");
 				if (update) {
@@ -50,7 +45,6 @@
 				}
 			}) 	
 		}	// acceptance_btn end	
-
 		
 		// 2. 등록한 경기 > 취소하기 버튼
 		
@@ -76,10 +70,8 @@
 				}
 			}) 	
 		}	// delete_registration_btn end
-
 		
 		// 3. 신청한 경기 > 취소하기 버튼
-
 		for (let i = 1; i < 100; i++) {
 			var delete_add_btn = 'delete_add_btn' + i;
 			
@@ -103,12 +95,10 @@
 			}) 	
 		}	// delete_registration_btn end	
 		
-
 		// 4. 예정된 경기 > 취소하기 버튼
 		
 		const prevDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 7);
 		const prev7Day = prevDay.getFullYear() + "." + ("0" + (prevDay.getMonth() + 1)).slice(-2) + "." + ("0" + (prevDay.getDate())).slice(-2);
-
 		for (let i = 1; i < 100; i++) {
 			
 			var cancel_teammatch_btn = 'cancel_teammatch_btn' + i;
@@ -118,7 +108,6 @@
 				if ($("#teammatch__info_list4 .teammatch_info_date").html().substring(0, 10) >= prev7Day) {
 					var update = confirm("매치를 취소하시겠습니까 ? \n경기일 7일 이내 취소 시 5일 간 매칭 서비스 이용이 불가합니다.");
 					penalty = true;	
-
 				} else {
 					var update = confirm("매치를 취소하시겠습니까 ?");
 					penalty = false;	
@@ -151,19 +140,16 @@
 			$("#" + select_winner_btn).on("click", function() {
 				var url = 'selectWinner?seq=' +  $("#teammatchlist6_seq" + i).val() + '&myTeam=' + $("#teamName").val() + '&team1=' + $("#teammatchlist6_homeName" + i).val() + '&team1_user=' + $("#teammatchlist6_homePerson" + i).val() + '&team2=' + $("#teammatchlist6_awayName" + i).val() + '&team2_user=' + $("#teammatchlist6_awayPerson" + i).val();
 				window.open(url, '승패 선택', "width=330, height=300"
-						+ ", left = " + Math.ceil(( window.screen.width - 330 )/2)
-						+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));	
+						+ ", left = " + Math.ceil(( window.screen.width - 330 )/2)
+						+ ", top = " + Math.ceil(( window.screen.height - 420 )/2));	
 			})
 		} // select_winner_btn	
 		
 		
-
 		// 경기 정보가 없는 경우
-
  		if ($("#teammatch__info_list1").length == 0) {
 			$(".none_teammatchlist1").append('해당 경기 정보가 없습니다.');
 		} 
-
 		if ($("#teammatch__info_list2").length == 0) {
 			$(".none_teammatchlist2").append('해당 경기 정보가 없습니다.');
 		}
@@ -175,39 +161,32 @@
 		if ($("#teammatch__info_list4").length == 0) {
 			$(".none_teammatchlist4").append('해당 경기 정보가 없습니다.');
 		}
-
 		if ($("#teammatch__info_list5").length == 0) {
 			$(".none_teammatchlist5").append('해당 경기 정보가 없습니다.');
 		} 
-
 		if ($("#teammatch__info_list6").length == 0) {
 			$(".none_teammatchlist6").append('해당 경기 정보가 없습니다.');
 		} 
 		
 		
 }); // ready end
-
 </script>
 </head>
 <body>
 
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	
-	<div class="topMatchInfo">
-		<img alt="matchIfoImg" src="/images/vs.jpg">
- 	</div>
- 	
+	<div class="teammatchInfoImg">
+		<img alt="teammatchInfoImg" src="/images/teammatchInfo.jpg">
+	</div>
 	<div class="confix">
 
 		<%
 		// 현재 시간과 날짜 구하기 (시간이 지난 경기 정보는 보이지 않도록 하기 위해 필요한 정보)
-
 		LocalDateTime now = LocalDateTime.now();
-
 		int year = now.getYear();
 		int month = now.getMonthValue();
 		int day = now.getDayOfMonth();
-
 		int hour = now.getHour();
 		int minute = now.getMinute();
 		
@@ -219,7 +198,6 @@
 		else {
 			time = hour + ":" + minute;
 		}
-
 		String today = year + "." + month + "." + day;
 		%>
 		

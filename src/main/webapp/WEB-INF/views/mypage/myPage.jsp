@@ -92,9 +92,9 @@ $(document).ready(function() {
 					<li><div id="checkResultUser" class="red"></div></li>
 				</ul>
 				<button id="submitBtnUser" hidden>확인</button>
+				<button id="updateUserBtn" class="updateBtn" type="button">정보 수정</button>
+				<button id="deleteUserBtn" class="updateBtn" type="button">회원 탈퇴</button>
 			</form>
-			<button id="updateUserBtn" class="updateBtn">정보 수정</button>
-			<button id="deleteUserBtn" class="updateBtn">회원 탈퇴</button>
 		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/components/footer.jsp" />
