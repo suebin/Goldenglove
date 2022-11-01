@@ -25,14 +25,8 @@ $(document).ready(function() {
 	}
 	
 	h4 {
-		margin-top: 40px;
+		margin-top: 100px;
 		margin-bottom: 35px;
-	}
-
-	img {
-		width: 70px;
-		height: 70px;
-		margin-bottom: 80px;
 	}
 	
 	button {
@@ -47,7 +41,6 @@ $(document).ready(function() {
 </head>
 <body>
 <h4>${result}</h4>
-<img src="${img}">
 <br>
 <a href="registerSoldier"><button class="registrationBtn">돌아가기</button></a>
 <button class="registrationResultBtn">창 닫기</button>

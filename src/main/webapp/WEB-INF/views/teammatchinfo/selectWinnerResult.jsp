@@ -22,14 +22,8 @@ $(document).ready(function() {
 	}
 	
 	h4 {
-		margin-top: 40px;
+		margin-top: 100px;
 		margin-bottom: 35px;
-	}
-
-	img {
-		width: 70px;
-		height: 70px;
-		margin-bottom: 80px;
 	}
 	
 	button {
@@ -44,7 +38,6 @@ $(document).ready(function() {
 </head>
 <body>
 <h4>${message}</h4>
-<img src="/images/successIcon.png" >
 <br>
 <button class="closeBtn">창 닫기</button>
 </body>
