@@ -1,11 +1,13 @@
 @charset "UTF-8";
 
-.teammatchInfoImg {
+.topMatchInfo {
 	position: relative;
+	height: 440px;
 }
 
 img {
 	width: 100%;
+	height: 100%;
 }
 
 

@@ -209,10 +209,10 @@ public class TeamMatchController {
 		
 		
 		for (int i=0; i<name.length; i++) {	
+			
 			teamMember[i] = service.selectTeamMember(name[i]);
 			
 		}
-
 		
 		request.setAttribute("teamMember", teamMember);
 		request.setAttribute("teamName", teamName);
