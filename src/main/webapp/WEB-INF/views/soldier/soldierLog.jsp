@@ -220,17 +220,27 @@ String today = year + "년 " + month + "월 " + day + "일";
 			<!-- 용병 등록 날짜  -->
 			
 			<div>
-			<c:forEach items="${list1}" var="list">
+			<%
+				List<SoldierDTO> list1 = (List<SoldierDTO>)request.getAttribute("list1");
 				
-				<c:set value="${list.possibleDate}" var="possibleDate" />
+				for(SoldierDTO dto : list1) {
+		
+						String mateTeamDate = dto.getPossibleDate();
+
+						int myYear =  Integer.parseInt(mateTeamDate.substring(0, 4));
+						int myMonth = Integer.parseInt(mateTeamDate.substring(6, 8));
+						int myDay = Integer.parseInt(mateTeamDate.substring(10, 12));
+						
+						// 시간이 지나지 않은 리스트만 보여준다.
+						
+						if (myYear >= year && myMonth >= month && myDay >= day || myYear >= year && myMonth > month || myYear > year) {
 			
-				<c:if test="${possibleDate >= today}">		
+			%>	
 				<div class="myList">
 						<img class="calendarIcon" src="/images/calendarIcon.png" />
-						<span class="myListDate">${list.possibleDate}</span>	
+						<span class="myListDate"><%= mateTeamDate %></span>	
 				</div>
-				</c:if>
-			</c:forEach>
+			<% } } %>
 			</div>
 			
 			<div class="none_myList"></div>
