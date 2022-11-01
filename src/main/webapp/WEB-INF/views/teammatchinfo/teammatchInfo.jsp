@@ -193,10 +193,9 @@
 
 	<jsp:include page="/WEB-INF/views/components/header.jsp" />
 	
-	<div class="topMatchInfo">
-		<img alt="matchIfoImg" src="/images/vs.jpg">
- 	</div>
- 	
+	<div class="teammatchInfoImg">
+		<img alt="teammatchInfoImg" src="/images/teammatchInfo.jpg">
+	</div>
 	<div class="confix">
 
 		<%
