@@ -24,6 +24,39 @@
 		display: block;
 	}
 }
+.map .voiceSearch {
+	display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+    font-size: 14px;
+    font-weight: bold;
+}
+@media (max-width: 500px) {
+	.map .voiceSearch {
+		align-items: flex-start;
+	    flex-direction: column;
+	}
+}
+.map .voiceSearch span {
+	margin-right: 10px;
+}
+@media (max-width: 500px) {
+	.map .voiceSearch span {
+		margin-bottom: 10px;
+	}
+}
+.map .voiceSearch .voiceBtn button {
+    padding: 8px 10px;
+    margin-left: 5px;
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    background: var(--main-color);
+    border-radius: 3px;
+}
+.map .voiceSearch .voiceBtn button:hover {
+	background: #217517;
+}
  .map_wrap, .map_wrap * {
     margin:0;
     padding:0;

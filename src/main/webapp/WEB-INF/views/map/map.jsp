@@ -14,6 +14,7 @@
 <script type="text/javascript" src="js/map.js" defer></script>
 <script>
 $(document).ready(function() {
+
 });
 </script>
 </head>
@@ -25,6 +26,15 @@ $(document).ready(function() {
 			<span>장소 목록을 누르면 길찾기로 연결됩니다.</span>
 		</div>
 		
+	   	<div class="voiceSearch">
+	   		<span>🧭 음성으로 목적지를 검색해보세요</span>
+	   		
+	   		<div class="voiceBtn">
+	   			<button id="startRecordBtn" type="button" onclick="startSpeechRecognition();">음성 검색 시작</button>
+	   			<button id="endRecordBtn" type="button" onclick="endSpeechRecognition();">음성 검색 종료</button>
+			</div>
+		</div>
+		
 		<div class="map_wrap">
 		    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
 		
@@ -33,7 +43,7 @@ $(document).ready(function() {
 		            <div>
 		                <form class="mapSearchForm" onsubmit="searchPlaces(); return false;">
 		                    <span>장소 </span><input type="text" value="고척돔" id="keyword" size="15"> 
-		                    <button type="submit">검색</button> 
+		                    <button id="textSearchBtn" type="submit">검색</button> 
 		                </form>
 		            </div>
 		        </div>
@@ -44,4 +54,36 @@ $(document).ready(function() {
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	// 음성 검색
+	let recognition = null;
+	
+	function checkCompatibility() {
+	  recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+	  recognition.lang = "ko";
+	  recognition.maxAlternatives = 5;
+	
+	  if (!recognition) {
+		  document.getElementById("startRecordBtn").addEventListener("onclick", () => {
+			  alert("지원되지 않는 브라우저입니다.");
+		  });
+	  }
+	}
+	
+	function startSpeechRecognition() {
+	  recognition.addEventListener("result", (event) => {
+	    const text = event.results[0][0].transcript;
+	    document.getElementById("keyword").value = text;
+	    $("#textSearchBtn").submit();
+	  });
+	
+	  recognition.start();
+	}
+	
+	function endSpeechRecognition() {
+	  recognition.stop();
+	}
+	
+	window.addEventListener('load', checkCompatibility);
+</script>
 </html>
