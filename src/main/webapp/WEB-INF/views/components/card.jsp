@@ -112,6 +112,7 @@ $(document).ready(function() {
 	<%
 		String teamId = (String)request.getAttribute("teamId");
 		UserDTO user = (UserDTO)request.getAttribute("user");
+		String winning = String.format("%.3f", user.getWinningRate());
 		String userId = user.getId();
 		if(teamId != null && teamId.equals(userId)) {%>
 			<p class="leaderCheck">⚾Team Leader</p>		
@@ -147,7 +148,7 @@ $(document).ready(function() {
 							<p>패</p>
 						</div>
 						<div>
-							<h3>${user.winningRate }</h3>
+							<h3><%=winning %></h3>
 						</div>
 					</div>
 			    </div>
