@@ -100,11 +100,11 @@
 	</update>
 	
 	<update id="updateTeamWinningRate">
-		update team set winningRate=(winCount / (winCount + loseCount)) * 100 where teamName=#{team};
+		update team set winningRate=(winCount / (winCount + loseCount)) where teamName=#{team};
 	</update>
 	
 	<update id="updateUserWinningRate">
-		update user set winningRate=(winCount / (winCount + loseCount)) * 100 where name=#{name};
+		update user set winningRate=(winCount / (winCount + loseCount)) where name=#{name};
 	</update>
 	
 	

@@ -258,6 +258,11 @@ h2 {
 	width: 80%;
 }
 
+.noticeDetail .noticeHeader .writingTime {
+	width: 70%;
+    text-align: left;
+}
+
 
 /*=========== noticeContents ===========*/
 .noticeContents {
@@ -270,6 +275,7 @@ h2 {
 /*=========== nextPrevBtn ===========*/
 .nextPrevBtn {
 	padding: 10px 0 5px;
+	font-size: 14px;
 }
 
 .nextPrevBtn .prev, .next {
@@ -299,6 +305,10 @@ h2 {
 	
 	.noticeList li:last-child, .noticeHeader li:last-child {
 		min-width: max-content;
+	}
+	
+	.noticeContents {
+		font-size: 14px;
 	}
 	
 }

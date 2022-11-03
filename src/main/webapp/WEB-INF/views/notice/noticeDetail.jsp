@@ -40,7 +40,7 @@ $(document).ready(function() {
 					<li>${ list.writer }</li>
 				</ul>
 				<ul class="noticeHeader">
-					<li>작성일 &nbsp;${ list.writingTime }</li>
+					<li class="writingTime">작성일 &nbsp;${ list.writingTime }</li>
 					<li>조회수 ${ list.viewCount }</li>
 				</ul>
 			</li>

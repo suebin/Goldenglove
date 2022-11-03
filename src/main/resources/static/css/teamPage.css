@@ -50,13 +50,14 @@
 	.teamBtnBox {
 	    margin-left: 10px;
 	    min-width: 120px;
-	    max-width: 120px;
+	    max-width: 140px;
 	}
 }
 
 .teamBtn {
 	align-self: baseline;
     margin-top: 5px;
+    margin-left: 7px;
     padding: 12px 20px;
     min-width: max-content;
     border: none;
