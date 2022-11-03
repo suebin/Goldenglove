@@ -34,14 +34,13 @@ public class TeamService {
 				map.put("id", arr[i]);
 				teamDao.makeRegister(map);
 				teamDao.registerUser(map);
-				
+
 				// 가입 요청 알림
 				teamDao.requestJoinAlarm(map);
 			}
 		}
 	}
 
-	
 //	팀원 등록 요청 조회
 	public UserDTO[] selectRegisterUser(String teamId) {
 		String[] arr = teamDao.selectRegisterUser(teamId);
@@ -209,7 +208,7 @@ public class TeamService {
 
 //	팀 삭제
 	public void deleteTeam(String id) {
-		teamDao.deleteTeam(id);
 		teamDao.deleteTeamUser(id);
+		teamDao.deleteTeam(id);
 	}
 }
