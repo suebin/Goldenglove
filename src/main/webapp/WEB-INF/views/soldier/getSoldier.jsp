@@ -5,6 +5,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -467,6 +468,7 @@ $(document).ready(function() {
 		<!-- 용병 리스트 -->
 
 		<div class="cardBox defaultCard cardContainer">
+			<% UserDTO user = (UserDTO)session.getAttribute("defaultlist"); %> 
 			<c:forEach items="${defaultList}" var="list">
 			<c:set value="${list.possibleDate}" var="possibleDate" />	
 			<c:set var="b" value="${b+1}" />
@@ -508,7 +510,7 @@ $(document).ready(function() {
 					${list.loseCount}
 					</h3><p>패</p></div>
 					<div><h3 class="soldier_winningRate">
-					${list.winningRate}
+					<fmt:formatNumber value="${list.winningRate}" pattern="0.000"/><br/>
 					</h3><p></p></div>
 					</div></div></div></div></a>
 					<div class="possibleDate"><span>⌚ 
