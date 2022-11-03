@@ -148,7 +148,6 @@ $(document).ready(function() {
 						</div>
 						<div>
 							<h3>${user.winningRate }</h3>
-							<p>%</p>
 						</div>
 					</div>
 			    </div>
