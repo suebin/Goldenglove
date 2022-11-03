@@ -102,7 +102,7 @@ $(document).ready(function() {
 									+ list[i].loseCount
 									+ '</h3><p>패</p></div>'
 									+ '<div><h3 class="soldier_winningRate">'
-									+ list[i].winningRate.toFixed(1)
+									+ list[i].winningRate.toFixed(3)
 									+ '</h3><p></p></div>'
 									+ '</div></div></div></div></a>'
 									+ '<div class="possibleDate"><span>⌚ '
