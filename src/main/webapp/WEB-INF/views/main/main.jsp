@@ -23,8 +23,9 @@ $(document).ready(function() {
 	
 	// 매칭
 	const now = new Date();
-	const today = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
-	
+	//const today = now.getFullYear() + "." + ("0" + (now.getMonth() + 1)).slice(-2) + "." + ("0" + (now.getDate())).slice(-2);
+	const today = now.getFullYear() + "." + (now.getMonth() + 1) + "." + (now.getDate());
+
 	$.ajax({
 		url: "mainMatching",
 		data: {today: today},
