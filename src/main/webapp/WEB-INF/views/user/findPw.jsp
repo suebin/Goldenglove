@@ -8,6 +8,20 @@
 <title>골든글러브</title>
 <link href="/css/login.css" rel="stylesheet" />
 <link href="/css/common.css" rel="stylesheet" />
+<style type="text/css">
+.updatebtn {
+	font-size: 16px;
+	width: 20%;
+	height: 50px;
+	padding: 0 10px;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	color: #fff;
+    background: #444;
+    border: 1px solid #444;
+    font-weight: 900;
+}
+</style>
 <script src="js/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
@@ -71,7 +85,7 @@ $(document).ready(function() {
 						<tr><td><input type="text" id="id2" name="id" hidden></td></tr>
 						<tr><td><input type="text" id="name2" name="name" hidden></td></tr>
 						<tr><td><input type="text" id="email2" name="email" hidden></td></tr>
-						<tr><td><button type="submit">수정</button></td></tr>
+						<tr><td><button class="updatebtn" type="submit">수정</button></td></tr>
 					</table>
 				</form>
 			</div>
