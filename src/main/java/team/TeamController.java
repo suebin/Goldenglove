@@ -220,11 +220,11 @@ public class TeamController {
 		HashMap<String, String> registerInfo = new HashMap<>();
 		registerInfo.put("result", result);
 		registerInfo.put("id", id);
+		HttpSession session = request.getSession();
+		UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+		registerInfo.put("teamName", user.getTeamName());
 		if (result.equals("true")) {
-			HttpSession session = request.getSession();
-			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			String position = userService.selectUser(id).getPosition();
-			registerInfo.put("teamName", user.getTeamName());
 			registerInfo.put("position", position);
 			userService.updateTeamName(registerInfo);
 			teamService.updateRegister(registerInfo);
@@ -237,8 +237,8 @@ public class TeamController {
 			teamService.updateRegisterFalse(registerInfo);
 
 			// 가입 거절 알림
-			HttpSession session = request.getSession();
-			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
+//			HttpSession session = request.getSession();
+//			UserDTO user = (UserDTO) session.getAttribute("loginInfo");
 			teamService.cancleJoinAlarm(id, user.getTeamName(), alarmDate);
 
 			return "{\"result\":\"false\"}";
