@@ -1,152 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="teammatchinfo.TeamMatchInfoDAO">
+<mapper namespace="com.musamanru.goldenglove.teammatchinfo.TeamMatchInfoDAO">
 
-	<!-- 수락을 기다리는 경기 -->
-	
-	<select id="getTeamMatchList1" resultType="teammatchdto">
-		select * from teammatching where homeName=#{myTeamName} and awayName is not null and registration=1 and acceptance=0
-		order by possibleDate asc, possibleTime asc
-	</select>
-	
-	<!-- 등록한 경기 -->
-	
-	<select id="getTeamMatchList2" resultType="teammatchdto">
-		select * from teammatching where homeName=#{myTeamName} and awayName is null and registration=0 and acceptance=0
-		order by possibleDate asc, possibleTime asc
-	</select>
-	
-	<!-- 신청한 경기 -->
-	
-	<select id="getTeamMatchList3" resultType="teammatchdto">
-		select * from teammatching where awayName=#{myTeamName} and registration=1 and acceptance=0
-		order by possibleDate asc, possibleTime asc
-	</select>
-	
-	<!-- 예정된 경기 -->
-	
-	<select id="getTeamMatchList4" resultType="teammatchdto">
-		select * from teammatching where (homeName=#{myTeamName} and awayName is not null and registration=1 and acceptance=1 and winner is null)
-		or (awayName=#{myTeamName} and registration=1 and acceptance=1 and winner is null)
-		order by possibleDate asc, possibleTime asc
-	</select>
+    <!-- 수락을 기다리는 경기 -->
+    <select id="getUnmatchedTeamMatch" resultType="teammatchdto">
+        select *
+        from teammatching
+        where homeName = #{myTeamName}
+          and awayName is not null
+          and registration = 1
+          and acceptance = 0
+        order by possibleDate asc, possibleTime asc
+    </select>
 
-	
-	<!-- 지난 경기 -->
-	
-	<select id="getTeamMatchList5" resultType="teammatchdto">
-		select * from teammatching where (homeName=#{myTeamName} and winner is not null and loser is not null)
-		or (awayName=#{myTeamName} and winner is not null and loser is not null)
-		order by possibleDate asc, possibleTime asc
-	</select>
-	
-	<!-- 유저 팀의 주장 Id 확인 -->
-	
-	<select id="selectTeamId" resultType="String">
-		select teamId from team where teamName=#{teamName}
-	</select>
-	
-	<!-- 1. 수락을 기다리는 경기 > 수락하기 버튼 -->
-	
-	<update id="updateAcceptance">
-		update teammatching set acceptance=1 where seq=#{seq}
-	</update>
-	
-	<!-- 2. 등록한 경기 > 취소 버튼 -->
-	
-	<delete id="deleteTeammatchRegistration">
-		delete from teammatching where seq=#{seq}
-	</delete>
-	
-	<!-- 3. 신청한 경기 > 취소하기 버튼 -->
-	
-	<update id="deleteAddTeammatch">
-		update teammatching set registration=0, awayName=null where seq=#{seq}
-	</update>
-	
-	<!-- 4. 예정된 경기 > 취소하기 버튼 -->
-	
-	<update id="cancelTeammatch">
-		update teammatching set acceptance=0, registration=0, awayName=null where seq=#{seq}
-	</update>
-	
-	<!-- 승패 반영 -->
-	
-	<update id="updateWinner">
-		update teammatching set winner=#{myTeam}, loser=#{awayTeam} where seq=#{seq}
-	</update>
+    <!-- 등록한 경기 -->
+    <select id="getRegisteredTeamMatch" resultType="teammatchdto">
+        select *
+        from teammatching
+        where homeName = #{myTeamName}
+          and awayName is null
+          and registration = 0
+          and acceptance = 0
+        order by possibleDate asc, possibleTime asc
+    </select>
 
-	<update id="updateLoser">
-		update teammatching set loser=#{myTeam}, winner=#{awayTeam} where seq=#{seq}
-	</update>
-	
-	<!-- 기본 팀 매칭 승률  -->
-	
-	<update id="updateTeamWinCount">
-		update team set winCount=winCount+1 where teamName=#{team}
-	</update>
-	
-	<update id="updateTeamLoseCount">
-		update team set loseCount=loseCount+1 where teamName=#{team}
-	</update>
-	
-	<update id="updateUserWinCount">
-		update user set winCount=winCount+1 where name=#{name}
-	</update>
-	
-	<update id="updateUserLoseCount">
-		update user set loseCount=loseCount+1 where name=#{name}
-	</update>
-	
-	<update id="updateTeamWinningRate">
-		update team set winningRate=(winCount / (winCount + loseCount)) where teamName=#{team};
-	</update>
-	
-	<update id="updateUserWinningRate">
-		update user set winningRate=(winCount / (winCount + loseCount)) where name=#{name};
-	</update>
-	
-	
-	
-	
+    <!-- 신청한 경기 -->
+    <select id="getAppliedTeamMatch" resultType="teammatchdto">
+        select *
+        from teammatching
+        where awayName = #{myTeamName}
+          and registration = 1
+          and acceptance = 0
+        order by possibleDate asc, possibleTime asc
+    </select>
 
-	<!-- 수락/취소 알림 -->
-	<insert id="insertAlarm">
-		insert into alarm (homeName, awayName, region, possibleDate, possibleTime, homePlace, acceptance)
-		select homeName, awayName, region, possibleDate, possibleTime, homePlace, acceptance from teammatching where seq=#{seq}
-	</insert>
-	
-	<!-- 취소 시 null 된 awayName, cancle한 팀 입력 -->
-	<update id="updateCancleAlarm">
-		update alarm set cancleTeam = #{cancleTeam},
-						 awayName = (select awayName from (select awayName from alarm
-										where seq = (select seq from (select seq from alarm 
-														where homeName = (select homeName from teammatching where seq = #{seq})
-															and region = (select region from teammatching where seq = #{seq})
-															and possibleDate = (select possibleDate from teammatching where seq = #{seq})
-															and possibleTime = (select possibleTime from teammatching where seq = #{seq}) 
-															and homePlace = (select homePlace from teammatching where seq = #{seq})
-															and acceptance = 1
-														order by seq desc limit 1) as a1)
-									) as a2)
-						where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a3);
-	</update>
+    <!-- 예정된 경기 -->
+    <select id="getUpcomingTeamMatch" resultType="teammatchdto">
+        select *
+        from teammatching
+        where (homeName = #{myTeamName} and awayName is not null and registration = 1 and acceptance = 1 and
+               winner is null)
+           or (awayName = #{myTeamName} and registration = 1 and acceptance = 1 and winner is null)
+        order by possibleDate asc, possibleTime asc
+    </select>
 
-	<!-- 수락/취소 알림 날짜 업데이트 -->
-	<update id="updateAlarmDate">
-		update alarm set alarmDate = #{alarmDate} where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a);
-	</update>
-	
-	
-	<!-- 오늘의 매칭 -->
-	<select id="getTodayMatching" resultType="teammatchdto">
-		select * from teammatching where possibleDate=#{today} and awayName IS NOT NULL and acceptance = 1 order by possibleDate asc, possibleTime asc
-	</select>
-	
-	
-	<!-- 패널티 받는 팀 추가 -->
-	<insert id="insertPenalty">
-		insert into penalty(teamName, penaltyEndDate) values (#{teamName}, ADDDATE(now(), INTERVAL 5 DAY));
-	</insert>
+
+    <!-- 지난 경기 -->
+    <select id="getLastTeamMatch" resultType="teammatchdto">
+        select *
+        from teammatching
+        where (homeName = #{myTeamName} and winner is not null and loser is not null)
+           or (awayName = #{myTeamName} and winner is not null and loser is not null)
+        order by possibleDate asc, possibleTime asc
+    </select>
+
+    <!-- 유저 팀의 주장 Id 확인 -->
+    <select id="getTeamId" resultType="String">
+        select teamId
+        from team
+        where teamName = #{teamName}
+    </select>
+
+    <!-- 1. 수락을 기다리는 경기 > 수락하기 버튼 -->
+    <update id="updateAcceptance">
+        update teammatching
+        set acceptance=1
+        where seq = #{seq}
+    </update>
+
+    <!-- 2. 등록한 경기 > 취소 버튼 -->
+    <delete id="deleteTeamMatchRegistration">
+        delete
+        from teammatching
+        where seq = #{seq}
+    </delete>
+
+    <!-- 3. 신청한 경기 > 취소하기 버튼 -->
+    <update id="deleteAddTeamMatch">
+        update teammatching
+        set registration=0,
+            awayName=null
+        where seq = #{seq}
+    </update>
+
+    <!-- 4. 예정된 경기 > 취소하기 버튼 -->
+    <update id="cancelTeamMatch">
+        update teammatching
+        set acceptance=0,
+            registration=0,
+            awayName=null
+        where seq = #{seq}
+    </update>
+
+    <!-- 승패 반영 -->
+    <update id="updateWinner">
+        update teammatching
+        set winner=#{myTeam},
+            loser=#{awayTeam}
+        where seq = #{seq}
+    </update>
+
+    <update id="updateLoser">
+        update teammatching
+        set loser=#{myTeam},
+            winner=#{awayTeam}
+        where seq = #{seq}
+    </update>
+
+    <!-- 기본 팀 매칭 승률  -->
+    <update id="updateTeamWinCount">
+        update team
+        set winCount=winCount + 1
+        where teamName = #{team}
+    </update>
+
+    <update id="updateTeamLoseCount">
+        update team
+        set loseCount=loseCount + 1
+        where teamName = #{team}
+    </update>
+
+    <update id="updateUserWinCount">
+        update user
+        set winCount=winCount + 1
+        where name = #{name}
+    </update>
+
+    <update id="updateUserLoseCount">
+        update user
+        set loseCount=loseCount + 1
+        where name = #{name}
+    </update>
+
+    <update id="updateTeamWinningRate">
+        update team
+        set winningRate=(winCount / (winCount + loseCount))
+        where teamName = #{team};
+    </update>
+
+    <update id="updateUserWinningRate">
+        update user
+        set winningRate=(winCount / (winCount + loseCount))
+        where name = #{name};
+    </update>
+
+    <!-- 수락/취소 알림 -->
+    <insert id="insertAlarm">
+        insert into alarm (homeName, awayName, region, possibleDate, possibleTime, homePlace, acceptance)
+        select homeName, awayName, region, possibleDate, possibleTime, homePlace, acceptance
+        from teammatching
+        where seq = #{seq}
+    </insert>
+
+    <!-- 취소 시 null 된 awayName, cancle한 팀 입력 -->
+    <update id="updateCancelAlarm">
+        update alarm
+        set cancleTeam = #{cancleTeam},
+            awayName   = (select awayName
+                          from (select awayName
+                                from alarm
+                                where seq = (select seq
+                                             from (select seq
+                                                   from alarm
+                                                   where homeName = (select homeName from teammatching where seq = #{seq})
+                                                     and region = (select region from teammatching where seq = #{seq})
+                                                     and possibleDate = (select possibleDate from teammatching where seq = #{seq})
+                                                     and possibleTime = (select possibleTime from teammatching where seq = #{seq})
+                                                     and homePlace = (select homePlace from teammatching where seq = #{seq})
+                                                     and acceptance = 1
+                                                   order by seq desc limit 1) as a1)) as a2)
+        where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a3);
+    </update>
+
+    <!-- 수락/취소 알림 날짜 업데이트 -->
+    <update id="updateAlarmDate">
+        update alarm
+        set alarmDate = #{alarmDate}
+        where seq = (select seq from (select seq from alarm order by seq desc limit 1) as a);
+    </update>
+
+    <!-- 오늘의 매칭 -->
+    <select id="getTodayMatching" resultType="teammatchdto">
+        select *
+        from teammatching
+        where possibleDate = #{today}
+          and awayName IS NOT NULL
+          and acceptance = 1
+        order by possibleDate asc, possibleTime asc
+    </select>
+
+    <!-- 패널티 받는 팀 추가 -->
+    <insert id="insertPenalty">
+        insert into penalty(teamName, penaltyEndDate)
+        values (#{teamName}, ADDDATE(now(), INTERVAL 5 DAY));
+    </insert>
 </mapper>

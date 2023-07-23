@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="alarm.AlarmDAO">
+<mapper namespace="com.musamanru.goldenglove.alarm.AlarmDAO">
 	<select id="selectAlarm" resultType="alarmDTO">
 		select * from alarm where ((homeName = #{teamName} and awayName IS NOT NULL) 
 									or awayName = #{teamName}

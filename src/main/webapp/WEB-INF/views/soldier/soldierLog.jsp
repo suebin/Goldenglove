@@ -1,5 +1,5 @@
-<%@page import="user.UserDTO"%>
-<%@page import="soldier.SoldierDTO"%>
+<%@page import="com.musamanru.goldenglove.user.UserDTO"%>
+<%@page import="com.musamanru.goldenglove.soldier.SoldierDTO"%>
 <%@page import="java.util.List"%>
 <%@page import="java.time.LocalDateTime"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"

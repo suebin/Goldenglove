@@ -4,13 +4,13 @@
 <configuration>
 	<!-- mybatis.MemberDTO = memberDTO(별칭정의) -->
 	<typeAliases>
-		<typeAlias type="user.UserDTO" alias="userDTO"/>
-		<typeAlias type="team.TeamDTO" alias="teamDTO"/>
-		<typeAlias type="notice.NoticeDTO" alias="noticedto"/> 
-		<typeAlias type="teammatch.TeamMatchDTO" alias="teammatchdto"/>
-		<typeAlias type="ranking.RankingDTO" alias="rankingDTO"/>
-		<typeAlias type="alarm.AlarmDTO" alias="alarmDTO"/>
-		<typeAlias type="soldier.SoldierDTO" alias="soldierdto"/>
-		<typeAlias type="penalty.PenaltyDTO" alias="penaltyDTO"/>
+		<typeAlias type="com.musamanru.goldenglove.user.UserDTO" alias="userDTO"/>
+		<typeAlias type="com.musamanru.goldenglove.team.TeamDTO" alias="teamDTO"/>
+		<typeAlias type="com.musamanru.goldenglove.notice.NoticeDTO" alias="noticedto"/>
+		<typeAlias type="com.musamanru.goldenglove.teammatch.TeamMatchDTO" alias="teammatchdto"/>
+		<typeAlias type="com.musamanru.goldenglove.ranking.RankingDTO" alias="rankingDTO"/>
+		<typeAlias type="com.musamanru.goldenglove.alarm.AlarmDTO" alias="alarmDTO"/>
+		<typeAlias type="com.musamanru.goldenglove.soldier.SoldierDTO" alias="soldierdto"/>
+		<typeAlias type="com.musamanru.goldenglove.penalty.PenaltyDTO" alias="penaltyDTO"/>
 	</typeAliases>
 </configuration>

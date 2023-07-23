@@ -1,4 +1,4 @@
-<%@page import="user.UserDTO"%>
+<%@page import="com.musamanru.goldenglove.user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -125,16 +125,6 @@
 			<div class="teammatch_info_boxes"></div>
 		</div>
 
-		
-	
-		<!-- 매치 등록 버튼을 누르면 나오는 매치 등록 form 모달 창 -->
-		
-<!-- 	<div class="teammatch_registration_modal">
-		<div class="teammatch_registration">
-				매치 등록을 합니다.
-			</div>
-		</div>	 -->	
-		
 		<jsp:include page="/WEB-INF/views/map/map.jsp" />
 	</div>
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="ranking.RankingDAO">
+<mapper namespace="com.musamanru.goldenglove.ranking.RankingDAO">
 	<select id="showRanking" resultType="rankingDTO">
 		select teamName, (select region from user where user.id = team.teamId) as region, winCount, loseCount, winningRate 
 		from team where teamName != 'admin' order by winningRate desc, winCount desc;

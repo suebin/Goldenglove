@@ -6,8 +6,8 @@ target/
 
 # for me
 src/main/resources/application.properties
-src/main/java/**/ChatbotInform.java
-src/main/java/sns/SnsInform.java
+src/main/java/com/musamanru/goldenglove/chatbot/ChatbotInform.java
+src/main/java/com/musamanru/goldenglove/sns/SnsInform.java
 
 ### STS ###
 .apt_generated

@@ -1,58 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="teammatch.TeamMatchDAO">
-	
-	<!-- 매치 등록 -->
-	
-	<insert id="insertTeamMatch" parameterType="teammatchdto">
-		insert into teammatching (homeName, region, possibleDate, possibleTime, homePlace, headCount, comment, homePerson)
-		values(#{homeName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment}, #{homePerson})
-	</insert>
-	
-	<!-- 용병 리스트 -->
-	
-	<select id="getSoldierList" parameterType="String" resultType="soldierdto">
-		select * from soldier where finalMateTeam=#{teamName}
-	</select>
+<mapper namespace="com.musamanru.goldenglove.teammatch.TeamMatchDAO">
 
-	<!-- 매치 검색 -->
-	
-	<select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
-		select * from teammatching where region=#{region} and possibleDate=#{possibleDate} and awayName is null and registration=0
-		order by teammatching.possibleTime
-	</select>
-	
-	<!-- 매치 검색 (지역: 전체) -->
-	
-	<select id="getAllTeamMatchList" parameterType="String" resultType="teammatchdto">
-		select * from teammatching where possibleDate=#{possibleDate} and awayName is null
-		order by teammatching.possibleTime
-	</select>
-	
-	<!-- 매치 신청 -->
-	
-	<update id="updateAway">
-		update teammatching set awayName=#{awayName}, awayPerson=#{awayPerson} where seq=#{seq}
-	</update>
-	
-	<update id="updateRegistration">
-		update teammatching set registration=1 where seq=#{seq}
-	</update>
-	
-	<!-- 팀 프로필 -->
-	<select id="getHomePerson" parameterType="int" resultType="String">
-		select homePerson from teammatching where seq=#{seq}
-	</select>
-	
-	<select id="selectTeamMember" parameterType="String" resultType="userDTO">
-		select * from user where name=#{name}
-	</select>
-	
-	
-	<!-- 알림 -->
-	<insert id="insertAlarm">
-		insert into alarm (homeName, awayName, region, possibleDate, possibleTime, homePlace, alarmDate)
-		values(#{homeName}, #{awayName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{alarmDate})
-	</insert>
+    <!-- 매치 등록 -->
+
+    <insert id="insertTeamMatch" parameterType="teammatchdto">
+        insert into teammatching (homeName, region, possibleDate, possibleTime, homePlace, headCount, comment,
+                                  homePerson)
+        values (#{homeName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{headCount}, #{comment},
+                #{homePerson})
+    </insert>
+
+    <!-- 용병 리스트 -->
+
+    <select id="getSoldierList" parameterType="String" resultType="soldierdto">
+        select *
+        from soldier
+        where finalMateTeam = #{teamName}
+    </select>
+
+    <!-- 매치 검색 -->
+
+    <select id="getTeamMatchList" parameterType="String" resultType="teammatchdto">
+        select *
+        from teammatching
+        where region = #{region}
+          and possibleDate = #{possibleDate}
+          and awayName is null
+          and registration = 0
+        order by teammatching.possibleTime
+    </select>
+
+    <!-- 매치 검색 (지역: 전체) -->
+
+    <select id="getAllTeamMatchList" parameterType="String" resultType="teammatchdto">
+        select *
+        from teammatching
+        where possibleDate = #{possibleDate}
+          and awayName is null
+        order by teammatching.possibleTime
+    </select>
+
+    <!-- 매치 신청 -->
+
+    <update id="updateAway">
+        update teammatching
+        set awayName=#{awayName},
+            awayPerson=#{awayPerson}
+        where seq = #{seq}
+    </update>
+
+    <update id="updateRegistration">
+        update teammatching
+        set registration=1
+        where seq = #{seq}
+    </update>
+
+    <!-- 팀 프로필 -->
+    <select id="getHomePerson" parameterType="int" resultType="String">
+        select homePerson
+        from teammatching
+        where seq = #{seq}
+    </select>
+
+    <select id="selectTeamMember" parameterType="String" resultType="userDTO">
+        select *
+        from user
+        where name = #{name}
+    </select>
+
+
+    <!-- 알림 -->
+    <insert id="insertAlarm">
+        insert into alarm (homeName, awayName, region, possibleDate, possibleTime, homePlace, alarmDate)
+        values (#{homeName}, #{awayName}, #{region}, #{possibleDate}, #{possibleTime}, #{homePlace}, #{alarmDate})
+    </insert>
 </mapper>
