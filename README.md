@@ -7,15 +7,15 @@
 <br>
 
 # 🛠 기술 스택
-- `Front-End` : HTML, CSS, JavaScript
-- `Back-End` : Java, JSP
-- `Tool` : Spring Boot, Ajax, MyBatis, Notion, Git
+- `Front-End` : HTML, CSS, JavaScript, jQuery, JSTL, Ajax
+- `Back-End` : Java, JSP, MyBatis
+- `Tool` : Spring Boot, Notion, Git, Github
 - `Database` : MySQL
-- `CI/CD` : Jenkins
-- `Library` : JQuery, JSTL, flatpickr, AOS, owl.carousel.js, Jquery-Modal
-- `Open Source` : UNPKG
 - `API` : Kakao Map, Web Speech API, Kakao Login, Naver Login, Naver CLOVA Chatbot
-- `배포` : Naver Cloud
+- `배포` : Naver Cloud 
+- `CI/CD` : Jenkins
+- `Library` : flatpickr, AOS, owl.carousel.js
+- `Open Source` : UNPKG
 
 <br>
 
