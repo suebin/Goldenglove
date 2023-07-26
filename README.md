@@ -8,12 +8,12 @@
 
 # 🛠 기술 스택
 - `Front-End` : HTML, CSS, JavaScript, jQuery, JSTL, Ajax
-- `Back-End` : Java, JSP, MyBatis
-- `Tool` : Spring Boot, Notion, Git, Github
+- `Back-End` : Java, Spring Boot, JSP, MyBatis
 - `Database` : MySQL
 - `API` : Kakao Map, Web Speech API, Kakao Login, Naver Login, Naver CLOVA Chatbot
 - `배포` : Naver Cloud 
 - `CI/CD` : Jenkins
+- `협업 Tool` : Notion, Git, Github
 - `Library` : flatpickr, AOS, owl.carousel.js
 - `Open Source` : UNPKG
 
