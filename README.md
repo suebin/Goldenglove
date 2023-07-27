@@ -11,7 +11,7 @@
 - `Back-End` : Java, Spring Boot, JSP, MyBatis
 - `Database` : MySQL
 - `API` : Kakao Map, Web Speech API, Kakao Login, Naver Login, Naver CLOVA Chatbot
-- `배포` : Naver Cloud, AWS
+- `배포` : (구) Naver Cloud, (현) AWS
 - `CI/CD` : Jenkins
 - `협업 Tool` : Notion, Git, Github
 - `Library` : flatpickr, AOS, owl.carousel.js
